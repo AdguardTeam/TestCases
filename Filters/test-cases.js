@@ -7,6 +7,11 @@ window.addEventListener('load', function() {
         var element = document.querySelector('#case-1-elemhide > .banner');
         assert.equal(window.getComputedStyle(element).display, "none");
     });
+    
+    QUnit.test("2. Test generic element hiding rule", function(assert) {
+        var element = document.querySelector('#case-2-generic-elemhide');
+        assert.equal(window.getComputedStyle(element).display, "none");
+    });
 
     // Add new test cases here
     // TODO: Generic element-hiding rule
