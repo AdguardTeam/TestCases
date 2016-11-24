@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
     });
     
     QUnit.test("2. Test generic element hiding rule", function(assert) {
-        var element = document.querySelector('#case-2-generic-elemhide');
+        var element = document.querySelector('#case-2-generic-elemhide > .banner');
         assert.equal(window.getComputedStyle(element).display, "none");
     });
 
