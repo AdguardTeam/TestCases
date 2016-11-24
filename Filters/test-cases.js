@@ -5,7 +5,8 @@ window.addEventListener('load', function() {
 
     QUnit.test("1. Test domain-specific element hiding rule", function(assert) {
         var element = document.querySelector('#case-1-elemhide > .banner');
-        assert.equal(window.getComputedStyle(element).display, "none");});
+        assert.equal(window.getComputedStyle(element).display, "none");
+    });
     
     QUnit.test("2. Test generic element hiding rule", function(assert) {
         var element = document.querySelector('#case-2-generic-elemhide');
