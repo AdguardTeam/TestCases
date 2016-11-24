@@ -8,3 +8,6 @@
 adguardteam.github.io###subscribe-to-test-filter
 ! Test case 1: domain-specific elemhide rules
 adguardteam.github.io###case-1-elemhide > .banner
+! Test case 2: generic elemhide rules
+###case-2-generic-elemhide > .banner
+
