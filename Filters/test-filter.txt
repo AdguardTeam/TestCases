@@ -4,5 +4,7 @@
 ! Filter to be used for testing purposes
 ! https://adguardteam.github.io/TestCases/Filters/tests.html
 !
+! Hide warning
+adguardteam.github.io###subscribe-to-test-filter
 ! Test case 1: domain-specific elemhide rules
 adguardteam.github.io###case-1-elemhide > .banner
