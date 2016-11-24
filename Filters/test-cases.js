@@ -16,6 +16,7 @@ window.addEventListener(function() {
     // TODO: Domain-specific CSS rule: adguardteam.github.io#$#css { style }
     // TODO: Domain exclusion from CSS rule: ~adguardteam.github.io#$#css { style }
     // TODO: CSS rule exception:adguardteam.github.io#$@#css { style }
+    // TODO: Extended CSS rules
     // TODO: Simple basic rules 
     // TODO: Basic rules with third-party modifier
     // TODO: Exception rules (@@)
