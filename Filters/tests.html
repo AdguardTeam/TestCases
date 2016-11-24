@@ -9,12 +9,21 @@
 </head>
 
 <body>
-    <div id="qunit"></div>
+    <div id="qunit">
+        <div id="subscribe-to-test-filter" style="font-size: 48px; padding: 50px; text-align: center;">
+        <a href="abp:subscribe?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/test-filter.txt">Subscribe to test filter</a>
+    </div>    
+    </div>
     <div id="qunit-fixture"></div>
     <script src="qunit/qunit-2.0.1.js"></script>
 
-    <style type="text/css">.container { display: none; }</style>
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
     <div class="container">
+        
+        <div id="case-1-elemhide">
+            <div class="banner" style="width: 300px; height: 300px;"></div>
+        </div>
     </div>
 
     <script type="text/javascript" src="test-cases.js"></script>
