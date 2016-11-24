@@ -1,7 +1,7 @@
 /**
  * Before doing the test, import test_filter.txt to Adguard
  */
-window.addEventListener(function() {
+window.addEventListener('load', function() {
 
     QUnit.test("1. Test domain-specific element hiding rule", function(assert) {
         var element = document.querySelector('#case-1-elemhide > .banner');
@@ -24,4 +24,4 @@ window.addEventListener(function() {
     // TODO: Basic rules with domain restrictions
     // TODO: JS rules
     
-}, 'load');
+});
