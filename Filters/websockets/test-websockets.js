@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
         
         var done = assert.async();
 
-        var ws = new WebSocket("wss://echo.websocket.org?valid");
+        var ws = new WebSocket("wss://echo.websocket.org/?valid");
 
         ws.onopen = function(e) {
             assert.ok('Connection is open');
@@ -22,9 +22,10 @@ window.addEventListener('load', function() {
 
     QUnit.test("2. Test blocking simple websocket connection", function(assert) {
         
+        var finished = false;
         var done = assert.async();
 
-        var ws = new WebSocket("wss://echo.websocket.org?blocked");
+        var ws = new WebSocket("wss://echo.websocket.org/?blocked");
 
         ws.onopen = function(e) {
             assert.notOk('Connection is open');
@@ -34,6 +35,8 @@ window.addEventListener('load', function() {
         ws.onerror = ws.onclose = function(e) {
             assert.ok('Connection is blocked');
             done();
+            ws.onerror = null;
+            ws.onclose = null;
         };
     });
 });
