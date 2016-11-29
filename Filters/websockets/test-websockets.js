@@ -1,0 +1,39 @@
+/**
+ * Before doing the test, import test_filter.txt to Adguard
+ */
+window.addEventListener('load', function() {
+
+    QUnit.test("1. Test valid websocket connection", function(assert) {
+        
+        var done = assert.async();
+
+        var ws = new WebSocket("wss://echo.websocket.org?valid");
+
+        ws.onopen = function(e) {
+            assert.ok('Connection is open');
+            done();
+        };
+
+        ws.onerror = ws.onclose = function(e) {
+            assert.notOk('Connection error');
+            done();
+        };
+    });
+
+    QUnit.test("2. Test blocking simple websocket connection", function(assert) {
+        
+        var done = assert.async();
+
+        var ws = new WebSocket("wss://echo.websocket.org?blocked");
+
+        ws.onopen = function(e) {
+            assert.notOk('Connection is open');
+            done();
+        };
+
+        ws.onerror = ws.onclose = function(e) {
+            assert.ok('Connection is blocked');
+            done();
+        };
+    });
+});

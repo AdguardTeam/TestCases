@@ -1,13 +1,12 @@
 !
-! Title: Test filter
+! Title: Rules for simple rules tests
 !
 ! Filter to be used for testing purposes
-! https://adguardteam.github.io/TestCases/Filters/tests.html
+! https://adguardteam.github.io/TestCases/
 !
 ! Hide warning
-adguardteam.github.io###subscribe-to-test-filter
+adguardteam.github.io###subscribe-to-test-simple-rules-filter
 ! Test case 1: domain-specific elemhide rules
 adguardteam.github.io###case-1-elemhide > .banner
 ! Test case 2: generic elemhide rules
 ###case-2-generic-elemhide > .banner
-
