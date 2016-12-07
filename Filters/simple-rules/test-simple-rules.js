@@ -13,6 +13,11 @@ window.addEventListener('load', function() {
         assert.equal(window.getComputedStyle(element).display, "none");
     });
 
+    QUnit.test("3. Test Element hiding rule exception", function(assert) {
+        var element = document.querySelector('#case-3-elemhide-exception');
+        assert.equal(window.getComputedStyle(element).display, "block");
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css

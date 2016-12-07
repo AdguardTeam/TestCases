@@ -6,7 +6,10 @@
 !
 ! Hide warning
 adguardteam.github.io###subscribe-to-test-simple-rules-filter
-! Test case 1: domain-specific elemhide rules
+! Test case 1: domain-specific elemhide rule
 adguardteam.github.io###case-1-elemhide > .banner
-! Test case 2: generic elemhide rules
+! Test case 2: generic elemhide rule
 ###case-2-generic-elemhide > .banner
+! Test case 3: elemhide rule exception
+###case-3-elemhide-exception > .exception-example
+adguardteam.github.io#@#.exception-example
