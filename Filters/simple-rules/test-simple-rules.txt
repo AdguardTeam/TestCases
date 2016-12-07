@@ -12,4 +12,4 @@ adguardteam.github.io###case-1-elemhide > .banner
 ###case-2-generic-elemhide > .banner
 ! Test case 3: elemhide rule exception
 ###case-3-elemhide-exception > .exception-example
-adguardteam.github.io#@#case-3-elemhide-exception > .exception-example
+adguardteam.github.io#@##case-3-elemhide-exception > .exception-example
