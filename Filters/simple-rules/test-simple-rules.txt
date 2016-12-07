@@ -11,5 +11,9 @@ adguardteam.github.io###case-1-elemhide > .banner
 ! Test case 2: generic elemhide rule
 ###case-2-generic-elemhide > .banner
 ! Test case 3: elemhide rule exception
-###case-3-elemhide-exception > .exception-example
-adguardteam.github.io#@##case-3-elemhide-exception > .exception-example
+###case-3-elemhide-exception > .banner
+adguardteam.github.io#@##case-3-elemhide-exception > .banner
+! Test case 4: domain exclusion
+~adguardteam.github.io###case-4-domain-exclusion > .banner
+
+

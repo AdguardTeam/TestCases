@@ -14,7 +14,12 @@ window.addEventListener('load', function() {
     });
 
     QUnit.test("3. Test element hiding rule exception", function(assert) {
-        var element = document.querySelector('#case-3-elemhide-exception > .exception-example');
+        var element = document.querySelector('#case-3-elemhide-exception > .banner');
+        assert.equal(window.getComputedStyle(element).display, "block");
+    });
+	
+	QUnit.test("4. Test domain exclusion", function(assert) {
+        var element = document.querySelector('#case-4-domain-exclusion > .banner');
         assert.equal(window.getComputedStyle(element).display, "block");
     });
 
