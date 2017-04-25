@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Load tool</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .navbar-default {
+            background-color: #00bcd4;
+            border-radius: 0px;
+            border: 0px solid #00bcd4;
+        }
+        .navbar-default .navbar-brand {
+            color: #fff;
+        }
+        .navbar-default .navbar-brand:hover {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li>a {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li>a:hover,
+        .navbar-default .navbar-nav>li>a:hover:active {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li:hover,
+        .navbar-default .navbar-nav>li:active,
+        .navbar-default .navbar-nav>.active>a:hover {
+            color: #fff;
+            background-color: #4dd0e1;
+        }
+        .testFrame {
+            width: 100%;
+            height: 1024px;
+            border: 1px solid #efefef;
+            padding: 0px;
+            margin: 0px;
+        }
+        #iframeContainer {
+            margin-top: 100px;
+        }
+        #benchmarkResult {
+            margin-top: 30px;
+        }
+        #statusContainer {
+            margin-top: 15px;
+        }
+        .navbar-default .navbar-nav>.active>a {
+            color: #fff;
+            background-color: #00acc1;
+        }
+        .help-image {
+            border: 1px solid #efefef;
+            padding: 2px;
+            max-width: 600px;
+        }
+        .alert-note {
+            border-left: 4px solid #00bcd4!important;
+            border: 1px solid #efefef;
+        }
+    </style>
+    <script type="text/javascript">
+        var now = function() {
+            return (new Date()).getTime();
+        };
+
+        var coalesce = function(value, defaultValue) {
+            if (typeof value == "undefined" || value == null) {
+                return defaultValue;
+            }
+
+            return value;
+        };
+
+        var logDebug = function(message) {
+            if (console && console.log) {
+                console.log(message);
+            }
+        };
+
+        var Benchmark = function(params) {
+
+            // Current iteration number
+            this.iterationNumber = 1;
+            // Iterations results
+            this.result = [];
+
+            // Shows benchmark results
+            this.showBenchmarkResult = function() {
+                $('#iframeContainer').children().remove();
+                $('#benchmarkResult table>tbody tr').remove();
+                this.setStatus();
+
+                var elapsedLoadSum = 0;
+
+                for (var i = 0; i < this.result.length; i++) {
+                    var iterationResult = this.result[i];
+                    var elapsedLoad = iterationResult.load - iterationResult.startTime;
+                    elapsedLoadSum += elapsedLoad;
+
+                    var row = $('<tr>');
+                    row.append($('<th>').text(iterationResult.iterationNumber));
+                    row.append($('<td>').text(iterationResult.url));
+                    row.append($('<td>').text(elapsedLoad));
+
+                    $('#benchmarkResult table>tbody').append(row);
+                }
+
+                var averageRow = $('<tr>');
+                averageRow.append($('<th>').text('Average:'));
+                averageRow.append($('<th colspan="2">').text(Math.round(elapsedLoadSum / this.result.length)));
+                var overallRow = $('<tr>');
+                overallRow.append($('<th>').text('Overall:'));
+                overallRow.append($('<th colspan="2">').text(elapsedLoadSum));
+                $('#benchmarkResult table>tbody').append(averageRow);
+                $('#benchmarkResult table>tbody').append(overallRow);
+                $('#benchmarkResult').removeClass('hide');
+            };
+
+            /**
+             * Shows current status of the benchmark run
+             */
+            this.setStatus = function(title, message) {
+                $('#statusContainer').children().remove();
+                if (title) {
+                    $('#statusContainer').append('<h4>' + title + '</h4>');
+                }
+                if (message) {
+                    $('#statusContainer').append('<p>' + message + '</p>');
+                }
+            };
+
+            /**
+             * Loads frame and records iteration results
+             * @param url Test url
+             */
+            this.loadFrame = function(url) {
+                var iframeContainer = $('#iframeContainer');
+                iframeContainer.children().remove();
+                var testFrame = $('<iframe>').addClass('testFrame');
+                testFrame.attr('src', url);
+                iframeContainer.append(testFrame);
+
+                var startTime = (new Date()).getTime();
+                var iterationResult = {
+                    url: url,
+                    iterationNumber: this.iterationNumber,
+                    startTime: now()
+                };
+                this.result.push(iterationResult);
+
+                this.setStatus('Iteration #' + this.iterationNumber, 'Waiting for page ' + url + ' to load...');
+                var self = this;
+
+                var onLoad = function() {
+                	if (iterationResult.load) {
+                		// Already loaded
+                		return;
+                	}
+
+                    // Frame fully loaded time
+                    iterationResult.load = now();
+
+                    var elapsed = iterationResult.load - iterationResult.startTime;
+                    var message = 'Page has been loaded for ' + elapsed + ' ms. Waiting 2 seconds before the next iteration.';
+                    self.setStatus('Iteration #' + self.iterationNumber, message);
+
+                    self.iterationNumber++;
+                    // Wait for 2 secs before running next time
+                    setTimeout(function() {
+                        self.run();
+                    }, 2000);
+                };
+
+                // Max timeout -- 10 seconds
+                setTimeout(function() {
+                	onLoad();
+                }, 10 * 1000);
+
+                $(testFrame).on('load', function() {
+                	onLoad();
+                });
+            };
+
+            /**
+             * Runs the benchmark
+             */
+            this.run = function() {
+                var iterationsCount = params.repeatCount * params.urls.length;
+                if (this.iterationNumber > iterationsCount) {
+                    logDebug('Benchmark finished');
+                    this.showBenchmarkResult();
+                    params.complete();
+                    return;
+                }
+
+                logDebug('Run iteration ' + this.iterationNumber);
+                var urlIndex = Math.floor((this.iterationNumber - 1) / params.repeatCount);
+                var url = params.urls[urlIndex];
+                this.loadFrame(url);
+            };
+        };
+
+        $(function() {
+
+            var defaultUrls = [
+                "http://www.huffingtonpost.com/",
+                "http://www.washingtonpost.com/",
+                "http://www.latimes.com/",
+                "http://www.foxnews.com/",
+                "http://www.about.com/",
+                "http://www.dailymail.co.uk/"
+            ];
+            $('#testWebsites').val(defaultUrls.join('\n'));
+
+            var formBenchmarkParameters = $('#formBenchmarkParameters');
+            formBenchmarkParameters.on('submit', function(e) {
+                e.preventDefault();
+
+                var btnStart = $('#btnStart');
+                if (btnStart.hasClass('active')) {
+                    logDebug('Ignore click, test is in progress');
+                } else {
+                    var urls = $('#testWebsites').val().split('\n');
+                    // Remove empty elements
+                    urls = $.grep(urls, function(n) {
+                        return (n.trim());
+                    });
+
+                    if (!urls || urls.length == 0) {
+                        alert('Enter test websites');
+                        return;
+                    }
+
+                    var params = {
+                        repeatCount: $('#repeatCount').val(),
+                        urls: urls,
+                        complete: function() {
+                            btnStart.removeClass('active');
+                            btnStart.text('Start!');
+                            formBenchmarkParameters.find('input').removeAttr('disabled');
+                        }
+                    };
+
+                    $('#benchmarkResult').addClass('hide');
+                    btnStart.addClass('active');
+                    btnStart.text('Processing...');
+                    formBenchmarkParameters.find('input').attr('disabled', 'true');
+
+                    var benchmark = new Benchmark(params);
+                    benchmark.run();
+                }
+
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Load tool</h1>
+                <p>
+                    Simple tool for browser load testing.
+                </p>
+                <div class="alert alert-note">
+                    <strong>Not every website is suitable for this test.</strong> Some websites may deny loading in frames, for instance <u>nytimes.com</u>.
+                </div>
+                <form class="form-horizontal" id="formBenchmarkParameters">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="testWebsites">Test websites:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="testWebsites" rows="8" name="testWebsites" required>Enter test websites</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="repeatCount">Repeat count: </label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="repeatCount" placeholder="99" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="btnStart" type="submit" class="btn btn-primary btn-lg">Start test</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="statusContainer">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 hide" id="benchmarkResult">
+                <h3>Benchmark Result</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Address</th>
+                            <th>Elapsed on page load, ms</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th>http://trattatata.com/</th>
+                            <td>1321</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" id="iframeContainer">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
