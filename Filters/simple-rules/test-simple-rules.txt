@@ -2,18 +2,18 @@
 ! Title: Rules for simple rules tests
 !
 ! Filter to be used for testing purposes
-! https://adguardteam.github.io/TestCases/
+! https://testcases.adguard.com
 !
 ! Hide warning
-adguardteam.github.io###subscribe-to-test-simple-rules-filter
+testcases.adguard.com###subscribe-to-test-simple-rules-filter
 ! Test case 1: domain-specific elemhide rule
-adguardteam.github.io###case-1-elemhide > .banner
+testcases.adguard.com###case-1-elemhide > .banner
 ! Test case 2: generic elemhide rule
 ###case-2-generic-elemhide > .banner
 ! Test case 3: elemhide rule exception
 ###case-3-elemhide-exception > .banner
-adguardteam.github.io#@##case-3-elemhide-exception > .banner
+testcases.adguard.com#@##case-3-elemhide-exception > .banner
 ! Test case 4: domain exclusion
-~adguardteam.github.io###case-4-domain-exclusion > .banner
+~testcases.adguard.com###case-4-domain-exclusion > .banner
 
 
