@@ -23,7 +23,7 @@ window.addEventListener('load', function() {
     });
 
     QUnit.test("GM_getResourceURL", function(assert) {
-        startTest('GM_addStyle', assert);
+        startTest('GM_getResourceURL', assert);
     });
 
     QUnit.test("GM_addStyle", function(assert) {
