@@ -22,19 +22,7 @@ window.addEventListener('load', function() {
         startTest('GM_getResourceText', assert);
     });
 
-    QUnit.test("GM_addStyle", function(assert) {
-        startTest('GM_addStyle', assert);
-    });
-
-    QUnit.test("GM_addStyle", function(assert) {
-        startTest('GM_addStyle', assert);
-    });
-
-    QUnit.test("GM_addStyle", function(assert) {
-        startTest('GM_addStyle', assert);
-    });
-
-    QUnit.test("GM_addStyle", function(assert) {
+    QUnit.test("GM_getResourceURL", function(assert) {
         startTest('GM_addStyle', assert);
     });
 
