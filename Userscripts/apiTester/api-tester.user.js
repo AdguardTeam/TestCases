@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.1
+// @version      2.0.2
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -29,7 +29,7 @@
 	var tests = {
 
 		'GM_info': function (assert) {
-			var info = GM_info();
+			var info = GM_info;
 			assert.equal(info.script.name, "Userscripts API Tester");
 			assert.equal(info.script.namespace, "adguard");
 			assert.ok(info.version);
@@ -45,7 +45,7 @@
 			assert.equal(value, '1');
 			GM_deleteValue('int');
 			value = GM_getValue('int');
-			assert.onOk(value);
+			assert.notOk(value);
 		},
 
 		'GM_listValues': function(assert) {
