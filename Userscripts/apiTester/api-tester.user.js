@@ -1,3 +1,11 @@
+ // ==UserScript==
+// @name            Userscripts Tester
+// @namespace       adguard
+// @description     
+// @version         1.0.2
+// @require         js\jquery-2.1.1.min.js
+// @resource        testResource.js  js\resource.js
+// ==/UserScript==
 ApiTester = {
 	error: false,
 	testGmSetGetValue: function () {
