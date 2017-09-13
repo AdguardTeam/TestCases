@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.5
+// @version      2.0.6
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -82,10 +82,6 @@
 				assert.ok(0);
 				done();
 			};
-
-			// TODO: Actually, I am not sure what should be returned here.
-			// I guess instead of checking if base64 is equal, we should use some other way.
-			// Create a Blob and compare its contents?
 		},
 		'GM_addStyle': function (assert) {
 			var css = '#some-selector {}';
