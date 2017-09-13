@@ -38,6 +38,8 @@
 			var resource = GM_getResourceURL('1x1.png');
 			var base64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEA\nAAAASUVORK5CYII=\n";
 			assert.equal(resource, base64);
+
+			// TODO: Actually, I am not sure what should be returned here.
 		},
 		'GM_addStyle': function (assert) {
 			var css = '#some-selector {}';
