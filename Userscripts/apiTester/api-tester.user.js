@@ -15,7 +15,7 @@
 // @grant GM_getValue
 // @grant GM_getResourceText
 // @grant GM_getResourceURL
-// @grant GM_xmlhttprequest
+// @grant GM_xmlhttpRequest
 // @grant unsafeWindow
 // @run-at document-start
 // ==/UserScript==
@@ -50,7 +50,7 @@
 			var resultCss = childs.last().html();
 			assert.equal(resultCss, css);
 		},
-		'GM_xmlhttprequest': function (assert) {
+		'GM_xmlhttpRequest': function (assert) {
 			var done = assert.async();
 
 			GM_xmlhttpRequest({
