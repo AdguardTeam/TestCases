@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.2
+// @version      2.0.5
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
