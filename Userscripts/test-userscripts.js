@@ -13,9 +13,21 @@ window.addEventListener('load', function() {
         assert.ok(testFunction);
         testFunction(assert);
     };
+
+    QUnit.test("GM_info", function(assert) {
+        startTest('GM_info', assert);
+    });
     
     QUnit.test("GM_setValue", function(assert) {
         startTest('GM_setValue', assert);
+    });
+
+    QUnit.test("GM_deleteValue", function(assert) {
+        startTest('GM_deleteValue', assert);
+    });
+
+    QUnit.test("GM_listValues", function(assert) {
+        startTest('GM_listValues', assert);
     });
 
     QUnit.test("GM_getResourceText", function(assert) {
