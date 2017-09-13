@@ -15,7 +15,7 @@
 // @grant GM_getValue
 // @grant GM_getResourceText
 // @grant GM_getResourceURL
-// @grant GM_xmlhttprequest
+// @grant GM_xmlhttpRequest
 // @grant unsafeWindow
 // @run-at document-start
 // ==/UserScript==
