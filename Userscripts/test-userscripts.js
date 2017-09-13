@@ -29,4 +29,8 @@ window.addEventListener('load', function() {
     QUnit.test("GM_addStyle", function(assert) {
         startTest('GM_addStyle', assert);
     });
+
+    QUnit.test("GM_xmlhttprequest", function(assert) {
+        startTest('GM_xmlhttprequest', assert);
+    });
 });
