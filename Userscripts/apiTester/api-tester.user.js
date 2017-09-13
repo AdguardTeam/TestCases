@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.3
+// @version      2.0.2
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -25,29 +25,6 @@
 (function () {
 	// Hiding "install test userscript" alert
 	GM_addStyle('#install-test-userscript { display: none!important; }');
-
-	/**
-	 * Helper class that converts an image into a base64 string
-	 * @param {*} img Image to convert
-	 */
-	function getBase64Image(img) {
-		// Create an empty canvas element
-		var canvas = document.createElement("canvas");
-		canvas.width = img.width;
-		canvas.height = img.height;
-	
-		// Copy the image contents to the canvas
-		var ctx = canvas.getContext("2d");
-		ctx.drawImage(img, 0, 0);
-	
-		// Get the data-URL formatted image
-		// Firefox supports PNG and JPEG. You could check img.src to
-		// guess the original format, but be aware the using "image/jpg"
-		// will re-encode the image.
-		var dataURL = canvas.toDataURL("image/png");
-	
-		return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-	}
 
 	var tests = {
 
@@ -92,27 +69,23 @@
 
 			var resource = GM_getResourceURL('1x1.png');
 
-			var expectedImage = document.createElement('img');
-			expectedImage.src = 'https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/1x1.png';
-			expectedImage.onload = function() {
-
-				var retrievedImage = document.createElement('img');
-				retrievedImage.src = resource;
-				retrievedImage.onload = function() {
-					var expected = getBase64Image(expectedImage);
-					var retrieved = getBase64Image(retrievedImage);
-					assert.equal(retrieved, expected);
-					done();
-				};
-				retrievedImage.onerror = function() {
-					assert.ok(0);
-					done();
-				};
+			// Load retrieved image, convert to base64 and compare
+			var retrievedImage = document.createElement('img');
+			retrievedImage.src = resource;
+			retrievedImage.onload = function() {
+				assert.equal(retrievedImage.width, 1);
+				assert.equal(retrievedImage.height, 1);
+				// TODO: Can we compare content somehow?
+				done();
 			};
-			expectedImage.onerror = function() {
+			retrievedImage.onerror = function() {
 				assert.ok(0);
 				done();
 			};
+
+			// TODO: Actually, I am not sure what should be returned here.
+			// I guess instead of checking if base64 is equal, we should use some other way.
+			// Create a Blob and compare its contents?
 		},
 		'GM_addStyle': function (assert) {
 			var css = '#some-selector {}';
