@@ -40,6 +40,8 @@
 			assert.equal(resource, base64);
 
 			// TODO: Actually, I am not sure what should be returned here.
+			// I guess instead of checking if base64 is equal, we should use some other way.
+			// Create a Blob and compare its contents?
 		},
 		'GM_addStyle': function (assert) {
 			var css = '#some-selector {}';
