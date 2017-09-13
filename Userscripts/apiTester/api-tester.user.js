@@ -3,8 +3,11 @@
 // @namespace       adguard
 // @description     
 // @version         1.0.2
-// @require         js\jquery-2.1.1.min.js
-// @resource        testResource.js  js\resource.js
+// @require         https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/jquery-2.1.1.min.js
+// @resource        testResource.js  https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/resource.js
+// @match			
+// @downloadURL	    https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js
+// @updateURL		https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js
 // ==/UserScript==
 ApiTester = {
 	error: false,
