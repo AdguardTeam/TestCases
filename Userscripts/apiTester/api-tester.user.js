@@ -11,6 +11,7 @@
 // @grant GM_addStyle
 // @grant GM_setValue
 // @grant GM_getValue
+// @grant GM_getResourceText
 // @grant unsafeWindow
 // @run-at document-start
 // ==/UserScript==
@@ -23,6 +24,17 @@
 			GM_setValue('int', '1');
 			var value = GM_getValue('int');
 			assert.equal(value, '1');
+		},
+		'GM_getResourceText': function(assert) {
+			var resource = GM_getResourceText('testResource.js');
+			assert.equal(resource, '"resource"');
+		},
+		'GM_addStyle': function(assert) {
+			var css = '#some-selector {}';
+			GM_addStyle(css);
+			var childs = $('head').children();
+			var resultCss = childs.last().html();
+			assert.equal(resultCss, css);
 		}
 	};
 

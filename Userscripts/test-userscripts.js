@@ -7,11 +7,22 @@ window.addEventListener('load', function() {
         alert('You need to have apiTester userscript installed!');
         return;
     }
-    
-    QUnit.test("1. GM_setValue", function(assert) {
-        
-        var testFunction = window.tests.GM_setValue;
+
+    var startTest = function(testName, assert) {
+        var testFunction = window.tests[testName];
         assert.ok(testFunction);
         testFunction(assert);
+    };
+    
+    QUnit.test("GM_setValue", function(assert) {
+        startTest('GM_setValue', assert);
+    });
+
+    QUnit.test("GM_getResourceText", function(assert) {
+        startTest('GM_getResourceText', assert);
+    });
+
+    QUnit.test("GM_addStyle", function(assert) {
+        startTest('GM_addStyle', assert);
     });
 });
