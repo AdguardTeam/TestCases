@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.6
+// @version      2.0.7
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -39,7 +39,7 @@
 			var value = GM_getValue('int');
 			assert.equal(value, '1');
 		},
-		'GM_deleteValue': function(assert) {
+		'GM_deleteValue': function (assert) {
 			GM_setValue('int', '1');
 			var value = GM_getValue('int');
 			assert.equal(value, '1');
@@ -48,7 +48,7 @@
 			assert.notOk(value);
 		},
 
-		'GM_listValues': function(assert) {
+		'GM_listValues': function (assert) {
 			var values = ['int1', 'int2'];
 			for (var i = 0; i < values.length; i++) {
 				GM_setValue(values[i], true);
@@ -72,23 +72,28 @@
 			// Load retrieved image, convert to base64 and compare
 			var retrievedImage = document.createElement('img');
 			retrievedImage.src = resource;
-			retrievedImage.onload = function() {
+			retrievedImage.onload = function () {
 				assert.equal(retrievedImage.width, 1);
 				assert.equal(retrievedImage.height, 1);
 				// TODO: Can we compare content somehow?
 				done();
 			};
-			retrievedImage.onerror = function() {
+			retrievedImage.onerror = function () {
 				assert.ok(0);
 				done();
 			};
 		},
 		'GM_addStyle': function (assert) {
-			var css = '#some-selector {}';
+			var element = document.createElement('span');
+			element.setAttribute('id', 'test-span-element');
+			document.body.appendChild(element);
+
+			var css = '#test-span-element { display: none; }';
 			GM_addStyle(css);
-			var childs = $('head').children();
-			var resultCss = childs.last().html();
-			assert.equal(resultCss, css);
+
+			var computedStyle = window.getComputedStyle(element);
+
+			assert.equal(computedStyle.display, 'none');
 		},
 		'GM_xmlhttpRequest': function (assert) {
 			var done = assert.async();
@@ -100,7 +105,7 @@
 					assert.equal(response.responseText, '"resource"');
 					done();
 				},
-				onerror: function() {
+				onerror: function () {
 					assert.ok(0);
 					done();
 				}
