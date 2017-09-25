@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.8
+// @version      2.0.9
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -102,7 +102,7 @@
 				method: "GET",
 				url: "https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/resource.js",
 				onload: function (response) {
-					assert.equal(response.responseText, '"resource"');
+					assert.equal(response.responseText, '"привет, я resource"');
 					done();
 				},
 				onerror: function () {
