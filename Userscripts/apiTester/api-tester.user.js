@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Userscripts API Tester
 // @namespace adguard
-// @version      2.0.7
+// @version      2.0.8
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
@@ -61,7 +61,7 @@
 		},
 		'GM_getResourceText': function (assert) {
 			var resource = GM_getResourceText('testResource.js');
-			assert.equal(resource, '"resource"');
+			assert.equal(resource, '"привет, я resource"');
 		},
 		'GM_getResourceURL': function (assert) {
 
