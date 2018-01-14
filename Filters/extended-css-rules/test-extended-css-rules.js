@@ -71,4 +71,3 @@ window.addEventListener('load', function() {
         assert.equal(window.getComputedStyle(case17).display, "none");
     });
 });
-    
