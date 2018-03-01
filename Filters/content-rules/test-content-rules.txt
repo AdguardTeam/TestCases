@@ -8,5 +8,8 @@
 testcases.adguard.com###subscribe-to-test-content-rules-filter
 !
 testcases.adguard.com$$div[id="case1"]
-testcases.adguard.com$$div[tag-content="test-case-2-content"]
+testcases.adguard.com$$div[id="case2"][tag-content="test-case-2-content"]
 testcases.adguard.com$$div[class="test-case-3-class"]
+testcases.adguard.com$$div[id="case4"][wildcard="*teasernet*tararar*"]
+testcases.adguard.com$$div[id="case5"]
+testcases.adguard.com$@$div[id="case5"]
