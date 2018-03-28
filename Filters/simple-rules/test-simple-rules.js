@@ -23,13 +23,6 @@ window.addEventListener('load', function() {
         assert.equal(window.getComputedStyle(element).display, "block");
     });
 
-    QUnit.test("5. Test generic hide", function(assert) {
-        var element = document.querySelector('#case-5-generichide > .banner');
-        assert.equal(window.getComputedStyle(element).display, "none");
-        element = document.querySelector('#case-5-generichide > .banner1');
-        assert.equal(window.getComputedStyle(element).display, "block");
-    });
-
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css

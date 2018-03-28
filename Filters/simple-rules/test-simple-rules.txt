@@ -15,7 +15,4 @@ testcases.adguard.com###case-1-elemhide > .banner
 testcases.adguard.com#@##case-3-elemhide-exception > .banner
 ! Test case 4: domain exclusion
 ~testcases.adguard.com###case-4-domain-exclusion > .banner
-! Test case 5: generic hide
-testcases.adguard.com###case-5-generichide > .banner
-###case-5-generichide > .banner1
-@@||testcases.adguard.com$generichide
+
