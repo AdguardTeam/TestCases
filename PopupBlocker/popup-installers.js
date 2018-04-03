@@ -94,7 +94,7 @@ var executeInFreshIframeViaDocumentWrite = {
         document.body.insertAdjacentHTML('beforeend', '<iframe id="a-fresh-frame"></iframe>');
         var freshFrame = document.getElementById('a-fresh-frame');
         var freshFrameDoc = freshFrame.contentDocument;
-        freshFrameDoc.write('<script>open("https://evilsite.com/","_blank");</script>');
+        freshFrameDoc.write('<script>open("http://evilsite.com/","_blank");</script>');
         freshFrameDoc.close();
         freshFrame.parentNode && freshFrame.parentNode.removeChild(freshFrame);
     } 
