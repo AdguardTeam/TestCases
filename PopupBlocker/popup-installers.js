@@ -183,13 +183,14 @@ var chromePDFPopunder = {
             popunder.location = 'http://evilsite.com/';
         }
 
+        var popunder = open('about:blank', '_blank', this._smallWindowConfig);
+        popunder.document.write('<html><head><script>window.resizeTo(1,0);window.moveTo(19999,19999); window.open(\'\', \'_self\');</script></head><body></body></html>');
+
         window.addEventListener('focus', onFocus);
 
         objectContainer.appendChild(object);
         document.body.appendChild(objectContainer);
 
-        var popunder = open('about:blank', '_blank', this._smallWindowConfig);
-        popunder.document.write('<html><head><script>window.resizeTo(1,0);window.moveTo(19999,19999); window.open(\'\', \'_self\');</script></head><body></body></html>');
         event.preventDefault();
         event.stopImmediatePropagation();
         event.stopPropagation();
