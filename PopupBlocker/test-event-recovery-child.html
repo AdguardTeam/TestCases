@@ -24,8 +24,10 @@ window.onclick = function(evt) {
     marker.style.top = pageY + 'px';
 };
 
+var tds = document.getElementsByTagName('td');
 
-for (let node of document.getElementsByTagName('td')) {
+for (var iTds = 0, lTds = tds.length; iTds < lTds; iTds++) {
+    var node = tds[iTds];
     node.onclick = function(evt) {
         node.style.backgroundColor = '#ff0000';
     }
