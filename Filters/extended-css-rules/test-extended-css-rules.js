@@ -1,8 +1,12 @@
 /**
  * Before doing the test, import test-extended-css-rules.txt to AdGuard
  */
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
 
+    // Ugly wait 1 second
+    var e = new Date().getTime() + (1000);
+    while (new Date().getTime() <= e) {}
+    
     QUnit.test("1. Test simple :has", function(assert) {
         assert.equal(window.getComputedStyle(case1).display, "none");
     });

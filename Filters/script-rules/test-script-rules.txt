@@ -1,0 +1,16 @@
+!
+! Title: Rules for script rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com###subscribe-to-test-script-rules-filter
+!
+testcases.adguard.com#%#document.getElementById("case1").style.display = "none";
+testcases.adguard.com#%#document.getElementById("case2").style.display = "none";
+testcases.adguard.com#@%#document.getElementById("case2").style.display = "none";
+
+localhost#%#document.getElementById("case1").style.display = "none";
+localhost#%#document.getElementById("case2").style.display = "none";
+localhost#@%#document.getElementById("case2").style.display = "none";
