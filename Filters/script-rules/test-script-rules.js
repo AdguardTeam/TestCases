@@ -8,10 +8,10 @@ window.addEventListener('load', function() {
     while (new Date().getTime() <= e) {}
 
     QUnit.test("1. Test script rule", function(assert) {
-        assert.equal(window.getComputedStyle(case1).display, "none");
+        assert.ok(window.__testCase1);
     });
 
     QUnit.test("2. Test script rule exception", function(assert) {
-        assert.equal(window.getComputedStyle(case2).display, "block");
+        assert.notOk(window.__testCase2);
     });
 });

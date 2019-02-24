@@ -7,10 +7,6 @@
 ! Hide warning
 testcases.adguard.com###subscribe-to-test-script-rules-filter
 !
-testcases.adguard.com#%#document.getElementById("case1").style.display = "none";
-testcases.adguard.com#%#document.getElementById("case2").style.display = "none";
-testcases.adguard.com#@%#document.getElementById("case2").style.display = "none";
-
-localhost#%#document.getElementById("case1").style.display = "none";
-localhost#%#document.getElementById("case2").style.display = "none";
-localhost#@%#document.getElementById("case2").style.display = "none";
+testcases.adguard.com#%#window.__testCase1 = true;
+testcases.adguard.com#%#window.__testCase2 = true;
+testcases.adguard.com#@%#window.__testCase2 = true;
