@@ -1,8 +1,8 @@
 /**
  * Before doing the test, import test-extended-css-rules.txt to AdGuard
  */
-window.addEventListener('load', function() {
-
+window.addEventListener('DOMContentLoaded', function() {
+    
     QUnit.test("1. Test simple :has", function(assert) {
         assert.equal(window.getComputedStyle(case1).display, "none");
     });
