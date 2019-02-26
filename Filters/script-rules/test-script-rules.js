@@ -3,10 +3,6 @@
  */
 window.addEventListener('load', function() {
 
-    // Ugly wait 1 second
-    var e = new Date().getTime() + (1000);
-    while (new Date().getTime() <= e) {}
-
     QUnit.test("1. Test script rule", function(assert) {
         assert.ok(window.__testCase1);
     });
