@@ -1,0 +1,9 @@
+!
+! Title: Rules for scriptlet rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+testcases.adguard.com#%#//scriptlet("abort-on-property-write", "__testCase1")
+testcases.adguard.com##+js(abort-on-property-write.js, __testCase2)
+testcases.adguard.com#$#abort-on-property-write __testCase3
