@@ -3,17 +3,17 @@
  */
 window.addEventListener('load', function() {
 
-    QUnit.test("1. Test AdGuard scriptlet syntax", function(assert) {
+    QUnit.test("abort-on-property-write AdGuard syntax", function(assert) {
         window.__testCase1 = 'ok';
         assert.notOk(window.__testCase1);
     });
 
-    QUnit.test("2. Test UBO scriptlet syntax", function(assert) {
+    QUnit.test("abort-on-property-write.js UBO syntax", function(assert) {
         window.__testCase2 = 'ok';
         assert.notOk(window.__testCase2);
     });
 
-    QUnit.test("2. Test ABP scriptlet syntax", function(assert) {
+    QUnit.test("abort-on-property-write ABP syntax", function(assert) {
         window.__testCase3 = 'ok';
         assert.notOk(window.__testCase3);
     });
