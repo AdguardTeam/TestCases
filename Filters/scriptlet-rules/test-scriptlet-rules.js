@@ -1,20 +1,77 @@
+/* global window, QUnit */
 /**
  * Before doing the test, import test-content-rules.txt to AdGuard
  */
-window.addEventListener('load', function() {
 
-    QUnit.test("abort-on-property-write AdGuard syntax", function(assert) {
-        window.__testCase1 = 'ok';
+const onError = assert => (message) => {
+    console.log(message);
+    const browserErrorMessage = 'Script error.';
+    const nodePuppeteerErrorMessageRgx = /ReferenceError/;
+    const checkResult = message === browserErrorMessage
+        || nodePuppeteerErrorMessageRgx.test(message);
+    assert.ok(checkResult);
+};
+
+const addAndRemoveInlineScript = (scriptText) => {
+    const scriptElement = document.createElement('script');
+    scriptElement.type = 'text/javascript';
+    scriptElement.innerText = scriptText;
+    document.body.appendChild(scriptElement);
+    scriptElement.parentNode.removeChild(scriptElement);
+};
+
+window.addEventListener('load', () => {
+    QUnit.test('abort-on-property-write AdGuard syntax', (assert) => {
+        assert.throws(
+            () => {
+                window.__testCase1 = 'ok';
+            },
+            /ReferenceError/,
+            'should throw Reference error when try to access property',
+        );
+
         assert.notOk(window.__testCase1);
     });
 
-    QUnit.test("abort-on-property-write.js UBO syntax", function(assert) {
-        window.__testCase2 = 'ok';
+    QUnit.test('abort-on-property-write.js UBO syntax', (assert) => {
+        assert.throws(
+            () => {
+                window.__testCase2 = 'ok';
+            },
+            /ReferenceError/,
+            'should throw Reference error when try to access property',
+        );
+
         assert.notOk(window.__testCase2);
     });
 
-    QUnit.test("abort-on-property-write ABP syntax", function(assert) {
-        window.__testCase3 = 'ok';
+    QUnit.test('abort-on-property-write ABP syntax', (assert) => {
+        assert.throws(
+            () => {
+                window.__testCase3 = 'ok';
+            },
+            /ReferenceError/,
+            'should throw Reference error when try to access property',
+        );
         assert.notOk(window.__testCase3);
+    });
+
+    QUnit.test('abort-current-inline-script', (assert) => {
+        window.onerror = onError(assert);
+        addAndRemoveInlineScript('window.__testCase4 = "ok"');
+        assert.notOk(window.__testCase4, 'AdGuard syntax');
+
+        addAndRemoveInlineScript('window.__testCase5 = "ok"');
+        assert.notOk(window.__testCase5, 'UBO syntax');
+
+        addAndRemoveInlineScript('window.__testCase6 = "ok"');
+        assert.notOk(window.__testCase6, 'ABP syntax');
+
+        window.__testCase7 = {};
+        addAndRemoveInlineScript('window.__testCase7.__AG = "ok"');
+        assert.notOk(window.__testCase7.__AG, 'AdGuard syntax, chained properties');
+
+        addAndRemoveInlineScript('window.__testCase8 = "ok"');
+        assert.notOk(window.__testCase8, 'AdGuard syntax, search inline script');
     });
 });

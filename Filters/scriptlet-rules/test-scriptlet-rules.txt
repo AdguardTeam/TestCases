@@ -7,3 +7,11 @@
 testcases.adguard.com#%#//scriptlet("abort-on-property-write", "__testCase1")
 testcases.adguard.com##+js(abort-on-property-write.js, __testCase2)
 testcases.adguard.com#$#abort-on-property-write __testCase3
+!
+! abort-current-inline-script
+!
+testcases.adguard.com#%#//scriptlet("abort-current-inline-script", "__testCase4")
+testcases.adguard.com#%#//scriptlet("abort-current-inline-script", "__testCase7.__AG")
+testcases.adguard.com#%#//scriptlet("abort-current-inline-script", "__testCase8", "Case8")
+testcases.adguard.com##+js(abort-current-inline-script.js, __testCase5)
+testcases.adguard.com#$#abort-current-inline-script __testCase6
