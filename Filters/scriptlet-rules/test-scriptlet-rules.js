@@ -174,8 +174,33 @@ window.addEventListener('load', () => {
         }, 20);
     });
 
+    QUnit.test('prevent-setInterval AG syntax', (assert) => {
+        const done = assert.async();
+
+        window.setIntervalAGSyntax = 'value';
+        const intervalId = setInterval(() => { window.setIntervalAGSyntax = 'new value'; }, 10);
+        // We need to run our assertion after all timeouts
+        setTimeout(() => {
+            assert.equal(window.setIntervalAGSyntax, 'value', 'Target property did not changed');
+            clearInterval(intervalId);
+            done();
+        }, 15);
+    });
+
+    QUnit.test('prevent-setInterval UBO syntax', (assert) => {
+        const done = assert.async();
+
+        window.setIntervalUBOSyntax = 'value';
+        const intervalId = setInterval(() => { window.setIntervalUBOSyntax = 'new value'; }, 10);
+        // We need to run our assertion after all timeouts
+        setTimeout(() => {
+            assert.equal(window.setIntervalUBOSyntax, 'value', 'Target property did not changed');
+            clearInterval(intervalId);
+            done();
+        }, 15);
+    });
+
     // TODO add tests for
-    // prevent-setInterval
     // prevent-setTimeout
     // prevent-window-open
     // set-constant

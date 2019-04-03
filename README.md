@@ -11,4 +11,4 @@ Used for testing purposes
  
     `sudo yarn serve`
     
-* Open `testcases.adguard.com` in your browser
+* Open `http://testcases.adguard.com` in your browser
