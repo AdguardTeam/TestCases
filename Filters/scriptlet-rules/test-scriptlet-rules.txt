@@ -23,3 +23,12 @@ testcases.adguard.com#%#//scriptlet("abort-current-inline-script", "__testCase8"
 testcases.adguard.com#%#//scriptlet("abort-on-property-read", "propReadCaseAG")
 testcases.adguard.com##+js(abort-on-property-read.js, propReadCaseUBO)
 testcases.adguard.com#$#abort-on-property-read propReadCaseABP
+!
+! nowebrtc
+!
+testcases.adguard.com#%#//scriptlet("nowebrtc")
+!
+! prevent-addEventListener
+!
+testcases.adguard.com#%#//scriptlet("prevent-addEventListener", "/^(?:click|focus)$/", "preventListenerCaseAG")
+testcases.adguard.com##+js(addEventListener-defuser.js, click, preventListenerCaseUBO)

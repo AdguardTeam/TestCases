@@ -76,7 +76,7 @@ window.addEventListener('load', () => {
 
     QUnit.test('abort-on-property-read', (assert) => {
         window.propReadCaseAG = 'propReadCaseAG';
-        let propReadCaseAG;
+        let propReadCaseAG = null;
         assert.throws(
             () => {
                 propReadCaseAG = window.propReadCaseAG;
@@ -87,7 +87,7 @@ window.addEventListener('load', () => {
         assert.notOk(propReadCaseAG, 'AG syntax prop remained undefined');
 
         window.propReadCaseUBO = 'propReadCaseUBO';
-        let propReadCaseUBO;
+        let propReadCaseUBO = null;
         assert.throws(
             () => {
                 propReadCaseUBO = window.propReadCaseUBO;
@@ -98,7 +98,7 @@ window.addEventListener('load', () => {
         assert.notOk(propReadCaseAG, 'UBO syntax prop remained undefined');
 
         window.propReadCaseABP = 'propReadCaseABP';
-        let propReadCaseABP;
+        let propReadCaseABP = null;
         assert.throws(
             () => {
                 propReadCaseABP = window.propReadCaseABP;
@@ -107,5 +107,47 @@ window.addEventListener('load', () => {
             'ABP Syntax throws error',
         );
         assert.notOk(propReadCaseABP, 'ABP syntax prop remained undefined');
+    });
+
+    QUnit.test('nowebrtc', (assert) => {
+        const localConnection = new RTCPeerConnection();
+        const sendChannelAG = localConnection.createDataChannel('sendChannelAG');
+        assert.notOk(sendChannelAG, 'AG syntax, channel is undefined');
+    });
+
+    QUnit.test('prevent-addEventListener', (assert) => {
+
+        const sampleElement = document.createElement('div');
+        const preventListenerSample = 'simple';
+        sampleElement.addEventListener('click', () => {
+            window[preventListenerSample] = preventListenerSample;
+        });
+        sampleElement.click();
+
+        assert.strictEqual(window[preventListenerSample], preventListenerSample, 'property should defined');
+
+        const agElement = document.createElement('div');
+        const preventListenerCaseAG = 'preventListenerCaseAG';
+        agElement.addEventListener('click', () => {
+            window[preventListenerCaseAG] = preventListenerCaseAG;
+        });
+        agElement.click();
+
+        assert.strictEqual(window[preventListenerCaseAG], undefined, 'AG syntax, after click property should be undefined');
+
+        agElement.addEventListener('focus', () => {
+            window[preventListenerCaseAG] = preventListenerCaseAG;
+        });
+        agElement.dispatchEvent(new Event('focus'));
+        assert.strictEqual(window[preventListenerCaseAG], undefined, 'AG syntax, after focus property should be undefined');
+
+        const uboElement = document.createElement('div');
+        const preventListenerCaseUBO = 'preventListenerCaseUBO';
+        uboElement.addEventListener('click', () => {
+            window[preventListenerCaseUBO] = preventListenerCaseUBO;
+        });
+        uboElement.click();
+
+        assert.strictEqual(window[preventListenerCaseUBO], undefined, 'UBO syntax, property should be undefined');
     });
 });
