@@ -19,6 +19,12 @@ const addAndRemoveInlineScript = (scriptText) => {
     scriptElement.parentNode.removeChild(scriptElement);
 };
 
+const clearProperties = (...props) => {
+    props.forEach((prop) => {
+        delete window[prop];
+    });
+};
+
 window.addEventListener('load', () => {
     QUnit.test('abort-on-property-write AdGuard syntax', (assert) => {
         assert.throws(
@@ -227,8 +233,62 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
+    QUnit.test('set-constant', (assert) => {
+        assert.strictEqual(window.setConstantAGSyntax, true, 'AG syntax');
+        assert.strictEqual(window.setConstantUBOSyntax, true, 'UBO syntax');
+
+
+        // setting constant to true;
+        const trueProp = 'trueProp';
+        assert.strictEqual(window[trueProp], true, trueProp);
+        clearProperties(trueProp);
+
+        // setting constant to false;
+        const falseProp = 'falseProp';
+        assert.strictEqual(window[falseProp], false, falseProp);
+        clearProperties(falseProp);
+
+        // setting constant to undefined;
+        const undefinedProp = 'undefinedProp';
+        assert.strictEqual(window[undefinedProp], undefined, undefinedProp);
+        clearProperties(undefinedProp);
+
+        // setting constant to null;
+        const nullProp = 'nullProp';
+        assert.strictEqual(window[nullProp], null, nullProp);
+        clearProperties(nullProp);
+
+        // setting constant to noopFunc;
+        const noopFuncProp = 'noopFuncProp';
+        assert.strictEqual(window[noopFuncProp](), undefined, noopFuncProp);
+        clearProperties(noopFuncProp);
+
+        // setting constant to trueFunc;
+        const trueFuncProp = 'trueFuncProp';
+        assert.strictEqual(window[trueFuncProp](), true, trueFuncProp);
+        clearProperties(trueFuncProp);
+
+        // setting constant to falseFunc;
+        const falseFuncProp = 'falseFuncProp';
+        assert.strictEqual(window[falseFuncProp](), false, falseFuncProp);
+        clearProperties(falseFuncProp);
+
+        // setting constant to number;
+        const numberProp = 'numberProp';
+        assert.strictEqual(window[numberProp], 111, numberProp);
+        clearProperties(numberProp);
+
+        // setting constant to empty string;
+        const emptyStringProp = 'emptyStringProp';
+        assert.strictEqual(window[emptyStringProp], '', emptyStringProp);
+        clearProperties(emptyStringProp);
+
+        // setting constant to illegalNumber doesn't works;
+        const illegalNumberProp = 'illegalNumberProp';
+        assert.strictEqual(window[illegalNumberProp], undefined, illegalNumberProp);
+        clearProperties(illegalNumberProp);
+    });
+
     // TODO add tests for
     // prevent-window-open
-    // set-constant
-
 });

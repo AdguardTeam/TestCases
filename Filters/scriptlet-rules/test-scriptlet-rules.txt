@@ -47,3 +47,18 @@ testcases.adguard.com##+js(setInterval-defuser.js, setIntervalUBOSyntax)
 !
 testcases.adguard.com#%#//scriptlet("prevent-setTimeout", "setTimeoutAGSyntax")
 testcases.adguard.com##+js(setTimeout-defuser.js, setTimeoutUBOSyntax)
+!
+! set-constant
+!
+testcases.adguard.com#%#//scriptlet("set-constant", "setConstantAGSyntax", "true")
+testcases.adguard.com##+js(set-constant.js, setConstantUBOSyntax, true)
+testcases.adguard.com#%#//scriptlet("set-constant", "trueProp", "true")
+testcases.adguard.com#%#//scriptlet("set-constant", "falseProp", "false")
+testcases.adguard.com#%#//scriptlet("set-constant", "undefinedProp", "undefined")
+testcases.adguard.com#%#//scriptlet("set-constant", "nullProp", "null")
+testcases.adguard.com#%#//scriptlet("set-constant", "noopFuncProp", "noopFunc")
+testcases.adguard.com#%#//scriptlet("set-constant", "trueFuncProp", "trueFunc")
+testcases.adguard.com#%#//scriptlet("set-constant", "falseFuncProp", "falseFunc")
+testcases.adguard.com#%#//scriptlet("set-constant", "numberProp", "111")
+testcases.adguard.com#%#//scriptlet("set-constant", "emptyStringProp", "")
+testcases.adguard.com#%#//scriptlet("set-constant", "illegalNumberProp", "32768")
