@@ -32,3 +32,8 @@ testcases.adguard.com#%#//scriptlet("nowebrtc")
 !
 testcases.adguard.com#%#//scriptlet("prevent-addEventListener", "/^(?:click|focus)$/", "preventListenerCaseAG")
 testcases.adguard.com##+js(addEventListener-defuser.js, click, preventListenerCaseUBO)
+!
+! prevent-bab
+!
+testcases.adguard.com#%#//scriptlet("prevent-bab")
+testcases.adguard.com##+js(bab-defuser.js)

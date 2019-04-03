@@ -150,4 +150,34 @@ window.addEventListener('load', () => {
 
         assert.strictEqual(window[preventListenerCaseUBO], undefined, 'UBO syntax, property should be undefined');
     });
+
+    QUnit.test('prevent-bab', (assert) => {
+        const preventBabCaseSampleEval = 'preventBabCaseSampleEval';
+        eval(`(function test() { window.${preventBabCaseSampleEval} = 'test';})()`);
+        assert.strictEqual(window[preventBabCaseSampleEval], 'test', 'eval function works for other scripts');
+
+        const preventBabCase1 = 'preventBabCase1';
+        eval(`(function test() { const temp = 'blockadblock'; window.${preventBabCase1} = 'test';})()`);
+        assert.strictEqual(window[preventBabCase1], undefined, 'bab script did not run in the setTimeout');
+
+        const preventBabCase2 = 'preventBabCase2';
+        eval(`(function test() { const temp = 'babasbm'; window.${preventBabCase2} = 'test';})()`);
+        assert.strictEqual(window[preventBabCase2], undefined, 'bab script did not run in the setTimeout');
+
+        const preventBabCase3 = 'preventBabCase3';
+        const func = `(function test(id) {window.${preventBabCase3} = 'test'})(test.bab_elementid)`;
+        setTimeout(func);
+        const done = assert.async();
+        setTimeout(() => {
+            assert.strictEqual(window[preventBabCase3], undefined, 'bab script did not run in the setTimeout');
+            done();
+        }, 20);
+    });
+
+    // TODO add tests for
+    // prevent-setInterval
+    // prevent-setTimeout
+    // prevent-window-open
+    // set-constant
+
 });
