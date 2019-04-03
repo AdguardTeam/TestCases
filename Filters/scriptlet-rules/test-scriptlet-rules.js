@@ -179,7 +179,7 @@ window.addEventListener('load', () => {
 
         window.setIntervalAGSyntax = 'value';
         const intervalId = setInterval(() => { window.setIntervalAGSyntax = 'new value'; }, 10);
-        // We need to run our assertion after all timeouts
+
         setTimeout(() => {
             assert.equal(window.setIntervalAGSyntax, 'value', 'Target property did not changed');
             clearInterval(intervalId);
@@ -192,7 +192,7 @@ window.addEventListener('load', () => {
 
         window.setIntervalUBOSyntax = 'value';
         const intervalId = setInterval(() => { window.setIntervalUBOSyntax = 'new value'; }, 10);
-        // We need to run our assertion after all timeouts
+
         setTimeout(() => {
             assert.equal(window.setIntervalUBOSyntax, 'value', 'Target property did not changed');
             clearInterval(intervalId);
@@ -200,8 +200,34 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
+    QUnit.test('prevent-setTimeout AG syntax', (assert) => {
+        const done = assert.async();
+
+        window.setTimeoutAGSyntax = 'value';
+
+        setTimeout(() => { window.setTimeoutAGSyntax = 'new value'; }, 10);
+
+        const property = 'setTimeoutAGSyntax';
+        setTimeout(() => {
+            assert.equal(window[property], 'value', 'Target property did not changed');
+            done();
+        }, 15);
+    });
+
+    QUnit.test('prevent-setTimeout UBO syntax', (assert) => {
+        const done = assert.async();
+
+        window.setTimeoutUBOSyntax = 'value';
+        setTimeout(() => { window.setTimeoutUBOSyntax = 'new value'; }, 10);
+
+        const property = 'setTimeoutUBOSyntax';
+        setTimeout(() => {
+            assert.equal(window[property], 'value', 'Target property did not changed');
+            done();
+        }, 15);
+    });
+
     // TODO add tests for
-    // prevent-setTimeout
     // prevent-window-open
     // set-constant
 

@@ -42,3 +42,8 @@ testcases.adguard.com##+js(bab-defuser.js)
 !
 testcases.adguard.com#%#//scriptlet("prevent-setInterval", "setIntervalAGSyntax")
 testcases.adguard.com##+js(setInterval-defuser.js, setIntervalUBOSyntax)
+!
+! prevent-setTimeout
+!
+testcases.adguard.com#%#//scriptlet("prevent-setTimeout", "setTimeoutAGSyntax")
+testcases.adguard.com##+js(setTimeout-defuser.js, setTimeoutUBOSyntax)
