@@ -4,7 +4,6 @@
  */
 
 const onError = assert => (message) => {
-    console.log(message);
     const browserErrorMessage = 'Script error.';
     const nodePuppeteerErrorMessageRgx = /ReferenceError/;
     const checkResult = message === browserErrorMessage
@@ -73,5 +72,40 @@ window.addEventListener('load', () => {
 
         addAndRemoveInlineScript('window.__testCase8 = "ok"');
         assert.notOk(window.__testCase8, 'AdGuard syntax, search inline script');
+    });
+
+    QUnit.test('abort-on-property-read', (assert) => {
+        window.propReadCaseAG = 'propReadCaseAG';
+        let propReadCaseAG;
+        assert.throws(
+            () => {
+                propReadCaseAG = window.propReadCaseAG;
+            },
+            /ReferenceError/,
+            'AdGuard Syntax throws error',
+        );
+        assert.notOk(propReadCaseAG, 'AG syntax prop remained undefined');
+
+        window.propReadCaseUBO = 'propReadCaseUBO';
+        let propReadCaseUBO;
+        assert.throws(
+            () => {
+                propReadCaseUBO = window.propReadCaseUBO;
+            },
+            /ReferenceError/,
+            'UBO Syntax throws error',
+        );
+        assert.notOk(propReadCaseAG, 'UBO syntax prop remained undefined');
+
+        window.propReadCaseABP = 'propReadCaseABP';
+        let propReadCaseABP;
+        assert.throws(
+            () => {
+                propReadCaseABP = window.propReadCaseABP;
+            },
+            /ReferenceError/,
+            'ABP Syntax throws error',
+        );
+        assert.notOk(propReadCaseABP, 'ABP syntax prop remained undefined');
     });
 });
