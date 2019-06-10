@@ -62,3 +62,10 @@ testcases.adguard.com#%#//scriptlet("set-constant", "falseFuncProp", "falseFunc"
 testcases.adguard.com#%#//scriptlet("set-constant", "numberProp", "111")
 testcases.adguard.com#%#//scriptlet("set-constant", "emptyStringProp", "")
 testcases.adguard.com#%#//scriptlet("set-constant", "illegalNumberProp", "32768")
+!
+! prevent-window-open
+!
+testcases.adguard.com#%#//scriptlet("prevent-window-open")
+testcases.adguard.com#%#//scriptlet("prevent-window-open", "Match", "testcases")
+testcases.adguard.com#%#//scriptlet("prevent-window-open", "1", "/testcases\./")
+testcases.adguard.com#%#//scriptlet("prevent-window-open", "0", "testcases")

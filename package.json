@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "serve" : "http-server -a testcases.adguard.com -p 80"
+    "serve" : "http-server -a testcases.adguard.com -p 3002"
   },
   "devDependencies": {
     "http-server": "^0.11.1"

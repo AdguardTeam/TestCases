@@ -289,6 +289,23 @@ window.addEventListener('load', () => {
         clearProperties(illegalNumberProp);
     });
 
+    QUnit.test('prevent-window-open', (assert) => {
+        const window1 = window.open('window1');
+        assert.equal(window1, undefined, 'Prevent by string "window1"');
+
+        const window2 = window.open('window2');
+        assert.equal(window2, undefined, 'Prevent by regexp "/window2/"');
+
+        const window3 = window.open('reversed');
+        assert.equal(window3, undefined, 'Prevent with reversing and string "window"');
+    });
+
     // TODO add tests for
-    // prevent-window-open
+    // noeval
+    // prevent-eval-if
+    // remove-cookie
+    // prevent-fab-3.2.0
+    // set-popads-dummy
+    // prevent-popads-net
+    // prevent-adfly
 });
