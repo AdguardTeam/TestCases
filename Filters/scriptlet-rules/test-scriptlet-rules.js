@@ -304,9 +304,6 @@ window.addEventListener('load', () => {
 
         const window5 = window.open('window5');
         assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
-
-        window.open('window')
-
     });
 
     // TODO add tests for
