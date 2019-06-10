@@ -298,6 +298,15 @@ window.addEventListener('load', () => {
 
         const window3 = window.open('reversed');
         assert.equal(window3, undefined, 'Prevent with reversing and string "window"');
+
+        const window4 = window.open('window4');
+        assert.equal(window4, undefined, 'UBO RULE: Prevent by string "window4"');
+
+        const window5 = window.open('window5');
+        assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
+
+        window.open('window')
+
     });
 
     // TODO add tests for
