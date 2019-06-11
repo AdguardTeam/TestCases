@@ -79,3 +79,7 @@ testcases.adguard.com##+js(noeval-if.js, preventIfTest1)
 ! remove-cookie
 !
 testcases.adguard.com#%#//scriptlet("remove-cookie")
+!
+! prevent-popads-net
+!
+testcases.adguard.com#%#//scriptlet("prevent-popads-net")

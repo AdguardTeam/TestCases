@@ -320,9 +320,19 @@ window.addEventListener('load', () => {
         // todo check why remove-cookie with params does not work
     });
 
-    // TODO add tests for
+    QUnit.test('prevent-popads-net', (assert) => {
+        assert.throws(() => {
+            window.PopAds = 'Som value'
+        }, /Reference/, 'Try to write in "PopAds" prop');
+
+        assert.throws(() => {
+            window.PopAds = 'Som value'
+        }, /Reference/, 'Try to write in "popns" prop');
+    });
+
+    // no tests for
+    // noeval
     // prevent-fab-3.2.0
     // set-popads-dummy
-    // prevent-popads-net
     // prevent-adfly
 });
