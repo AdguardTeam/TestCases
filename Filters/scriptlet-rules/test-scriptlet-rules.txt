@@ -75,3 +75,7 @@ testcases.adguard.com##+js(window.open-defuser.js, 0, window)
 !
 testcases.adguard.com#%#//scriptlet("prevent-eval-if", "preventIfTest")
 testcases.adguard.com##+js(noeval-if.js, preventIfTest1)
+!
+! remove-cookie
+!
+testcases.adguard.com#%#//scriptlet("remove-cookie")

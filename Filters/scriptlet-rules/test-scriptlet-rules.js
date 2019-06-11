@@ -306,11 +306,6 @@ window.addEventListener('load', () => {
         assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
     });
 
-    QUnit.test('noeval', (assert) => {
-        assert.ok(true);
-        // we can not test noeval because prevent-bab use eval
-    });
-
     QUnit.test('prevent-eval-if', (assert) => {
         eval('function(preventIfTest) { window.test = "value" }');
         assert.notEqual(window.test, 'value', 'Prevent eval by string "preventIfTest"');
@@ -319,8 +314,13 @@ window.addEventListener('load', () => {
         assert.notEqual(window.test1, 'value', 'UBO RULE: Prevent eval by string "preventIfTest1"');
     });
 
+    QUnit.test('remove-cookie', (assert) => {
+        assert.ok(document.cookie.indexOf('example') === -1, "All cookies was deleted");
+        document.cookie = 'example=test';
+        // todo check why remove-cookie with params does not work
+    });
+
     // TODO add tests for
-    // remove-cookie
     // prevent-fab-3.2.0
     // set-popads-dummy
     // prevent-popads-net
