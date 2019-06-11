@@ -289,6 +289,50 @@ window.addEventListener('load', () => {
         clearProperties(illegalNumberProp);
     });
 
-    // TODO add tests for
-    // prevent-window-open
+    QUnit.test('prevent-window-open', (assert) => {
+        const window1 = window.open('window1');
+        assert.equal(window1, undefined, 'Prevent by string "window1"');
+
+        const window2 = window.open('window2');
+        assert.equal(window2, undefined, 'Prevent by regexp "/window2/"');
+
+        const window3 = window.open('reversed');
+        assert.equal(window3, undefined, 'Prevent with reversing and string "window"');
+
+        const window4 = window.open('window4');
+        assert.equal(window4, undefined, 'UBO RULE: Prevent by string "window4"');
+
+        const window5 = window.open('window5');
+        assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
+    });
+
+    QUnit.test('prevent-eval-if', (assert) => {
+        eval('function(preventIfTest) { window.test = "value" }');
+        assert.notEqual(window.test, 'value', 'Prevent eval by string "preventIfTest"');
+
+        eval('function(preventIfTest1) { window.test1 = "value" }');
+        assert.notEqual(window.test1, 'value', 'UBO RULE: Prevent eval by string "preventIfTest1"');
+    });
+
+    QUnit.test('remove-cookie', (assert) => {
+        assert.ok(document.cookie.indexOf('example') === -1, "All cookies was deleted");
+        document.cookie = 'example=test';
+        // todo check why remove-cookie with params does not work
+    });
+
+    QUnit.test('prevent-popads-net', (assert) => {
+        assert.throws(() => {
+            window.PopAds = 'Som value'
+        }, /Reference/, 'Try to write in "PopAds" prop');
+
+        assert.throws(() => {
+            window.PopAds = 'Som value'
+        }, /Reference/, 'Try to write in "popns" prop');
+    });
+
+    // no tests for
+    // noeval
+    // prevent-fab-3.2.0
+    // set-popads-dummy
+    // prevent-adfly
 });
