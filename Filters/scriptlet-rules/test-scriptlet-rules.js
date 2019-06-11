@@ -306,9 +306,20 @@ window.addEventListener('load', () => {
         assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
     });
 
+    QUnit.test('noeval', (assert) => {
+        assert.ok(true);
+        // we can not test noeval because prevent-bab use eval
+    });
+
+    QUnit.test('prevent-eval-if', (assert) => {
+        eval('function(preventIfTest) { window.test = "value" }');
+        assert.notEqual(window.test, 'value', 'Prevent eval by string "preventIfTest"');
+
+        eval('function(preventIfTest1) { window.test1 = "value" }');
+        assert.notEqual(window.test1, 'value', 'UBO RULE: Prevent eval by string "preventIfTest1"');
+    });
+
     // TODO add tests for
-    // noeval
-    // prevent-eval-if
     // remove-cookie
     // prevent-fab-3.2.0
     // set-popads-dummy
