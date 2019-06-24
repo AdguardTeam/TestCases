@@ -69,7 +69,7 @@ testcases.adguard.com#%#//scriptlet("prevent-window-open", "1", "window1")
 testcases.adguard.com#%#//scriptlet("prevent-window-open", "1", "/window2/")
 testcases.adguard.com#%#//scriptlet("prevent-window-open", "0", "window")
 testcases.adguard.com##+js(window.open-defuser.js, , window4)
-testcases.adguard.com##+js(window.open-defuser.js, 0, window)
+testcases.adguard.com##+js(window.open-defuser.js, 0, anyOther)
 !
 ! prevent-eval-if
 !
