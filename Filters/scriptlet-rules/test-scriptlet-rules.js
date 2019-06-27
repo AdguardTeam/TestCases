@@ -292,18 +292,23 @@ window.addEventListener('load', () => {
     QUnit.test('prevent-window-open', (assert) => {
         const window1 = window.open('window1');
         assert.equal(window1, undefined, 'Prevent by string "window1"');
+        if (window1) window1.close();
 
         const window2 = window.open('window2');
         assert.equal(window2, undefined, 'Prevent by regexp "/window2/"');
+        if (window2) window2.close();
 
         const window3 = window.open('reversed');
         assert.equal(window3, undefined, 'Prevent with reversing and string "window"');
+        if (window3) window3.close();
 
         const window4 = window.open('window4');
         assert.equal(window4, undefined, 'UBO RULE: Prevent by string "window4"');
+        if (window4) window4.close();
 
         const window5 = window.open('window5');
         assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
+        if (window2) window5.close(); 
     });
 
     QUnit.test('prevent-eval-if', (assert) => {
