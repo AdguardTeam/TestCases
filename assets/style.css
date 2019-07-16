@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 40vw;
+    width: 42vw;
     margin: auto;
 }
 
@@ -37,7 +37,7 @@ header .subtitle {
     font-weight: bold;
 }
 
-.notice {
+/* .notice {
     color: #555;
     background: #ffd2d2 url(notice.png) 1vw center no-repeat;
     background-size: 1.5vw;
@@ -46,7 +46,7 @@ header .subtitle {
     font-size: 1vw;
     line-height: 1.4vw;
     font-style: italic;
-}
+} */
 
 .testsList {
     padding: 0;
@@ -56,16 +56,17 @@ header .subtitle {
 
 .testsList li {
     list-style: none;
-    margin: .5vw 0;
+    margin: .7vw 0;
 }
 
 .testsList li a {
     color: #111;
-    background: #ccc url(tests.png) 1vw center no-repeat;
-    background-size: 1.5vw;
+    background: #ccc url(tests.png) 1.1vw center no-repeat;
+    background-size: 2vw;
     border-radius: .5vw;
     text-decoration: none;
-    padding: .8vw 1.5vw .8vw 3.5vw;
+    font-weight: bold;
+    padding: 1vw 1.5vw 1vw 4vw;
     font-size: 1.3vw;
     display: block;
 }
@@ -73,8 +74,29 @@ header .subtitle {
 .testsList li a:hover {
     color: #111;
     text-decoration: none;
-    background: #ddd url(tests.png) 1vw center no-repeat;
-    background-size: 1.5vw;
+    background: #ddd url(tests.png) 1.1vw center no-repeat;
+    background-size: 2vw;
+}
+
+.compatibility {
+    font-size: .9vw;
+    margin-top: .3vw;
+    font-weight: normal;
+}
+
+.comp {
+    color: green;
+    background: url(comp.png) left center no-repeat;
+    background-size: 1vw;
+    padding-left: 1.5vw;
+}
+
+.not-comp {
+    margin-left: .7vw;
+    color: red;
+    background: url(not-comp.png) left center no-repeat;
+    background-size: 1vw;
+    padding-left: 1.5vw;
 }
 
 footer {
@@ -85,7 +107,7 @@ footer {
 
 @media only screen and (max-width: 600px) {
     header {
-        padding: 5vw 0 5vw 16vw;
+        padding: 5vw 0 5vw 19vw;
     }
     header .logo {
         width: 15vw;
@@ -99,9 +121,9 @@ footer {
         font-size: 4vw;
     }
     .container {
-        width: 90vw;
+        width: 95vw;
     }
-    .notice {
+    /* .notice {
         color: #111;
         background: #ffd2d2 url(notice.png) 4vw center no-repeat;
         background-size: 9vw;
@@ -109,16 +131,35 @@ footer {
         padding: 3vw 3vw 3vw 17vw;
         font-size: 4vw;
         line-height: 6vw;
-    }
+    } */
     .testsList li {
         margin: 2.5vw 0;
     }
     .testsList li a {
         border-radius: 1vw;
-        padding: 3vw 4vw 3vw 11.5vw;
+        padding: 3vw 4vw 3vw 14.5vw;
         font-size: 5vw;
         background: #ccc url(tests.png) 3.5vw center no-repeat;
-        background-size: 5vw;
+        background-size: 8vw;
+    }
+    .compatibility {
+        font-size: 3.1vw;
+        margin-top: 1.5vw;
+        font-weight: normal;
+    }
+    .comp {
+        color: green;
+        background: url(comp.png) left center no-repeat;
+        background-size: 3vw;
+        padding-left: 3.5vw;
+    }
+    .not-comp {
+        margin: 1vw 0 0 0;
+        color: red;
+        background: url(not-comp.png) left center no-repeat;
+        background-size: 3vw;
+        padding-left: 3.5vw;
+        display: block;
     }
     footer {
         text-align: center;
