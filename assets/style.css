@@ -1,0 +1,104 @@
+body {
+    background: #efefef;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 40vw;
+    margin: auto;
+}
+
+header {
+    padding: 2vw 0 2vw 1vw;
+}
+
+header p {
+    margin: 0;
+}
+
+header .logo {
+    width: 5.5vw;
+    float: left;
+    margin-right: .5vw;
+}
+
+header .title {
+    color: #111;
+    font-size: 2vw;
+    font-weight: bold;
+    margin-top: 1vw;
+}
+
+header .subtitle {
+    color: #66b078;
+    font-size: 1.3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.testsList {
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+.testsList li {
+    list-style: none;
+    margin: .5vw 0;
+}
+
+.testsList li a {
+    color: #111;
+    background: #ccc;
+    border-radius: .5vw;
+    text-decoration: none;
+    padding: .8vw 1.5vw;
+    font-size: 1.3vw;
+    display: block;
+}
+
+.testsList li a:hover {
+    color: #111;
+    text-decoration: none;
+    background: #ddd;
+}
+
+footer {
+    text-align: center;
+    font-size: .9vw;
+    padding: 2vw 0;
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 5vw 0 5vw 3vw;
+    }
+    header .logo {
+        width: 15vw;
+        margin-right: 3vw;
+    }
+    header .title {
+        font-size: 6vw;
+        margin-top: 2vw;
+    }
+    header .subtitle {
+        font-size: 4vw;
+    }
+    .container {
+        width: 90vw;
+    }
+    .testsList li {
+        margin: 2.5vw 0;
+    }
+    .testsList li a {
+        border-radius: 1vw;
+        padding: 3vw 4vw;
+        font-size: 5vw;
+    }
+    footer {
+        text-align: center;
+        font-size: 3vw;
+        padding: 5vw 0;
+    }
+}

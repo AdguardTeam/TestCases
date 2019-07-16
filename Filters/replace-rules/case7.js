@@ -1,0 +1,1 @@
+document.querySelector("#case7 > h3").innerHTML = "Testing rule";

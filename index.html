@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>Adguard filters tests</title>
+    <link type="text/css" rel="stylesheet" href="assets/style.css" />
+    <link rel="shortcut icon" href="assets/logo.png" />
 </head>
 
 <body>
-    <ul>
-        <li><a href="Filters/simple-rules/test-simple-rules.html">Simple rules</a></li>
-        <li><a href="Filters/simple-rules/generichide/test.html">Generic hide rules</a></li>
-        <li><a href="Filters/extended-css-rules/test-extended-css-rules.html">Extended Css rules</a></li>
-        <li><a href="Filters/websockets/test-websockets.html">Websocket blocking</a></li>
-        <li><a href="Filters/content-rules/test-content-rules.html">Content rules (FF only)</a></li>
-        <li><a href="Filters/script-rules/test-script-rules.html">Script rules</a></li>
-        <li><a href="Filters/scriptlet-rules/test-scriptlet-rules.html">Scriptlet rules</a></li>
-        <li><a href="Userscripts/test-userscripts.html">Userscripts</a></li>
-        <li><a href="PopupBlocker/test-popup-blocker.html">Popup blocker</a></li>
-        <li><a href="PopupBlocker/test-event-recovery.html">Popup blocker event recovery</a></li>
-    </ul>
+    <div class="container">
+        <header>
+            <img src="assets/logo.png" class="logo">
+            <p class="title">ADGUARD</p>
+            <p class="subtitle">filters tests</p>
+        </header>
+        <ul class="testsList">
+            <li><a href="Filters/simple-rules/test-simple-rules.html">Simple rules</a></li>
+            <li><a href="Filters/simple-rules/generichide/test.html">Generic hide rules</a></li>
+            <li><a href="Filters/extended-css-rules/test-extended-css-rules.html">Extended Css rules</a></li>
+            <li><a href="Filters/replace-rules/test-replace-rules.html">$replace rules</a></li>
+            <li><a href="Filters/websockets/test-websockets.html">Websocket blocking</a></li>
+            <li><a href="Filters/content-rules/test-content-rules.html">Content rules (FF only)</a></li>
+            <li><a href="Filters/script-rules/test-script-rules.html">Script rules</a></li>
+            <li><a href="Filters/scriptlet-rules/test-scriptlet-rules.html">Scriptlet rules</a></li>
+            <li><a href="Userscripts/test-userscripts.html">Userscripts</a></li>
+            <li><a href="PopupBlocker/test-popup-blocker.html">Popup blocker</a></li>
+            <li><a href="PopupBlocker/test-event-recovery.html">Popup blocker event recovery</a></li>
+        </ul>
+        <footer>
+                <script type = "text/javascript">
+                    var dt = new Date();
+                    document.write("Adguard Filters Maintainers &copy; " + dt.getFullYear() ); 
+                </script>  
+        </footer>
+    </div>
 </body>
 </html>
