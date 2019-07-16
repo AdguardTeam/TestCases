@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    padding: 2vw 0 2vw 1vw;
+    padding: 2vw 0 2vw 1.3vw;
 }
 
 header p {
@@ -37,6 +37,17 @@ header .subtitle {
     font-weight: bold;
 }
 
+.notice {
+    color: #555;
+    background: #ffd2d2 url(notice.png) 1vw center no-repeat;
+    background-size: 1.5vw;
+    border-radius: .5vw;
+    padding: .8vw 1.5vw .8vw 3.5vw;
+    font-size: 1vw;
+    line-height: 1.4vw;
+    font-style: italic;
+}
+
 .testsList {
     padding: 0;
     margin: 0;
@@ -50,10 +61,11 @@ header .subtitle {
 
 .testsList li a {
     color: #111;
-    background: #ccc;
+    background: #ccc url(tests.png) 1vw center no-repeat;
+    background-size: 1.5vw;
     border-radius: .5vw;
     text-decoration: none;
-    padding: .8vw 1.5vw;
+    padding: .8vw 1.5vw .8vw 3.5vw;
     font-size: 1.3vw;
     display: block;
 }
@@ -61,7 +73,8 @@ header .subtitle {
 .testsList li a:hover {
     color: #111;
     text-decoration: none;
-    background: #ddd;
+    background: #ddd url(tests.png) 1vw center no-repeat;
+    background-size: 1.5vw;
 }
 
 footer {
@@ -72,7 +85,7 @@ footer {
 
 @media only screen and (max-width: 600px) {
     header {
-        padding: 5vw 0 5vw 3vw;
+        padding: 5vw 0 5vw 16vw;
     }
     header .logo {
         width: 15vw;
@@ -88,13 +101,24 @@ footer {
     .container {
         width: 90vw;
     }
+    .notice {
+        color: #111;
+        background: #ffd2d2 url(notice.png) 4vw center no-repeat;
+        background-size: 9vw;
+        border-radius: 1vw;
+        padding: 3vw 3vw 3vw 17vw;
+        font-size: 4vw;
+        line-height: 6vw;
+    }
     .testsList li {
         margin: 2.5vw 0;
     }
     .testsList li a {
         border-radius: 1vw;
-        padding: 3vw 4vw;
+        padding: 3vw 4vw 3vw 11.5vw;
         font-size: 5vw;
+        background: #ccc url(tests.png) 3.5vw center no-repeat;
+        background-size: 5vw;
     }
     footer {
         text-align: center;
