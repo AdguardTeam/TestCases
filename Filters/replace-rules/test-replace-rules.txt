@@ -7,42 +7,44 @@
 ! Hide warning
 testcases.adguard.com###subscribe-to-test-replace-rules-filter
 !
+!
 ! Case 1: text response
 ! Requesting test-replace.js and changing the response
 ||*/case1.js$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
 !
-! Case 2: binary response
 !
-! Case 3: response is more then 3MB
-!
-! Case 4: using with other rules (without $replace modifier) for a same request
-||*/case4.js$replace=/testing/Done/i,domain=testcases.adguard.com
-||*/case4.js$domain=testcases.adguard.com
+! Case 2: response is less and more then 3MB
+||*/case2.js$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
 !
 !
-! Case 5: using with exception rules including $content or $document modifiers for a same request
-||*/case5.js$replace=/\$replace\s+rule\s+disabled/\$replace rule works/i,domain=testcases.adguard.com
-@@||*/case5.js$document,domain=testcases.adguard.com
+! Case 3: using with other rules (without $replace modifier) for a same request
+||*/case3.js$replace=/testing/Done/i,domain=testcases.adguard.com
+||*/case3.js$domain=testcases.adguard.com
 !
 !
-! Case 6: using with exception rules including $generichide, $elemhide or $jsinject modifiers for a same request
-||*/case6.js$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
-###case6 
+! Case 4: using with exception rules including $content or $document modifiers for a same request
+||*/case4.js$replace=/\$replace\s+rule\s+disabled/\$replace rule works/i,domain=testcases.adguard.com
+@@||*/case4.js$document,domain=testcases.adguard.com
+!
+!
+! Case 5: using with exception rules including $generichide, $elemhide or $jsinject modifiers for a same request
+||*/case5.js$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
+###case5 
 @@||testcases.adguard.com^$generichide
 !
 !
-! Case 7: multiple $replace rules matching a single request
+! Case 6: multiple $replace rules matching a single request
+||*/case6.js$replace=/testing/first \$replace works/i,domain=testcases.adguard.com
+||*/case6.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
+!
+!
+! Case 7: disabling $replace rules
 ||*/case7.js$replace=/testing/first \$replace works/i,domain=testcases.adguard.com
 ||*/case7.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
+@@||*/case7.js$replace
 !
 !
-! Case 8: disabling $replace rules
-||*/case8.js$replace=/testing/first \$replace works/i,domain=testcases.adguard.com
+! Case 8: multiple $replace rules
+||*/case8.js$replace=/testing/first \$replace/i,domain=testcases.adguard.com
 ||*/case8.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
-@@||*/case8.js$replace
-!
-!
-! Case 9: multiple $replace rules
-||*/case9.js$replace=/testing/first \$replace/i,domain=testcases.adguard.com
-||*/case9.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
-@@||*/case9.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
+@@||*/case8.js$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com

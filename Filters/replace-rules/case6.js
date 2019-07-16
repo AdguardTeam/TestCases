@@ -1,1 +1,1 @@
-document.querySelector("#case6 > h3").innerHTML = "Testing";
+document.querySelector("#case6 > h3").innerHTML = "Testing rule";
