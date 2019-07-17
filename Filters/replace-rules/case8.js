@@ -1,1 +1,0 @@
-document.querySelector("#case8 > h3").innerHTML = "testing disabling $replace rule";
