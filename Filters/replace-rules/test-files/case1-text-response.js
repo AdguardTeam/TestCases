@@ -1,1 +1,0 @@
-document.querySelector("#case1 > h3").innerHTML = "Testing";

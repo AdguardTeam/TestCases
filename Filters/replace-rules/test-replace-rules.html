@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Script rules tests</title>
+    <title>Replace rules tests</title>
     <link rel="stylesheet" href="../qunit/qunit-2.0.1.css">
 </head>
 
@@ -18,7 +18,16 @@
     <div id="qunit-fixture"></div>
     <script src="../qunit/qunit-2.0.1.js"></script>
 
-    <div id="case1">
+    <script type="text/javascript">
+        const callFor = async (request) => {
+            let response = await fetch(request);
+            let responseText = await response.text();
+            console.log("Request: " + request + " -> Response: " + responseText);
+            return responseText;
+        };
+    </script>
+
+    <!-- <div id="case1">
         <h1>Case 1</h1>
         <h3></h3>
         <script type="text/javascript" src="test-files/case1-text-response.js"></script>
@@ -64,7 +73,7 @@
         <h1>Case 8</h1>
         <h3></h3>
         <script type="text/javascript" src="test-files/case8-disabling-multiple-replace-rules.js"></script>
-    </div>
+    </div> -->
 
     <script type="text/javascript" src="test-replace-rules.js"></script>
 </body>
