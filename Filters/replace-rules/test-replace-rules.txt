@@ -1,12 +1,15 @@
 !
-! Title: Rules for content rules test
+! Title: Rules for $replace rules test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.adguard.com
 !
 !
+! Hide warning
+testcases.adguard.com###subscribe-to-test-replace-rules-filter
+!
+!
 ! Case 1: text response
-! Requesting test-replace.js and changing the response
 ||*/case1-text-response.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
 !
 !
@@ -20,13 +23,14 @@
 !
 !
 ! Case 4: using with exception rules including $content or $document modifiers for a same request
-||*/case4-using-with-document-exception.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
-@@||*/case4-using-with-document-exception.txt$document,domain=testcases.adguard.com
+||*/test-files/case4.html$replace=/adguard/$replace rule works/i,domain=testcases.adguard.com
+testcases.adguard.com/Filters/replace-rules/test-files/case4.html###test-element
+@@||*/test-files/case4.html^$document,domain=testcases.adguard.com
 !
 !
 ! Case 5: using with exception rules including $generichide, $elemhide or $jsinject modifiers for a same request
 ||*/case5-using-with-generichide-exception.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
-###qunit
+###case5
 @@||testcases.adguard.com^$generichide
 !
 !
