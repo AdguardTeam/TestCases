@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Replace rules tests</title>
+    <link rel="stylesheet" href="../../qunit/qunit-2.0.1.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-replace-rules-filter" style="font-size: 48px; padding: 50px; text-align: center;">
+        <a
+            href="https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt">Subscribe
+            to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../../qunit/qunit-2.0.1.js"></script>
+
+    <div id="case1-test1" class="test-block">This element is visible because <b>$generichide</b> rule works proper.</div>
+    <div id="case1-test2" class="test-block">This element is visible because <b>$elemhide</b> rule works proper.</div>
+    <div id="case1-test3" class="test-block">This element is visible because <b>$jsinject</b> rule works proper.</div>
+
+    <style>
+        .test-block {
+            text-align: center;
+            padding: 20px 0;
+            width: 600px;
+            border: 1px dotted #333;
+            margin: 20px 0;
+        }
+    </style>
+    <script type="text/javascript" src="replace-vs-document-rule.js"></script>
+</body>
+
+</html>

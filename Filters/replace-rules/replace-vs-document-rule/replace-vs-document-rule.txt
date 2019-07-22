@@ -1,0 +1,51 @@
+!
+! Title: Rules for $replace rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+!
+! Hide warning
+testcases.adguard.com###subscribe-to-test-replace-rules-filter
+!
+!
+! Case 1: text response
+||*/case1-text-response.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
+!
+!
+! Case 2: response is more then 3MB
+||*/case2-response-over-3mb.txt$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
+!
+!
+! Case 3: using with other rules (without $replace modifier) for a same request
+||*/case3-using-with-other-rules.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
+||*/case3-using-with-other-rules.txt$domain=testcases.adguard.com
+!
+!
+! Case 4: using with exception rules including $content or $document modifiers for a same request
+||*/test-files/case4.html$replace=/adguard/$replace rule works/i,domain=testcases.adguard.com
+testcases.adguard.com/Filters/replace-rules/test-files/case4.html###test-element
+@@||*/test-files/case4.html^$document,domain=testcases.adguard.com
+!
+!
+! Case 5: using with exception rules including $generichide, $elemhide or $jsinject modifiers for a same request
+||*/case5-using-with-generichide-exception.txt$replace=/replace/Replaced/i,domain=testcases.adguard.com
+###case5
+@@||testcases.adguard.com^$generichide
+!
+!
+! Case 6: multiple $replace rules matching a single request
+||*/case6-multiple-replace-rules.txt$replace=/adguard/first \$replace work/i,domain=testcases.adguard.com
+||*/case6-multiple-replace-rules.txt$replace=/first/first and second/i,domain=testcases.adguard.com
+!
+!
+! Case 7: disabling $replace rules
+||*/case7-disabling-replace-rule.txt$replace=/replace/first \$replace works/i,domain=testcases.adguard.com
+||*/case7-disabling-replace-rule.txt$replace=/rule/and second \$replace as well/i,domain=testcases.adguard.com
+@@||*/case7-disabling-replace-rule.txt$replace
+!
+!
+! Case 8: multiple $replace rules
+||*/case8-disabling-multiple-replace-rules.txt$replace=/adguard/first \$replace works/i,domain=testcases.adguard.com
+||*/case8-disabling-multiple-replace-rules.txt$replace=/first/first and second/i,domain=testcases.adguard.com
+@@||*/case8-disabling-multiple-replace-rules.txt$replace=/first/first and second/i,domain=testcases.adguard.com
