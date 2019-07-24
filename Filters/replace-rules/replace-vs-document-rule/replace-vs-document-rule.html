@@ -5,23 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Replace rules tests</title>
-    <link rel="stylesheet" href="../qunit/qunit-2.0.1.css">
+    <link rel="stylesheet" href="../../qunit/qunit-2.0.1.css">
 </head>
 
 <body>
-    <div id="subscribe-to-test-replace-rules-filter" style="font-size: 48px; padding: 50px; text-align: center;">
+    <div id="subscribe-to-replace-vs-document-rule-filter" style="font-size: 48px; padding: 50px; text-align: center;">
         <a
-            href="https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt">Subscribe
+            href="https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt">Subscribe
             to test filter</a>
     </div>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
-    <script src="../qunit/qunit-2.0.1.js"></script>
+    <script src="../../qunit/qunit-2.0.1.js"></script>
 
-    <iframe src="test-files/case4.html" style="width: 35vw; height: 10vw;"></iframe>
-    <h4 id="case5">Case 5: this element is visible because $generichide rule works proper.</h4>
+    <div id="case1-block1" class="test-block">document rule disable a replace rule.</div>
+    <div id="case1-block2" class="test-block">Test-banner</div>
 
-    <script type="text/javascript" src="test-replace-rules.js"></script>
+    <style>
+        .test-block {
+            text-align: center;
+            padding: 20px 0;
+            width: 500px;
+            border: 1px dotted #333;
+            margin: 20px 0;
+        }
+    </style>
+    <script type="text/javascript" src="replace-vs-document-rule.js"></script>
 </body>
 
 </html>

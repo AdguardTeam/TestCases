@@ -14,4 +14,4 @@ testcases.adguard.com###subscribe-to-replace-vs-generichide-rule-filter
 @@||testcases.adguard.com^$generichide
 testcases.adguard.com###case1-block2
 @@||testcases.adguard.com^$elemhide,important
-||testcases.adguard.com$replace=/works\s+proper/doesn't block a \$replace rule/i
+||testcases.adguard.com^$replace=/works\s+proper/doesn't block a \$replace rule/i
