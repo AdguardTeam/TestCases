@@ -1,5 +1,5 @@
 !
-! Title: Rules for $replace rules test
+! Title: Rules for $replace vs $generichide exceptions test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.adguard.com
