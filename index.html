@@ -10,6 +10,20 @@
 </head>
 
 <body>
+    <script>
+        const copyRulesFrom = async (url) => {
+            let response = await fetch(url);
+            let responseText = await response.text();
+            let dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = responseText;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            alert("The rules have been copied to your clipboard. Enjoy your testing!");
+        };
+    </script>
+
     <div class="container">
         <header>
             <img src="assets/logo.png" class="logo">
@@ -18,7 +32,7 @@
         </header>
         <ul class="testsList">
             <li>
-                <a href="Filters/simple-rules/test-simple-rules.html">
+                <a href="Filters/simple-rules/test-simple-rules.html" class="filter">
                     Simple rules
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari, iOS, Content
@@ -26,9 +40,19 @@
                         <!-- <span class="not-comp"> </span> -->
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/test-simple-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/test-simple-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/simple-rules/generichide/test.html">
+                <a href="Filters/simple-rules/generichide/test.html" class="filter">
                     Generic hide rules
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari, iOS, Content
@@ -36,87 +60,222 @@
                         <!-- <span class="not-comp"> </span> -->
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/generichide/rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/generichide/rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/extended-css-rules/test-extended-css-rules.html">
+                <a href="Filters/extended-css-rules/test-extended-css-rules.html" class="filter">
                     Extended Css rules
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari</span>
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/extended-css-rules/test-extended-css-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/extended-css-rules/test-extended-css-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/replace-rules/test-replace-rules.html">
+                <a href="Filters/replace-rules/test-replace-rules.html" class="filter">
                     $replace rules
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/websockets/test-websockets.html">
+                <a href="Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.html"
+                    class="filter">
+                    $replace rule vs $generichide exception
+                    <div class="compatibility">
+                        <span class="comp">Windows, MacOS, Android, FF</span>
+                        <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
+                    </div>
+                </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
+            </li>
+            <li>
+                <a href="Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.html" class="filter">
+                    $replace rule vs $document exception
+                    <div class="compatibility">
+                        <span class="comp">Windows, MacOS, Android, FF</span>
+                        <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
+                    </div>
+                </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
+            </li>
+            <li>
+                <a href="Filters/websockets/test-websockets.html" class="filter">
                     Websocket blocking
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Edge, Opera</span>
                         <span class="not-comp">Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/websockets/test-websockets.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/websockets/test-websockets.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/content-rules/test-content-rules.html">
+                <a href="Filters/content-rules/test-content-rules.html" class="filter">
                     Content rules (FF only)
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/content-rules/test-content-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/content-rules/test-content-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/script-rules/test-script-rules.html">
+                <a href="Filters/script-rules/test-script-rules.html" class="filter">
                     Script rules
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/script-rules/test-script-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/script-rules/test-script-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Filters/scriptlet-rules/test-scriptlet-rules.html">
+                <a href="Filters/scriptlet-rules/test-scriptlet-rules.html" class="filter">
                     Scriptlet rules
                     <div class="compatibility">
                         <span class="comp">Chrome, FF, Opera</span>
                         <span class="not-comp">Windows, MacOS, Android, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard" title="Copy rules to clipboard"
+                    onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/scriptlet-rules/test-scriptlet-rules.txt")'>
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/scriptlet-rules/test-scriptlet-rules.txt"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="Userscripts/test-userscripts.html">
+                <a href="Userscripts/test-userscripts.html" class="filter">
                     Userscripts
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard disabled" title="Copy rules to clipboard">
+                    <!-- onclick="copyRulesFrom('https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js')" -->
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a href="https://subscribe.adblockplus.org?location=https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js"
+                    class="subscribe" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="PopupBlocker/test-popup-blocker.html">
+                <a href="PopupBlocker/test-popup-blocker.html" class="filter">
                     Popup blocker
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari</span>
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard disabled" title="Copy rules to clipboard">
+                    <img src="assets/copy.png">
+                    <h5>Copy rules</h5>
+                </a>
+                <a class="subscribe disabled" title="Subscribe filter">
+                    <img src="assets/subscribe.png">
+                    <h5>Subscribe</h5>
+                </a>
             </li>
             <li>
-                <a href="PopupBlocker/test-event-recovery.html">
+                <a href="PopupBlocker/test-event-recovery.html" class="filter">
                     Popup blocker event recovery
                     <div class="compatibility">
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari</span>
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="clipboard disabled" title="Copy rules to clipboard">
+                        <img src="assets/copy.png">
+                        <h5>Copy rules</h5>
+                    </a>
+                    <a class="subscribe disabled" title="Subscribe filter">
+                        <img src="assets/subscribe.png">
+                        <h5>Subscribe</h5>
+                    </a>
             </li>
         </ul>
         <footer>

@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 47vw;
+    width: 60vw;
     margin: auto;
 }
 
@@ -57,25 +57,23 @@ header .subtitle {
 .testsList li {
     list-style: none;
     margin: .7vw 0;
-}
-
-.testsList li a {
-    color: #111;
     background: #ccc url(tests.png) 1.1vw center no-repeat;
     background-size: 2vw;
-    border-radius: .5vw;
-    text-decoration: none;
-    font-weight: bold;
     padding: 1vw 1.5vw 1vw 4vw;
-    font-size: 1.3vw;
-    display: block;
+    border-radius: .5vw;
 }
 
-.testsList li a:hover {
+.filter {
     color: #111;
     text-decoration: none;
-    background: #ddd url(tests.png) 1.1vw center no-repeat;
-    background-size: 2vw;
+    font-weight: bold;
+    font-size: 1.3vw;
+    display: inline-block;
+}
+
+.filter:hover {
+    color: #111;
+    text-decoration: none;
 }
 
 .compatibility {
@@ -99,10 +97,59 @@ header .subtitle {
     padding-left: 1.5vw;
 }
 
+.subscribe {
+    padding-left: 2.5vw;
+    border-left: 1px solid #aaa;
+    color: darkgreen;
+}
+
+.subscribe,
+.clipboard {
+    text-align: center;
+    float: right;
+    text-decoration: none;
+}
+
+.clipboard {
+    color: darkmagenta;
+    cursor: pointer;
+}
+
+.subscribe:hover,
+.clipboard:hover {
+    filter: brightness(1.3);
+}
+
+.subscribe:hover{
+    border-left: 1px solid #888;
+}
+
+.subscribe h5,
+.clipboard h5 {
+    margin: 0 .5vw;
+    font-size: 1vw;
+}
+
+.subscribe img,
+.clipboard img {
+    width: 1.7vw;
+}
+
 footer {
     text-align: center;
     font-size: .9vw;
     padding: 2vw 0;
+}
+
+.disabled {
+    filter: grayscale(1);
+    opacity: .3;
+    cursor: default;
+}
+
+.disabled:hover {
+    filter: grayscale(1);
+    opacity: .3;
 }
 
 @media only screen and (max-width: 600px) {
@@ -134,13 +181,18 @@ footer {
     } */
     .testsList li {
         margin: 2.5vw 0;
-    }
-    .testsList li a {
         border-radius: 1vw;
         padding: 3vw 4vw 3vw 14.5vw;
-        font-size: 5vw;
         background: #ccc url(tests.png) 3.5vw center no-repeat;
         background-size: 8vw;
+    }
+    .testsList li:hover {
+        background: #ccc url(tests.png) 3.5vw center no-repeat;
+        background-size: 8vw;
+    }
+    .filter {
+        font-size: 5vw;
+        padding-bottom: 10vw;
     }
     .compatibility {
         font-size: 3.1vw;
@@ -160,6 +212,34 @@ footer {
         background-size: 3vw;
         padding-left: 3.5vw;
         display: block;
+    }
+    .subscribe {
+        padding-left: 0;
+        border-left: none;
+        color: darkgreen;
+    }
+    .subscribe,
+    .clipboard {
+        float: left;
+        text-align: left;
+        min-width: 30vw;
+        position: relative;
+        top: -6vw;
+        /* position: absolute; */
+        /* display: inline-block; */
+    } 
+    .subscribe:hover{
+        border-left: none;
+    }
+    .subscribe h5,
+    .clipboard h5 {
+        margin: 0 6vw;
+        font-size: 4vw;
+    }
+    .subscribe img,
+    .clipboard img {
+        width: 5vw;
+        float: left;
     }
     footer {
         text-align: center;
