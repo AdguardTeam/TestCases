@@ -18,6 +18,50 @@
     <div id="qunit-fixture"></div>
     <script src="../qunit/qunit-2.0.1.js"></script>
 
+    <div class="tests-readme">
+        <h2>$replace rules tests:</h2>
+
+        <h3>Case 1</h3>
+        <p>Requested for file `test-files/case1-text-response.txt` and applied $replace rule (`Adguard` replaced to
+            `Test
+            passed`)</p>
+
+        <h3>Case 2</h3>
+        <p>Requested for file (more then 3Mb) `test-files/case2-response-over-3mb.txt` and applied $replace rule (try to
+            replace `Adguard` to `Test passed`) but $replace rule doesn't applied for response more then 3Mb.</p>
+
+        <h3>Case 3</h3>
+        <p>Requested for file `test-files/case3-using-with-other-rules.txt` and applied two rules: with and without
+            $replace
+            modifier.</p>
+
+        <h3>Case 4</h3>
+        <p>Requested for file `test-files/case4-multiple-replace-rules.txt` and applied two $replace rules (they must
+            apllied alphabetically)</p>
+
+        <h3>Case 5</h3>
+        <p>Requested for file `test-files/case5-disabling-replace-rule.txt` and applied two $replace rules and exception
+            $replace rule.</p>
+
+        <h3>Case 6</h3>
+        <p>Requested for file `test-files/case6-disabling-multiple-replace-rules.txt` and applied two $replace rules and
+            exception $replace rule with pattern matching the second $replace rule (case from KB: Multiple $replace
+            rules
+            example)</p>
+    </div>
+    <style>
+        .tests-readme {
+            padding: 0 50px;
+        }
+        .tests-readme h3 {
+            margin-bottom: 0;
+        }
+        .tests-readme p {
+            margin-top: 0;
+            font-style: italic;
+        }
+    </style>
+
     <script type="text/javascript" src="test-replace-rules.js"></script>
 </body>
 
