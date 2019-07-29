@@ -22,6 +22,16 @@
             document.body.removeChild(dummy);
             alert("The rules have been copied to your clipboard. Enjoy your testing!");
         };
+
+        const copyLink = (url) => {
+            let dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = url;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            alert("The link for the rules have been copied to your clipboard. Enjoy your testing!");
+        }
     </script>
 
     <div class="container">
@@ -39,6 +49,11 @@
                             Blocker</span>
                         <!-- <span class="not-comp"> </span> -->
                     </div>
+                </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/test-simple-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/test-simple-rules.txt")'>
@@ -60,6 +75,11 @@
                         <!-- <span class="not-comp"> </span> -->
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/generichide/rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/simple-rules/generichide/rules.txt")'>
                     <img src="assets/copy.png">
@@ -79,6 +99,11 @@
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/extended-css-rules/test-extended-css-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/extended-css-rules/test-extended-css-rules.txt")'>
                     <img src="assets/copy.png">
@@ -97,6 +122,11 @@
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
+                </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/test-replace-rules.txt")'>
@@ -118,6 +148,11 @@
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt")'>
                     <img src="assets/copy.png">
@@ -136,6 +171,11 @@
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
+                </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt")'>
@@ -156,6 +196,11 @@
                         <span class="not-comp">Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/websockets/test-websockets.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/websockets/test-websockets.txt")'>
                     <img src="assets/copy.png">
@@ -174,6 +219,11 @@
                         <span class="comp">Windows, MacOS, Android, FF</span>
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
+                </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/content-rules/test-content-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/content-rules/test-content-rules.txt")'>
@@ -194,6 +244,11 @@
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/script-rules/test-script-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/script-rules/test-script-rules.txt")'>
                     <img src="assets/copy.png">
@@ -212,6 +267,11 @@
                         <span class="comp">Chrome, FF, Opera</span>
                         <span class="not-comp">Windows, MacOS, Android, Edge, Safari, iOS, Content Blocker</span>
                     </div>
+                </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/scriptlet-rules/test-scriptlet-rules.txt")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard" title="Copy rules to clipboard"
                     onclick='copyRulesFrom("https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/scriptlet-rules/test-scriptlet-rules.txt")'>
@@ -232,6 +292,11 @@
                         <span class="not-comp">Chrome, Opera, Edge, Safari, iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink" title="Copy link for rules file"
+                    onclick='copyLink("https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js")'>
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard disabled" title="Copy rules to clipboard">
                     <!-- onclick="copyRulesFrom('https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js')" -->
                     <img src="assets/copy.png">
@@ -251,6 +316,10 @@
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
                 </a>
+                <a class="copyLink disabled" title="Copy link for rules file">
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
+                </a>
                 <a class="clipboard disabled" title="Copy rules to clipboard">
                     <img src="assets/copy.png">
                     <h5>Copy rules</h5>
@@ -267,6 +336,10 @@
                         <span class="comp">Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari</span>
                         <span class="not-comp">iOS, Content Blocker</span>
                     </div>
+                </a>
+                <a class="copyLink disabled" title="Copy link for rules file">
+                    <img src="assets/link.png">
+                    <h5>Copy link</h5>
                 </a>
                 <a class="clipboard disabled" title="Copy rules to clipboard">
                         <img src="assets/copy.png">

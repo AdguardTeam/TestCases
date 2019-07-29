@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 60vw;
+    width: 65vw;
     margin: auto;
 }
 
@@ -104,7 +104,8 @@ header .subtitle {
 }
 
 .subscribe,
-.clipboard {
+.clipboard,
+.copyLink {
     text-align: center;
     float: right;
     text-decoration: none;
@@ -115,8 +116,14 @@ header .subtitle {
     cursor: pointer;
 }
 
+.copyLink {
+    color: darkslategrey;
+    cursor: pointer;
+}
+
 .subscribe:hover,
-.clipboard:hover {
+.clipboard:hover,
+.copyLink:hover {
     filter: brightness(1.3);
 }
 
@@ -125,13 +132,15 @@ header .subtitle {
 }
 
 .subscribe h5,
-.clipboard h5 {
+.clipboard h5,
+.copyLink h5 {
     margin: 0 .5vw;
     font-size: 1vw;
 }
 
 .subscribe img,
-.clipboard img {
+.clipboard img,
+.copyLink img {
     width: 1.7vw;
 }
 
@@ -219,10 +228,11 @@ footer {
         color: darkgreen;
     }
     .subscribe,
-    .clipboard {
+    .clipboard,
+    .copyLink {
         float: left;
         text-align: left;
-        min-width: 30vw;
+        /* min-width: 24vw; */
         position: relative;
         top: -6vw;
         /* position: absolute; */
@@ -232,14 +242,18 @@ footer {
         border-left: none;
     }
     .subscribe h5,
-    .clipboard h5 {
-        margin: 0 6vw;
-        font-size: 4vw;
+    .clipboard h5,
+    .copyLink h5 {
+        margin: 0 4.2vw;
+        font-size: 3.5vw;
+        white-space: nowrap;
     }
     .subscribe img,
-    .clipboard img {
-        width: 5vw;
+    .clipboard img,
+    .copyLink img {
+        width: 4vw;
         float: left;
+        margin-right: 1vw;
     }
     footer {
         text-align: center;
