@@ -1,5 +1,5 @@
 /**
- * Before doing the test, import test-replace-rules.txt to AdGuard
+ * Before doing the test, import test-csp-rules.txt to AdGuard
  */
 window.addEventListener('load', function() {
 
