@@ -6,6 +6,7 @@
 !
 ! Hide warning
 testcases.adguard.com###subscribe-to-test-csp-global-exception-rules-filter
+surge.sh###subscribe-to-test-csp-global-exception-rules-filter
 !
 ! Case 1
 ||testcases.adguard.com$csp=script-src 'self'
