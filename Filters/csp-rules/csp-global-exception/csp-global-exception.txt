@@ -1,5 +1,5 @@
 !
-! Title: Rules for $csp rules test
+! Title: Rules for $csp global exception rules test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.adguard.com
@@ -8,3 +8,7 @@
 testcases.adguard.com###subscribe-to-test-csp-global-exception-rules-filter
 !
 ! Case 1
+||testcases.adguard.com$csp=script-src 'self'
+@@||testcases.adguard.com$csp
+||surge.sh$csp=script-src 'self'
+@@||surge.sh$csp
