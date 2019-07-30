@@ -1,10 +1,10 @@
 /**
  * Before doing the test, import test-csp-rules.txt to AdGuard
  */
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
 
-    QUnit.test("Case 1: text response", function(assert) {
-        assert.ok(document.querySelector("#case1 > h3").innerHTML == "", "PASSED!");
+    QUnit.test("Case 1: Blocking all remote scripts", function(assert) {
+        assert.equal(document.querySelector("#case1 > h3").innerHTML, "Dummy", "$csp rule should block all remote scripts.");
     });
 
 });

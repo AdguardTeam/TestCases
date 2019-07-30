@@ -1,13 +1,13 @@
 !
-! Title: Rules for content rules test
+! Title: Rules for $csp rules test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.adguard.com
 !
 ! Hide warning
-testcases.adguard.com###subscribe-to-test-replace-rules-filter
+testcases.adguard.com###subscribe-to-test-csp-rules-filter
 !
 ! Case 1: text response
 ! Requesting test-replace.js and changing the response
-||*/case1.js$replace=/testing/\$replace rule works/i,domain=testcases.adguard.com
-!
+||testcases.adguard.com$csp=script-src 'self'
+||surge.sh$csp=script-src 'self'
