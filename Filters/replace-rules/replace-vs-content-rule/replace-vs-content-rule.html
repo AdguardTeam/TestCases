@@ -4,31 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>$replace rule vs $document exception test</title>
+    <title>$replace rule vs $content exception test</title>
     <link rel="stylesheet" href="../../qunit/qunit-2.0.1.css">
 </head>
 
 <body>
-    <div id="subscribe-to-replace-vs-document-rule-filter" style="font-size: 48px; padding: 50px; text-align: center;">
+    <div id="subscribe-to-replace-vs-content-rule-filter" style="font-size: 48px; padding: 50px; text-align: center;">
         <a
-            href="https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Filters/replace-rules/replace-vs-document-rule/replace-vs-document-rule.txt">Subscribe
+            href="replace-vs-content-rule.txt">Subscribe
             to test filter</a>
     </div>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="../../qunit/qunit-2.0.1.js"></script>
 
-    <div id="case1-block1" class="test-block">document rule disable a replace rule.</div>
+    <div id="case1-block1" class="test-block">content rule disable a replace rule.</div>
     <div id="case1-block2" class="test-block">Test-banner</div>
 
     <div class="tests-readme">
-        <h2>$replace rule vs $document exception test:</h2>
+        <h2>$replace rule vs $content exception test:</h2>
 
         <h3>Case 1</h3>
         <p>Applying:
-            <li>Basic rule to hide div element</li>
+            <li>content rule ($$) to hide div element</li>
             <li>$replace rule</li>
-            <li>$document exception rule wich should disable all other rules applied before</li>
+            <li>$content exception rule wich should disable all other rules applied before</li>
         </p>
 
     </div>
@@ -51,7 +51,7 @@
             opacity: 0;
         }
     </style>
-    <script type="text/javascript" src="replace-vs-document-rule.js"></script>
+    <script type="text/javascript" src="replace-vs-content-rule.js"></script>
 </body>
 
 </html>

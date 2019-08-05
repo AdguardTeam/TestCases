@@ -4,29 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>$replace rule vs $generichide exceptions test</title>
+    <title>$replace rule vs $elemhide exception test</title>
     <link rel="stylesheet" href="../../qunit/qunit-2.0.1.css">
 </head>
 
 <body>
-    <div id="subscribe-to-replace-vs-generichide-rule-filter" style="font-size: 48px; padding: 50px; text-align: center;">
-        <a
-            href="replace-vs-generichide-rule.txt">Subscribe
-            to test filter</a>
+    <div id="subscribe-to-replace-vs-elemhide-rule-filter" style="font-size: 48px; padding: 50px; text-align: center;">
+        <a href="replace-vs-elemhide-rule.txt">Subscribe to test filter</a>
     </div>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="../../qunit/qunit-2.0.1.js"></script>
 
-    <div id="case1-block1" class="test-block"><b>$generichide</b> rule works proper.</div>
+    <div id="case1-block2" class="test-block"><b>$elemhide</b> rule works proper.</div>
 
     <div class="tests-readme">
+        <h2>$replace rule vs $elemhide exceptions test:</h2>
 
         <h3>Case 1</h3>
         <p>Applying:
-            <li>Generic rule to hide `#case1-block1` element</li>
-            <li>$generichide exception rule</li>
-            <li>$replace rule for content in `#case1-block1`</li>
+            <li>Basic rule to hide subscription link</li>
+            <li>$elemhide exception rule</li>
+            <li>$replace rule to change subscription link to nothing</li>
         </p>
 
     </div>
@@ -50,7 +49,7 @@
         }
     </style>
 
-    <script type="text/javascript" src="replace-vs-generichide-rule.js"></script>
+    <script type="text/javascript" src="replace-vs-elemhide-rule.js"></script>
 </body>
 
 </html>
