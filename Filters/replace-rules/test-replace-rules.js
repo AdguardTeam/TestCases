@@ -42,4 +42,9 @@ window.addEventListener('load', function () {
         assert.equal(case6, "first replace rule works", "Exception $replace rule should disable only $replace rule with matching pattern.");
     });
 
+    QUnit.test("Case 7: using with $script content type modifier for a same request", async assert => {
+        const case7 = window.document.getElementById("case7").innerText;
+        assert.ok(case7 == "Script works" && adgCheck, "$replace rule has higher priority over rules with $script content type modifier");
+    });
+
 });

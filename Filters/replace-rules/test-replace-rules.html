@@ -10,13 +10,16 @@
 
 <body>
     <div id="subscribe-to-test-replace-rules-filter" style="font-size: 48px; padding: 50px; text-align: center;">
-        <a
-            href="test-replace-rules.txt">Subscribe
+        <a href="test-replace-rules.txt">Subscribe
             to test filter</a>
     </div>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="../qunit/qunit-2.0.1.js"></script>
+
+    <div id="case7"></div>
+
+    <script src="test-files/case7-content-type-modifier.js"></script>
 
     <div class="tests-readme">
         <h2>$replace rules tests:</h2>
@@ -48,14 +51,20 @@
             exception $replace rule with pattern matching the second $replace rule (case from KB: Multiple $replace
             rules
             example)</p>
+
+        <h3>Case 7</h3>
+        <p>Requested for script `test-files/case7-content-type-modifier.js` and applied $replace rule and
+            rule with $script content type modifier</p>
     </div>
     <style>
         .tests-readme {
             padding: 0 50px;
         }
+
         .tests-readme h3 {
             margin-bottom: 0;
         }
+
         .tests-readme p {
             margin-top: 0;
             font-style: italic;
