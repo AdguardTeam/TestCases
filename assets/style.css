@@ -142,6 +142,10 @@ footer {
         background: #ccc url(tests.png) 3.5vw center no-repeat;
         background-size: 8vw;
     }
+    .testsList li a:hover {
+        background: #ccc url(tests.png) 3.5vw center no-repeat;
+        background-size: 8vw;
+    }
     .compatibility {
         font-size: 3.1vw;
         margin-top: 1.5vw;
