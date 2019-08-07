@@ -44,7 +44,7 @@ window.addEventListener('load', function () {
 
     QUnit.test("Case 7: using with $script content type modifier for a same request", async assert => {
         const case7 = window.document.getElementById("case7").innerText;
-        assert.ok(case7 == "Script works" && adgCheck, "$replace rule has higher priority over rules with $script content type modifier");
+        assert.equal(case7, "Script replaced", "$replace rule has higher priority over rules with $script content type modifier");
     });
 
 });
