@@ -1,1 +1,1 @@
-document.getElementById("case7").innerText = "Script works";
+let tmp = 0

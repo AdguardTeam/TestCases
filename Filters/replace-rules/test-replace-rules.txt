@@ -53,7 +53,7 @@ surge.sh###subscribe-to-test-replace-rules-filter
 !
 !
 ! Case 7: using with $script exception modifier for a same request
-||testcases.adguard.com/*/case7-script-exception-modifier.js$replace=/works/replaced/i
+||testcases.adguard.com/*/case7-script-exception-modifier.js$replace=/tmp\s+\=\s+0/tmp = 1/i
 ||testcases.adguard.com/*/case7-script-exception-modifier.js$script
-||surge.sh/*/case7-content-type-modifier.js$replace=/works/replaced/i
+||surge.sh/*/case7-content-type-modifier.js$replace=/tmp\s+\=\s+0/tmp = 1/i
 ||surge.sh/*/case7-content-type-modifier.js$script
