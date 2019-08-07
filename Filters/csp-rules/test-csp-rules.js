@@ -10,7 +10,11 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     QUnit.test("Case 2: multiple $csp rules", function (assert) {
-        assert.ok(getComputedStyle(document.querySelector("#google-logo"), null).display === "inline" && getComputedStyle(document.querySelector("#yandex-logo"), null).display === "none", "multiple $csp rules should work toghther.");
+        const pic1 = getComputedStyle(document.querySelector("#pic1"), null).height == "40px";
+        const pic2 = getComputedStyle(document.querySelector("#pic2"), null).height == "40px";
+        const pic3 = getComputedStyle(document.querySelector("#pic3"), null).height == "40px";
+        const pic4 = getComputedStyle(document.querySelector("#pic4"), null).height == "40px";
+        assert.ok(pic1 && !pic2 && !pic3 && !pic4, "multiple $csp rules should work together.");
     });
 
     QUnit.test("Case 3: $scp exception and multiple $csp rules", function (assert) {
