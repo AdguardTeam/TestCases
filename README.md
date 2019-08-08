@@ -1,34 +1,20 @@
-# Test cases
+# testcases.adguard.com on react.js
 
-All kinds of test cases for AdGuard products.
+## How to test:
 
-### How to use test cases
+1. download the project
+2. npm run buid
+3. npm install --global surge
+4. surge --domain=*any_domain*.surge.sh
+5. project: *location*/filters-tests/**build**
+6. Enjoy your testing at *any_domain*.surge.sh!
 
-Open https://testcases.adguard.com and follow the instructions there.
+#### Test version availabe at react-f18.surge.sh
 
-### Development
+## Manage tests list:
+The main data file is ./src/testsData.js
 
-#### How to test on the local machine
+## Known issues
 
-* Run `yarn install`
-
-* Add to the `/etc/hosts` next line
-    `127.0.0.1 testcases.adguard.com`
-
-* Run the local server
-    `sudo yarn serve`
-    
-* Open `http://testcases.adguard.com` in your browser
-
-> **Please note, that AdGuard for Mac does not filter localhost connections by default!**.
-
-#### Test on surge.sh
-
-```
-npm install --global surge
-surge --domain=your-dev-domain.surge.sh
-```
-
-Then simply open `your-dev-domain.surge.sh` and see what you've got there.
-
-> **Important:** for test cases to work on surge.sh subdomains, please add this domain to the filtering rules.
+* **Copy rules** functionality doesn't work in FF and Safari:
+`document.execCommand(‘cut’/‘copy’) was denied because it was not called from inside a short running user-generated event handler.`

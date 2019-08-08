@@ -1,0 +1,203 @@
+// Colors:
+$backgroundColor: #f4f4f4;
+$textColor: #4a4a4a;
+$testBgColor: white;
+$compatibilityColor: green;
+$incompatibilityColor: red;
+// Font sizes:
+$bodySize: 1vw;
+$testTitleSize: 1.3vw;
+$compatibilitySize: .9vw;
+$btnSize: 1vw;
+// Elements
+$btnIcon: 1.7vw;
+$mainContainer: 70vw;
+
+@font-face {
+  font-family: Akkurat;
+  src: url("/fonts/akkurat/light.woff2") format("woff2"), url("/fonts/akkurat/light.woff") format("woff");
+  font-weight: 200;
+  font-style: normal
+}
+
+@font-face {
+  font-family: Akkurat;
+  src: url("/fonts/akkurat/regular.woff2") format("woff2"), url("/fonts/akkurat/regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal
+}
+
+@font-face {
+  font-family: Akkurat;
+  src: url("/fonts/akkurat/bold.woff2") format("woff2"), url("/fonts/akkurat/bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal
+}
+
+:focus {
+  outline: none;
+}
+
+body {
+  background-color: $backgroundColor;
+  font-size: $bodySize;
+  line-height: 1.5vw;
+  color: $textColor;
+  font-family: Akkurat, sans-serif;
+  font-weight: 400;
+}
+
+.App {
+  width: $mainContainer;
+  margin: 1vw auto;
+}
+
+.testItem-container {
+  background: $testBgColor;
+  margin: 0 .5vw 1vw;
+  padding: 1.2vw 1.5vw;
+  word-wrap: break-word;
+  border-radius: .3vw;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
+  clear: both;
+}
+
+.test-info {
+  background: url(../img/logo.png) left center no-repeat;
+  background-size: 3.5vw;
+  padding-left: 5vw;
+  min-height: 4.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+}
+
+.test-actions {
+  float: right;
+}
+
+.spacer {
+  clear: both;
+}
+
+.btn {
+  background: none;
+  font-size: $btnSize;
+  border: none;
+  color: $textColor;
+  cursor: pointer;
+  text-decoration: none;
+  margin: .5vw .7vw 0;
+  padding: 2.3vw 0 0;
+  display: inline-block;
+}
+
+.btn:hover {
+  filter: brightness(0);
+  transition: .3s;
+}
+
+.disabled {
+  opacity: .2;
+  cursor: unset;
+}
+
+.disabled:hover {
+  filter: brightness(1);
+  transition: 0;
+}
+
+.copyLink {
+  background: url(../img/link.png) center top no-repeat;
+  background-size: $btnIcon;
+}
+
+.copyRules {
+  background: url(../img/copy.png) center top no-repeat;
+  background-size: $btnIcon;
+}
+
+.subscribe {
+  background: url(../img/list.png) center top no-repeat;
+  background-size: $btnIcon;
+}
+
+.test-title {
+  font-size: $testTitleSize;
+  font-weight: 700;
+  color: $textColor;
+  text-decoration: none;
+  margin-bottom: .3vw;
+  display: block;
+}
+
+.compatibility {
+  color: $compatibilityColor;
+  font-size: $compatibilitySize;
+  background: url(../img/comp.png) left center no-repeat;
+  background-size: 1vw;
+  padding-left: 1.5vw;
+}
+
+.incompatibility {
+  color: $incompatibilityColor;
+  font-size: $compatibilitySize;
+  background: url(../img/incomp.png) left center no-repeat;
+  background-size: 1vw;
+  padding-left: 1.5vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    width: 94vw;
+    margin: 3vw auto;
+  }
+  .testItem-container {
+    margin: 0 .5vw 4vw;
+    padding: 5vw;
+    border-radius: 1vw;
+  }
+  .test-info {
+    background: none;
+    padding-left: 0;
+    min-height: 10vw;
+    float: none;
+  }
+  .test-actions {
+    float: none;
+  }
+  .test-title {
+    font-size: 6vw;
+    line-height: 6vw;
+    margin-bottom: 4vw;
+    background: url(../img/logo.png) left center no-repeat;
+    background-size: 4vw;
+    padding-left: 5.5vw;
+  }
+  .compatibility,
+  .incompatibility {
+    font-size: 3.5vw;
+    line-height: 4vw;
+    background-size: 4vw;
+    padding-left: 5.5vw;
+    margin-bottom: 1.3vw;
+  }
+  .btn {
+    font-size: 4vw;
+    margin: 4vw 0 0 0;
+    padding: 7vw 0 0;
+  }
+  .copyLink,
+  .copyRules,
+  .subscribe {
+    background-size: 6vw;
+    display: block;
+    width: 33%;
+    text-align: center;
+    float: left;
+  }
+  .subscribe {
+    padding-top: 8.8vw;
+  }
+}
