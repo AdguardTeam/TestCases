@@ -1,29 +1,31 @@
-import React from 'react'
+import React from 'react';
 
 export default class TestItem extends React.Component {
-
     copyRules = async () => {
-        let url = window.location.href + this.props.rules
-        let response = await fetch(url);
-        let responseText = await response.text();
-        let dummy = document.createElement("textarea");
+        const url = window.location.href + this.props.rules;
+        const response = await fetch(url);
+        const responseText = await response.text();
+        const dummy = document.createElement('textarea');
         document.body.appendChild(dummy);
         dummy.value = responseText;
         dummy.select();
-        document.execCommand("copy");
+        document.execCommand('copy');
         document.body.removeChild(dummy);
-        alert("The rules have been copied to your clipboard. Enjoy your testing!");
+        alert(`The rules for the test "${this.props.title}" have been copied to your clipboard.`);
     }
+
+    btnClass = () => (`btn copyRules${this.props.rules === '' ? ' disabled' : ''}`)
 
     render() {
         return (
-                <button
-                    class = {(this.props.rules === "" ? "disabled " : "") + "btn copyRules"}
-                    type = "button"
-                    name = "Copy rules list"
-                    onClick = {this.copyRules}>
-                    Copy rules
-                </button>
-        )
+            <button
+                className={this.btnClass()}
+                type="button"
+                name="Copy rules list"
+                onClick={this.copyRules}
+            >
+                Copy rules
+            </button>
+        );
     }
 }

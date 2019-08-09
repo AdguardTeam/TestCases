@@ -11,14 +11,7 @@ $compatibilitySize: .9vw;
 $btnSize: 1vw;
 // Elements
 $btnIcon: 1.7vw;
-$mainContainer: 70vw;
-
-@font-face {
-  font-family: Akkurat;
-  src: url("/fonts/akkurat/light.woff2") format("woff2"), url("/fonts/akkurat/light.woff") format("woff");
-  font-weight: 200;
-  font-style: normal
-}
+$mainContainer: 80vw;
 
 @font-face {
   font-family: Akkurat;
@@ -47,14 +40,96 @@ body {
   font-weight: 400;
 }
 
-.App {
+// *** HEADER ***
+
+header {
+  padding: 5.5vw 0;
+  background-color: #585965;
+  color: white;
+}
+
+.header-container {
   width: $mainContainer;
-  margin: 1vw auto;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vw;
+}
+
+.adgLogo {
+  width: 6vw;
+  height: 6vw;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25.3 25.9'%3E%3Cpath fill='%2368bc71' d='M12.7 0C8.7 0 3.9.9 0 3c0 4.4-.1 15.4 12.7 23C25.4 18.4 25.3 7.4 25.3 3 21.4.9 16.6 0 12.7 0z'/%3E%3Cpath fill='%2367b279' d='M12.6 25.9C-.1 18.4 0 7.4 0 3c3.9-2 8.7-3 12.6-3v25.9z'/%3E%3Cpath fill='%23fff' d='M12.2 17.3L19.8 7a.99.99 0 0 0-1.3.1l-6.4 6.6-2.4-2.9c-1.1-1.3-2.7-.3-3.1 0l5.6 6.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  margin-right: .7vw;
+  float: left;
+}
+
+header h1 {
+  font-size: 4vw;
+  line-height: 4vw;
+  margin: 0;
+}
+
+header h2 {
+  font-size: 2vw;
+  margin: .7vw 0 2vw;
+}
+
+header h3 {
+  font-size: 1.5vw;
+  margin: .3vw 0 0;
+}
+
+.mission {
+  clear: both;
+  font-size: 1.1vw;
+  margin-top: 3vw;
+  padding-right: 5vw;
+}
+
+.instruction {
+  padding-left: 6vw;
+  border-left: .1vw solid #7a7b8c;
+}
+
+.instruction ul {
+  list-style: none;
+  padding-left: 2vw;
+}
+
+.instruction ul li {
+  position: relative;
+  font-size: .9vw;
+  margin-bottom: .3vw;
+}
+
+.instruction ul li:before {
+  content: "";
+  width: .5vw;
+  height: .5vw;
+  border-radius: 100%;
+  border: .1vw solid #fff;
+  position: absolute;
+  left: -1.9vw;
+  top: calc(50% - .35vw);
+}
+
+// *** TESTLIST ***
+
+.testList-container {
+  width: $mainContainer;
+  margin: 3vw auto;
 }
 
 .testItem-container {
   background: $testBgColor;
-  margin: 0 .5vw 1vw;
+  margin: 0 0 1vw;
   padding: 1.2vw 1.5vw;
   word-wrap: break-word;
   border-radius: .3vw;
@@ -100,12 +175,17 @@ body {
 
 .disabled {
   opacity: .2;
-  cursor: unset;
+  pointer-events: none;
 }
 
 .disabled:hover {
   filter: brightness(1);
   transition: 0;
+}
+
+.readme {
+  background: url(../img/readme.png) center top no-repeat;
+  background-size: $btnIcon;
 }
 
 .copyLink {
@@ -148,8 +228,39 @@ body {
   padding-left: 1.5vw;
 }
 
+// *** FOOTER ***
+
+footer {
+  background-color: #53535e;
+  padding: 3vw 0;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 13vw;
+  height: 3.5vw;
+  margin: auto;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 177 48' fill='%23fff'%3E%3Cpath d='M144 22.5l-1.1-2.9h-5.7l-1.1 2.9h-3.9l6.2-14.8h3.4l6.1 14.8H144zm-4-10.8l-1.9 5.1h3.7l-1.8-5.1zm-8.4 5.2c0 .9-.1 1.7-.4 2.4-.3.7-.7 1.4-1.3 1.9-.6.5-1.2.9-2 1.2-.8.3-1.6.4-2.6.4s-1.8-.1-2.6-.4c-.8-.3-1.4-.7-2-1.2s-1-1.1-1.2-1.9c-.3-.7-.4-1.5-.4-2.4V7.7h3.5v8.9c0 .4.1.8.2 1.1.1.3.3.7.5 1 .2.3.5.5.8.7.4.2.8.3 1.3.3s.9-.1 1.3-.3c.4-.2.6-.4.9-.7.2-.3.4-.6.5-1 .1-.4.1-.7.1-1.1V7.7h3.5l-.1 9.2zm-14.5 4.7c-.7.4-1.6.7-2.5.9-1 .2-2 .4-3.1.4-1.2 0-2.3-.2-3.2-.6-1-.4-1.8-.9-2.5-1.6-.7-.7-1.3-1.5-1.7-2.5s-.6-2-.6-3.2.2-2.3.6-3.2c.4-1 1-1.8 1.7-2.5s1.6-1.2 2.5-1.6 2-.5 3.1-.5c1.2 0 2.2.2 3.2.5 1 .4 1.8.8 2.4 1.4l-2.2 2.6c-.3-.4-.8-.7-1.4-1-.6-.3-1.2-.4-1.9-.4-.6 0-1.2.1-1.7.3-.5.2-1 .5-1.4 1-.4.4-.7.9-.9 1.5-.2.6-.3 1.2-.3 1.8 0 .7.1 1.3.3 1.9.2.6.5 1.1.9 1.5s.8.7 1.4 1c.6.2 1.2.3 1.9.3.4 0 .8 0 1.2-.1s.7-.2 1-.3v-2.7h-2.8v-2.7h6.1l-.1 7.8zm58.6-6.5c0 1.3-.2 2.4-.7 3.3s-1.1 1.7-1.9 2.3-1.7 1.1-2.6 1.3c-1 .3-2 .4-3 .4H162V7.7h5.3c1 0 2.1.1 3.1.4 1 .2 1.9.6 2.7 1.2.8.6 1.4 1.3 1.9 2.3.4.9.7 2.1.7 3.5zm-3.7 0c0-.8-.1-1.5-.4-2.1-.3-.5-.6-1-1.1-1.3-.4-.3-1-.6-1.5-.7-.6-.1-1.2-.2-1.8-.2h-1.8v8.6h1.7c.6 0 1.2-.1 1.8-.2.6-.1 1.1-.4 1.6-.7.4-.3.8-.8 1.1-1.3.3-.5.4-1.3.4-2.1zm-70.2 0c0 1.3-.2 2.4-.7 3.3s-1.1 1.7-1.9 2.3c-.8.6-1.7 1.1-2.6 1.3-1 .3-2 .4-3 .4h-5.5V7.7h5.3c1 0 2.1.1 3.1.4 1 .2 1.9.6 2.7 1.2.8.6 1.4 1.3 1.9 2.3s.7 2.1.7 3.5zm-3.7 0c0-.8-.1-1.5-.4-2.1-.3-.5-.6-1-1.1-1.3-.4-.3-1-.6-1.5-.7-.6-.1-1.2-.2-1.8-.2h-1.8v8.6h1.7c.6 0 1.2-.1 1.8-.2.6-.1 1.1-.4 1.6-.7.4-.3.8-.8 1.1-1.3.3-.5.4-1.3.4-2.1zm-15 7.4L82 19.6h-5.7l-1.1 2.9h-3.9l6.2-14.8h3.4L87 22.5h-3.9zm-4-10.8l-1.9 5.1H81l-1.9-5.1zm77.8 10.8l-3.2-5.9h-1.2v5.9H149V7.7h5.6c.7 0 1.4.1 2.1.2.7.1 1.3.4 1.8.7.5.3 1 .8 1.3 1.4.3.6.5 1.3.5 2.1 0 1-.3 1.8-.8 2.5s-1.3 1.2-2.2 1.5l3.8 6.3-4.2.1zm-.2-10.2c0-.3-.1-.6-.2-.8-.1-.2-.3-.5-.5-.6-.2-.1-.5-.2-.8-.2s-.6-.1-.8-.1h-1.9V14h1.7c.3 0 .6 0 .9-.1.3 0 .6-.1.8-.3.2-.1.5-.3.6-.5.2-.2.2-.5.2-.8z'/%3E%3Cpath d='M144 22.5l-1.1-2.9h-5.7l-1.1 2.9h-3.9l6.2-14.8h3.4l6.1 14.8H144zm-4-10.8l-1.9 5.1h3.7l-1.8-5.1zm-8.4 5.2c0 .9-.1 1.7-.4 2.4-.3.7-.7 1.4-1.3 1.9-.6.5-1.2.9-2 1.2-.8.3-1.6.4-2.6.4s-1.8-.1-2.6-.4c-.8-.3-1.4-.7-2-1.2s-1-1.1-1.2-1.9c-.3-.7-.4-1.5-.4-2.4V7.7h3.5v8.9c0 .4.1.8.2 1.1.1.3.3.7.5 1 .2.3.5.5.8.7.4.2.8.3 1.3.3s.9-.1 1.3-.3c.4-.2.6-.4.9-.7.2-.3.4-.6.5-1 .1-.4.1-.7.1-1.1V7.7h3.5l-.1 9.2zm-14.5 4.7c-.7.4-1.6.7-2.5.9-1 .2-2 .4-3.1.4-1.2 0-2.3-.2-3.2-.6-1-.4-1.8-.9-2.5-1.6-.7-.7-1.3-1.5-1.7-2.5s-.6-2-.6-3.2.2-2.3.6-3.2c.4-1 1-1.8 1.7-2.5s1.6-1.2 2.5-1.6 2-.5 3.1-.5c1.2 0 2.2.2 3.2.5 1 .4 1.8.8 2.4 1.4l-2.2 2.6c-.3-.4-.8-.7-1.4-1-.6-.3-1.2-.4-1.9-.4-.6 0-1.2.1-1.7.3-.5.2-1 .5-1.4 1-.4.4-.7.9-.9 1.5-.2.6-.3 1.2-.3 1.8 0 .7.1 1.3.3 1.9.2.6.5 1.1.9 1.5s.8.7 1.4 1c.6.2 1.2.3 1.9.3.4 0 .8 0 1.2-.1s.7-.2 1-.3v-2.7h-2.8v-2.7h6.1l-.1 7.8zm58.6-6.5c0 1.3-.2 2.4-.7 3.3s-1.1 1.7-1.9 2.3-1.7 1.1-2.6 1.3c-1 .3-2 .4-3 .4H162V7.7h5.3c1 0 2.1.1 3.1.4 1 .2 1.9.6 2.7 1.2.8.6 1.4 1.3 1.9 2.3.4.9.7 2.1.7 3.5zm-3.7 0c0-.8-.1-1.5-.4-2.1-.3-.5-.6-1-1.1-1.3-.4-.3-1-.6-1.5-.7-.6-.1-1.2-.2-1.8-.2h-1.8v8.6h1.7c.6 0 1.2-.1 1.8-.2.6-.1 1.1-.4 1.6-.7.4-.3.8-.8 1.1-1.3.3-.5.4-1.3.4-2.1zm-70.2 0c0 1.3-.2 2.4-.7 3.3s-1.1 1.7-1.9 2.3c-.8.6-1.7 1.1-2.6 1.3-1 .3-2 .4-3 .4h-5.5V7.7h5.3c1 0 2.1.1 3.1.4 1 .2 1.9.6 2.7 1.2.8.6 1.4 1.3 1.9 2.3s.7 2.1.7 3.5zm-3.7 0c0-.8-.1-1.5-.4-2.1-.3-.5-.6-1-1.1-1.3-.4-.3-1-.6-1.5-.7-.6-.1-1.2-.2-1.8-.2h-1.8v8.6h1.7c.6 0 1.2-.1 1.8-.2.6-.1 1.1-.4 1.6-.7.4-.3.8-.8 1.1-1.3.3-.5.4-1.3.4-2.1zm-15 7.4L82 19.6h-5.7l-1.1 2.9h-3.9l6.2-14.8h3.4L87 22.5h-3.9zm-4-10.8l-1.9 5.1H81l-1.9-5.1zm77.8 10.8l-3.2-5.9h-1.2v5.9H149V7.7h5.6c.7 0 1.4.1 2.1.2.7.1 1.3.4 1.8.7.5.3 1 .8 1.3 1.4.3.6.5 1.3.5 2.1 0 1-.3 1.8-.8 2.5s-1.3 1.2-2.2 1.5l3.8 6.3-4.2.1zm-.2-10.2c0-.3-.1-.6-.2-.8-.1-.2-.3-.5-.5-.6-.2-.1-.5-.2-.8-.2s-.6-.1-.8-.1h-1.9V14h1.7c.3 0 .6 0 .9-.1.3 0 .6-.1.8-.3.2-.1.5-.3.6-.5.2-.2.2-.5.2-.8z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='4' opacity='.715' d='M24.2 2.3c-6.6 0-14.5 1.6-21.1 5 0 7.4-.1 25.8 21.1 38.4 21.2-12.6 21.1-31 21.1-38.4-6.5-3.4-14.5-5-21.1-5z'/%3E%3Cpath opacity='.715' d='M23.5 31.2L36.2 14c-.9-.8-1.8-.2-2.2.2L23.3 25.3l-4-4.8c-1.9-2.2-4.5-.5-5.1-.1l9.3 10.8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.copyrights {
+  position: absolute;
+  top: 1.8vw;
+  left: 4.4vw;
+  font-size: .8vw;
+  color: white;
+}
+
+// *** MOBILE ***
+
 @media only screen and (max-width: 600px) {
   .App {
+    width: 100%;
+    margin: auto;
+  }
+  .testList-container {
     width: 94vw;
     margin: 3vw auto;
   }
@@ -168,7 +279,7 @@ body {
     float: none;
   }
   .test-title {
-    font-size: 6vw;
+    font-size: 5.5vw;
     line-height: 6vw;
     margin-bottom: 4vw;
     background: url(../img/logo.png) left center no-repeat;
@@ -190,14 +301,78 @@ body {
   }
   .copyLink,
   .copyRules,
-  .subscribe {
+  .subscribe,
+  .readme {
     background-size: 6vw;
     display: block;
-    width: 33%;
+    width: 25%;
     text-align: center;
     float: left;
   }
-  .subscribe {
+  .subscribe,
+  .readme {
     padding-top: 8.8vw;
+  }
+  .header-container {
+    width: 94vw;
+    display: block;
+  }
+  .adgLogo {
+    width: 20vw;
+    height: 20vw;
+    margin-right: 2vw;
+  }
+  header h1 {
+    font-size: 12vw;
+    line-height: 12vw;
+  }
+  header h3 {
+    font-size: 5vw;
+    margin: 2vw 0 0;
+  }
+  .mission {
+    font-size: 4vw;
+    line-height: 5.5vw;
+    margin-top: 6vw;
+    padding: 0 3vw;
+  }
+  .instruction {
+    padding-left: 0;
+    border-left: none;
+    padding: 0 3vw;
+    margin-top: 7vw;
+    font-size: 4vw;
+    line-height: 5.5vw;
+  }
+  header h2 {
+    font-size: 6vw;
+    margin: 0 0 5vw;
+  }
+  .instruction ul li {
+    position: relative;
+    font-size: 3vw;
+    line-height: 4vw;
+    margin-bottom: 3.5vw;
+  }
+  .instruction ul {
+    padding-left: 5vw;
+  }
+  .instruction ul li:before {
+    width: 2vw;
+    height: 2vw;
+    left: -5vw;
+    top: 11%;
+  }
+  .footer-logo {
+    width: 40vw;
+    height: 11.5vw;
+  }
+  .copyrights {
+    top: 7.5vw;
+    left: 13vw;
+    font-size: 2.5vw;
+  }
+  footer {
+    padding: 6vw 0;
   }
 }

@@ -1,29 +1,38 @@
-import React from 'react'
+import React from 'react';
 
-import CopyLink from './copyLink'
-import CopyRules from './copyRules'
-import SubscribeFilter from './subscribeFilter'
+import Readme from './Readme';
+import CopyLink from './copyLink';
+import CopyRules from './copyRules';
+import SubscribeFilter from './subscribeFilter';
 
-export default class TestItem extends React.Component {
+const TestItem = ({
+    title, link, rules, readmeUrl, compatibility, incompatibility,
+}) => (
+    <div className="testItem-container">
+        <div className="test-info">
+            <a
+                href={link}
+                className="test-title"
+            >
+                {title}
+            </a>
+            <div className="compatibility">{compatibility}</div>
+            <div className="incompatibility">{incompatibility}</div>
+        </div>
+        <div className="test-actions">
+            <Readme readmeUrl={readmeUrl} />
+            <CopyLink
+                rules={rules}
+                title={title}
+            />
+            <CopyRules
+                rules={rules}
+                title={title}
+            />
+            <SubscribeFilter rules={rules} />
+        </div>
+        <div className="spacer" />
+    </div>
+);
 
-    render() {
-        return (
-            <div className="testItem-container">
-                <div className = "test-info">
-                    <a href = {this.props.link}
-                       className = "test-title">
-                       {this.props.title}
-                    </a>
-                    <div className="compatibility">{this.props.compatibility}</div>
-                    <div className="incompatibility">{this.props.incompatibility}</div>
-                </div>
-                <div className="test-actions">
-                    <CopyLink {...this.props} />
-                    <CopyRules {...this.props} />
-                    <SubscribeFilter {...this.props} />
-                </div>
-                <div className="spacer"></div>
-            </div>
-        )
-    }
-}
+export default TestItem;
