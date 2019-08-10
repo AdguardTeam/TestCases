@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class TestItem extends React.Component {
+export default class copyLink extends React.Component {
     copyLink = () => {
         if (this.props.rules) {
             const dummy = document.createElement('textarea');
@@ -13,12 +13,11 @@ export default class TestItem extends React.Component {
         }
     }
 
-    btnClass = () => (`btn copyLink${this.props.rules === '' ? ' disabled' : ''}`)
-
     render() {
+        const { rulesBtnState } = this.props;
         return (
             <button
-                className={this.btnClass()}
+                className={`btn copyLink ${rulesBtnState}`}
                 type="button"
                 name="Copy link for rules file"
                 onClick={this.copyLink}
