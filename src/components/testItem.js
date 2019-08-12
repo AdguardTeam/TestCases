@@ -7,13 +7,10 @@ import CopyRules from './CopyRules';
 import SubscribeFilter from './SubscribeFilter';
 
 export default class TestItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            rulesBtnState: '',
-            readmeBtnState: '',
-        };
-    }
+    state = {
+        rulesBtnState: '',
+        readmeBtnState: '',
+    };
 
     componentDidMount() {
         const {
