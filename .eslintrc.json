@@ -1,7 +1,12 @@
 {
     "parser": "babel-eslint",
 
-    "extends": ["airbnb", "plugin:react/recommended"],
+    "extends": [
+        "airbnb", 
+        "plugin:react/recommended",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
 
     "env": {
         "browser": true,
@@ -52,7 +57,6 @@
                 "ignoreClassFields": true
             }
         ],
-        "react/prop-types": "off", // TODO remove this rule when app will grow bigger
         "class-methods-use-this": "off",
         "comma-dangle": [
             "error",

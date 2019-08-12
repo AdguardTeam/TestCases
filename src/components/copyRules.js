@@ -1,16 +1,14 @@
 import React from 'react';
 
-export default class copyRules extends React.Component {
+import PropTypes from 'prop-types';
+import toClipboard from './toClipboard';
+
+export default class CopyRules extends React.Component {
     copyRules = async () => {
-        const url = window.location.href + this.props.rules;
+        const url = window.location.href + this.props.rulesUrl;
         const response = await fetch(url);
         const responseText = await response.text();
-        const dummy = document.createElement('textarea');
-        document.body.appendChild(dummy);
-        dummy.value = responseText;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
+        toClipboard(responseText);
         alert(`The rules for the test "${this.props.title}" have been copied to your clipboard.`);
     }
 
@@ -28,3 +26,13 @@ export default class copyRules extends React.Component {
         );
     }
 }
+
+CopyRules.propTypes = {
+    rulesUrl: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    rulesBtnState: PropTypes.string.isRequired,
+};
+
+CopyRules.defaultProps = {
+    rulesUrl: '',
+};

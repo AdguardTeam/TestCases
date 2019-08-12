@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles/styles.scss';
 import Header from './components/Header';
-import TestList from './components/testList';
+import TestList from './components/TestList';
 import Footer from './components/Footer';
 
 function App() {

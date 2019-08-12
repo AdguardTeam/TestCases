@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Readme = ({ readmeBtnState, readmeUrl }) => (
     <a
@@ -13,3 +14,12 @@ const Readme = ({ readmeBtnState, readmeUrl }) => (
 );
 
 export default Readme;
+
+Readme.propTypes = {
+    readmeUrl: PropTypes.string,
+    readmeBtnState: PropTypes.string.isRequired,
+};
+
+Readme.defaultProps = {
+    readmeUrl: '',
+};

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SubscribeFilter = ({ rulesBtnState, rules }) => (
+const SubscribeFilter = ({ rulesBtnState, rulesUrl }) => (
     <a
-        href={`https://subscribe.adblockplus.org?location=${window.location.href}${rules}`}
+        href={`https://subscribe.adblockplus.org?location=${window.location.href}${rulesUrl}`}
         className={`btn subscribe ${rulesBtnState}`}
         title="Subscribe filter"
     >
@@ -11,3 +12,12 @@ const SubscribeFilter = ({ rulesBtnState, rules }) => (
 );
 
 export default SubscribeFilter;
+
+SubscribeFilter.propTypes = {
+    rulesUrl: PropTypes.string,
+    rulesBtnState: PropTypes.string.isRequired,
+};
+
+SubscribeFilter.defaultProps = {
+    rulesUrl: '',
+};

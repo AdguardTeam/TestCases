@@ -1,14 +1,13 @@
 import React from 'react';
 
-export default class copyLink extends React.Component {
+import PropTypes from 'prop-types';
+import toClipboard from './toClipboard';
+
+export default class CopyLink extends React.Component {
     copyLink = () => {
-        if (this.props.rules) {
-            const dummy = document.createElement('textarea');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href + this.props.rules;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
+        if (this.props.rulesUrl) {
+            const url = window.location.href + this.props.rulesUrl;
+            toClipboard(url);
             alert(`Link for the rules for test "${this.props.title}" have been copied to your clipboard.`);
         }
     }
@@ -27,3 +26,13 @@ export default class copyLink extends React.Component {
         );
     }
 }
+
+CopyLink.propTypes = {
+    rulesUrl: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    rulesBtnState: PropTypes.string.isRequired,
+};
+
+CopyLink.defaultProps = {
+    rulesUrl: '',
+};

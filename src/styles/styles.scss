@@ -15,16 +15,16 @@ $mainContainer: 80vw;
 
 @font-face {
   font-family: Akkurat;
-  src: url("/fonts/akkurat/regular.woff2") format("woff2"), url("/fonts/akkurat/regular.woff") format("woff");
+  src: url("/fonts/regular.woff") format('woff');
   font-weight: 400;
-  font-style: normal
+  font-style: normal;
 }
 
 @font-face {
   font-family: Akkurat;
-  src: url("/fonts/akkurat/bold.woff2") format("woff2"), url("/fonts/akkurat/bold.woff") format("woff");
+  src: url("/fonts/bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal
+  font-style: normal;
 }
 
 :focus {
@@ -248,8 +248,8 @@ footer {
 .copyrights {
   position: absolute;
   top: 1.8vw;
-  left: 4.4vw;
-  font-size: .8vw;
+  left: 4.7vw;
+  font-size: .75vw;
   color: white;
 }
 
