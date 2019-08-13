@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import toClipboard from './toClipboard';
+import toClipboard from '../helpers/toClipboard';
 
 export default class CopyRules extends React.Component {
     copyRules = async () => {
