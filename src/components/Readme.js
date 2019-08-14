@@ -1,19 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Readme = ({ readmeBtnState, readmeUrl }) => (
-    <a
-        href={window.location.href + readmeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`btn readme ${readmeBtnState}`}
-        title="README.md"
-    >
-        Readme
-    </a>
-);
+export default class Readme extends React.Component {
 
-export default Readme;
+    readmeClick() {
+        // const { readmeUrl } = this.props;
+        window.open(this.props.readmeUrl, "_blank")
+    }
+
+    render() {
+        const { readmeBtnState } = this.props;
+        return (
+            <button
+                type="button"
+                name="Show Readme file"
+                onClick={this.readmeClick}
+                rel="noopener noreferrer"
+                className={`btn readme ${readmeBtnState}`}
+                title="README.md"
+            >
+                Readme
+            </button>
+        );
+    }
+}
 
 Readme.propTypes = {
     readmeUrl: PropTypes.string,
