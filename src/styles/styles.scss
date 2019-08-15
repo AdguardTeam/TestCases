@@ -11,7 +11,7 @@ $compatibilitySize: .9vw;
 $btnSize: 1vw;
 // Elements
 $btnIcon: 1.7vw;
-$mainContainer: 80vw;
+$mainContainer: 85vw;
 
 @font-face {
   font-family: Akkurat;
@@ -183,6 +183,11 @@ header h3 {
   transition: 0;
 }
 
+.startTest {
+  background: url(../img/start.png) center top no-repeat;
+  background-size: $btnIcon;
+}
+
 .readme {
   background: url(../img/readme.png) center top no-repeat;
   background-size: $btnIcon;
@@ -251,6 +256,28 @@ footer {
   left: 4.7vw;
   font-size: .75vw;
   color: white;
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.close-readme {
+  position: absolute;
+  top: 2.5vw;
+  right: 2.5vw;
+  background: url(../img/close.png) center no-repeat;
+  background-size: contain;
+  width: 3vw;
+  height: 3vw;
+  border: unset;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.close-readme:hover {
+  transform: rotate(90deg);
+  transition: .5s;
 }
 
 // *** MOBILE ***

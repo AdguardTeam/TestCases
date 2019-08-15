@@ -4,8 +4,7 @@
     "extends": [
         "airbnb", 
         "plugin:react/recommended",
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "eslint:recommended"
     ],
 
     "env": {

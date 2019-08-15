@@ -1,14 +1,13 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import getFile from '../helpers/getFile'
 import toClipboard from '../helpers/toClipboard';
 
-export default class CopyRules extends React.Component {
+export default class CopyRulesBtn extends React.Component {
     copyRules = async () => {
-        const url = window.location.href + this.props.rulesUrl;
-        const response = await fetch(url);
-        const responseText = await response.text();
-        toClipboard(responseText);
+        const rules = await getFile(this.props.rulesUrl)
+        toClipboard(rules);
         alert(`The rules for the test "${this.props.title}" have been copied to your clipboard.`);
     }
 
@@ -27,12 +26,12 @@ export default class CopyRules extends React.Component {
     }
 }
 
-CopyRules.propTypes = {
+CopyRulesBtn.propTypes = {
     rulesUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
     rulesBtnState: PropTypes.string.isRequired,
 };
 
-CopyRules.defaultProps = {
+CopyRulesBtn.defaultProps = {
     rulesUrl: '',
 };

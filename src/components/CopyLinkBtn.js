@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import toClipboard from '../helpers/toClipboard';
 
-export default class CopyLink extends React.Component {
+export default class CopyLinkBtn extends React.Component {
     copyLink = () => {
         if (this.props.rulesUrl) {
             const url = window.location.href + this.props.rulesUrl;
@@ -27,12 +27,12 @@ export default class CopyLink extends React.Component {
     }
 }
 
-CopyLink.propTypes = {
+CopyLinkBtn.propTypes = {
     rulesUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
     rulesBtnState: PropTypes.string.isRequired,
 };
 
-CopyLink.defaultProps = {
+CopyLinkBtn.defaultProps = {
     rulesUrl: '',
 };
