@@ -20,7 +20,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm eslint && npm test"
+      "pre-push": "npm run lint && CI=true react-scripts test"
     }
   },
   "eslintConfig": {

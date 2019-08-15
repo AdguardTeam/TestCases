@@ -9,17 +9,9 @@ import SubscribeFilterBtn from './SubscribeFilterBtn';
 
 export default class TestItem extends React.Component {
     state = {
-        rulesBtnState: '',
-        readmeBtnState: '',
+        rulesBtnState: this.props.rulesUrl ? 'enabled' : 'disabled',
+        readmeBtnState: this.props.readmeUrl ? 'enabled' : 'disabled',
     };
-
-    componentDidMount() {
-        const {
-            rulesUrl, readmeUrl,
-        } = this.props;
-        this.setState({ rulesBtnState: rulesUrl ? 'enabled' : 'disabled' });
-        this.setState({ readmeBtnState: readmeUrl ? 'enabled' : 'disabled' });
-    }
 
     render() {
         const {
