@@ -12,10 +12,10 @@ export default class CopyRulesBtn extends React.Component {
     }
 
     render() {
-        const { rulesBtnState } = this.props;
+        const { copyRulesBtn } = this.props;
         return (
             <button
-                className={`btn copyRules ${rulesBtnState}`}
+                className={`btn copyRules ${copyRulesBtn}`}
                 type="button"
                 name="Copy rules list"
                 onClick={this.copyRules}
@@ -29,7 +29,7 @@ export default class CopyRulesBtn extends React.Component {
 CopyRulesBtn.propTypes = {
     rulesUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
-    rulesBtnState: PropTypes.string.isRequired,
+    copyRulesBtn: PropTypes.string.isRequired,
 };
 
 CopyRulesBtn.defaultProps = {

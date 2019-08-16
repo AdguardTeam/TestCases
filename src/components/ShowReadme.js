@@ -8,8 +8,8 @@ export default class ShowReadme extends React.Component {
         readmeFile: '',
     };
 
-    componentDidMount() {
-        this.getReadme();
+    async componentDidMount() {
+        await this.getReadme();
     }
 
     getReadme = async () => {

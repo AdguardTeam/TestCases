@@ -7,65 +7,63 @@ import CopyLinkBtn from './CopyLinkBtn';
 import CopyRulesBtn from './CopyRulesBtn';
 import SubscribeFilterBtn from './SubscribeFilterBtn';
 
-export default class TestItem extends React.Component {
-    state = {
-        rulesBtnState: this.props.rulesUrl ? 'enabled' : 'disabled',
-        readmeBtnState: this.props.readmeUrl ? 'enabled' : 'disabled',
-    };
+const TestItem = ({ title, link, rulesUrl, compatibility, incompatibility, readmeUrl }) => {
 
-    render() {
-        const {
-            title, link, rulesUrl, compatibility, incompatibility, readmeUrl,
-        } = this.props;
-        const {
-            readmeBtnState, rulesBtnState,
-        } = this.state;
-        return (
-            <div className="testItem-container">
-                <div className="test-info">
-                    <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="test-title"
-                    >
-                        {title}
-                    </a>
-                    <div className="compatibility">{compatibility}</div>
-                    <div className="incompatibility">{incompatibility}</div>
-                </div>
-                <div className="test-actions">
-                    
-                    <StartTestBtn link={link} />
-                    
-                    <ReadmeBtn
-                        readmeBtnState={readmeBtnState}
-                        readmeUrl={readmeUrl}
-                    />
-                    
-                    <CopyLinkBtn
-                        rulesBtnState={rulesBtnState}
-                        rulesUrl={rulesUrl}
-                        title={title}
-                    />
-                    
-                    <CopyRulesBtn
-                        rulesBtnState={rulesBtnState}
-                        rulesUrl={rulesUrl}
-                        title={title}
-                    />
-                    
-                    <SubscribeFilterBtn
-                        rulesBtnState={rulesBtnState}
-                        rulesUrl={rulesUrl}
-                    />
-
-                </div>
-                <div className="spacer" />
-            </div>
-        );
+    const rulesBtn = () => {
+        return rulesUrl ? 'enabled' : 'disabled';
     }
+    
+    const readmeBtn = () => {
+        return readmeUrl ? 'enabled' : 'disabled';
+    }
+
+    return (
+        <div className="testItem-container">
+            <div className="test-info">
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="test-title"
+                >
+                    {title}
+                </a>
+                <div className="compatibility">{compatibility}</div>
+                <div className="incompatibility">{incompatibility}</div>
+            </div>
+            <div className="test-actions">
+                
+                <StartTestBtn link={link} />
+                
+                <ReadmeBtn
+                    readmeBtn={readmeBtn()}
+                    readmeUrl={readmeUrl}
+                />
+                
+                <CopyLinkBtn
+                    copyLinkBtn={rulesBtn()}
+                    rulesUrl={rulesUrl}
+                    title={title}
+                />
+                
+                <CopyRulesBtn
+                    copyRulesBtn={rulesBtn()}
+                    rulesUrl={rulesUrl}
+                    title={title}
+                />
+                
+                <SubscribeFilterBtn
+                    subscribeBtn={rulesBtn()}
+                    rulesUrl={rulesUrl}
+                />
+
+            </div>
+            <div className="spacer" />
+        </div>
+    );
 }
+
+export default TestItem;
 
 TestItem.propTypes = {
     title: PropTypes.string.isRequired,

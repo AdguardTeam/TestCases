@@ -37,7 +37,7 @@ export default class ReadmeBtn extends React.Component {
     }
 
     render() {
-        const { readmeBtnState, readmeUrl } = this.props;
+        const { readmeBtn, readmeUrl } = this.props;
         const { modalIsOpen } = this.state;
         return (
             <span>
@@ -46,7 +46,7 @@ export default class ReadmeBtn extends React.Component {
                     name="Show Readme file"
                     onClick={this.openModal}
                     rel="noopener noreferrer"
-                    className={`btn readme ${readmeBtnState}`}
+                    className={`btn readme ${readmeBtn}`}
                     title="README.md"
                 >
                     Readme
@@ -71,7 +71,7 @@ export default class ReadmeBtn extends React.Component {
 
 ReadmeBtn.propTypes = {
     readmeUrl: PropTypes.string,
-    readmeBtnState: PropTypes.string.isRequired,
+    readmeBtn: PropTypes.string.isRequired,
 };
 
 ReadmeBtn.defaultProps = {
