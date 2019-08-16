@@ -7,7 +7,7 @@ $incompatibilityColor: red;
 // Font sizes:
 $bodySize: 1vw;
 $testTitleSize: 1.3vw;
-$compatibilitySize: .9vw;
+$compatibilitySize: 0.9vw;
 $btnSize: 1vw;
 // Elements
 $btnIcon: 1.7vw;
@@ -15,7 +15,7 @@ $mainContainer: 85vw;
 
 @font-face {
   font-family: Akkurat;
-  src: url("../fonts/regular.woff") format('woff');
+  src: url("../fonts/regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -66,7 +66,7 @@ header {
   height: 6vw;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25.3 25.9'%3E%3Cpath fill='%2368bc71' d='M12.7 0C8.7 0 3.9.9 0 3c0 4.4-.1 15.4 12.7 23C25.4 18.4 25.3 7.4 25.3 3 21.4.9 16.6 0 12.7 0z'/%3E%3Cpath fill='%2367b279' d='M12.6 25.9C-.1 18.4 0 7.4 0 3c3.9-2 8.7-3 12.6-3v25.9z'/%3E%3Cpath fill='%23fff' d='M12.2 17.3L19.8 7a.99.99 0 0 0-1.3.1l-6.4 6.6-2.4-2.9c-1.1-1.3-2.7-.3-3.1 0l5.6 6.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  margin-right: .7vw;
+  margin-right: 0.7vw;
   float: left;
 }
 
@@ -78,12 +78,12 @@ header h1 {
 
 header h2 {
   font-size: 2vw;
-  margin: .7vw 0 2vw;
+  margin: 0.7vw 0 2vw;
 }
 
 header h3 {
   font-size: 1.5vw;
-  margin: .3vw 0 0;
+  margin: 0.3vw 0 0;
 }
 
 .mission {
@@ -95,7 +95,7 @@ header h3 {
 
 .instruction {
   padding-left: 6vw;
-  border-left: .1vw solid #7a7b8c;
+  border-left: 0.1vw solid #7a7b8c;
 }
 
 .instruction ul {
@@ -105,19 +105,19 @@ header h3 {
 
 .instruction ul li {
   position: relative;
-  font-size: .9vw;
-  margin-bottom: .3vw;
+  font-size: 0.9vw;
+  margin-bottom: 0.3vw;
 }
 
 .instruction ul li:before {
   content: "";
-  width: .5vw;
-  height: .5vw;
+  width: 0.5vw;
+  height: 0.5vw;
   border-radius: 100%;
-  border: .1vw solid #fff;
+  border: 0.1vw solid #fff;
   position: absolute;
   left: -1.9vw;
-  top: calc(50% - .35vw);
+  top: calc(50% - 0.35vw);
 }
 
 // *** TESTLIST ***
@@ -132,8 +132,8 @@ header h3 {
   margin: 0 0 1vw;
   padding: 1.2vw 1.5vw;
   word-wrap: break-word;
-  border-radius: .3vw;
-  box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
+  border-radius: 0.3vw;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
   clear: both;
 }
 
@@ -163,18 +163,18 @@ header h3 {
   color: $textColor;
   cursor: pointer;
   text-decoration: none;
-  margin: .5vw .7vw 0;
+  margin: 0.5vw 0.7vw 0;
   padding: 2.3vw 0 0;
   display: inline-block;
 }
 
 .btn:hover {
   filter: brightness(0);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .disabled {
-  opacity: .2;
+  opacity: 0.2;
   pointer-events: none;
 }
 
@@ -213,7 +213,7 @@ header h3 {
   font-weight: 700;
   color: $textColor;
   text-decoration: none;
-  margin-bottom: .3vw;
+  margin-bottom: 0.3vw;
   display: block;
 }
 
@@ -254,7 +254,7 @@ footer {
   position: absolute;
   top: 1.8vw;
   left: 4.7vw;
-  font-size: .75vw;
+  font-size: 0.75vw;
   color: white;
 }
 
@@ -272,12 +272,12 @@ footer {
   height: 3vw;
   border: unset;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .close-readme:hover {
   transform: rotate(90deg);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 // *** MOBILE ***
@@ -292,7 +292,7 @@ footer {
     margin: 3vw auto;
   }
   .testItem-container {
-    margin: 0 .5vw 7vw;
+    margin: 0 0.5vw 7vw;
     padding: 5vw;
     border-radius: 1vw;
   }
@@ -367,7 +367,6 @@ footer {
     padding: 0 3vw;
   }
   .instruction {
-    padding-left: 0;
     border-left: none;
     padding: 0 3vw;
     margin-top: 7vw;
