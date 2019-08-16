@@ -1,8 +1,56 @@
 {
+  "name": "filters-tests",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-modal": "^3.9.1",
+    "react-scripts": "3.0.1"
+  },
   "scripts": {
-    "serve" : "http-server -a testcases.adguard.com -p 3002"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/**/*.js",
+    "stylelint": "stylelint ./src/styles/*.scss"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run stylelint && npm run lint && CI=true react-scripts test"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-recommended-scss"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.3",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-scss": "^3.9.3"
   }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$content modifier test</title>
+    <link rel="stylesheet" href="../../qunit/qunit.css">
+    <link rel="stylesheet" href="../../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-content-modifier-filter" class="subscribe-link">
+        <a
+            href="content-modifier-test.txt">Subscribe
+            to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../../qunit/qunit.js"></script>
+
+    <div style="position: absolute; top: -9999px;">
+        <div id="case1" style="height: 20px; width: 50px; background: green;"></div> 
+        <a id="case2" href="#" target="_blank">case2 link</a>
+        <div id="case3">Lorem ipsum dolor sit amet</div>
+        <div id="case4" class="class4" style="height: 20px; width: 50px; background: yellow;"></div>
+    </div>
+
+    <script type="text/javascript" src="content-modifier-test.js"></script>
+</body>
+
+</html>

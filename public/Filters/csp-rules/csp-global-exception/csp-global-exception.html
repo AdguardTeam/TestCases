@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$csp global exception rules test</title>
+    <link rel="stylesheet" href="../../qunit/qunit.css">
+    <link rel="stylesheet" href="../../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-csp-global-exception-rules-filter"
+        style="font-size: 48px; padding: 50px; text-align: center;">
+        <a
+            href="csp-global-exception.txt">Subscribe
+            to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../../qunit/qunit.js"></script>
+
+    <script type="text/javascript">
+        let tmp = document.createElement("div");
+        document.body.appendChild(tmp);
+        tmp.id = "csp-global-exception";
+        tmp.innerHTML = "Inline script works";
+    </script>
+
+    <script type="text/javascript" src="csp-global-exception.js"></script>
+</body>
+
+</html>

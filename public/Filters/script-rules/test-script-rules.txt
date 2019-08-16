@@ -1,0 +1,16 @@
+!
+! Title: Rules for script rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com###subscribe-to-test-script-rules-filter
+surge.sh###subscribe-to-test-script-rules-filter
+!
+testcases.adguard.com#%#window.__testCase1 = true;
+surge.sh#%#window.__testCase1 = true;
+testcases.adguard.com#%#window.__testCase2 = true;
+surge.sh#%#window.__testCase2 = true;
+testcases.adguard.com#@%#window.__testCase2 = true;
+surge.sh#@%#window.__testCase2 = true;

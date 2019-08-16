@@ -1,0 +1,22 @@
+!
+! Title: Rules for simple rules tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com###subscribe-to-test-simple-rules-filter
+surge.sh###subscribe-to-test-simple-rules-filter
+! Test case 1: domain-specific elemhide rule
+testcases.adguard.com###case-1-elemhide > .banner
+surge.sh###case-1-elemhide > .banner
+! Test case 2: generic elemhide rule
+###case-2-generic-elemhide > .banner
+! Test case 3: elemhide rule exception
+###case-3-elemhide-exception > .banner
+testcases.adguard.com#@##case-3-elemhide-exception > .banner
+surge.sh#@##case-3-elemhide-exception > .banner
+! Test case 4: domain exclusion
+~testcases.adguard.com###case-4-domain-exclusion > .banner
+~surge.sh###case-4-domain-exclusion > .banner
+
