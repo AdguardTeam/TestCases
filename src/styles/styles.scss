@@ -292,7 +292,7 @@ footer {
     margin: 3vw auto;
   }
   .testItem-container {
-    margin: 0 .5vw 4vw;
+    margin: 0 .5vw 7vw;
     padding: 5vw;
     border-radius: 1vw;
   }
@@ -306,12 +306,13 @@ footer {
     float: none;
   }
   .test-title {
-    font-size: 5.5vw;
-    line-height: 6vw;
-    margin-bottom: 4vw;
-    background: url(../img/logo.png) left center no-repeat;
+    font-size: 7vw;
+    line-height: 8vw;
+    margin: 2vw 0 6vw;
+    background: none;
     background-size: 4vw;
-    padding-left: 5.5vw;
+    padding-left: 0;
+    text-align: center;
   }
   .compatibility,
   .incompatibility {
@@ -319,25 +320,27 @@ footer {
     line-height: 4vw;
     background-size: 4vw;
     padding-left: 5.5vw;
-    margin-bottom: 1.3vw;
+    margin-bottom: 3vw;
   }
   .btn {
     font-size: 4vw;
     margin: 4vw 0 0 0;
     padding: 7vw 0 0;
   }
+  .startTest,
   .copyLink,
   .copyRules,
   .subscribe,
   .readme {
     background-size: 6vw;
     display: block;
-    width: 25%;
+    width: 33%;
     text-align: center;
     float: left;
+    margin-bottom: 4vw;
   }
-  .subscribe,
-  .readme {
+  .startTest,
+  .subscribe {
     padding-top: 8.8vw;
   }
   .header-container {
