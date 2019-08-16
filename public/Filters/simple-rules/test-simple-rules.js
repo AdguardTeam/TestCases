@@ -3,24 +3,26 @@
  */
 window.addEventListener('load', function() {
 
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-simple-rules-filter'), null).display == 'none';
+
     QUnit.test("1. Test domain-specific element hiding rule", function(assert) {
-        var element = document.querySelector('#case-1-elemhide > .banner');
+        var element = document.querySelector('#case-1-elemhide > .test-banner');
         assert.equal(window.getComputedStyle(element).display, "none");
     });
     
     QUnit.test("2. Test generic element hiding rule", function(assert) {
-        var element = document.querySelector('#case-2-generic-elemhide > .banner');
+        var element = document.querySelector('#case-2-generic-elemhide > .test-banner');
         assert.equal(window.getComputedStyle(element).display, "none");
     });
 
     QUnit.test("3. Test element hiding rule exception", function(assert) {
-        var element = document.querySelector('#case-3-elemhide-exception > .banner');
-        assert.equal(window.getComputedStyle(element).display, "block");
+        var element = document.querySelector('#case-3-elemhide-exception > .test-banner');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === "block");
     });
 	
-	QUnit.test("4. Test domain exclusion", function(assert) {
-        var element = document.querySelector('#case-4-domain-exclusion > .banner');
-        assert.equal(window.getComputedStyle(element).display, "block");
+    QUnit.test("4. Test domain exclusion", function(assert) {
+        var element = document.querySelector('#case-4-domain-exclusion > .test-banner');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === "block");
     });
 
     // Add new test cases here

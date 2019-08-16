@@ -5,11 +5,13 @@
 // @description AdGuard's userscripts API tester
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
-// @require         https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/jquery-2.1.1.min.js
-// @resource		1x1.png https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/1x1.png
-// @resource        testResource.js  https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/resource.js
-// @downloadURL	    https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js
-// @updateURL		https://github.com/AdguardTeam/TestCases/raw/master/Userscripts/apiTester/api-tester.user.js
+// @match			      https://*.surge.sh/Userscripts/*
+// @match			      http://*.surge.sh/Userscripts/*
+// @require         jquery-2.1.1.min.js
+// @resource		1x1.png 1x1.png
+// @resource        testResource.js  resource.js
+// @downloadURL	    https://github.com/AdguardTeam/TestCases/raw/master/public/Userscripts/apiTester/api-tester.user.js
+// @updateURL		https://github.com/AdguardTeam/TestCases/raw/master/public/Userscripts/apiTester/api-tester.user.js
 // @grant GM_info
 // @grant GM_addStyle
 // @grant GM_setValue
@@ -100,7 +102,7 @@
 
 			GM_xmlhttpRequest({
 				method: "GET",
-				url: "https://raw.githubusercontent.com/AdguardTeam/TestCases/master/Userscripts/apiTester/resource.js",
+				url: "/Userscripts/apiTester/resource.js",
 				onload: function (response) {
 					assert.equal(response.responseText, '"привет, я resource"');
 					done();
