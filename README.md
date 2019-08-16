@@ -1,4 +1,6 @@
-# testcases.adguard.com on react.js
+[![Build Status](https://travis-ci.org/AdguardTeam/TestCases.svg?branch=master)](https://travis-ci.org/AdguardTeam/TestCases)
+
+# AdGuard Test Cases
 
 ## How to build
 
