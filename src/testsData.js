@@ -9,8 +9,8 @@ const testsData = [
     {
         id: 2,
         title: 'Generic hide rules',
-        link: 'Filters/simple-rules/generichide/test.html',
-        rulesUrl: 'Filters/simple-rules/generichide/rules.txt',
+        link: 'Filters/simple-rules/generichide-test/generichide-test.html',
+        rulesUrl: 'Filters/simple-rules/generichide-test/generichide-test.txt',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
