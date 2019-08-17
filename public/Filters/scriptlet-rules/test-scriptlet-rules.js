@@ -26,6 +26,9 @@ const clearProperties = (...props) => {
 };
 
 window.addEventListener('load', () => {
+
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-scriptlet-rules-filter'), null).display === 'none';  
+
     QUnit.test('abort-on-property-write AdGuard syntax', (assert) => {
         assert.throws(
             () => {
@@ -303,7 +306,7 @@ window.addEventListener('load', () => {
         if (window3) window3.close();
 
         const window4 = window.open('window4');
-        assert.equal(window4, undefined, 'UBO RULE: Prevent by string "window4"');
+        assert.ok(adgCheck && window4 === undefined, 'UBO RULE: Prevent by string "window4"');
         if (window4) window4.close();
 
         const window5 = window.open('window5');
@@ -320,7 +323,7 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('remove-cookie', (assert) => {
-        assert.ok(document.cookie.indexOf('example') === -1, "All cookies was deleted");
+        assert.ok(adgCheck && document.cookie.indexOf('example') === -1, "All cookies was deleted");
         document.cookie = 'example=test';
         // todo check why remove-cookie with params does not work
     });

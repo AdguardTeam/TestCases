@@ -70,6 +70,7 @@ const testsData = [
         rulesUrl: 'Filters/csp-rules/csp-global-exception/csp-global-exception.txt',
         compatibility: 'Windows, MacOS, Android, FF, Chrome, Opera',
         incompatibility: 'Edge, Safari, iOS, Content Blocker',
+        readmeUrl: 'Filters/csp-rules/csp-global-exception/README.md',
     },
     {
         id: 10,

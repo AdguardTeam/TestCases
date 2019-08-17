@@ -3,6 +3,8 @@
  */
 window.addEventListener('load', function() {
 
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-content-rules-filter'), null).display == 'none';
+
     QUnit.test("1. Test content id", function(assert) {
         assert.notOk(document.querySelector('#case1'));
     });
@@ -20,6 +22,6 @@ window.addEventListener('load', function() {
     });
 
     QUnit.test("5. Test content exceptions", function(assert) {
-        assert.ok(document.querySelector('#case5'));
+        assert.ok(adgCheck && document.querySelector('#case5'));
     });
 });
