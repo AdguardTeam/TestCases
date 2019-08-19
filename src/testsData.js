@@ -76,7 +76,7 @@ const testsData = [
         id: 10,
         title: 'Websocket blocking',
         link: 'Filters/websockets/test-websockets.html',
-        rulesUrl: 'Filters/websockets/test-websockets.js',
+        rulesUrl: 'Filters/websockets/test-websockets.txt',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge',
         incompatibility: 'Safari, iOS, Content Blocker',
     },

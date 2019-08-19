@@ -3,6 +3,8 @@
  */
 window.addEventListener('load', function() {
 
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-websockets-filter'), null).display == 'none';
+
     QUnit.test("1. Test valid websocket connection", function(assert) {
         
         var done = assert.async();
@@ -10,7 +12,7 @@ window.addEventListener('load', function() {
         var ws = new WebSocket("wss://echo.websocket.org/?valid");
 
         ws.onopen = function(e) {
-            assert.ok('Connection is open');
+            assert.ok(adgCheck && 'Connection is open');
             done();
         };
 
