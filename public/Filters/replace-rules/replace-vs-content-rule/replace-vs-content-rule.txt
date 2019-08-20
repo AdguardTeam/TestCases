@@ -6,13 +6,11 @@
 !
 !
 ! Hide warning
-testcases.adguard.com###subscribe-to-replace-vs-content-rule-filter
-surge.sh###subscribe-to-replace-vs-content-rule-filter
+testcases.adguard.com,surge.sh###subscribe-to-replace-vs-content-rule-filter
 !
 ! Case 1: using with exception rules including $content modifier for a same request
-testcases.adguard.com$$div[id="case1-block2"]
+testcases.adguard.com,surge.sh$$div[id="case1-block2"]
 ||testcases.adguard.com$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
-@@||testcases.adguard.com$content
-surge.sh$$div[id="case1-block2"]
 ||surge.sh$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
+@@||testcases.adguard.com$content
 @@||surge.sh$content

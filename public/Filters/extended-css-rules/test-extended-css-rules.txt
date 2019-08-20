@@ -5,40 +5,22 @@
 ! https://testcases.adguard.com
 !
 ! Hide warning
-testcases.adguard.com###subscribe-to-test-extended-css-rules-filter
-surge.sh###subscribe-to-test-extended-css-rules-filter
+testcases.adguard.com,surge.sh###subscribe-to-test-extended-css-rules-filter
 !
-testcases.adguard.com###case1.banner:has(a.banner-link)
-surge.sh###case1.banner:has(a.banner-link)
-testcases.adguard.com###case2.banner:contains(Click Me!)
-surge.sh###case2.banner:contains(Click Me!)
-testcases.adguard.com###case3.banner:matches-css(opacity: 0.9)
-surge.sh###case3.banner:matches-css(opacity: 0.9)
-testcases.adguard.com###case4.banner:matches-css-after(content: sponsored)
-surge.sh###case4.banner:matches-css-after(content: sponsored)
-testcases.adguard.com###case5.banner:matches-css-before(content: sponsored)
-surge.sh###case5.banner:matches-css-before(content: sponsored)
-testcases.adguard.com###case6.banner:has-text(You would want to click me for sure!)
-surge.sh###case6.banner:has-text(You would want to click me for sure!)
-testcases.adguard.com###case7.banner:-abp-has(a.banner-link)
-surge.sh###case7.banner:-abp-has(a.banner-link)
-testcases.adguard.com###case8.banner:contains(Click Me!)
-surge.sh###case8.banner:contains(Click Me!)
-testcases.adguard.com###case9.banner:contains(/[aа]{20,}/)
-surge.sh###case9.banner:contains(/[aа]{20,}/)
-testcases.adguard.com###case10.banner:matches-css(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-surge.sh###case10.banner:matches-css(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.adguard.com###case11.banner:matches-css-after(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-surge.sh###case11.banner:matches-css-after(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.adguard.com###case12.banner:matches-css-before(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-surge.sh###case12.banner:matches-css-before(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.adguard.com##body #case13.banner[-ext-has="a.banner-link"]
-surge.sh##body #case13.banner[-ext-has="a.banner-link"]
-testcases.adguard.com##.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
-surge.sh##.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
-testcases.adguard.com###case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
-surge.sh###case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
-testcases.adguard.com###case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
-surge.sh###case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
-testcases.adguard.com##*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
-surge.sh##*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
+testcases.adguard.com,surge.sh###case1.banner:has(a.banner-link)
+testcases.adguard.com,surge.sh###case2.banner:contains(Click Me!)
+testcases.adguard.com,surge.sh###case3.banner:matches-css(opacity: 0.9)
+testcases.adguard.com,surge.sh###case4.banner:matches-css-after(content: sponsored)
+testcases.adguard.com,surge.sh###case5.banner:matches-css-before(content: sponsored)
+testcases.adguard.com,surge.sh###case6.banner:has-text(You would want to click me for sure!)
+testcases.adguard.com,surge.sh###case7.banner:-abp-has(a.banner-link)
+testcases.adguard.com,surge.sh###case8.banner:contains(Click Me!)
+testcases.adguard.com,surge.sh###case9.banner:contains(/[aа]{20,}/)
+testcases.adguard.com,surge.sh###case10.banner:matches-css(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.adguard.com,surge.sh###case11.banner:matches-css-after(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.adguard.com,surge.sh###case12.banner:matches-css-before(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.adguard.com,surge.sh##body #case13.banner[-ext-has="a.banner-link"]
+testcases.adguard.com,surge.sh##.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
+testcases.adguard.com,surge.sh###case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
+testcases.adguard.com,surge.sh###case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
+testcases.adguard.com,surge.sh##*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))

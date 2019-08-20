@@ -1,26 +1,19 @@
-# Сценарий тестирования $csp правил 
+# $csp rules test 
 
 ## Case 1
-Запускаем инлайн-скрипт, который создает элемент с id="csp-test" и содержимым "Inline script works".
-С помощью $csp правила разрешаем скрипты только из оригинального источника ($csp=script-src 'self').
-Базовым правилом скрываем элемент с id="some-element".
-### Ожидаемый результат: инлайн-скрипт НЕ срабатывает, базовое правило применяется (т.е. отсутствуют элементы id="csp-test" и id="some-element").
+* The inline script creates element `id="csp-test"` with the following text `Inline script works`.
+* $csp rule allows scripts only from original source (`$csp=script-src 'self'`).
+* basic rule hides element `id="some-element"`.
+#### Expecting result: inline script rejected, basic rule works (there is no element `id="some-element"`; element `id="csp-test"` is hidden)
 
 ## Case 2
-Запрашиваем несколько изображений (через https и http).
-С помощью первого $csp правила разрешаем картинки только с https (т.е. pic1 и pic3)
-С помощью второго $csp правила разрешаем картинки только с субдомена scp001.surge.sh (т.е. pic1 и pic2)
-### Ожидаемый результат: все $csp правила применяются одновременно (т.е. загружается только pic1)
+* Requesting for three images (https and http).
+* first $csp rule allows images only from `https` (pic1 and pic3).
+* second $csp rule allows images only from `scp001.surge.sh` (pic1 and pic2)
+#### Expecting result: all $csp rules work together (only pic1 is visible)
 
 ## Case 3
-Инлайн-стиль скрывает элемент id="case3".
-С помощью $csp правила разрешаем стили только из оригинального источника ($csp=script-src 'self'), т.е. запрещаем использование инлайн-стилей.
-С помощью $csp исключения отменяем разрешение стилей только из оригинального источника.
-### Ожидаемый результат: $csp исключение отменяет $csp правило, совпадающее по паттерну (т.е. инлайн-стиль применяется и элемент id="case3" скрывается.)
-
-
-## Extra case: $CSP global exception - $csp исключение без аргументов.
-Запускаем инлайн-скрипт, который создает элемент с id="csp-global-exception" и содержимым "Inline script works".
-С помощью $csp правила разрешаем скрипты только из оригинального источника ($csp=script-src 'self').
-Применяем $csp исключение без аргументов.
-### Ожидаемый результат: $csp исключение отменяет $csp правило (т.е. инлайн-скрипт срабатывает)
+* inline style hides `id="case3"`.
+* $csp rule allows styles only from original source (`$csp=script-src 'self'`).
+* $csp exception rule disables previous $csp rule.
+#### Expecting result: $csp exception rule disables $csp rule with matching pattern (element `id="case3"` is hidden)
