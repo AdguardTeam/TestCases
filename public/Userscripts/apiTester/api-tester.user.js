@@ -11,9 +11,9 @@
 // @match			      http://*.surge.sh/Userscripts/*
 // @require         jquery-2.1.1.min.js
 // @resource		1x1.png 1x1.png
-// @resource        testResource.js  resource.js
-// @downloadURL	    https://github.com/AdguardTeam/TestCases/raw/master/public/Userscripts/apiTester/api-tester.user.js
-// @updateURL		https://github.com/AdguardTeam/TestCases/raw/master/public/Userscripts/apiTester/api-tester.user.js
+// @resource        testResource.js resource.js
+// @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
+// @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
 // @grant GM_info
 // @grant GM_addStyle
 // @grant GM_setValue
