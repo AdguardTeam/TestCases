@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name Userscripts API Tester
+// @name:ru API Тестер Юзерскриптов
 // @namespace adguard
 // @version      2.0.9
 // @description AdGuard's userscripts API tester
+// @description:ru API тестер юзерскриптов для AdGuard
 // @match			      https://testcases.adguard.com/Userscripts/*
 // @match			      http://testcases.adguard.com/Userscripts/*
 // @match			      https://*.surge.sh/Userscripts/*
