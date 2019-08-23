@@ -21,7 +21,10 @@ export default class ShowReadme extends React.Component {
         const { readmeFile } = this.state;
         return (
             <div>
-                <ReactMarkdown source={readmeFile} />
+                <ReactMarkdown 
+                    className="readmeText"
+                    source={readmeFile} 
+                />
             </div>
         );
     }

@@ -7,8 +7,7 @@ export default class CopyLinkBtn extends React.Component {
     copyLink = () => {
         if (this.props.rulesUrl) {
             const url = window.location.href + this.props.rulesUrl;
-            toClipboard(url);
-            alert(`Link for the rules for test "${this.props.title}" have been copied to your clipboard.`);
+            toClipboard(url, `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`);
         }
     }
 
