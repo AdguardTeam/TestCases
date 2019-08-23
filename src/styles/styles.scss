@@ -9,6 +9,9 @@ $bodySize: 1vw;
 $testTitleSize: 1.3vw;
 $compatibilitySize: 0.9vw;
 $btnSize: 1vw;
+// Readme
+$readmeFont: 1.2vw;
+$readmeH1: 3vw;
 // Elements
 $btnIcon: 1.7vw;
 $mainContainer: 85vw;
@@ -233,6 +236,19 @@ header h3 {
   padding-left: 1.5vw;
 }
 
+.readmeText {
+  font-size: $readmeFont;
+}
+
+.readmeText h1 {
+  font-size: $readmeH1;
+}
+
+.readmeText ul {
+  padding: 0 0 0 3vw;
+}
+
+
 // *** FOOTER ***
 
 footer {
@@ -291,6 +307,55 @@ footer {
     width: 94vw;
     margin: 3vw auto;
   }
+  .header-container {
+    width: 94vw;
+    display: block;
+  }
+  .adgLogo {
+    width: 20vw;
+    height: 20vw;
+    margin-right: 2vw;
+  }
+  header h1 {
+    font-size: 12vw;
+    line-height: 12vw;
+  }
+  header h2 {
+    font-size: 6vw;
+    margin: 0 0 5vw;
+  }
+  header h3 {
+    font-size: 5vw;
+    margin: 2vw 0 0;
+  }
+  .mission {
+    font-size: 4vw;
+    line-height: 5.5vw;
+    margin-top: 6vw;
+    padding: 0 3vw;
+  }
+  .instruction {
+    border-left: none;
+    padding: 0 3vw;
+    margin-top: 7vw;
+    font-size: 4vw;
+    line-height: 5.5vw;
+  }
+  .instruction ul li {
+    position: relative;
+    font-size: 3vw;
+    line-height: 4vw;
+    margin-bottom: 3.5vw;
+  }
+  .instruction ul {
+    padding-left: 5vw;
+  }
+  .instruction ul li:before {
+    width: 2vw;
+    height: 2vw;
+    left: -5vw;
+    top: 11%;
+  }
   .testItem-container {
     margin: 0 0.5vw 7vw;
     padding: 5vw;
@@ -343,54 +408,23 @@ footer {
   .subscribe {
     padding-top: 8.8vw;
   }
-  .header-container {
-    width: 94vw;
-    display: block;
-  }
-  .adgLogo {
-    width: 20vw;
-    height: 20vw;
-    margin-right: 2vw;
-  }
-  header h1 {
-    font-size: 12vw;
-    line-height: 12vw;
-  }
-  header h3 {
-    font-size: 5vw;
-    margin: 2vw 0 0;
-  }
-  .mission {
+  .readmeText {
     font-size: 4vw;
-    line-height: 5.5vw;
-    margin-top: 6vw;
-    padding: 0 3vw;
+    line-height: 5vw;
   }
-  .instruction {
-    border-left: none;
-    padding: 0 3vw;
-    margin-top: 7vw;
-    font-size: 4vw;
-    line-height: 5.5vw;
+  .readmeText h1 {
+    font-size: 8vw;
+    line-height: 10vw;
+    margin-top: 8vw;
   }
-  header h2 {
-    font-size: 6vw;
-    margin: 0 0 5vw;
+  .readmeText ul {
+    padding: 0 0 0 5vw;
   }
-  .instruction ul li {
-    position: relative;
-    font-size: 3vw;
-    line-height: 4vw;
-    margin-bottom: 3.5vw;
-  }
-  .instruction ul {
-    padding-left: 5vw;
-  }
-  .instruction ul li:before {
-    width: 2vw;
-    height: 2vw;
-    left: -5vw;
-    top: 11%;
+  .close-readme {
+    top: 4.5vw;
+    right: 4.5vw;
+    width: 7vw;
+    height: 7vw;
   }
   .footer-logo {
     width: 40vw;
@@ -405,3 +439,22 @@ footer {
     padding: 6vw 0;
   }
 }
+
+/************* SAFARI *************/
+
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+  .subscribe {
+    display: none;
+  }
+  @media only screen and (max-width: 600px) {
+    .startTest,
+    .copyLink,
+    .copyRules,
+    .readme {
+      background-size: 6vw;
+      width: 50%;
+      margin: 4vw 0 5vw 0;
+    } 
+  }
+}}
