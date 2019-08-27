@@ -24,6 +24,7 @@
 // @grant GM_getResourceURL
 // @grant GM_xmlhttpRequest
 // @grant unsafeWindow
+// @noframes
 // @run-at document-start
 // ==/UserScript==
 (function () {
