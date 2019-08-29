@@ -9,8 +9,14 @@
 ## Case 2
 * Requesting for three images (https and http).
 * first $csp rule allows images only from `https` (pic1 and pic3).
-* second $csp rule allows images only from `scp001.surge.sh` (pic1 and pic2)
-#### Expecting result: all $csp rules work together (only pic1 is visible)
+* second $csp rule allows images only from `adguard.com` (pic3 and pic4)
+#### Expecting result: all $csp rules work together (only pic3 loads)
+##### <span style="color:red">Please note: if something wrong with testcase #2 - check the availability of the following images:</span>
+* https://antibanner.net/img/welcome/filtering.png
+* http://antibanner.net/img/welcome/main.png
+* https://adguard.com/img/products/android/main.png
+* http://adguard.com/img/products/ios-pro/settings.png
+
 
 ## Case 3
 * inline style hides `id="case3"`.
