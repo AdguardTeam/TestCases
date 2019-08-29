@@ -10,13 +10,13 @@ testcases.adguard.com,surge.sh###subscribe-to-test-scriptlet-rules-filter
 ! abort-on-property-write
 !
 testcases.adguard.com,surge.sh#%#//scriptlet("abort-on-property-write", "__testCase1")
-testcases.adguard.com,surge.sh#%#//scriptlet("abort-on-property-write", "__testCase1")
-testcases.adguard.com,surge.sh#%#//scriptlet("abort-on-property-write", "__testCase1")
+testcases.adguard.com,surge.sh##+js(abort-on-property-write.js, __testCase2)
+testcases.adguard.com,surge.sh#$#abort-on-property-write __testCase3
 !
 ! abort-current-inline-script
 !
 testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase4")
-testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase4")
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase5")
 testcases.adguard.com,surge.sh#$#abort-current-inline-script __testCase6
 testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase7.__AG")
 testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase8", "Case8")
