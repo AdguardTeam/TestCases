@@ -1,0 +1,21 @@
+!
+! Title: Rules for $badfilter rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-badfilter-rules-filter
+!
+! Case 1
+||*/test-files/adg1.png
+||*/test-files/adg1.png$badfilter
+! Case 2
+||*/test-files/adg2.png
+@@||*/test-files/adg2.png
+@@||*/test-files/adg2.png$badfilter
+! Case 3
+||*/test-files/adg3.png$domain=testcases.adguard.com
+||*/test-files/adg3.png$domain=surge.sh
+||*/test-files/adg3.png$domain=testcases.adguard.com,badfilter
+||*/test-files/adg3.png$domain=surge.sh,badfilter
