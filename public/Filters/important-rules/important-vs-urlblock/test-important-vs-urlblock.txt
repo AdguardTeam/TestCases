@@ -1,0 +1,13 @@
+!
+! Title: Rules for $important-vs-urlblock test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-important-vs-urlblock-filter
+!
+! Case 3
+||*/test-files/adg3.png$important
+@@||testcases.adguard.com$urlblock
+@@||surge.sh$urlblock
