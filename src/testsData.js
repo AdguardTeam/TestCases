@@ -23,6 +23,22 @@ const testsData = [
     },
     {
         id: 4,
+        title: '$important rules',
+        link: 'Filters/important-rules/test-important-rules.html',
+        rulesUrl: 'Filters/important-rules/test-important-rules.txt',
+        compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari, iOS, Content Blocker',
+        readmeUrl: 'Filters/important-rules/README.md',
+    },
+    {
+        id: 5,
+        title: '$important rule vs $urlblock exception',
+        link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
+        rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
+        compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari, iOS, Content Blocker',
+        readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
+    },
+    {
+        id: 6,
         title: '$replace rules',
         link: 'Filters/replace-rules/test-replace-rules.html',
         rulesUrl: 'Filters/replace-rules/test-replace-rules.txt',
@@ -31,7 +47,7 @@ const testsData = [
         readmeUrl: 'Filters/replace-rules/README.md',
     },
     {
-        id: 5,
+        id: 7,
         title: '$replace rule vs $generichide exception',
         link: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt',
@@ -39,7 +55,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 6,
+        id: 8,
         title: '$replace rule vs $content exception',
         link: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.txt',
@@ -47,7 +63,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 7,
+        id: 9,
         title: '$replace rule vs $elemhide exception',
         link: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.txt',
@@ -55,7 +71,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 8,
+        id: 10,
         title: '$csp rules',
         link: 'Filters/csp-rules/test-csp-rules.html',
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
@@ -64,7 +80,7 @@ const testsData = [
         readmeUrl: 'Filters/csp-rules/README.md',
     },
     {
-        id: 9,
+        id: 11,
         title: '$csp exception test',
         link: 'Filters/csp-rules/csp-global-exception/csp-global-exception.html',
         rulesUrl: 'Filters/csp-rules/csp-global-exception/csp-global-exception.txt',
@@ -73,7 +89,7 @@ const testsData = [
         readmeUrl: 'Filters/csp-rules/csp-global-exception/README.md',
     },
     {
-        id: 10,
+        id: 12,
         title: 'Websocket blocking',
         link: 'Filters/websockets/test-websockets.html',
         rulesUrl: 'Filters/websockets/test-websockets.txt',
@@ -81,7 +97,7 @@ const testsData = [
         incompatibility: 'Safari, iOS, Content Blocker',
     },
     {
-        id: 11,
+        id: 13,
         title: 'Content rules',
         link: 'Filters/content-rules/test-content-rules.html',
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
@@ -89,7 +105,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 12,
+        id: 14,
         title: '$content modifier tests',
         link: 'Filters/content-rules/content-modifier-test/content-modifier-test.html',
         rulesUrl: 'Filters/content-rules/content-modifier-test/content-modifier-test.txt',
@@ -97,7 +113,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 13,
+        id: 15,
         title: 'Script rules',
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
@@ -105,7 +121,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 14,
+        id: 16,
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
@@ -113,7 +129,7 @@ const testsData = [
         incompatibility: 'Windows, MacOS, Android, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 15,
+        id: 17,
         title: 'Userscripts',
         link: 'Userscripts/test-userscripts.html',
         rulesUrl: 'Userscripts/apiTester/api-tester.user.js',
@@ -121,14 +137,14 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 16,
+        id: 18,
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari',
         incompatibility: 'iOS, Content Blocker',
     },
     {
-        id: 17,
+        id: 19,
         title: 'Popup blocker event recovery',
         link: 'PopupBlocker/test-event-recovery.html',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari',
