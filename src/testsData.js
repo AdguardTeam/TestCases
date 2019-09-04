@@ -90,15 +90,6 @@ const testsData = [
     },
     {
         id: 12,
-        title: '$badfilter rules',
-        link: 'Filters/badfilter-rules/test-badfilter-rules.html',
-        rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
-        compatibility: 'Chrome, FF, Edge, Safari, Opera',
-        incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
-        readmeUrl: 'Filters/badfilter-rules/README.md',
-    },
-    {
-        id: 13,
         title: 'Websocket blocking',
         link: 'Filters/websockets/test-websockets.html',
         rulesUrl: 'Filters/websockets/test-websockets.txt',
@@ -106,7 +97,7 @@ const testsData = [
         incompatibility: 'Safari, iOS, Content Blocker',
     },
     {
-        id: 14,
+        id: 13,
         title: 'Content rules',
         link: 'Filters/content-rules/test-content-rules.html',
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
@@ -114,7 +105,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 15,
+        id: 14,
         title: '$content modifier tests',
         link: 'Filters/content-rules/content-modifier-test/content-modifier-test.html',
         rulesUrl: 'Filters/content-rules/content-modifier-test/content-modifier-test.txt',
@@ -122,7 +113,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 16,
+        id: 15,
         title: 'Script rules',
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
@@ -130,7 +121,7 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 17,
+        id: 16,
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
@@ -138,7 +129,7 @@ const testsData = [
         incompatibility: 'Windows, MacOS, Android, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 18,
+        id: 17,
         title: 'Userscripts',
         link: 'Userscripts/test-userscripts.html',
         rulesUrl: 'Userscripts/apiTester/api-tester.user.js',
@@ -146,19 +137,28 @@ const testsData = [
         incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
     },
     {
-        id: 19,
+        id: 18,
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari',
         incompatibility: 'iOS, Content Blocker',
     },
     {
-        id: 20,
+        id: 19,
         title: 'Popup blocker event recovery',
         link: 'PopupBlocker/test-event-recovery.html',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari',
         incompatibility: 'iOS, Content Blocker',
     },
+    {
+        id: 20,
+        title: '$badfilter rules',
+        link: 'Filters/badfilter-rules/test-badfilter-rules.html',
+        rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
+        compatibility: 'Chrome, FF, Edge, Safari, Opera',
+        incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
+        readmeUrl: 'Filters/badfilter-rules/README.md',
+    }
 ];
 
 export default testsData;
