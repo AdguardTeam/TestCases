@@ -158,6 +158,15 @@ const testsData = [
         compatibility: 'Chrome, FF, Edge, Safari, Opera',
         incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
         readmeUrl: 'Filters/badfilter-rules/README.md',
+    },
+    {
+        id: 21,
+        title: '$redirect rules',
+        link: 'Filters/redirect-rules/test-redirect-rules.html',
+        rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
+        compatibility: 'Chrome, FF, Edge, Safari, Opera',
+        incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
+        readmeUrl: 'Filters/redirect-rules/README.md',
     }
 ];
 

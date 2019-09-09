@@ -1,0 +1,13 @@
+!
+! Title: Rules for $redirect rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
+!
+! Case 1
+||*redirect-rules/test-files/*$stylesheet,redirect=noopcss
+! Case 2
+||*redirect-rules/test-files/*$script,redirect=noopjs
