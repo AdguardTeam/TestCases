@@ -5,11 +5,35 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-redirect-rules-filter'), null).display == 'none';
 
-    QUnit.test("Case 1: $redirect CSS rule test", function (assert) {
-        assert.ok(getComputedStyle(document.querySelector("#case1")).width !== "500px", "$redirect CSS rule works");
+    QUnit.test("Case 1: $redirect noopcss test", function (assert) {
+        assert.ok(getComputedStyle(document.querySelector("#case1")).width !== "500px", "$redirect noopcss rule works");
     });
 
-    QUnit.test("Case 2: $redirect JS rule test", function (assert) {
-        assert.ok(adgCheck && document.querySelector("#case2").innerText !== "JS script was here", "$redirect JS rule works");
+    QUnit.test("Case 2: $redirect noopjs test", function (assert) {
+        assert.ok(adgCheck && document.querySelector("#case2").innerText !== "JS script was here", "$redirect noopjs rule works");
+    });
+
+    QUnit.test("Case 3: $redirect images test", function (assert) {
+        const pic1 = getComputedStyle(document.querySelector("#case3 > .pic1")).width === "1px";
+        const pic2 = getComputedStyle(document.querySelector("#case3 > .pic2")).width === "2px";
+        const pic3 = getComputedStyle(document.querySelector("#case3 > .pic3")).width === "3px";
+        const pic4 = getComputedStyle(document.querySelector("#case3 > .pic4")).width === "32px";
+        assert.ok(pic1 && pic2 && pic3 && pic4 , "$redirect image rule works");
+    });
+
+    QUnit.test("Case 4: $redirect noopframe test", function (assert) {
+        assert.ok(getComputedStyle(document.querySelector("#case4 > iframe")).height === "0px", "$redirect noopframe rule works");
+    });
+
+    QUnit.test("Case 5: $redirect nooptext test", function (assert) {
+        assert.ok(document.getElementById("case5").innerText === "", "$redirect nooptext rule works");
+    });
+
+    QUnit.test("Case 6: $redirect exception test", function (assert) {
+        assert.ok(adgCheck && getComputedStyle(document.querySelector("#case6 > img")).height !== "2px", "$redirect exception rule should disable $redirect rule");
+    });
+
+    QUnit.test("Case 7: $redirect priority test", function (assert) {
+        assert.ok(getComputedStyle(document.querySelector("#case7 > img")).height === "32px", "$redirect rule should have priority over basic rule");
     });
 });

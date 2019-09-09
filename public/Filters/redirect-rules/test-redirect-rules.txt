@@ -11,3 +11,19 @@ testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
 ||*redirect-rules/test-files/*$stylesheet,redirect=noopcss
 ! Case 2
 ||*redirect-rules/test-files/*$script,redirect=noopjs
+! Case 3
+||*redirect-rules/test-files/redirect-test-1.png$image,redirect=1x1-transparent.gif
+||*redirect-rules/test-files/redirect-test-2.png$image,redirect=2x2-transparent.png
+||*redirect-rules/test-files/redirect-test-3.png$image,redirect=3x2-transparent.png
+||*redirect-rules/test-files/redirect-test-4.png$image,redirect=32x32-transparent.png
+! Case 4
+||example.com^$subdocument,redirect=noopframe
+! Case 5
+||surge.sh^$xmlhttprequest,redirect=nooptext
+||testcases.adguard.com^$xmlhttprequest,redirect=nooptext
+! Case 6
+||*redirect-rules/test-files/redirect-test-6.png$image,redirect=2x2-transparent.png
+@@||*redirect-rules/test-files/redirect-test-6.png$image,redirect=2x2-transparent.png
+! Case 7
+||*redirect-rules/test-files/redirect-test-7.png
+||*redirect-rules/test-files/redirect-test-7.png$image,redirect=32x32-transparent.png

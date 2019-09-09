@@ -19,14 +19,55 @@
     <div id="qunit-fixture"></div>
     <script src="../qunit/qunit.js"></script>
 
-    <!-- Case 1 -->
+    <!-- Case 1 noopscss redirect -->
     <div id="case1" style="position: absolute; left: -9999px;">
         Case 1
     </div>
-    <!-- Case 2 -->
+
+    <!-- Case 2 noopjs redirect -->
     <div id="case2" style="position: absolute; left: -9999px;">
         Case 2
         <script src="test-files/redirect-test.js"></script>
+    </div>
+
+    <!-- Case 3 images redirect -->
+    <div id="case3" style="position: absolute; left: -9999px;">
+        <img src="test-files/redirect-test-1.png" class="pic1">
+        <img src="test-files/redirect-test-2.png" class="pic2">
+        <img src="test-files/redirect-test-3.png" class="pic3">
+        <img src="test-files/redirect-test-4.png" class="pic4">
+    </div>
+
+    <!-- Case 4 noopframe redirect -->
+    <div id="case4" style="position: absolute; left: -9999px;">
+        <iframe src="https://example.com" width="400" height="300"></iframe>
+    </div>
+
+    <!-- Case 5 nooptext redirect -->
+    <div id="case5" style="position: absolute; left: -9999px;">
+        <script>
+            const loadTxt = () => {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = () => {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("case5").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "test-files/redirect-test.txt", true);
+                xhttp.send();
+            }
+            loadTxt();
+        </script>
+    </div>
+
+    <!-- Case 6 redirect exception -->
+    <div id="case6" style="position: absolute; left: -9999px;">
+        <img src="test-files/redirect-test-6.png">
+    </div>
+
+    <!-- Case 7 redirect priotity -->
+    <div id="case7" style="position: absolute; left: -9999px;">
+        <img src="test-files/redirect-test-7.png">
     </div>
 
     <script type="text/javascript" src="test-redirect-rules.js"></script>
