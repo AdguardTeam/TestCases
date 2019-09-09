@@ -8,7 +8,8 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
 !
 ! Case 1
-138.197.235.123:443^$network
+176.103.130.134^$network
 ! Case 2
-178.32.101.215:80^$network
-@@178.32.101.215:80^$network
+178.32.101.215^$network
+||panoramic.pro^$image
+@@178.32.101.215^$network
