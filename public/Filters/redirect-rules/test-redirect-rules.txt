@@ -16,6 +16,8 @@ testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
 ||*redirect-rules/test-files/redirect-test-2.png$image,redirect=2x2-transparent.png
 ||*redirect-rules/test-files/redirect-test-3.png$image,redirect=3x2-transparent.png
 ||*redirect-rules/test-files/redirect-test-4.png$image,redirect=32x32-transparent.png
+! Case 35
+||*redirect-rules/test-files/noimage.png$image,redirect=32x32-transparent.png
 ! Case 4
 ||adguard.com^$subdocument,redirect=noopframe
 ! Case 5
@@ -25,5 +27,5 @@ testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
 ||*redirect-rules/test-files/redirect-test-6.png$image,redirect=2x2-transparent.png
 @@||*redirect-rules/test-files/redirect-test-6.png$image,redirect=2x2-transparent.png
 ! Case 7
-||*redirect-rules/test-files/redirect-test-7.png
+||*redirect-rules/test-files/redirect-test-7.png$important
 ||*redirect-rules/test-files/redirect-test-7.png$image,redirect=32x32-transparent.png

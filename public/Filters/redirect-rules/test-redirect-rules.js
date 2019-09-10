@@ -1,6 +1,13 @@
 /**
  * Before doing the test, import test-redirect-rules.txt to AdGuard
  */
+
+const download = async (url) => {
+    let response = await fetch(url);
+    let responseText = await response.text();
+    return responseText;
+};
+
 window.addEventListener('DOMContentLoaded', function () {
 
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-redirect-rules-filter'), null).display == 'none';
@@ -18,7 +25,13 @@ window.addEventListener('DOMContentLoaded', function () {
         const pic2 = getComputedStyle(document.querySelector("#case3 > .pic2")).width === "2px";
         const pic3 = getComputedStyle(document.querySelector("#case3 > .pic3")).width === "3px";
         const pic4 = getComputedStyle(document.querySelector("#case3 > .pic4")).width === "32px";
-        assert.ok(pic1 && pic2 && pic3 && pic4 , "$redirect image rule works");
+        assert.ok(pic1 && pic2 && pic3 && pic4, "$redirect image rule works");
+    });
+
+    QUnit.test("Case 35: FETCH $redirect images test", async assert => {
+        const case35 = await download(`${document.location.hostname}/Filters/redirect-rules/test-files/noimage.png`);
+        console.log(`IMAGE: ${case35}`);
+        assert.ok(case35, "$redirect image rule works");
     });
 
     QUnit.test("Case 4: $redirect noopframe test", function (assert) {
@@ -34,6 +47,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     QUnit.test("Case 7: $redirect priority test", function (assert) {
-        assert.ok(getComputedStyle(document.querySelector("#case7 > img")).height === "32px", "$redirect rule should have priority over basic rule");
+        assert.ok(getComputedStyle(document.querySelector("#case7 > img")).height === "32px", "$redirect rule should have priority over basic rule with $important modifier");
     });
 });

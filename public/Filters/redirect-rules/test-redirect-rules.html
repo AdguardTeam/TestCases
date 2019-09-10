@@ -40,23 +40,23 @@
 
     <!-- Case 4 noopframe redirect -->
     <div id="case4" style="position: absolute; left: -9999px;">
-        <iframe src="https://adguard.com" width="400" height="300"></iframe>
-    </div>
+            <iframe src="https://adguard.com" width="400" height="300"></iframe>
+        </div>
 
     <!-- Case 5 nooptext redirect -->
     <div id="case5" style="position: absolute; left: -9999px;">
         <script>
-            const loadTxt = () => {
-                const xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = () => {
+            const loadDoc = () => {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById("case5").innerHTML = this.responseText;
                     }
                 };
-                xhttp.open("GET", "test-files/redirect-test.txt", true);
+                xhttp.open("GET", "./test-files/redirect-test.txt", true);
                 xhttp.send();
             }
-            loadTxt();
+            loadDoc();
         </script>
     </div>
 
