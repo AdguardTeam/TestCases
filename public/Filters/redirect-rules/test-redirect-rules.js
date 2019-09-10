@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     QUnit.test("Case 6: $redirect exception test", function (assert) {
-        assert.ok(adgCheck && getComputedStyle(document.querySelector("#case6 > img")).height !== "2px", "$redirect exception rule should disable $redirect rule");
+        assert.ok(adgCheck && getComputedStyle(document.querySelector("#case6 > img")).height === "40px", "$redirect exception rule should disable $redirect rule");
     });
 
     QUnit.test("Case 7: $redirect priority test", function (assert) {
