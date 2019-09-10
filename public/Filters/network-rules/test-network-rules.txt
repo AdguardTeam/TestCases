@@ -10,6 +10,6 @@ testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
 ! Case 1
 176.103.130.134^$network
 ! Case 2
-178.32.101.215^$network
-||panoramic.pro^$image
-@@178.32.101.215^$network
+176.103.130.132^$network
+! ||panoramic.pro^$image
+! @@178.32.101.215^$network
