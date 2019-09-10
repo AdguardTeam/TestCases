@@ -17,7 +17,7 @@ testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
 ||*redirect-rules/test-files/redirect-test-3.png$image,redirect=3x2-transparent.png
 ||*redirect-rules/test-files/redirect-test-4.png$image,redirect=32x32-transparent.png
 ! Case 4
-||example.com^$subdocument,redirect=noopframe
+||adguard.com^$subdocument,redirect=noopframe
 ! Case 5
 ||surge.sh^$xmlhttprequest,redirect=nooptext
 ||testcases.adguard.com^$xmlhttprequest,redirect=nooptext
