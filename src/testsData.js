@@ -158,7 +158,16 @@ const testsData = [
         compatibility: 'Chrome, FF, Edge, Safari, Opera',
         incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
         readmeUrl: 'Filters/badfilter-rules/README.md',
-    }
+    },
+    {
+        id: 21,
+        title: '$network rules',
+        link: 'Filters/network-rules/test-network-rules.html',
+        rulesUrl: 'Filters/network-rules/test-network-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, FF, Edge, Safari, Opera, iOS, Content Blocker',
+        readmeUrl: 'Filters/network-rules/README.md',
+    },
 ];
 
 export default testsData;
