@@ -160,7 +160,7 @@ const testsData = [
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
     {
-        id: 21,
+        id: 22,
         title: '$redirect rules',
         link: 'Filters/redirect-rules/test-redirect-rules.html',
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
