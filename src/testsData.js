@@ -160,6 +160,15 @@ const testsData = [
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
     {
+        id: 21,
+        title: '$network rules',
+        link: 'Filters/network-rules/test-network-rules.html',
+        rulesUrl: 'Filters/network-rules/test-network-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, FF, Edge, Safari, Opera, iOS, Content Blocker',
+        readmeUrl: 'Filters/network-rules/README.md',
+    },
+    {
         id: 22,
         title: '$redirect rules',
         link: 'Filters/redirect-rules/test-redirect-rules.html',
