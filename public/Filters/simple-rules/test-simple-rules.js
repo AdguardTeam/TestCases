@@ -25,6 +25,16 @@ window.addEventListener('load', function() {
         assert.ok(adgCheck && window.getComputedStyle(element).display === "block");
     });
 
+    QUnit.test("5. Test for wildcard for tld", function(assert) {
+        var element = document.querySelector('#case-5-wildcard-for-tld > .test-banner');
+        assert.equal(window.getComputedStyle(element).display, "none");
+    });
+
+    QUnit.test("6. Test woldcard for tld support with $domain modifier", function(assert) {
+        var element = document.querySelector('#case-6-wildcard-for-tld-basic-rules > img');
+        assert.equal(window.getComputedStyle(element).display, "none");
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
