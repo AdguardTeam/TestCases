@@ -1,1 +1,0 @@
-document.getElementById('case2').innerText = 'JS script was here';
