@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
         assert.equal(window.getComputedStyle(element).display, "none");
     });
 
-    QUnit.test("6. Test woldcard for tld support with $domain modifier", function(assert) {
+    QUnit.test("6. Test wildcard for tld support with $domain modifier", function(assert) {
         var element = document.querySelector('#case-6-wildcard-for-tld-basic-rules > img');
         assert.equal(window.getComputedStyle(element).display, "none");
     });
