@@ -15,3 +15,7 @@ testcases.adguard.com,surge.sh###case-1-elemhide > .test-banner
 testcases.adguard.com,surge.sh#@##case-3-elemhide-exception > .test-banner
 ! Test case 4: domain exclusion
 ~testcases.adguard.com,~surge.sh###case-4-domain-exclusion > .test-banner
+! Test case 5: woldcard for tld
+testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
+! Test case 6: woldcard for tld support with $domain modifier
+||*/test-files/adguard.png$domain=testcases.adguard.*|surge.*
