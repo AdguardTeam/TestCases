@@ -18,8 +18,8 @@ testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
 ! Case 5
 ||*/redirect-test.txt$redirect=nooptext
 ! Case 6
-||*/redirect-exception-test.png$redirect=32x32-transparent.png
-@@||*/redirect-exception-test.png
+||*/redirect-exception-test.js$redirect=noopjs
+@@||*/redirect-exception-test.js
 ! Case 7
 ||*/redirect-priority-test.js$redirect=noopjs
 ||*/redirect-priority-test.js$csp=script-src 'self'
