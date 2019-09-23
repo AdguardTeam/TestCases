@@ -105,7 +105,7 @@
 
 			GM_xmlhttpRequest({
 				method: "GET",
-				url: "/Userscripts/apiTester/resource.js",
+				url: `${document.location.protocol}//${document.location.hostname}/Userscripts/apiTester/resource.js`,
 				onload: function (response) {
 					assert.equal(response.responseText, '"привет, я resource"');
 					done();
