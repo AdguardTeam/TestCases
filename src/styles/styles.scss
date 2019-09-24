@@ -248,6 +248,17 @@ header h3 {
   padding: 0 0 0 3vw;
 }
 
+.search-form {
+  margin: 0 0 2vw;
+  padding: 1.2vw 0 1.5vw 6.5vw;
+  border-radius: 0.3vw;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  font-size: 1.2vw;
+  width: 19vw;
+  background: #fff url(../img/search.png) 2.2vw center no-repeat;
+  background-size: 2.5vw;
+}
 
 // *** FOOTER ***
 
@@ -306,6 +317,8 @@ footer {
   .testList-container {
     width: 94vw;
     margin: 3vw auto;
+    font-size: 4vw;
+    line-height: 8vw;
   }
   .header-container {
     width: 94vw;
@@ -355,6 +368,18 @@ footer {
     height: 2vw;
     left: -5vw;
     top: 11%;
+  }
+  .search-form {
+    margin: 8vw 0.5vw;
+    padding: 5vw 0 5vw 17vw;
+    border-radius: 1vw;
+    border: none;
+    font-size: 5vw;
+    width: 99%;
+    box-sizing: border-box;
+    display: block;
+    background: #fff url(../img/search.png) 5vw center no-repeat;
+    background-size: 8vw;
   }
   .testItem-container {
     margin: 0 0.5vw 7vw;
