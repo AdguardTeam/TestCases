@@ -12,7 +12,6 @@ export default class TestList extends React.Component {
 
     componentDidMount = () => {
         this.setState({ list: testList });
-        document.querySelector(".search-form").focus();
     }
 
     searchName = (event) => {
@@ -35,6 +34,8 @@ export default class TestList extends React.Component {
                         className="search-form"
                         placeholder="Search for the test"
                         onChange={this.searchName}
+                        // eslint-disable-next-line jsx-a11y/no-autofocus
+                        autoFocus
                     />
                 </form>
                 {list}
