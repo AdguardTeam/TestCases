@@ -14,14 +14,23 @@ export default class TestList extends React.Component {
         this.setState({ list: testList });
     }
 
+    componentDidUpdate = () => {
+        const message = document.querySelector('.not-found');
+        this.state.list.length ?
+            message.innerHTML = '' :
+            message.innerHTML = 'There is no test matching this name';
+    }
+
     searchName = (event) => {
         const filteredList = [...testList].filter((item) => {
-            return item.props.title.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
+            const escape = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const keyword = new RegExp(escape(event.target.value, 'i'));
+            const testTitle = item.props.title.toLowerCase();
+            if (keyword.test(testTitle)) {
+                return testTitle;
+            } else return null;
         })
-        filteredList.length === 0 ?
-            this.setState({ list: "There is no test matching this name"}) :
-            this.setState({ list: filteredList})
+        this.setState({ list: filteredList})
     }
 
     render() {
@@ -38,6 +47,7 @@ export default class TestList extends React.Component {
                         autoFocus
                     />
                 </form>
+                <span className="not-found" />
                 {list}
             </div>
         );
