@@ -125,8 +125,8 @@ const testsData = [
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
-        compatibility: 'Chrome, Opera, FF',
-        incompatibility: 'Windows, MacOS, Android, Edge, Safari, iOS, Content Blocker',
+        compatibility: 'Chrome, Opera, FF, Safari',
+        incompatibility: 'Windows, MacOS, Android, Edge, iOS, Content Blocker',
     },
     {
         id: 17,
