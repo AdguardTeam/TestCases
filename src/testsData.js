@@ -117,8 +117,8 @@ const testsData = [
         title: 'Script rules',
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
-        compatibility: 'Windows, MacOS, Android, FF',
-        incompatibility: 'Chrome, Opera, Edge, Safari, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, FF, Opera, Edge, Safari',
+        incompatibility: 'iOS, Content Blocker',
     },
     {
         id: 16,
