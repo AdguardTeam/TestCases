@@ -128,6 +128,7 @@ header h3 {
 .testList-container {
   width: $mainContainer;
   margin: 3vw auto;
+  font-size: 1.2vw;
 }
 
 .testItem-container {
@@ -258,10 +259,6 @@ header h3 {
   width: 19vw;
   background: #fff url(../img/search.png) 2.2vw center no-repeat;
   background-size: 2.5vw;
-}
-
-.not-found {
-  font-size: 1.2vw;
 }
 
 // *** FOOTER ***
@@ -407,9 +404,6 @@ footer {
     background-size: 4vw;
     padding-left: 0;
     text-align: center;
-  }
-  .not-found {
-    font-size: 4.5vw;
   }
   .compatibility,
   .incompatibility {
