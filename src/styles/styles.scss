@@ -260,6 +260,10 @@ header h3 {
   background-size: 2.5vw;
 }
 
+.not-found {
+  font-size: 1.2vw;
+}
+
 // *** FOOTER ***
 
 footer {
@@ -403,6 +407,9 @@ footer {
     background-size: 4vw;
     padding-left: 0;
     text-align: center;
+  }
+  .not-found {
+    font-size: 4.5vw;
   }
   .compatibility,
   .incompatibility {
