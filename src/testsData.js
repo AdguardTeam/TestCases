@@ -168,15 +168,6 @@ const testsData = [
         incompatibility: 'Chrome, FF, Edge, Safari, Opera, iOS, Content Blocker',
         readmeUrl: 'Filters/network-rules/README.md',
     },
-    {
-        id: 22,
-        title: '$redirect rules',
-        link: 'Filters/redirect-rules/test-redirect-rules.html',
-        rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
-        compatibility: 'Chrome, FF, Edge, Safari, Opera',
-        incompatibility: 'Windows, MacOS, Android, iOS, Content Blocker',
-        readmeUrl: 'Filters/redirect-rules/README.md',
-    },
 ];
 
 export default testsData;
