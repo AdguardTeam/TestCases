@@ -3,17 +3,26 @@
  */
 
 const download = (url) => {
+    const isImage = url.endsWith('.jpg') || url.endsWith('.png');
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
         xhr.onload = () => {
             if (xhr.status === 200) {
-                resolve(btoa(unescape(encodeURIComponent(xhr.responseText))));
+                if (isImage) {
+                    var reader = new FileReader();
+                    reader.onloadend = () => {
+                        resolve(reader.result);
+                    }
+                    reader.readAsDataURL(xhr.response);
+                } else resolve(xhr.responseText);
             } else {
                 reject(xhr.statusText);
             }
-            resolve(xhr.responseText);
         };
         xhr.open("GET", url, true);
+        if (isImage) {
+            xhr.responseType = 'blob';
+        }
         xhr.send();
     })
 }
@@ -34,11 +43,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     QUnit.test("Case 3: $redirect images test", async assert => {
         const case3 = await download("/test/redirect-test.jpg");
-        // const tmp = btoa(case3.charCodeAt(0));
-        const tmp = btoa(unescape(encodeURIComponent(case3)));
-        console.log(`RESPONSE #3: ${case3}`);
-        // console.log(`EXPECT #3: ${exp}`);
-        assert.equal(tmp, "NjU1MzM=", "$redirect 2x2-transparent.png rule works");
+        assert.equal(case3, "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAC0lEQVQI12NgQAcAABIAAe+JVKQAAAAASUVORK5CYII=", "$redirect 2x2-transparent.png rule works");
     });
 
     QUnit.test("Case 4: $redirect noopframe test", async assert => {
