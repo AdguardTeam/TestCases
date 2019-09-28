@@ -4,20 +4,16 @@
  */
 
 const download = (url) => {
-    let respType = '';
     return new Promise((resolve, reject) => {
-        let typeCheck = new XMLHttpRequest();
+        const typeCheck = new XMLHttpRequest();
         typeCheck.open("GET", url, true);
         typeCheck.send();
-        typeCheck.onprogress = () => {
-            if (typeCheck.getResponseHeader("Content-Type").indexOf("image")!=-1) {
-                respType = 'blob';
-            }
-        }
         typeCheck.onload = () => {
-            let xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
-            xhr.responseType = respType;
+            if (typeCheck.getResponseHeader("Content-Type").indexOf("image") !== -1) {
+                xhr.responseType = 'blob';
+            }
             xhr.send();
             xhr.onload = () => {
                 if (xhr.status === 200) {
@@ -27,8 +23,10 @@ const download = (url) => {
                             resolve(reader.result);
                         }
                         reader.readAsDataURL(xhr.response);
-                    } else resolve(xhr.responseText);
-                } else {
+                    } 
+                    else resolve(xhr.responseText);
+                } 
+                else {
                     reject(xhr.statusText);
                 }
             };
