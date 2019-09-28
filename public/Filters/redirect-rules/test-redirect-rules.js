@@ -4,27 +4,35 @@
  */
 
 const download = (url) => {
-    const isImage = url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    let respType = '';
     return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                if (isImage) {
-                    var reader = new FileReader();
-                    reader.onloadend = () => {
-                        resolve(reader.result);
-                    }
-                    reader.readAsDataURL(xhr.response);
-                } else resolve(xhr.responseText);
-            } else {
-                reject(xhr.statusText);
+        let typeCheck = new XMLHttpRequest();
+        typeCheck.open("GET", url, true);
+        typeCheck.send();
+        typeCheck.onprogress = () => {
+            if (typeCheck.getResponseHeader("Content-Type").indexOf("image")!=-1) {
+                respType = 'blob';
             }
-        };
-        xhr.open("GET", url, true);
-        if (isImage) {
-            xhr.responseType = 'blob';
         }
-        xhr.send();
+        typeCheck.onload = () => {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = respType;
+            xhr.send();
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    if (xhr.responseType === 'blob') {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            resolve(reader.result);
+                        }
+                        reader.readAsDataURL(xhr.response);
+                    } else resolve(xhr.responseText);
+                } else {
+                    reject(xhr.statusText);
+                }
+            };
+        }
     })
 }
 
