@@ -36,7 +36,7 @@ const download = (url) => {
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-redirect-rules-filter'), null).display == 'none';
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-redirect-rules-filter'), null).display === 'none';
 
     QUnit.test("Case 1: $redirect noopcss test", async assert => {
         const case1 = await download("/test/redirect-test.css");
