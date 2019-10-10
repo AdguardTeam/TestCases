@@ -25,5 +25,5 @@ testcases.adguard.com,surge.sh###case14 + #case15.banner[-ext-matches-css-after=
 testcases.adguard.com,surge.sh###case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
 testcases.adguard.com,surge.sh##*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
 ! Case 18
-testcases.adguard.com,surge.sh###frame1:has(h1:contains(Example Domain))
-testcases.adguard.com,surge.sh###frame2:has(.banner18)
+testcases.adguard.com,surge.sh#?##frame1:has(h1:contains(Example Domain))
+testcases.adguard.com,surge.sh#?##frame2:has(.banner18)
