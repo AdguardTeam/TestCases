@@ -70,4 +70,10 @@ window.addEventListener('DOMContentLoaded', function() {
     QUnit.test("17. Test un-tokenizable complex selector", function(assert) {
         assert.equal(window.getComputedStyle(case17).display, "none");
     });
+
+    QUnit.test("18. Test iframe injection", function(assert) {
+        const frame1 = document.querySelector("#case18 > #frame1");
+        const frame2 = document.querySelector("#case18 > #frame2");
+        assert.ok(!frame1 && !frame2, "Extended CSS rules should work inside of iframes");
+    });
 });
