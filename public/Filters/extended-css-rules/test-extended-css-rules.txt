@@ -26,4 +26,5 @@ testcases.adguard.com,surge.sh###case1 ~ #case16.banner[-ext-matches-css-before=
 testcases.adguard.com,surge.sh##*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
 ! Case 18
 testcases.adguard.com,surge.sh#?##inframe1:has(.content)
+! Case 18
 testcases.adguard.com,surge.sh#?##inframe2:has(.content)
