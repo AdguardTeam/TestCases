@@ -141,18 +141,20 @@
         </div>
         
         <div id="case18">
-            <!-- <iframe id="frame1"
-                    src="https://adguard.com"
+            <iframe id="frame1"
+                    src="test-files/frame1.html"
                     width="500"
                     height="400">
-            </iframe> -->
+            </iframe>
 
-            <iframe id="frame2" frameborder="0"></iframe>
+            <iframe id="frame2"></iframe>
         </div>
 
         <script>
             const createIframe = () => {
                 const iframe = document.querySelector('#frame2');
+                iframe.style.width = "500px";
+                iframe.style.height = "400px";
                 const iframeHtml = "<!doctype html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head>\n" +
@@ -164,9 +166,9 @@
                     "</head>\n" +
                     "<body>\n" +
                     "\n" +
-                    "<div id='inframe'>\n" +
-                    "    <h2>i'm frame</h2>\n" +
-                    "    <div class=\"content\">i'm frame content</div>\n" +
+                    "<div id='inframe1'>\n" +
+                    "    <h2>Frame 2</h2>\n" +
+                    "    <div class=\"content\">this frame was created by JS</div>\n" +
                     "</div>\n" +
                     "\n" +
                     "</body>\n" +

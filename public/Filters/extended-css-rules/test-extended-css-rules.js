@@ -72,10 +72,11 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     QUnit.test("18. Test iframe injection", function(assert) {
-        // const frame1 = document.querySelector("#case18 > #frame1");
-        // const innerDoc1 = frame1.contentDocument || frame1.contentWindow.document;
+        const frame1 = document.querySelector("#case18 > #frame1");
+        const innerDoc1 = frame1.contentDocument || frame1.contentWindow.document;
         const frame2 = document.querySelector("#case18 > #frame2");
         const innerDoc2 = frame2.contentDocument || frame2.contentWindow.document;
-        assert.ok(innerDoc2.querySelector("#inframe").style.display === "none", "Extended CSS rules should work inside of iframes");
+        assert.ok(innerDoc1.querySelector("#inframe1").style.display === "none"
+            && innerDoc2.querySelector("#inframe2").style.display === "none", "Extended CSS rules should work inside of iframes");
     });
 });
