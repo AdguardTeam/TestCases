@@ -139,8 +139,47 @@
             </div>
             <div></div>
         </div>
-
-
+        
+        <div id="case18">
+            <iframe id="frame1"
+                    src="test-files/frame1.html"
+                    width="500"
+                    height="400">
+            </iframe>
+        </div>
+        
+        <div id="case19">
+            <iframe id="frame2"></iframe>
+            <script>
+                const createIframe = () => {
+                    const iframe = document.querySelector('#frame2');
+                    iframe.style.width = "500px";
+                    iframe.style.height = "400px";
+                    const iframeHtml = "<!doctype html>\n" +
+                        "<html lang=\"en\">\n" +
+                        "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <meta name=\"viewport\"\n" +
+                        "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
+                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+                        "    <title>irame</title>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "\n" +
+                        "<div id='inframe2'>\n" +
+                        "    <h2>Frame 2</h2>\n" +
+                        "    <div class=\"content\">this frame was created by JS</div>\n" +
+                        "</div>\n" +
+                        "\n" +
+                        "</body>\n" +
+                        "</html>";
+                    iframe.contentWindow.document.open();
+                    iframe.contentWindow.document.write(iframeHtml);
+                    iframe.contentWindow.document.close();
+                };
+                document.addEventListener("DOMContentLoaded", createIframe);
+            </script>
+        </div>
 
         <div id="case-1-elemhide">
             <div class="banner"></div>

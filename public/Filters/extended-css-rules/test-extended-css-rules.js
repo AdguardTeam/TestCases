@@ -70,4 +70,16 @@ window.addEventListener('DOMContentLoaded', function() {
     QUnit.test("17. Test un-tokenizable complex selector", function(assert) {
         assert.equal(window.getComputedStyle(case17).display, "none");
     });
+
+    QUnit.test("18. Test rules injection into iframe with localsource", function(assert) {
+        const frame = document.querySelector("#case18 > #frame1");
+        const innerDoc = frame.contentDocument || frame.contentWindow.document;
+        assert.ok(innerDoc.querySelector("#inframe1").style.display === "none" , "Extended CSS rules should work inside of iframes with local source");
+    });
+
+    QUnit.test("19. Test rules injection into iframe created by JS", function(assert) {
+        const frame = document.querySelector("#case19 > #frame2");
+        const innerDoc = frame.contentDocument || frame.contentWindow.document;
+        assert.ok(innerDoc.querySelector("#inframe2").style.display === "none", "Extended CSS rules should work inside of iframes created by JS");
+    });
 });
