@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/public/corelibs-testrunner/node_modules
 /.pnp
 .pnp.js
 
