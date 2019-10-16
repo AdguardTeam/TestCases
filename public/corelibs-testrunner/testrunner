@@ -1,0 +1,14 @@
+#!/bin/bash
+testServer="http://testcases.adguard.com"
+echo "
+
+########## SIMPLE RULES TEST ##########"
+node test.js -t $testServer/Filters/simple-rules/test-simple-rules.html -f $testServer/Filters/simple-rules/test-simple-rules.txt
+echo "
+
+########## GENERIC HIDE RULES ##########"
+node test.js -t $testServer/Filters/simple-rules/generichide-test/generichide-test.html -f $testServer/Filters/simple-rules/generichide-test/generichide-test.txt
+echo "
+
+########## EXTENDED CSS RULES TEST ##########"
+node test.js -t $testServer/Filters/extended-css-rules/test-extended-css-rules.html -f $testServer/Filters/extended-css-rules/test-extended-css-rules.txt
