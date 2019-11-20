@@ -32,7 +32,8 @@ window.addEventListener('load', function() {
 
     QUnit.test("6. Test wildcard for tld support with $domain modifier", function(assert) {
         var element = document.querySelector('#case-6-wildcard-for-tld-basic-rules > img');
-        assert.notEqual(window.getComputedStyle(element).width, "40px");
+        const isBlocked = !element || (getComputedStyle(element).width !== "40px")
+        assert.equal(isBlocked, true);
     });
 
     // Add new test cases here

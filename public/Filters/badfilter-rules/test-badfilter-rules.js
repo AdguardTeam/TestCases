@@ -11,8 +11,9 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     QUnit.test("Case 2: $badfilter exception rule test", function (assert) {
-        const imageBlocked = getComputedStyle(document.querySelector("#case2 > img")).display === "none";
-        assert.equal(imageBlocked, true, "$badfilter exception rule should disable the exception rule to which it refers.");
+        const testImg = document.querySelector("#case2 > img");
+        const isBlocked = !testImg || (getComputedStyle(testImg).display === "none");
+        assert.equal(isBlocked, true, "$badfilter exception rule should disable the exception rule to which it refers.");
     });
 
     QUnit.test("Case 3: $badfilter rule test with $domain modifier", function (assert) {

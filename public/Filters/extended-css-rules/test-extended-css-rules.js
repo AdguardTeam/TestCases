@@ -76,10 +76,4 @@ window.addEventListener('DOMContentLoaded', function() {
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
         assert.ok(innerDoc.querySelector("#inframe1").style.display === "none" , "Extended CSS rules should work inside of iframes with local source");
     });
-
-    QUnit.test("19. Test rules injection into iframe created by JS", function(assert) {
-        const frame = document.querySelector("#case19 > #frame2");
-        const innerDoc = frame.contentDocument || frame.contentWindow.document;
-        assert.ok(innerDoc.querySelector("#inframe2").style.display === "none", "Extended CSS rules should work inside of iframes created by JS");
-    });
 });
