@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AdguardTeam/TestCases.svg?branch=master)](https://travis-ci.org/AdguardTeam/TestCases)
+[![Build Status](https://travis-ci.com/AdguardTeam/TestCases.svg?branch=master)](https://travis-ci.com/AdguardTeam/TestCases)
 
 # AdGuard Test Cases
 
