@@ -133,8 +133,8 @@ const testsData = [
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
-        compatibility: 'Chrome, Opera, FF, Safari',
-        incompatibility: 'Windows, MacOS, Android, Edge, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, Opera, FF, Safari',
+        incompatibility: 'Edge, iOS, Content Blocker',
     },
     {
         id: 18,
