@@ -181,8 +181,8 @@ const testsData = [
         title: '$redirect rules',
         link: 'Filters/redirect-rules/test-redirect-rules.html',
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
-        compatibility: 'Chrome, FF, Safari, Opera',
-        incompatibility: 'Edge, Windows, MacOS, Android, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, FF, Safari, Opera',
+        incompatibility: 'Edge, iOS, Content Blocker',
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
 ];
