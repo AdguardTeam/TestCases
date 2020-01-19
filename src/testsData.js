@@ -183,6 +183,8 @@ const testsData = [
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
         compatibility: 'Windows, MacOS, Android, Chrome, FF, Safari, Opera',
         incompatibility: 'Edge, iOS, Content Blocker',
+        compatibility: 'Chrome, Edge, FF, Safari, Opera',
+        incompatibility: 'Edge Legacy, Windows, MacOS, Android, iOS, Content Blocker',
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
 ];
