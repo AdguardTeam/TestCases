@@ -293,25 +293,31 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('prevent-window-open', (assert) => {
+        let result;
+
         const window1 = window.open('window1');
-        assert.equal(window1, undefined, 'Prevent by string "window1"');
-        if (window1) window1.close();
+        result = window1();
+        assert.equal(typeof window1, 'function', 'Prevented by string "window1"');
+        assert.equal(result, undefined, 'window.open has been replaced by noopFunc (by default)');
 
         const window2 = window.open('window2');
-        assert.equal(window2, undefined, 'Prevent by regexp "/window2/"');
-        if (window2) window2.close();
+        result = window2();
+        assert.equal(typeof window2, 'function', 'Prevent by regexp "/window2/"');
+        assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
 
         const window3 = window.open('reversed');
-        assert.equal(window3, undefined, 'Prevent with reversing and string "window"');
-        if (window3) window3.close();
+        result = window3();
+        assert.equal(typeof window3, 'function', 'Prevent by reversing to string "window"');
+        assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
 
         const window4 = window.open('window4');
-        assert.ok(adgCheck && window4 === undefined, 'UBO RULE: Prevent by string "window4"');
-        if (window4) window4.close();
+        result = window4();
+        assert.ok(adgCheck && typeof window4 === 'function', 'UBO RULE: Prevent by string "window4"');
+        assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
 
         const window5 = window.open('window5');
-        assert.equal(window5, undefined, 'Prevent with reversing and string "window"');
-        if (window2) window5.close(); 
+        assert.equal(typeof window5, 'function', 'Prevent by reversing to string "anyOther"');
+        assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
     });
 
     QUnit.test('prevent-eval-if', (assert) => {
