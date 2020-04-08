@@ -299,25 +299,31 @@ window.addEventListener('load', () => {
         result = window1();
         assert.equal(typeof window1, 'function', 'Prevented by string "window1"');
         assert.equal(result, undefined, 'window.open has been replaced by noopFunc (by default)');
+        if (typeof window1.close === 'function') window1.close();
 
         const window2 = window.open('window2');
         result = window2();
         assert.equal(typeof window2, 'function', 'Prevent by regexp "/window2/"');
         assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
+        if (typeof window2.close === 'function') window2.close();
 
         const window3 = window.open('reversed');
         result = window3();
         assert.equal(typeof window3, 'function', 'Prevent by reversing to string "window"');
         assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
+        if (typeof window3.close === 'function') window3.close();
 
         const window4 = window.open('window4');
         result = window4();
         assert.ok(adgCheck && typeof window4 === 'function', 'UBO RULE: Prevent by string "window4"');
         assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
+        if (typeof window4.close === 'function') window4.close();
 
         const window5 = window.open('window5');
+        result = window5();
         assert.equal(typeof window5, 'function', 'Prevent by reversing to string "anyOther"');
         assert.equal(result, undefined, 'window.open has been replaced by noopFunc');
+        if (typeof window5.close === 'function') window5.close();
     });
 
     QUnit.test('prevent-eval-if', (assert) => {
