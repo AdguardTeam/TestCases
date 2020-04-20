@@ -8,9 +8,9 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
 !
 ! Case 1
-176.103.130.134^$network
+176.103.130.132^$network
 ! Case 2
-194.177.23.34^$network
-@@194.177.23.34^$network
+104.20.31.130^$network
+@@104.20.31.130^$network
 ||adguard.com$replace=/[\s\S]*/replaced/i
 
