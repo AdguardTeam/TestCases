@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     QUnit.test("Case 2: $network exception and priority test", async assert => {
-        const result = await download('https://unit-test5.adguard.com');
+        const result = await download('https://unit-test5.adguard.com/test.txt');
         assert.ok(adgCheck && result === 'OK', "$network exception rule should disable $network rule and reject all other rules.");
     });
 
