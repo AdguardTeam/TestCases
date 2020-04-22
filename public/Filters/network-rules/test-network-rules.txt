@@ -12,5 +12,5 @@ testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
 ! Case 2
 104.20.31.130^$network
 @@104.20.31.130^$network
-||adguard.com$replace=/[\s\S]*/replaced/i
+||unit-test5.adguard.com/test-image.jpg
 
