@@ -5,10 +5,12 @@
  */
 
 const download = async (url) => {
-    let response = await fetch(url, {mode: "no-cors"});
+    let response = await fetch(url);
     let responseText = await response.text();
     return responseText;
 };
+
+const request = async (url) => fetch(url, { mode: "no-cors" });
 
 window.addEventListener('DOMContentLoaded', function () {
 
@@ -16,9 +18,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
     QUnit.test("Case 1: $network rule test", async assert => {
         try {
-            await download('https://unit-test4.adguard.com');
+            await request('https://unit-test3.adguard.com');
         }
-        catch(error) {
+        catch(e) {
             assert.ok(true, "$network rule should block request");
         }
     });
