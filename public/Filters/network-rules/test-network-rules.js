@@ -1,3 +1,5 @@
+/* global QUnit */
+
 /**
  * Before doing the test, import test-network-rules.txt to AdGuard
  */
@@ -8,22 +10,24 @@ const download = async (url) => {
     return responseText;
 };
 
+const request = async (url) => fetch(url, { mode: "no-cors" });
+
 window.addEventListener('DOMContentLoaded', function () {
 
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-network-rules-filter')).display === 'none';
 
     QUnit.test("Case 1: $network rule test", async assert => {
         try {
-            await download('https://unit-test4.adguard.com');
+            await request('https://unit-test3.adguard.com');
         }
-        catch(error) {
+        catch(e) {
             assert.ok(true, "$network rule should block request");
         }
     });
 
     QUnit.test("Case 2: $network exception and priority test", async assert => {
-        const case2 = await download('https://unit-test5.adguard.com');
-        assert.ok(adgCheck && case2 && (case2 !== "replaced"), "$network exception rule should disable $network rule and reject all other rules.");
+        const result = await download('https://unit-test5.adguard.com/test.txt');
+        assert.ok(adgCheck && result === 'OK', "$network exception rule should disable $network rule and reject all other rules.");
     });
 
 });
