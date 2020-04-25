@@ -10,7 +10,7 @@ testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
 ! Case 1
 176.103.130.134^$network
 ! Case 2
-104.20.30.130^$network
-@@104.20.30.130^$network
+176.103.133.35^$network
+@@176.103.133.35^$network
 ||unit-test5.adguard.com/test.txt
 
