@@ -18,5 +18,5 @@ testcases.adguard.com,surge.sh#@##case-3-elemhide-exception > .test-banner
 ! Test case 5: wildcard for tld
 testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
 ! Test case 6: wildcard for tld support with $domain modifier
-||*/test-files/$image,domain=testcases.adguard.*|surge.*
-||*/test-files/$script,domain=testcases.adguard.*|surge.*
+||*/tld-test-files/$image,domain=testcases.adguard.*|surge.*
+||*/tld*$script,domain=testcases.adguard.*|surge.*
