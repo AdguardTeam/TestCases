@@ -85,7 +85,7 @@
                 synchronous: true,
                 url: "/Userscripts/GMapiV4Tester/resource.js",
                 onload: (response) => {
-                    assert.equal(response.responseText, '"привет, я resource1"');
+                    assert.ok(response.responseText === '"привет, я resource"');
                 },
                 onerror: () => {
                     assert.ok(0);
