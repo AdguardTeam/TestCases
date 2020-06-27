@@ -37,4 +37,8 @@ window.addEventListener('load', () => {
     QUnit.test("GM.xmlHttpRequest", (assert) => {
         startTest('GM.xmlHttpRequest', assert);
     });
+
+    QUnit.test("GM.notification", (assert) => {
+        startTest('GM.notification', assert);
+    });
 });

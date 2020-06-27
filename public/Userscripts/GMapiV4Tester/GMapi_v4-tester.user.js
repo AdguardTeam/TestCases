@@ -14,14 +14,15 @@
 // @resource        testResource.js resource.js
 // @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
 // @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
-// @grant GM.info
 // @grant GM_addStyle
+// @grant GM.info
 // @grant GM.setValue
 // @grant GM.getValue
 // @grant GM.listValues
 // @grant GM.deleteValue
 // @grant GM.getResourceURL
 // @grant GM.xmlHttpRequest
+// @grant GM.notification
 // @grant unsafeWindow
 // @noframes
 // @run-at document-start
@@ -88,9 +89,20 @@
                     assert.ok(response.responseText === '"привет, я resource"');
                 },
                 onerror: () => {
-                    assert.ok(0);
+                    assert.ok(0, 'Reguest error!');
                 },
             });
+        },
+        'GM.notification': (assert) => {
+            try {
+                const title = 'What is Lorem Ipsum?';
+                const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+                    + 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s';
+                GM.notification(text, title);
+                assert.ok(true);
+            } catch (e) {
+                assert.ok(0, 'Notification error!');
+            }
         },
     };
 
