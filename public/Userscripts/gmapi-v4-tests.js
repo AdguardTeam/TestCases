@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     }
 
     const startTest = (testName, assert) => {
-        const testFunction = window.tests[testName];
+        const testFunction = window.GmTests[testName];
         assert.ok(testFunction);
         testFunction(assert);
     };
@@ -18,8 +18,8 @@ window.addEventListener('load', () => {
         startTest('GM.info', assert);
     });
 
-    QUnit.test("GM.setValue", async (assert) => {
-        startTest('GM.setValue', assert);
+    QUnit.test("GM.setValue and GM.getValue", async (assert) => {
+        startTest('GM.setValue and GM.getValue', assert);
     });
 
     QUnit.test("GM.deleteValue", async (assert) => {
@@ -30,11 +30,15 @@ window.addEventListener('load', () => {
         startTest('GM.listValues', assert);
     });
 
-    QUnit.test("GM.getResourceURL", (assert) => {
-        startTest('GM.getResourceURL', assert);
+    QUnit.test("GM.getResourceUrl", async (assert) => {
+        startTest('GM.getResourceUrl', assert);
     });
 
-    QUnit.test("GM.xmlhttpRequest", (assert) => {
-        startTest('GM.xmlhttpRequest', assert);
+    QUnit.test("GM.xmlHttpRequest", (assert) => {
+        startTest('GM.xmlHttpRequest', assert);
+    });
+
+    QUnit.test("GM.notification", (assert) => {
+        startTest('GM.notification', assert);
     });
 });

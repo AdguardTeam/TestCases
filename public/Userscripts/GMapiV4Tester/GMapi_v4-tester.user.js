@@ -14,14 +14,15 @@
 // @resource        testResource.js resource.js
 // @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
 // @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
-// @grant GM.info
 // @grant GM_addStyle
+// @grant GM.info
 // @grant GM.setValue
 // @grant GM.getValue
 // @grant GM.listValues
 // @grant GM.deleteValue
 // @grant GM.getResourceURL
-// @grant GM.xmlhttpRequest
+// @grant GM.xmlHttpRequest
+// @grant GM.notification
 // @grant unsafeWindow
 // @noframes
 // @run-at document-start
@@ -39,7 +40,7 @@
             assert.ok(info.version);
         },
 
-        'GM.setValue': async (assert) => {
+        'GM.setValue and GM.getValue': async (assert) => {
             await GM.setValue('int', '1');
             const value = await GM.getValue('int');
             assert.ok(value === '1');
@@ -65,40 +66,43 @@
                 assert.ok(list.indexOf(key) >= 0);
             }
         },
-        'GM.getResourceURL': (assert) => {
-
-            const done = assert.async();
-
-            const resource = GM.getResourceURL('1x1.png');
+        'GM.getResourceUrl': async (assert) => {
+            const resource = await GM.getResourceUrl('1x1.png');
 
             // Load retrieved image, convert to base64 and compare
             const retrievedImage = document.createElement('img');
             retrievedImage.src = resource;
-            retrievedImage.onload = function () {
+            retrievedImage.onload = () => {
                 assert.ok(retrievedImage.width === 1);
                 assert.ok(retrievedImage.height === 1);
-                done();
             };
             retrievedImage.onerror = function () {
                 assert.ok(0);
-                done();
             };
         },
-        'GM.xmlhttpRequest': function (assert) {
-            var done = assert.async();
-
-            GM.xmlhttpRequest({
+        'GM.xmlHttpRequest': (assert) => {
+            GM.xmlHttpRequest({
                 method: "GET",
+                synchronous: true,
                 url: "/Userscripts/GMapiV4Tester/resource.js",
-                onload: function (response) {
+                onload: (response) => {
                     assert.ok(response.responseText === '"привет, я resource"');
-                    done();
                 },
-                onerror: function () {
-                    assert.ok(0);
-                    done();
+                onerror: () => {
+                    assert.ok(0, 'Reguest error!');
                 },
             });
+        },
+        'GM.notification': (assert) => {
+            try {
+                const title = 'What is Lorem Ipsum?';
+                const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+                    + 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s';
+                GM.notification(text, title);
+                assert.ok(true);
+            } catch (e) {
+                assert.ok(0, 'Notification error!');
+            }
         },
     };
 
