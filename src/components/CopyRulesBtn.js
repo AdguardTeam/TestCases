@@ -8,6 +8,7 @@ export default class CopyRulesBtn extends React.Component {
     state = {
         rulesText: '',
     }
+
     componentDidMount = async () => {
         this.state.rulesText = await getFile(this.props.rulesUrl);
     }

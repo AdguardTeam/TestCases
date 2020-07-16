@@ -4,15 +4,17 @@ import testsData from '../testsData';
 
 export default class TestList extends React.Component {
     state = {};
+
     onSearch = (event) => {
         const { value } = event.target;
         const escapedValue = value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
         const searchTerm = new RegExp(escapedValue.toLowerCase());
         this.setState({ searchTerm });
     };
-    renderTestsData = (testsData) => {
-        return testsData.map(testsData => <TestItem key={testsData.id} {...testsData} />);
-    };
+
+    renderTestsData = testsData => testsData
+        .map(testsData => <TestItem key={testsData.id} {...testsData} />)
+
     filterTests = (testsData, searchTerm) => {
         if (!searchTerm) {
             return this.renderTestsData(testsData);
@@ -26,6 +28,7 @@ export default class TestList extends React.Component {
         }
         return 'There is no test matching this name.';
     };
+
     render() {
         const { searchTerm } = this.state;
         return (

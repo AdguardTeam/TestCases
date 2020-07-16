@@ -5,7 +5,7 @@ const toClipboard = (data, successMessage) => {
     dummy.select();
     document.execCommand('copy');
     document.body.removeChild(dummy);
-    alert(successMessage);
+    alert(successMessage); // eslint-disable-line no-alert
 };
 
 export default toClipboard;

@@ -25,7 +25,7 @@ and test code changes will be dynamically updated there
 #### Test on surge.sh
 
 ```
-npm install --global surge
+yarn global add surge
 surge --domain=your-dev-domain.surge.sh
 ```
 
