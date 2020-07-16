@@ -1,13 +1,18 @@
 import React from 'react';
 
-const Footer = () => (
-    <footer>
-        <div className="footer-logo">
-            <div className="copyrights">
-                &copy; AdGuard, 2009–2019
+function Footer() {
+    const currentYear = new Date().getFullYear().toString();
+
+    return (
+        <footer>
+            <div className="footer-logo">
+                <div className="copyrights">
+                    &copy; AdGuard, 2009–
+                    {currentYear}
+                </div>
             </div>
-        </div>
-    </footer>
-);
+        </footer>
+    );
+}
 
 export default Footer;
