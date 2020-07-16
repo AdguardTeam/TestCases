@@ -71,8 +71,24 @@ window.addEventListener('DOMContentLoaded', function() {
         assert.equal(window.getComputedStyle(case17).display, "none");
     });
 
-    QUnit.test("18. Test rules injection into iframe with localsource", function(assert) {
-        const frame = document.querySelector("#case18 > #frame1");
+    QUnit.test("18. Test xpath", function(assert) {
+        assert.equal(window.getComputedStyle(case18).display, "none");
+    });
+
+    QUnit.test("19. Test nth-ancestor", function(assert) {
+        assert.equal(window.getComputedStyle(case19).display, "none");
+    });
+
+    QUnit.test("20. Test upward + selector", function(assert) {
+        assert.equal(window.getComputedStyle(case20).display, "none");
+    });
+
+    QUnit.test("21. Test upward + number", function(assert) {
+        assert.equal(window.getComputedStyle(case21).display, "none");
+    });
+
+    QUnit.test("22. Test rules injection into iframe with localsource", function(assert) {
+        const frame = document.querySelector("#case22 > #frame1");
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
         assert.ok(innerDoc.querySelector("#inframe1").style.display === "none" , "Extended CSS rules should work inside of iframes with local source");
     });
