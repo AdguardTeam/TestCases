@@ -7,15 +7,12 @@ import CopyLinkBtn from './CopyLinkBtn';
 import CopyRulesBtn from './CopyRulesBtn';
 import SubscribeFilterBtn from './SubscribeFilterBtn';
 
-const TestItem = ({ title, link, rulesUrl, compatibility, incompatibility, readmeUrl }) => {
+const TestItem = ({
+    title, link, rulesUrl, compatibility, incompatibility, readmeUrl,
+}) => {
+    const rulesBtn = () => (rulesUrl ? 'enabled' : 'disabled');
 
-    const rulesBtn = () => {
-        return rulesUrl ? 'enabled' : 'disabled';
-    }
-    
-    const readmeBtn = () => {
-        return readmeUrl ? 'enabled' : 'disabled';
-    }
+    const readmeBtn = () => (readmeUrl ? 'enabled' : 'disabled');
 
     return (
         <div className="testItem-container">
@@ -32,26 +29,26 @@ const TestItem = ({ title, link, rulesUrl, compatibility, incompatibility, readm
                 <div className="incompatibility">{incompatibility}</div>
             </div>
             <div className="test-actions">
-                
+
                 <StartTestBtn link={link} />
-                
+
                 <ReadmeBtn
                     readmeBtn={readmeBtn()}
                     readmeUrl={readmeUrl}
                 />
-                
+
                 <CopyLinkBtn
                     copyLinkBtn={rulesBtn()}
                     rulesUrl={rulesUrl}
                     title={title}
                 />
-                
+
                 <CopyRulesBtn
                     copyRulesBtn={rulesBtn()}
                     rulesUrl={rulesUrl}
                     title={title}
                 />
-                
+
                 <SubscribeFilterBtn
                     subscribeBtn={rulesBtn()}
                     rulesUrl={rulesUrl}
@@ -61,7 +58,7 @@ const TestItem = ({ title, link, rulesUrl, compatibility, incompatibility, readm
             <div className="spacer" />
         </div>
     );
-}
+};
 
 export default TestItem;
 
