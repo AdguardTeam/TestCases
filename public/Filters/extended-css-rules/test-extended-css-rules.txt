@@ -30,3 +30,5 @@ testcases.adguard.com,surge.sh#?#.test-upward-selector:upward(#case20)
 testcases.adguard.com,surge.sh#?#.test-upward-number-case21:upward(4)
 ! Case 22
 testcases.adguard.com,surge.sh#?##inframe1:has(.content)
+!
+testcases.adguard.com,surge.sh#?##case23 > div:contains(/kick me!|\(18\+\)|https:\/\/vk.cc|testTEXT|vk.com\/test_id/)

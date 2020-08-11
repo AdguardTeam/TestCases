@@ -91,5 +91,16 @@ window.addEventListener('DOMContentLoaded', function() {
         const frame = document.querySelector("#case22 > #frame1");
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
         assert.ok(innerDoc.querySelector("#inframe1").style.display === "none" , "Extended CSS rules should work inside of iframes with local source");
+        // clean up test frame
+        frame.style.cssText = 'display:none!important;';
+    });
+
+    QUnit.test("23. Multiple regex :contains", function(assert) {
+        const baseElem = document.querySelector('#case23');
+        const testElems = baseElem.querySelectorAll('.case23');
+        assert.equal(testElems.length, 5);
+        testElems.forEach((el) => {
+            assert.equal(window.getComputedStyle(el).display, "none");
+        })
     });
 });
