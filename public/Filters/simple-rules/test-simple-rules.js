@@ -46,8 +46,10 @@ window.addEventListener('load', function() {
     QUnit.test("7. Test $third-party modifier", (assert) => {
         const testImg = document.querySelector('#case-7-third-party > img');
         if (testImg) {
+            // browser extensions make image zero-size
             assert.ok(window.getComputedStyle(testImg).height === '0px', 'rule with $third-party modifier blocks the test-image');
         } else {
+            // corelibs cuts image from DOM
             assert.ok(true, 'rule with $third-party modifier blocks the test-image');
         }
     });
