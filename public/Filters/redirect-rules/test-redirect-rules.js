@@ -76,10 +76,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // second request with the same secret key
             try {
-                const response2 = await fetch(response1.url);
-                assert.ok(response2.status !== 200);
+                await fetch(response1.url);
             } catch (e) {
-                assert.ok(e, "Second request with the same secret key should fail");
+                assert.throws(() => { throw "error" }, "Second request with the same secret key should fail");
             }
 
             // get url without secret key
@@ -87,10 +86,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // third request without secret key
             try {
-                const response3 = await fetch(urlNoSecret);
-                assert.ok(response3.status !== 200);
+                await fetch(urlNoSecret);
             } catch (e) {
-                assert.ok(e, "Third request without secret key should fail");
+                assert.throws(() => { throw "error" }, "Third request without secret key should fail");
             }
         }
     }
