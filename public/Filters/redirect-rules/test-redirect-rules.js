@@ -58,12 +58,13 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     /**
-     * Makes second request with the same secret key and checks the result
+     * Makes requests with used secret key and without secret key and checks the results
      *
      * @param url
      * @param assert
      */
     const securityTest = async (url, assert) => {
+        // first request
         const response1 = await fetch(url);
         assert.ok(
             response1.status === 200
@@ -72,11 +73,23 @@ window.addEventListener('DOMContentLoaded', function () {
             `First request for ${url} is ok`
         );
 
+        // second request with the same secret key
         try {
             const response2 = await fetch(response1.url);
             assert.ok(response2.status !== 200);
         } catch (e) {
             assert.ok(e, "Second request with the same secret key should fail");
+        }
+
+        // get url without secret key
+        const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
+
+        // third request without secret key
+        try {
+            const response3 = await fetch(urlNoSecret);
+            assert.ok(response3.status !== 200);
+        } catch (e) {
+            assert.ok(e, "Third request without secret key should fail");
         }
     }
 
