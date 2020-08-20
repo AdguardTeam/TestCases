@@ -60,43 +60,47 @@ window.addEventListener('DOMContentLoaded', function () {
     /**
      * Makes requests with used secret key and without secret key and checks the results
      *
-     * @param url
+     * @param {array} urls
      * @param assert
      */
-    const securityTest = async (url, assert) => {
-        // first request
-        const response1 = await fetch(url);
-        assert.ok(
-            response1.status === 200
-            && response1.redirected
-            && response1.url.includes('?secret='),
-            `First request for ${url} is ok`
-        );
+    const redirectResourcesSecurityTest = async (assert, urls) => {
+        for (const url of urls) {
+            // first request
+            const response1 = await fetch(url);
+            assert.ok(
+                response1.status === 200
+                && response1.redirected
+                && response1.url.includes('?secret='),
+                `First request for ${url} is ok`
+            );
 
-        // second request with the same secret key
-        try {
-            const response2 = await fetch(response1.url);
-            assert.ok(response2.status !== 200);
-        } catch (e) {
-            assert.ok(e, "Second request with the same secret key should fail");
-        }
+            // second request with the same secret key
+            try {
+                const response2 = await fetch(response1.url);
+                assert.ok(response2.status !== 200);
+            } catch (e) {
+                assert.ok(e, "Second request with the same secret key should fail");
+            }
 
-        // get url without secret key
-        const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
+            // get url without secret key
+            const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
 
-        // third request without secret key
-        try {
-            const response3 = await fetch(urlNoSecret);
-            assert.ok(response3.status !== 200);
-        } catch (e) {
-            assert.ok(e, "Third request without secret key should fail");
+            // third request without secret key
+            try {
+                const response3 = await fetch(urlNoSecret);
+                assert.ok(response3.status !== 200);
+            } catch (e) {
+                assert.ok(e, "Third request without secret key should fail");
+            }
         }
     }
 
     QUnit.test("Case 8: $redirect resources security test", async assert => {
-        await securityTest('test-files/redirect-test.png', assert);
-        await securityTest('test-files/redirect-test.txt', assert);
-        await securityTest('test-files/redirect-test.js', assert);
-        await securityTest('test-files/redirect-test.html', assert);
+        await redirectResourcesSecurityTest(assert, [
+            'test-files/redirect-test.png',
+            'test-files/redirect-test.txt',
+            'test-files/redirect-test.js',
+            'test-files/redirect-test.html',
+        ]);
     });
 });
