@@ -58,6 +58,17 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     /**
+     * Fetches provided url
+     * @param {string} url
+     */
+    const download = async (url) => {
+        try {
+            return await fetch(url);
+            // eslint-disable-next-line no-empty
+        } catch {}
+    }
+
+    /**
      * Makes requests with used secret key and without secret key and checks the results
      *
      * @param {array} urls
@@ -66,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const redirectResourcesSecurityTest = async (assert, urls) => {
         for (const url of urls) {
             // first request
-            const response1 = await fetch(url);
+            const response1 = await download(url);
             assert.ok(
                 response1.status === 200
                 && response1.redirected
@@ -75,23 +86,23 @@ window.addEventListener('DOMContentLoaded', function () {
             );
 
             // second request with the same secret key
-            try {
-                await fetch(response1.url);
-            } catch (e) {
-                assert.throws(() => { throw "error" }, "Second request with the same secret key should fail");
-            }
+            assert.throws(
+                download(response1.url),
+                "Second request with the same secret key should fail"
+            );
 
             // get url without secret key
             const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
 
             // third request without secret key
-            try {
-                await fetch(urlNoSecret);
-            } catch (e) {
-                assert.throws(() => { throw "error" }, "Third request without secret key should fail");
-            }
+            assert.throws(
+                download(urlNoSecret),
+                "Third request without secret key should fail"
+            );
         }
     }
+
+
 
     QUnit.test("Case 8: $redirect resources security test", async assert => {
         await redirectResourcesSecurityTest(assert, [
