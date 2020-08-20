@@ -56,4 +56,34 @@ window.addEventListener('DOMContentLoaded', function () {
         const case7 = document.getElementById("case7").innerText;
         assert.ok(case7 !== "redirect test", "$redirect rule should have priority over basic rule with $important modifier");
     });
+
+    /**
+     * Makes second request with the same secret key and checks the result
+     *
+     * @param url
+     * @param assert
+     */
+    const securityTest = async (url, assert) => {
+        const response1 = await fetch(url);
+        assert.ok(
+            response1.status === 200
+            && response1.redirected
+            && response1.url.includes('?secret='),
+            `First request for ${url} is ok`
+        );
+
+        try {
+            const response2 = await fetch(response1.url);
+            assert.ok(response2.status !== 200);
+        } catch (e) {
+            assert.ok(e, "Second request with the same secret key should fail");
+        }
+    }
+
+    QUnit.test("Case 8: $redirect resources security test", async assert => {
+        await securityTest('test-files/redirect-test.png', assert);
+        await securityTest('test-files/redirect-test.txt', assert);
+        await securityTest('test-files/redirect-test.js', assert);
+        await securityTest('test-files/redirect-test.html', assert);
+    });
 });
