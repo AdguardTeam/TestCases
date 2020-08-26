@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function () {
      */
     const download = async (url) => {
         try {
-            return fetch(url);
+            return await fetch(url);
         } catch (e) {
             throw new Error(e);
         }
