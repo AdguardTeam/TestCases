@@ -58,18 +58,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     /**
-     * Fetches provided url
-     * @param {string} url
-     */
-    const download = async (url) => {
-        try {
-            return await fetch(url);
-        } catch (e) {
-            throw new Error(e);
-        }
-    }
-
-    /**
      * Makes requests with used secret key and without secret key and checks the results
      *
      * @param {array} urls
@@ -78,7 +66,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const redirectResourcesSecurityTest = async (assert, urls) => {
         for (const url of urls) {
             // first request
-            const response1 = await download(url);
+            const response1 = await fetch(url);
             assert.ok(
                 response1.status === 200
                 && response1.redirected
@@ -88,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // second request with the same secret key
             await assert.rejects(
-                download(response1.url),
+                fetch(response1.url),
                 "Second request with the same secret key should fail"
             );
 
@@ -97,13 +85,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // third request without secret key
             await assert.rejects(
-                download(urlNoSecret),
+                fetch(urlNoSecret),
                 "Third request without secret key should fail"
             );
         }
     }
-
-
 
     QUnit.test("Case 8: $redirect resources security test", async assert => {
         await redirectResourcesSecurityTest(assert, [
