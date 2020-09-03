@@ -193,6 +193,15 @@ const testsData = [
         incompatibility: 'Edge Legacy,  Safari, iOS, Content Blocker',
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
+    {
+        id: 25,
+        title: '$redirect resources security test',
+        link: 'Filters/redirect-security/test-redirect-security.html',
+        rulesUrl: 'Filters/redirect-security/test-redirect-security.txt',
+        compatibility: 'Chrome, Edge, FF, Opera',
+        incompatibility: 'Windows, MacOS, Android, Edge Legacy, Safari, iOS, Content Blocker',
+        readmeUrl: 'Filters/redirect-security/README.md',
+    },
 ];
 
 export default testsData;
