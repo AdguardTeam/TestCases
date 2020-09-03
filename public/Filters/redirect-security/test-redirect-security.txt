@@ -1,0 +1,14 @@
+!
+! Title: Rules for $redirect security test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-redirect-security-filter
+!
+! Case 1
+||*/redirect-test.js$redirect=noopjs
+||*/redirect-test.png$redirect=2x2-transparent.png
+||*/redirect-test.html$redirect=noopframe
+||*/redirect-test.txt$redirect=nooptext
