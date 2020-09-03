@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
             );
 
             // second request with the same secret key
-            await assert.rejects(
+            assert.rejects(
                 fetch(response1.url),
                 "Second request with the same secret key should fail"
             );
@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
 
             // third request without secret key
-            await assert.rejects(
+            assert.rejects(
                 fetch(urlNoSecret),
                 "Third request without secret key should fail"
             );
