@@ -103,4 +103,24 @@ window.addEventListener('DOMContentLoaded', function() {
             assert.equal(window.getComputedStyle(el).display, "none");
         })
     });
+
+    QUnit.test("24. Test matches-attr", function(assert) {
+        const case24 = document.querySelector('#case24 > #test-matches-attr-match');
+        assert.equal(window.getComputedStyle(case24).display, "none");
+    });
+
+    QUnit.test("25. Test matches-property", function(assert) {
+        const case25 = document.querySelector("#case25 > #test-matches-property-match");
+        assert.equal(window.getComputedStyle(case25).display, "none");
+    });
+
+    QUnit.test("26. Test remove pseudo-class", function(assert) {
+        const target = document.querySelector("#case26");
+        assert.notOk(target);
+    });
+
+    QUnit.test("27. Test remove pseudo-property", function(assert) {
+        const target = document.querySelector("#case27");
+        assert.notOk(target);
+    });
 });
