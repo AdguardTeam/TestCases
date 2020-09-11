@@ -32,3 +32,7 @@ testcases.adguard.com,surge.sh#?#.test-upward-number-case21:upward(4)
 testcases.adguard.com,surge.sh#?##inframe1:has(.content)
 !
 testcases.adguard.com,surge.sh#?##case23 > div:contains(/kick me!|\(18\+\)|https:\/\/vk.cc|testTEXT|vk.com\/test_id/)
+testcases.adguard.com,surge.sh#?##case24 > div:matches-attr("/^data-.{4}$/"="/banner/")
+testcases.adguard.com,surge.sh#?##case25 > div:matches-property("id"="/property-match/")
+testcases.adguard.com,surge.sh#?##case26:remove()
+testcases.adguard.com,surge.sh#$?##case27:has(div) { remove: true; }
