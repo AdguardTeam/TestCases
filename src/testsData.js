@@ -42,7 +42,8 @@ const testsData = [
         title: '$important rule vs $urlblock exception',
         link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
         rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
-        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, iOS, Content Blocker',
+        incompatibility: 'Safari',
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
     },
     {
