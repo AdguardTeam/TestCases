@@ -17,8 +17,8 @@ testcases.adguard.com,surge.sh#?##case7.banner:-abp-has(a.banner-link)
 testcases.adguard.com,surge.sh#?##case8.banner:contains(Click Me!)
 testcases.adguard.com,surge.sh#?##case9.banner:contains(/[aа]{20,}/)
 testcases.adguard.com,surge.sh#?##case10.banner:matches-css(background-image: url(data:*))
-testcases.adguard.com,surge.sh#?##case11.banner:matches-css-after(background-image: /url\(\"data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.adguard.com,surge.sh#?##case12.banner:matches-css-before(background-image: /url\(\"data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.adguard.com,surge.sh#?##case11.banner:matches-css-after(background-image: /url\(\"?data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.adguard.com,surge.sh#?##case12.banner:matches-css-before(background-image: /url\(\"?data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
 testcases.adguard.com,surge.sh#?#body #case13.banner[-ext-has="a.banner-link"]
 testcases.adguard.com,surge.sh#?#.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
 testcases.adguard.com,surge.sh#?##case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
