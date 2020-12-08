@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/AdguardTeam/TestCases.svg?branch=master)](https://travis-ci.com/AdguardTeam/TestCases)
-
 # AdGuard Test Cases
 
 ## How to build
