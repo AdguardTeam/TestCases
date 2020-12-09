@@ -1,0 +1,25 @@
+/** SUBSCRIBE LINK */
+
+.subscribe-link {
+	font-size: 46px;
+	padding: 50px;
+	text-align: center;
+	background: #EE5757;
+	border-radius: 5px;
+	margin-bottom: 8px;
+}
+
+.subscribe-link a {
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.subscribe-link a:after {
+	content: "and disable all other filters before doing these tests";
+	font-size: 20px;
+	display: block;
+	padding-top: 3px;
+}

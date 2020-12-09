@@ -1,0 +1,12 @@
+!
+! Title: Rules for websocket rules tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-websockets-filter
+! Test case 1: unblocking connection
+@@||echo.websocket.org/?valid
+! Test case 2: blocking connection
+||echo.websocket.org/?blocked

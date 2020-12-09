@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <iframe style="left:0px;top:0px;width:500px;height:400px;" src="./test-event-recovery-child.html"></iframe>
+
+    <div id="overlay" style="left:0px;top:0px;width:100%;height:100%;position:absolute;z-index:2147483646;"></div>
+
+    <button style="position:absolute;z-index:2147483647;left:0px;top:500px;" onclick="shouldModifyTargetWithinEventHandler = ! shouldModifyTargetWithinEventHandler;">Toggle target modification within an event handler</button>
+
+    <script>
+        var shouldModifyTargetWithinEventHandler = false;
+        var overlayEl = overlay;
+        overlayEl.onclick = function(evt) {
+            window.open('about:blank', '_blank');
+            if (shouldModifyTargetWithinEventHandler) {
+                document.body.removeChild(overlayEl);
+                setTimeout(function() {
+                    document.body.appendChild(overlayEl);
+                }, 300);
+            }
+            evt.preventDefault();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+!
+! Title: Rules for $replace vs $content exception test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-replace-vs-content-rule-filter
+!
+! Case 1: using with exception rules including $content modifier for a same request
+testcases.adguard.com,surge.sh$$div[id="case1-block2"]
+||testcases.adguard.com$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
+||surge.sh$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
+@@||testcases.adguard.com$content
+@@||surge.sh$content

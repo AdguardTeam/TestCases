@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Extended CSS rules injection into iframe created with js test</title>
+    <link rel="stylesheet" href="../../qunit/qunit.css">
+    <link rel="stylesheet" href="../../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-extended-css-iframejs-injection" class="subscribe-link">
+        <a href="extended-css-iframejs-injection.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">        
+        <div id="case1">
+            <iframe id="frame1"></iframe>
+            <script>
+                const createIframe = () => {
+                    const iframe = document.querySelector('#frame1');
+                    iframe.style.width = "500px";
+                    iframe.style.height = "400px";
+                    const iframeHtml = "<!doctype html>\n" +
+                        "<html lang=\"en\">\n" +
+                        "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <meta name=\"viewport\"\n" +
+                        "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
+                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+                        "    <title>irame</title>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "\n" +
+                        "<div id='inframe1'>\n" +
+                        "    <h2>Frame 1</h2>\n" +
+                        "    <div class=\"content\">this frame was created by JS</div>\n" +
+                        "</div>\n" +
+                        "\n" +
+                        "</body>\n" +
+                        "</html>";
+                    iframe.contentWindow.document.open();
+                    iframe.contentWindow.document.write(iframeHtml);
+                    iframe.contentWindow.document.close();
+                };
+                document.addEventListener("DOMContentLoaded", createIframe);
+            </script>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="extended-css-iframejs-injection.js"></script>
+</body>
+</html>

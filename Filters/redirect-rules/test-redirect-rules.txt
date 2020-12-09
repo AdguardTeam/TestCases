@@ -1,0 +1,25 @@
+!
+! Title: Rules for $redirect rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-redirect-rules-filter
+!
+! Case 1
+||*/redirect-test.css$redirect=noopcss
+! Case 2
+||*/redirect-test.js$redirect=noopjs
+! Case 3
+||*/redirect-test.png$redirect=2x2-transparent.png
+! Case 4
+||*/redirect-test.html$redirect=noopframe
+! Case 5
+||*/redirect-test.txt$redirect=nooptext
+! Case 6
+||*/redirect-exception-test.js$redirect=noopjs
+@@||*/redirect-exception-test.js
+! Case 7
+||*/redirect-priority-test.js$redirect=noopjs
+||*/redirect-priority-test.js$important,csp=script-src 'self'

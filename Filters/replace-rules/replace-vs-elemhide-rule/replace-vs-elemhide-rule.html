@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$replace rule vs $elemhide exception test</title>
+    <link rel="stylesheet" href="../../qunit/qunit.css">
+    <link rel="stylesheet" href="../../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-replace-vs-elemhide-rule-filter" class="subscribe-link">
+        <a href="replace-vs-elemhide-rule.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../../qunit/qunit.js"></script>
+
+    <div id="case1-block2" class="test-block"><b>$elemhide</b> rule works proper.</div>
+
+    <style>
+        .test-block {
+            text-align: center;
+            padding: 20px 0;
+            width: 500px;
+            border: 1px dotted #333;
+            margin: 20px 0;
+            position: absolute; 
+            opacity: 0;
+        }
+    </style>
+
+    <script type="text/javascript" src="replace-vs-elemhide-rule.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Simple rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-simple-rules-filter" class="subscribe-link">
+        <a href="test-simple-rules.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">
+
+        <div id="case-1-elemhide">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-2-generic-elemhide">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-3-elemhide-exception">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+		<div id="case-4-domain-exclusion">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-5-wildcard-for-tld">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-6-wildcard-for-tld-basic-rules">
+            <img src="tld-test-files/adguard.png">
+            <p class="tld-test">test</p>
+            <script type="text/javascript" src="tld-test-files/test-script.js"></script>
+        </div>
+
+        <div id="case-7-third-party">
+            <img src="http://antibanner.net/img/welcome/main.png">
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="test-simple-rules.js"></script>
+</body>
+</html>

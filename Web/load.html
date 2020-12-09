@@ -1,0 +1,783 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Load tool</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" media="all" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .navbar-default {
+            background-color: #00bcd4;
+            border-radius: 0px;
+            border: 0px solid #00bcd4;
+        }
+        .navbar-default .navbar-brand {
+            color: #fff;
+        }
+        .navbar-default .navbar-brand:hover {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li>a {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li>a:hover,
+        .navbar-default .navbar-nav>li>a:hover:active {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav>li:hover,
+        .navbar-default .navbar-nav>li:active,
+        .navbar-default .navbar-nav>.active>a:hover {
+            color: #fff;
+            background-color: #4dd0e1;
+        }
+        .testFrame {
+            width: 100%;
+            height: 1024px;
+            border: 1px solid #efefef;
+            padding: 0px;
+            margin: 0px;
+        }
+        #iframeContainer {
+            margin-top: 100px;
+        }
+        #benchmarkResult {
+            margin-top: 30px;
+        }
+        #statusContainer {
+            margin-top: 15px;
+        }
+        .navbar-default .navbar-nav>.active>a {
+            color: #fff;
+            background-color: #00acc1;
+        }
+        .help-image {
+            border: 1px solid #efefef;
+            padding: 2px;
+            max-width: 600px;
+        }
+        .alert-note {
+            border-left: 4px solid #00bcd4!important;
+            border: 1px solid #efefef;
+        }
+        .alexa, .alexa:hover, .alexa:focus {
+            border-bottom: 1px dashed #337ab7;
+            padding-bottom: 1px;
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var alexTopSites = {
+            
+            "news": [
+                "http://www.reddit.com/",
+                "http://cnn.com",
+                "http://nytimes.com",
+                "http://theguardian.com",
+                "http://washingtonpost.com",
+                "http://bbc.co.uk/news/",
+                "http://huffingtonpost.com",
+                "http://indiatimes.com",
+                "http://news.yahoo.com",
+                "http://weather.com",
+                "http://news.google.com/",
+                "http://forbes.com",
+                "http://foxnews.com",
+                "http://shutterstock.com",
+                "http://accuweather.com",
+                "http://bloomberg.com",
+                "http://timesofindia.indiatimes.com",
+                "http://reuters.com",
+                "http://wsj.com",
+                "http://usatoday.com",
+                "http://money.cnn.com",
+                "http://wunderground.com",
+                "http://cnbc.com",
+                "http://drudgereport.com",
+                "http://chron.com",
+                "http://nbcnews.com",
+                "http://time.com",
+                "http://latimes.com",
+                "http://chinadaily.com.cn",
+                "http://usnews.com",
+                "http://economictimes.indiatimes.com",
+                "http://nypost.com",
+                "http://thehill.com",
+                "http://theatlantic.com",
+                "http://indianexpress.com",
+                "http://cbsnews.com",
+                "http://news.com.au",
+                "http://abcnews.go.com",
+                "http://hindustantimes.com",
+                "http://nationalgeographic.com",
+                "http://sfgate.com",
+                "http://thehindu.com",
+                "http://dw.com",
+                "http://cbc.ca/news/",
+                "http://weather.gov",
+                "http://thedailybeast.com",
+                "http://hollywoodreporter.com",
+                "http://topix.com",
+                "http://smh.com.au",
+                "http://alarabiya.net"
+            ],
+
+            "sports": [
+                "http://espn.com",
+                "http://cricbuzz.com",
+                "http://espncricinfo.com",
+                "http://nba.com",
+                "http://sports.yahoo.com",
+                "http://livescore.com",
+                "http://goal.com",
+                "http://bleacherreport.com",
+                "http://nhl.com",
+                "http://cbssports.com",
+                "http://bbc.com/sport",
+                "http://espn.com/mlb/",
+                "http://strava.com",
+                "http://flashscore.com",
+                "http://premierleague.com",
+                "http://iplt20.com",
+                "http://deadspin.com",
+                "http://skysports.com",
+                "http://nfl.com",
+                "http://wwe.com",
+                "http://bbc.com/sport/football",
+                "http://nbcsports.com",
+                "http://rei.com",
+                "http://ncaa.com",
+                "http://baseball.fantasysports.yahoo.com",
+                "http://soccerway.com",
+                "http://sbnation.com",
+                "http://espn.com/nfl/",
+                "http://mlb.mlb.com",
+                "http://foxsports.com",
+                "http://si.com",
+                "http://skysports.com/football",
+                "http://espn.com/nhl/",
+                "http://espn.com/mens-college-basketball/",
+                "http://espnfc.us",
+                "http://uefa.com",
+                "http://formula1.com",
+                "http://tsn.ca",
+                "http://filgoal.com",
+                "http://rotoworld.com",
+                "http://masters.com",
+                "http://rivals.com",
+                "http://baseball-reference.com",
+                "http://basketball-reference.com",
+                "http://fifa.com",
+                "http://eurosport.com",
+                "http://givemesport.com",
+                "http://football365.com",
+                "http://motorsport.com",
+                "http://atpworldtour.com"
+            ],
+
+            "games": [
+                "http://twitch.tv",
+                "http://roblox.com",
+                "http://store.steampowered.com",
+                "http://battle.net",
+                "http://ign.com",
+                "http://gamefaqs.com",
+                "http://leagueoflegends.com",
+                "http://www.playstation.com/",
+                "http://wowhead.com",
+                "http://unity3d.com",
+                "http://gamespot.com",
+                "http://runescape.wikia.com",
+                "http://ea.com",
+                "http://chess.com",
+                "http://pcgamer.com",
+                "http://xbox.com",
+                "http://kongregate.com",
+                "http://ign.com/wikis",
+                "http://icy-veins.com",
+                "http://miniclip.com",
+                "http://nexusmods.com",
+                "http://freelotto.com",
+                "http://teamliquid.net",
+                "http://nvidia.com",
+                "http://mmo-champion.com",
+                "http://minecraft.net/",
+                "http://curse.com",
+                "http://rockstargames.com",
+                "http://nintendo.com",
+                "http://eurogamer.net",
+                "http://pch.com",
+                "http://boardgamegeek.com",
+                "http://blizzard.com",
+                "http://square-enix.com",
+                "http://sporcle.com",
+                "http://minecraftforum.net",
+                "http://wizards.com",
+                "http://bulbagarden.net",
+                "http://giantbomb.com",
+                "http://www.bet-at-home.com/",
+                "http://finalfantasyxiv.com",
+                "http://itch.io",
+                "http://diablofans.com",
+                "http://www.ubisoft.com/",
+                "http://planetminecraft.com",
+                "http://dorkly.com",
+                "http://thesimsresource.com",
+                "http://runescape.com",
+                "http://bungie.net",
+                "http://elderscrolls.wikia.com"
+            ],
+
+            "computers": [
+                "http://google.com",
+                "http://www.youtube.com/",
+                "http://facebook.com",
+                "http://mail.google.com/",
+                "http://yahoo.com",
+                "http://docs.google.com/",
+                "http://en.wikipedia.org",
+                "http://twitter.com/",
+                "http://search.yahoo.com",
+                "http://www.linkedin.com/",
+                "http://mail.yahoo.com",
+                "http://imgur.com",
+                "http://wordpress.com",
+                "http://www.bing.com/",
+                "http://msn.com",
+                "http://tumblr.com",
+                "http://www.microsoft.com/",
+                "http://stackoverflow.com",
+                "http://office.com",
+                "http://www.pinterest.com/",
+                "http://github.com/",
+                "http://apple.com",
+                "http://wikia.com",
+                "http://paypal.com",
+                "http://adobe.com",
+                "http://www.dropbox.com/",
+                "http://play.google.com/",
+                "http://plus.google.com",
+                "http://soundcloud.com",
+                "http://ask.com",
+                "http://vimeo.com/",
+                "http://blogger.com",
+                "http://salesforce.com",
+                "http://slideshare.net",
+                "http://cnet.com",
+                "http://mediafire.com",
+                "http://www.mozilla.org/",
+                "http://wikihow.com",
+                "http://godaddy.com",
+                "http://huffingtonpost.com",
+                "http://support.microsoft.com",
+                "http://trello.com",
+                "http://myway.com",
+                "http://intuit.com",
+                "http://mega.nz/",
+                "http://livejournal.com",
+                "http://www.google.com/adsense/",
+                "http://archive.org/",
+                "http://msdn.microsoft.com",
+                "http://feedly.com"
+            ],
+
+            "business": [
+                "http://office.com",
+                "http://paypal.com",
+                "http://espn.com",
+                "http://www.chase.com/",
+                "http://indeed.com",
+                "http://alibaba.com",
+                "http://bankofamerica.com",
+                "http://wellsfargo.com",
+                "http://zillow.com",
+                "http://forbes.com",
+                "http://skype.com",
+                "http://shutterstock.com",
+                "http://businessinsider.com",
+                "http://scribd.com",
+                "http://samsung.com",
+                "http://finance.yahoo.com",
+                "http://behance.net",
+                "http://hdfcbank.com",
+                "http://bloomberg.com",
+                "http://capitalone.com",
+                "http://target.com",
+                "http://americanexpress.com",
+                "http://www.ups.com/",
+                "http://wiley.com",
+                "http://icicibank.com",
+                "http://reuters.com",
+                "http://fedex.com",
+                "http://wsj.com",
+                "http://irs.gov",
+                "http://onlinelibrary.wiley.com",
+                "http://springer.com",
+                "http://hm.com",
+                "http://investopedia.com",
+                "http://att.com",
+                "http://money.cnn.com",
+                "http://adp.com",
+                "http://www.techcrunch.com/",
+                "http://webex.com",
+                "http://verizonwireless.com",
+                "http://eventbrite.com",
+                "http://realtor.com",
+                "http://merriam-webster.com",
+                "http://cisco.com",
+                "http://thesun.co.uk",
+                "http://intel.com",
+                "http://discover.com",
+                "http://fidelity.com",
+                "http://investing.com",
+                "http://economictimes.indiatimes.com",
+                "http://nypost.com"
+            ],
+
+            "society": [
+                "http://answers.yahoo.com",
+                "http://nih.gov",
+                "http://siteadvisor.com",
+                "http://irs.gov",
+                "http://patreon.com",
+                "http://europa.eu",
+                "http://jw.org",
+                "http://post.japanpost.jp",
+                "http://biblegateway.com",
+                "http://ancestry.com",
+                "http://state.gov",
+                "http://slate.com",
+                "http://www.change.org/",
+                "http://correios.com.br",
+                "http://ec.europa.eu",
+                "http://lds.org",
+                "http://complex.com",
+                "http://match.com",
+                "http://jezebel.com",
+                "http://un.org",
+                "http://who.int",
+                "http://digg.com",
+                "http://legacy.com",
+                "http://collegeboard.org",
+                "http://thrillist.com",
+                "http://biblehub.com",
+                "http://salon.com",
+                "http://cosmopolitan.com",
+                "http://infowars.com",
+                "http://www.theknot.com/",
+                "http://dailykos.com",
+                "http://worldbank.org",
+                "http://soompi.com",
+                "http://sulekha.com",
+                "http://menshealth.com",
+                "http://gq.com",
+                "http://snopes.com",
+                "http://fao.org",
+                "http://www.ssa.gov/",
+                "http://plos.org",
+                "http://google.com/patents",
+                "http://royalmail.com",
+                "http://hi5.com",
+                "http://companieshouse.gov.uk",
+                "http://esquire.com",
+                "http://interpals.net",
+                "http://biography.com",
+                "http://bbb.org",
+                "http://westlaw.com",
+                "http://imdb.com/news/"
+            ],
+
+            "shopping": [
+                "http://amazon.com",
+                "http://netflix.com",
+                "http://ebay.com",
+                "http://amazon.co.uk",
+                "http://www.etsy.com/",
+                "http://store.steampowered.com",
+                "http://walmart.com",
+                "http://ikea.com",
+                "http://bestbuy.com",
+                "http://homedepot.com",
+                "http://target.com",
+                "http://wiley.com",
+                "http://nike.com",
+                "http://cambridge.org",
+                "http://www.groupon.com/",
+                "http://hm.com",
+                "http://www.humblebundle.com/",
+                "http://newegg.com",
+                "http://bodybuilding.com",
+                "http://nordstrom.com",
+                "http://macys.com",
+                "http://lowes.com",
+                "http://bhphotovideo.com",
+                "http://ticketmaster.com",
+                "http://zappos.com",
+                "http://costco.com",
+                "http://kohls.com",
+                "http://gap.com",
+                "http://wayfair.com",
+                "http://urbanoutfitters.com",
+                "http://forever21.com",
+                "http://sephora.com",
+                "http://sky.com",
+                "http://gamestop.com",
+                "http://overstock.com",
+                "http://oup.com",
+                "http://redbubble.com",
+                "http://rei.com",
+                "http://backpage.com",
+                "http://autotrader.com",
+                "http://staples.com",
+                "http://iherb.com",
+                "http://google.com/shopping",
+                "http://6pm.com",
+                "http://walgreens.com",
+                "http://jcpenney.com",
+                "http://sears.com",
+                "http://barnesandnoble.com",
+                "http://adidas.com/us/",
+                "http://jcrew.com"
+            ],
+
+            "reference": [
+                "http://stackoverflow.com",
+                "http://answers.yahoo.com",
+                "http://nlm.nih.gov",
+                "http://thesaurus.com",
+                "http://wordreference.com",
+                "http://archive.org/",
+                "http://blackboard.com",
+                "http://goodreads.com",
+                "http://mit.edu",
+                "http://urbandictionary.com",
+                "http://www.udemy.com/",
+                "http://thefreedictionary.com",
+                "http://wiktionary.org",
+                "http://cambridge.org",
+                "http://investopedia.com",
+                "http://dictionary.cambridge.org",
+                "http://stanford.edu",
+                "http://www.coursera.org/",
+                "http://merriam-webster.com",
+                "http://harvard.edu",
+                "http://dict.cc",
+                "http://psu.edu",
+                "http://ecollege.com",
+                "http://berkeley.edu",
+                "http://spanishdict.com",
+                "http://ed.gov",
+                "http://www.edx.org/",
+                "http://answers.com",
+                "http://en.wiktionary.org",
+                "http://umich.edu",
+                "http://purdue.edu",
+                "http://elsevier.com",
+                "http://stumbleupon.com",
+                "http://lynda.com",
+                "http://cornell.edu",
+                "http://wisc.edu",
+                "http://illinois.edu",
+                "http://utexas.edu",
+                "http://ebscohost.com",
+                "http://washington.edu",
+                "http://dict.leo.org",
+                "http://ucla.edu",
+                "http://nyu.edu",
+                "http://oup.com",
+                "http://columbia.edu",
+                "http://whitepages.com",
+                "http://yourdictionary.com",
+                "http://udacity.com",
+                "http://oxforddictionaries.com",
+                "http://brainyquote.com"
+            ]
+        };
+
+        var now = function() {
+            return (new Date()).getTime();
+        };
+
+        var coalesce = function(value, defaultValue) {
+            if (typeof value == "undefined" || value == null) {
+                return defaultValue;
+            }
+
+            return value;
+        };
+
+        var logDebug = function(message) {
+            if (console && console.log) {
+                console.log(message);
+            }
+        };
+
+        var Benchmark = function(params) {
+
+            // Current iteration number
+            this.iterationNumber = 1;
+            // Iterations results
+            this.result = [];
+
+            // Shows benchmark results
+            this.showBenchmarkResult = function() {
+                $('#iframeContainer').children().remove();
+                $('#benchmarkResult table>tbody tr').remove();
+                this.setStatus();
+
+                var elapsedLoadSum = 0;
+
+                for (var i = 0; i < this.result.length; i++) {
+                    var iterationResult = this.result[i];
+                    var elapsedLoad = iterationResult.load - iterationResult.startTime;
+                    elapsedLoadSum += elapsedLoad;
+
+                    var row = $('<tr>');
+                    row.append($('<th>').text(iterationResult.iterationNumber));
+                    row.append($('<td>').text(iterationResult.url));
+                    row.append($('<td>').text(elapsedLoad));
+
+                    $('#benchmarkResult table>tbody').append(row);
+                }
+
+                var averageRow = $('<tr>');
+                averageRow.append($('<th>').text('Average:'));
+                averageRow.append($('<th colspan="2">').text(Math.round(elapsedLoadSum / this.result.length)));
+                var overallRow = $('<tr>');
+                overallRow.append($('<th>').text('Overall:'));
+                overallRow.append($('<th colspan="2">').text(elapsedLoadSum));
+                $('#benchmarkResult table>tbody').append(averageRow);
+                $('#benchmarkResult table>tbody').append(overallRow);
+                $('#benchmarkResult').removeClass('hide');
+            };
+
+            /**
+             * Shows current status of the benchmark run
+             */
+            this.setStatus = function(title, message) {
+                $('#statusContainer').children().remove();
+                if (title) {
+                    $('#statusContainer').append('<h4>' + title + '</h4>');
+                }
+                if (message) {
+                    $('#statusContainer').append('<p>' + message + '</p>');
+                }
+            };
+
+            /**
+             * Loads frame and records iteration results
+             * @param url Test url
+             */
+            this.loadFrame = function(url) {
+                var iframeContainer = $('#iframeContainer');
+                iframeContainer.children().remove();
+                var testFrame = $('<iframe>').addClass('testFrame');
+                testFrame.attr('src', url);
+                iframeContainer.append(testFrame);
+
+                var startTime = (new Date()).getTime();
+                var iterationResult = {
+                    url: url,
+                    iterationNumber: this.iterationNumber,
+                    startTime: now()
+                };
+                this.result.push(iterationResult);
+
+                this.setStatus('Iteration #' + this.iterationNumber, 'Waiting for page ' + url + ' to load...');
+                var self = this;
+
+                var onLoad = function() {
+                	if (iterationResult.load) {
+                		// Already loaded
+                		return;
+                	}
+
+                    // Frame fully loaded time
+                    iterationResult.load = now();
+
+                    var elapsed = iterationResult.load - iterationResult.startTime;
+                    var message = 'Page has been loaded for ' + elapsed + ' ms. Waiting 2 seconds before the next iteration.';
+                    self.setStatus('Iteration #' + self.iterationNumber, message);
+
+                    self.iterationNumber++;
+                    // Wait for 2 secs before running next time
+                    setTimeout(function() {
+                        self.run();
+                    }, 2000);
+                };
+
+                // Max timeout -- 10 seconds
+                setTimeout(function() {
+                	onLoad();
+                }, 10 * 1000);
+
+                $(testFrame).on('load', function() {
+                	onLoad();
+                });
+            };
+
+            /**
+             * Runs the benchmark
+             */
+            this.run = function() {
+                var iterationsCount = params.repeatCount * params.urls.length;
+                if (this.iterationNumber > iterationsCount) {
+                    logDebug('Benchmark finished');
+                    this.showBenchmarkResult();
+                    params.complete();
+                    return;
+                }
+
+                logDebug('Run iteration ' + this.iterationNumber);
+                var urlIndex = Math.floor((this.iterationNumber - 1) / params.repeatCount);
+                var url = params.urls[urlIndex];
+                this.loadFrame(url);
+            };
+        };
+
+        $(function() {
+
+            $('a.alexa').on('click', function() {
+                var category = $(this).attr('data-category');
+                var sites;
+
+                if (category === 'all') {
+                    sites = [];
+                    Object.keys(alexTopSites).forEach(function(key) {
+                        sites = sites.concat(alexTopSites[key]);
+                    });
+                } else {
+                    sites = alexTopSites[category];
+                }
+
+                $('#testWebsites').val(sites.join('\n'));
+            });
+
+            var formBenchmarkParameters = $('#formBenchmarkParameters');
+            formBenchmarkParameters.on('submit', function(e) {
+                e.preventDefault();
+
+                var btnStart = $('#btnStart');
+                if (btnStart.hasClass('active')) {
+                    logDebug('Ignore click, test is in progress');
+                } else {
+                    var urls = $('#testWebsites').val().split('\n');
+                    // Remove empty elements
+                    urls = $.grep(urls, function(n) {
+                        return (n.trim());
+                    });
+
+                    if (!urls || urls.length == 0) {
+                        alert('Enter test websites');
+                        return;
+                    }
+
+                    var params = {
+                        repeatCount: $('#repeatCount').val(),
+                        urls: urls,
+                        complete: function() {
+                            btnStart.removeClass('active');
+                            btnStart.text('Start!');
+                            formBenchmarkParameters.find('input').removeAttr('disabled');
+                        }
+                    };
+
+                    $('#benchmarkResult').addClass('hide');
+                    btnStart.addClass('active');
+                    btnStart.text('Processing...');
+                    formBenchmarkParameters.find('input').attr('disabled', 'true');
+
+                    var benchmark = new Benchmark(params);
+                    benchmark.run();
+                }
+
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Load tool</h1>
+                <p>
+                    A simple tool for browser load testing.
+                </p>
+                <p>
+                    Enter test websites manually or use predefined sets.<br/>
+                    Alexa Top 50 for category:
+                    <a href="javascript:void(0)" class="alexa" data-category="news">News</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="sports">Sports</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="games">Games</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="computers">Computers</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="business">Business</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="society">Society</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="shopping">Shopping</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="reference">Reference</a>,
+                    <a href="javascript:void(0)" class="alexa" data-category="all">All categories combined</a>
+                </p>
+                <div class="alert alert-note">
+                    <strong>Not every website is suitable for this test.</strong> Some websites may deny loading in frames, for instance <u>nytimes.com</u>.
+                </div>
+                <form class="form-horizontal" id="formBenchmarkParameters">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="testWebsites">Test websites:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="testWebsites" rows="8" name="testWebsites" placeholder="Enter test websites" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="repeatCount">Repeat count: </label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="repeatCount" placeholder="99" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="btnStart" type="submit" class="btn btn-primary btn-lg">Start test</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="statusContainer">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 hide" id="benchmarkResult">
+                <h3>Benchmark Result</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Address</th>
+                            <th>Elapsed on page load, ms</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th>http://trattatata.com/</th>
+                            <td>1321</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" id="iframeContainer">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

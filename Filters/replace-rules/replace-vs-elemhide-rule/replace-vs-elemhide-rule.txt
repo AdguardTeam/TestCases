@@ -1,0 +1,18 @@
+!
+! Title: Rules for $replace vs $elemhide exceptions test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+!
+! Hide warning
+||testcases.adguard.com^$replace=/subscribe\s+to\s+test\s+filter//i
+||surge.sh^$replace=/subscribe\s+to\s+test\s+filter//i
+||testcases.adguard.com^$replace=/and\s+disable\s+all\s+other\s+filters\s+before\s+doing\s+these\s+tests//i
+||surge.sh^$replace=/and\s+disable\s+all\s+other\s+filters\s+before\s+doing\s+these\s+tests//i
+!
+!
+! Case 1: using with exception rules including $elemhide modifier for a same request
+testcases.adguard.com,surge.sh###subscribe-to-replace-vs-elemhide-rule-filter
+@@||testcases.adguard.com^$elemhide
+@@||surge.sh^$elemhide

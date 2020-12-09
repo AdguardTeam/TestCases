@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$important rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-important-rules-filter" class="subscribe-link">
+        <a href="test-important-rules.txt">Subscribe
+            to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Case 1 -->
+    <div id="case1" style="position: absolute; left: -9999px">
+        <img src="test-files/adg1.png">
+    </div>
+
+    <!-- Case 2 -->
+    <div id="case2" style="position: absolute; left: -9999px">
+        <img src="test-files/adg2.png">
+    </div>
+
+    <script type="text/javascript" src="test-important-rules.js"></script>
+</body>
+
+</html>

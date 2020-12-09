@@ -1,0 +1,88 @@
+!
+! Title: Rules for scriptlet rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-scriptlet-rules-filter
+!
+! abort-on-property-write
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-on-property-write", "__testCase1")
+testcases.adguard.com,surge.sh##+js(abort-on-property-write.js, __testCase2)
+testcases.adguard.com,surge.sh#$#abort-on-property-write __testCase3
+!
+! abort-current-inline-script
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase4")
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase5")
+testcases.adguard.com,surge.sh#$#abort-current-inline-script __testCase6
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase7.__AG")
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-current-inline-script", "__testCase8", "Case8")
+!
+! abort-on-property-read
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("abort-on-property-read", "propReadCaseAG")
+testcases.adguard.com,surge.sh##+js(abort-on-property-read.js, propReadCaseUBO)
+testcases.adguard.com,surge.sh#$#abort-on-property-read propReadCaseABP
+!
+! nowebrtc
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("nowebrtc")
+!
+! prevent-addEventListener
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-addEventListener", "/^(?:click|focus)$/", "preventListenerCaseAG")
+testcases.adguard.com,surge.sh##+js(addEventListener-defuser.js, click, preventListenerCaseUBO)
+!
+! prevent-bab
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-bab")
+testcases.adguard.com,surge.sh##+js(bab-defuser.js)
+!
+! prevent-setInterval
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-setInterval", "setIntervalAGSyntax")
+testcases.adguard.com,surge.sh##+js(setInterval-defuser.js, setIntervalUBOSyntax)
+!
+! prevent-setTimeout
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-setTimeout", "setTimeoutAGSyntax")
+testcases.adguard.com,surge.sh##+js(setTimeout-defuser.js, setTimeoutUBOSyntax)
+!
+! set-constant
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "setConstantAGSyntax", "true")
+testcases.adguard.com,surge.sh##+js(set-constant.js, setConstantUBOSyntax, true)
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "trueProp", "true")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "falseProp", "false")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "undefinedProp", "undefined")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "nullProp", "null")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "noopFuncProp", "noopFunc")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "trueFuncProp", "trueFunc")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "falseFuncProp", "falseFunc")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "numberProp", "111")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "emptyStringProp", "")
+testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "illegalNumberProp", "32768")
+!
+! prevent-window-open
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "1", "window1")
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "1", "/window2/")
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "0", "window")
+testcases.adguard.com,surge.sh##+js(window.open-defuser.js, , window4)
+testcases.adguard.com,surge.sh##+js(window.open-defuser.js, 0, anyOther)
+!
+! prevent-eval-if
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-eval-if", "preventIfTest")
+testcases.adguard.com,surge.sh##+js(noeval-if.js, preventIfTest1)
+!
+! remove-cookie
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("remove-cookie")
+!
+! prevent-popads-net
+!
+testcases.adguard.com,surge.sh#%#//scriptlet("prevent-popads-net")

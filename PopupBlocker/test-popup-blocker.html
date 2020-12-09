@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./third-party/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <script>
+        function uninstallInstaller(installer) {
+            installer.uninstall();
+        }
+        function uninstallAll() {
+            popupInstallers.forEach(uninstallInstaller);
+            falsePositiveInstallers.forEach(uninstallInstaller);
+        }
+    </script>
+    <p>Clicking on each of buttons below will install a popup in the current page.</p>
+    
+    <script src="./popup-installers.js"></script>
+    <script src="./false-positive-installers.js"></script>
+    <script>
+        popupInstallers.forEach(function(installer, index) {
+            document.write('<button onclick="uninstallAll();popupInstallers[' + index + '].install();event.stopPropagation();">' + installer.name + '</button>');
+        });
+    </script>
+    <p>Clicking on buttons below will install a popup which shouldn't be blocked.</p>
+    <p>This test may interfere with browser's built-in popup blockers, so be sure to disable it on the testpage in order to test only the popup blocker.</p>
+    <script>
+        falsePositiveInstallers.forEach(function(installer, index) {
+            document.write('<button onclick="uninstallAll();falsePositiveInstallers[' + index + '].install();event.stopPropagation();">' + installer.name + '</button>');
+        });
+    </script>
+    <p>Clicking on another button will remove a previous popup and install a new one.</p>
+    
+</body>
+
+</html>

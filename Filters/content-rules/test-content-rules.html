@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Content rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-content-rules-filter" class="subscribe-link">
+        <a href="test-content-rules.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">
+        <style>
+            .banner {
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+
+        <div id="case1" class="banner">
+            <a class="banner-link">
+            </a>
+        </div>
+
+        <div id="case2" class="banner">
+            <a class="banner-link">
+                test-case-2-content
+            </a>
+        </div>
+
+        <div id="case3" class="banner test-case-3-class">
+            <a class="banner-link">
+            </a>
+        </div>
+
+        <div id="case4" class="banner">
+            <a class="banner-link">
+                tratata teasernet\n \ntararar
+            </a>
+        </div>
+
+        <div id="case5" class="banner">
+            <a class="banner-link">
+            </a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="test-content-rules.js"></script>
+</body>
+</html>

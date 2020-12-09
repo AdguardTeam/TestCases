@@ -1,0 +1,17 @@
+!
+! Title: Rules for $replace vs $generichide exceptions test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-replace-vs-generichide-rule-filter
+!
+!
+! Case 1: using with exception rules including $generichide and $elemhide modifiers for a same request
+###case1-block1
+@@||testcases.adguard.com^$generichide
+@@||surge.sh^$generichide
+||testcases.adguard.com^$replace=/works\s+proper/doesn't block a replace rule/i
+||surge.sh^$replace=/works\s+proper/doesn't block a replace rule/i

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Extended CSS rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-extended-css-rules-filter" class="subscribe-link">
+        <a href="test-extended-css-rules.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">
+        <style>
+            .banner {
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+
+        <div id="case1" class="banner">
+            <a class="banner-link">
+            </a>
+        </div>
+
+        <div id="case2" class="banner">
+            Click Me!
+        </div>
+
+        <div id="case3" class="banner">
+            <style>
+                #case3 {
+                    opacity:0.9
+                }
+            </style>
+        </div>
+
+        <div id="case4" class="banner">
+            <style>
+                #case4::after {
+                    content: "sponsored"
+                }
+            </style>
+        </div>
+
+        <div id="case5" class="banner">
+            <style>
+                #case5::before {
+                    content: "sponsored"
+                }
+            </style>
+        </div>
+
+        <div id="case6" class="banner">
+            You would want to click me for sure!
+        </div>
+
+        <div id="case7" class="banner">
+            <a class="banner-link">
+            </a>
+        </div>
+
+        <div id="case8" class="banner">
+            Click Me!
+        </div>
+
+        <div id="case9" class="banner">
+            aaааaaаaaaaaaaаaaaааaaaаaaaa
+        </div>
+
+        <div id="case10" class="banner">
+            <style>
+                #case10 {
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNS4zIDI1LjkiPjxwYXRoIGZpbGw9IiM2OGJjNzEiIGQ9Ik0xMi43IDBDOC43IDAgMy45LjkgMCAzYzAgNC40LS4xIDE1LjQgMTIuNyAyM0MyNS40IDE4LjQgMjUuMyA3LjQgMjUuMyAzIDIxLjQuOSAxNi42IDAgMTIuNyAweiIvPjxwYXRoIGZpbGw9IiM2N2IyNzkiIGQ9Ik0xMi42IDI1LjlDLS4xIDE4LjQgMCA3LjQgMCAzYzMuOS0yIDguNy0zIDEyLjYtM3YyNS45eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMi4yIDE3LjNMMTkuOCA3YS45OS45OSAwIDAgMC0xLjMuMWwtNi40IDYuNi0yLjQtMi45Yy0xLjEtMS4zLTIuNy0uMy0zLjEgMGw1LjYgNi41Ii8+PC9zdmc+);
+                }
+            </style>
+        </div>
+
+        <div id="case11" class="banner">
+            <style>
+                #case11::after {
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNS4zIDI1LjkiPjxwYXRoIGZpbGw9IiM2OGJjNzEiIGQ9Ik0xMi43IDBDOC43IDAgMy45LjkgMCAzYzAgNC40LS4xIDE1LjQgMTIuNyAyM0MyNS40IDE4LjQgMjUuMyA3LjQgMjUuMyAzIDIxLjQuOSAxNi42IDAgMTIuNyAweiIvPjxwYXRoIGZpbGw9IiM2N2IyNzkiIGQ9Ik0xMi42IDI1LjlDLS4xIDE4LjQgMCA3LjQgMCAzYzMuOS0yIDguNy0zIDEyLjYtM3YyNS45eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMi4yIDE3LjNMMTkuOCA3YS45OS45OSAwIDAgMC0xLjMuMWwtNi40IDYuNi0yLjQtMi45Yy0xLjEtMS4zLTIuNy0uMy0zLjEgMGw1LjYgNi41Ii8+PC9zdmc+);
+                }
+            </style>
+        </div>
+
+        <div id="case12" class="banner">
+            <style>
+                #case12::before {
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNS4zIDI1LjkiPjxwYXRoIGZpbGw9IiM2OGJjNzEiIGQ9Ik0xMi43IDBDOC43IDAgMy45LjkgMCAzYzAgNC40LS4xIDE1LjQgMTIuNyAyM0MyNS40IDE4LjQgMjUuMyA3LjQgMjUuMyAzIDIxLjQuOSAxNi42IDAgMTIuNyAweiIvPjxwYXRoIGZpbGw9IiM2N2IyNzkiIGQ9Ik0xMi42IDI1LjlDLS4xIDE4LjQgMCA3LjQgMCAzYzMuOS0yIDguNy0zIDEyLjYtM3YyNS45eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMi4yIDE3LjNMMTkuOCA3YS45OS45OSAwIDAgMC0xLjMuMWwtNi40IDYuNi0yLjQtMi45Yy0xLjEtMS4zLTIuNy0uMy0zLjEgMGw1LjYgNi41Ii8+PC9zdmc+);
+                }
+            </style>
+        </div>
+
+        <div id="case13" class="banner">
+            <a class="banner-link">
+            </a>
+        </div>
+
+        <div id="case14" class="banner">
+            aaааaaаaaaaaaaаaaaааaaaаaaaa
+        </div>
+
+        <div id="case15" class="banner">
+            <style>
+                #case15::after {
+                    content: "sponsored"
+                }
+            </style>
+        </div>
+
+        <div id="case16" class="banner">
+            <style>
+                #case16::before {
+                    content: "sponsored"
+                }
+            </style>
+        </div>
+
+        <div id="case17" class="banner">
+            <div>
+                <div>
+                    aaааaaаaaaaaaaаaaaааaaaаaaaa
+                </div>
+            </div>
+            <div>
+                <div>
+                    aaааaaаaaaaaaaаaaaааaaaаaaaa
+                </div>
+            </div>
+            <div></div>
+        </div>
+
+        <div id="case18">
+            <div>
+                <div class="test-case18-div">
+                    <div>
+                        <div>
+                            <div">
+                                <div class="test-xpath-case18">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="case19">
+            <div>
+                <div>
+                    <div class="test-nth-ancestor-case19">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="case20">
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <div">
+                                <div class="test-upward-selector">
+                                    selector check
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="case21">
+            <div>
+                <div>
+                    <div>
+                        <div class="test-upward-number-case21">
+                            number check
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="case22">
+            <iframe id="frame1"
+                    src="test-files/frame1.html"
+                    width="500"
+                    height="400">
+            </iframe>
+        </div>
+
+        <div id="case23">
+            <div id="case23_01" class="case23">
+                <div>
+                    kick me!
+                </div>
+            </div>
+            <div id="case23_02" class="case23">
+                <div>
+                    <div>
+                        testing for (18+)
+                    </div>
+                </div>
+            </div>
+            <div id="case23_03" class="case23">
+                <div>
+                    <a href="/away.php?test">https://vk.cc/tests</a>
+                </div>
+            </div>
+            <div id="case23_04" class="case23">
+                <div>
+                    <div>
+                        <div>
+                            testTEXT
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="case23_05" class="case23">
+                <div>
+                    <div>
+                        <div>
+                            test?
+                            <br/>
+                            ??
+                            <a href="https://vk.com/test_id">https://vk.com/test_id</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="case24" data-hk3f="click here,banner_240x400">
+            <div id="test-matches-attr-match" class="banner" data-hk3f="click here,banner_240x400">
+            </div>
+            <div id="test-matches-attr-no-match" class="banner" data-hk3f3246="click here,banner_240x400">
+            </div>
+        </div>
+
+        <div id="case25">
+            <div id="test-matches-property-match">
+            </div>
+            <div id="test-matches-property-no-match">
+            </div>
+        </div>
+
+        <div id="case26">
+        </div>
+
+        <div id="case27">
+            <div></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="test-extended-css-rules.js"></script>
+</body>
+</html>

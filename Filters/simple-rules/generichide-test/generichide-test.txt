@@ -1,0 +1,13 @@
+!
+! Title: Rules for generic hide tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-generichide-rules-filter
+! Test case: generic hide
+testcases.adguard.com,surge.sh###case-1-generichide > .test-banner
+###case-1-generichide > .test-banner1
+@@||testcases.adguard.com$generichide
+@@||surge.sh$generichide

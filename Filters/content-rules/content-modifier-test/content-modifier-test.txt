@@ -1,0 +1,29 @@
+!
+! Title: Rules for $content modifier test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com###subscribe-to-test-content-modifier-filter
+surge.sh###subscribe-to-test-content-modifier-filter
+!
+! Case 1
+testcases.adguard.com$$div[id="case1"]
+surge.sh$$div[id="case1"]
+!
+! Case 2
+testcases.adguard.com$$a[tag-content="case2 link"]
+surge.sh$$a[tag-content="case2 link"]
+!
+! Case 3
+testcases.adguard.com$$div[id="case3"][wildcard="*ipsum*sit*"]
+surge.sh$$div[id="case3"][wildcard="*ipsum*sit*"]
+!
+! Case 4
+testcases.adguard.com$$div[class="class4"]
+surge.sh$$div[class="class4"]
+!
+! Exception rule with $content modifier for all cases
+@@||testcases.adguard.com^$content
+@@||surge.sh^$content

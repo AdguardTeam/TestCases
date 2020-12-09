@@ -1,0 +1,23 @@
+!
+! Title: Rules for $csp rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-csp-rules-filter
+!
+! Case 1
+||testcases.adguard.com$csp=script-src 'self'
+||surge.sh$csp=script-src 'self'
+testcases.adguard.com,surge.sh###some-element
+! Case 2
+||testcases.adguard.com$csp=img-src https:
+||surge.sh$csp=img-src https:
+||testcases.adguard.com$csp=img-src adguard.com
+||surge.sh$csp=img-src adguard.com
+! Case 3
+||testcases.adguard.com$csp=style-src 'self'
+||surge.sh$csp=style-src 'self'
+@@||testcases.adguard.com$csp=style-src 'self'
+@@||surge.sh$csp=style-src 'self'

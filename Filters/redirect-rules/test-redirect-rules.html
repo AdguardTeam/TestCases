@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$redirect rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+    <link rel="stylesheet" href="test-files/redirect-test.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-redirect-rules-filter" class="subscribe-link">
+        <a href="test-redirect-rules.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <div style="opacity: 0">
+        <div id="case1" style="width: 100px"></div>
+
+        <div id="case2"></div>
+        <script type="text/javascript" src="test-files/redirect-test.js"></script>
+
+        <div id="case3">
+            <img src="test-files/redirect-test.png" alt="test-image"/>
+        </div>
+
+        <div id="case4">
+            <iframe src="test-files/redirect-test.html"></iframe>
+        </div>
+
+        <div id="case5">
+            <iframe src="test-files/redirect-test.txt"></iframe>
+        </div>
+
+        <div id="case6"></div>
+        <script type="text/javascript" src="test-files/redirect-exception-test.js"></script>
+
+        <div id="case7"></div>
+        <script type="text/javascript" src="test-files/redirect-priority-test.js"></script>
+    </div>
+
+    <script type="text/javascript" src="test-redirect-rules.js"></script>
+</body>
+
+</html>

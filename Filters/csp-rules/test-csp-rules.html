@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$csp rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-csp-rules-filter" class="subscribe-link">
+        <a href="test-csp-rules.txt">Subscribe
+            to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <div id="some-element">
+        <p>Some content</p>
+    </div>
+
+    <!-- Case 1 -->
+    <script type="text/javascript">
+        let dummy = document.createElement("div");
+        document.body.appendChild(dummy);
+        dummy.id = "csp-test";
+        dummy.innerHTML = "Inline script works";
+    </script>
+
+    <!-- Case 2 -->
+
+    <div style="position: absolute; left: -9999px;">
+        <img id="pic1" src="https://antibanner.net/img/welcome/filtering.png">
+        <img id="pic2" src="http://antibanner.net/img/welcome/main.png">
+        <img id="pic3" src="https://adguard.com/img/products/android/main.png">
+        <img id="pic4" src="http://adguard.com/img/products/ios-pro/settings.png">
+    </div>
+
+    <p>Please note: if something wrong with testcase #2 - check the availability of the following images:</p>
+    <ul>
+        <li><a href="https://antibanner.net/img/welcome/filtering.png" target="_blank">Image 1</a></li>
+        <li><a href="http://antibanner.net/img/welcome/main.png" target="_blank">Image 2</a></li>
+        <li><a href="https://adguard.com/img/products/android/main.png" target="_blank">Image 3</a></li>
+        <li><a href="http://adguard.com/img/products/ios-pro/settings.png" target="_blank">Image 4</a></li>
+    </ul>
+    <!-- Case 3 -->
+    <div id="case3">
+        <h3>Case 3</h3>
+    </div>
+    <style>
+        #case3 {
+            display: none;
+        }
+    </style>
+
+    <script type="text/javascript" src="test-csp-rules.js"></script>
+</body>
+
+</html>
