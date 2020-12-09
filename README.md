@@ -4,13 +4,13 @@
 
 ## How to build
 
-1. `npm install`
-2. `npm run build`
+1. `yarn install`
+2. `yarn run build`
 
 ## How to develop:
 
-1. `npm run build`
-2. `npm install --global surge`
+1. `yarn run build`
+2. `yarn install --global surge`
 3. `surge --domain=_any_domain_.surge.sh`
 4. project: `_location_/filters-tests/**build**`
 5. Enjoy your testing at `_any_domain_.surge.sh`!
