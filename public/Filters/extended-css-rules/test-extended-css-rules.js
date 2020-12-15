@@ -123,4 +123,9 @@ window.addEventListener('DOMContentLoaded', function() {
         const target = document.querySelector("#case27");
         assert.notOk(target);
     });
+
+    QUnit.test("28. Test :is() pseudo-class", function(assert) {
+        const case28 = document.querySelector("#case28 > #test-is-any-matches3");
+        assert.equal(window.getComputedStyle(case28).display, "none");
+    });
 });
