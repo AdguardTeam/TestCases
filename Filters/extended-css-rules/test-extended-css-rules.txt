@@ -36,3 +36,4 @@ testcases.adguard.com,surge.sh#?##case24 > div:matches-attr("/^data-.{4}$/"="/ba
 testcases.adguard.com,surge.sh#?##case25 > div:matches-property("id"="/property-match/")
 testcases.adguard.com,surge.sh#?##case26:remove()
 testcases.adguard.com,surge.sh#$?##case27:has(div) { remove: true; }
+testcases.adguard.com,surge.sh#?##case28 > :is(.case28, #main, footer, span):contains(isTest)
