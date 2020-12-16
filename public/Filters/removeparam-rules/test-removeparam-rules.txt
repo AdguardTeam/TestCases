@@ -1,0 +1,16 @@
+!
+! Title: Rules for $removeparam rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-removeparam-rules-filter
+!
+! Case 1
+||testcases.adguard.com$removeparam=p1case1
+||surge.sh$removeparam=p1case1
+!
+! Case 2
+||testcases.adguard.com$removeparam=/P2CASE2/i
+||surge.sh$removeparam=/P2CASE2/i
