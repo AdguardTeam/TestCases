@@ -203,6 +203,14 @@ const testsData = [
         incompatibility: 'Windows, MacOS, Android, Edge Legacy, Safari, iOS, Content Blocker',
         readmeUrl: 'Filters/redirect-security/README.md',
     },
+    {
+        id: 26,
+        title: '$jsinject rules test',
+        link: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.html',
+        rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari',
+        incompatibility: 'iOS, Content Blocker',
+    },
 ];
 
 export default testsData;
