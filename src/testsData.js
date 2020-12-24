@@ -11,7 +11,8 @@ const testsData = [
         title: 'Generic hide rules',
         link: 'Filters/simple-rules/generichide-test/generichide-test.html',
         rulesUrl: 'Filters/simple-rules/generichide-test/generichide-test.txt',
-        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari (Case 1), iOS, Content Blocker',
+        incompatibility: 'Safari (Case 2)',
     },
     {
         id: 3,
