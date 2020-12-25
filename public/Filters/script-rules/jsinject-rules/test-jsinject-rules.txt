@@ -8,6 +8,6 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-jsinject-rules-filter
 !
 ! Case 1
-testcases.adguard.com,surge.sh#%#window.__jsinjectTest = true;
+testcases.adguard.com,surge.sh#%#document.__jsinjectTest = true;
 @@||testcases.adguard.com^$jsinject
 @@||surge.sh^$jsinject
