@@ -203,6 +203,14 @@ const testsData = [
         incompatibility: 'Windows, MacOS, Android, Edge Legacy, Safari, iOS, Content Blocker',
         readmeUrl: 'Filters/redirect-security/README.md',
     },
+    {
+        id: 26,
+        title: '$removeparam rules',
+        link: 'Filters/removeparam-rules/test-removeparam-rules.html',
+        rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+    },
 ];
 
 export default testsData;
