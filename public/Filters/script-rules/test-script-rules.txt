@@ -7,6 +7,9 @@
 ! Hide warning
 testcases.adguard.com,surge.sh###subscribe-to-test-script-rules-filter
 !
+! Case 1
 testcases.adguard.com,surge.sh#%#window.__testCase1 = true;
+!
+! Case 2
 testcases.adguard.com,surge.sh#%#window.__testCase2 = true;
 testcases.adguard.com,surge.sh#@%#window.__testCase2 = true;

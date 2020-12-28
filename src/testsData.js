@@ -206,6 +206,14 @@ const testsData = [
     },
     {
         id: 26,
+        title: '$jsinject rules test',
+        link: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.html',
+        rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari',
+        incompatibility: 'iOS, Content Blocker',
+    },
+    {
+        id: 27,
         title: '$removeparam rules',
         link: 'Filters/removeparam-rules/test-removeparam-rules.html',
         rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',

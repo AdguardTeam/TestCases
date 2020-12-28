@@ -1,5 +1,5 @@
 /**
- * Before doing the test, import test-content-rules.txt to AdGuard
+ * Before doing the test, import test-script-rules.txt to AdGuard
  */
 window.addEventListener('load', function() {
 
