@@ -6,8 +6,12 @@
 !
 ! Hide warning
 testcases.adguard.com,surge.sh###subscribe-to-test-generichide-rules-filter
-! Test case: generic hide
+! Test case: generichide
 testcases.adguard.com,surge.sh###case-1-generichide > .test-banner
 ###case-1-generichide > .test-banner1
 @@||testcases.adguard.com$generichide
 @@||surge.sh$generichide
+!
+! Test case: generichide rule and js rules
+testcases.adguard.com#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
+surge.sh#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
