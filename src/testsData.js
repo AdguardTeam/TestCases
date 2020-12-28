@@ -11,7 +11,8 @@ const testsData = [
         title: 'Generic hide rules',
         link: 'Filters/simple-rules/generichide-test/generichide-test.html',
         rulesUrl: 'Filters/simple-rules/generichide-test/generichide-test.txt',
-        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari (Case 1), iOS, Content Blocker',
+        incompatibility: 'Safari (Case 2)',
     },
     {
         id: 3,
@@ -210,6 +211,14 @@ const testsData = [
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
         compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari',
         incompatibility: 'iOS, Content Blocker',
+    },
+    {
+        id: 27,
+        title: '$removeparam rules',
+        link: 'Filters/removeparam-rules/test-removeparam-rules.html',
+        rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
     },
 ];
 
