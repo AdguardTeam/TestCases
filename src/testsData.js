@@ -220,6 +220,14 @@ const testsData = [
         compatibility: 'Windows, MacOS, Android',
         incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
     },
+    {
+        id: 28,
+        title: '$specifichide rules',
+        link: 'Filters/specifichide-rules/test-specifichide-rules.html',
+        rulesUrl: 'Filters/specifichide-rules/test-specifichide-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+    },
 ];
 
 export default testsData;
