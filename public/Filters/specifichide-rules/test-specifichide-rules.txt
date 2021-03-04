@@ -1,0 +1,16 @@
+!
+! Title: Rules for specifichide rules tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+###subscribe-to-test-specifichide-rules-filter
+! Test case 1: Test rule with specifichide modifier
+testcases.adguard.com,surge.sh###case-1 > .test-banner-1
+@@||testcases.adguard.com^$specifichide
+@@||surge.sh^$specifichide
+! Test case 2: Test rule with specifichide modifier vs generic basic rule
+###case-2 > .test-banner-2
+! Test case 3: Test rule with specifichide modifier vs generic css rule
+#$##case-3 > .test-banner-3 { width: 200px !important; }
