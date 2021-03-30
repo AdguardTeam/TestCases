@@ -22,11 +22,14 @@ and test code changes will be dynamically updated there
 > **Please note, that AdGuard for Mac does not filter localhost connections by default!**.
 
 ### Test on surge.sh
-1. `npm run build`
-2. `npm install --global surge`
-3. `surge --domain=_any_domain_.surge.sh`
-4. project: `_location_/filters-tests/**build**`
-5. Enjoy your testing at `_any_domain_.surge.sh`!
+
+```
+cd public
+yarn global add surge
+surge --domain=_any_domain_.surge.sh
+```
+
+Enjoy your testing at `_any_domain_.surge.sh`!
 
 ## Manage tests list:
 
