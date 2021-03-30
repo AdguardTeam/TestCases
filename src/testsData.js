@@ -228,6 +228,14 @@ const testsData = [
         compatibility: 'Windows, MacOS, Android',
         incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
     },
+    {
+        id: 29,
+        title: '$denyallow rules',
+        link: 'Filters/denyallow-rules/test-denyallow-rules.html',
+        rulesUrl: 'Filters/denyallow-rules/test-denyallow-rules.txt',
+        compatibility: 'Windows, MacOS, Android',
+        incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+    },
 ];
 
 export default testsData;
