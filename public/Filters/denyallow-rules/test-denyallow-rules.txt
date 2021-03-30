@@ -8,7 +8,7 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-denyallow-rules-filter
 !
 ! Case 1
-||adguard_circle.png$image,denyallow=cdn.adguard.com,domain=testcases.adguard.com,surge.sh
+/adguard_circle.png$image,denyallow=cdn.adguard.com,domain=testcases.adguard.com|surge.sh
 !
 ! Case 2
 /adguard_dns_map.png
