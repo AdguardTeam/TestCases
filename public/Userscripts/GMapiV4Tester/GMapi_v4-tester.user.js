@@ -34,9 +34,9 @@
     const GmTests = {
 
         'GM.info': (assert) => {
-            var info = GM.info;
-            assert.ok(info.script.name === "Greasemonkey API v4 Tester");
-            assert.ok(info.script.namespace === "adguard");
+            const { info } = GM;
+            assert.ok(info.script.name === 'Greasemonkey API v4 Tester');
+            assert.ok(info.script.namespace === 'adguard');
             assert.ok(info.version);
         },
 
@@ -82,9 +82,9 @@
         },
         'GM.xmlHttpRequest': (assert) => {
             GM.xmlHttpRequest({
-                method: "GET",
+                method: 'GET',
                 synchronous: true,
-                url: "/Userscripts/GMapiV4Tester/resource.js",
+                url: '/Userscripts/GMapiV4Tester/resource.js',
                 onload: (response) => {
                     assert.ok(response.responseText === '"привет, я resource"');
                 },
@@ -107,4 +107,4 @@
     };
 
     unsafeWindow.GmTests = GmTests;
-})();
+}());
