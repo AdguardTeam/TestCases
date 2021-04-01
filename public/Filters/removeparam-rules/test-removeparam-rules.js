@@ -88,8 +88,8 @@ window.addEventListener("DOMContentLoaded", function () {
     const testUrl = baseUrl + "/?p1case8=true&p2case8=true";
     const result = await request(testUrl);
     assert.ok(
-      result.url.includes("p1case8=true") &&
-        !result.url.includes("p2case8=true"),
+      !result.url.includes("p1case8=true") &&
+        result.url.includes("p2case8=true"),
       "$removeparam works with inversion"
     );
   });
