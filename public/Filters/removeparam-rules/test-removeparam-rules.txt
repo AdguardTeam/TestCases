@@ -26,15 +26,31 @@ testcases.adguard.com,surge.sh###subscribe-to-test-removeparam-rules-filter
 ||surge.sh$removeparam=p4Case1
 !
 ! Case 5
-$removeparam=p1case5|p2case5
+$removeparam=p1case5
+$removeparam=p2case5
 @@||testcases.adguard.com$removeparam=p2case5
 @@||surge.sh$removeparam=p2case5
 !
 ! Case 6
-||testcases.adguard.com$important,removeparam=p1case6|p2case6
-@@||testcases.adguard.com$removeparam=p1case6|p2case6
-||surge.sh$important,removeparam=p1case6|p2case6
-@@||surge.sh$removeparam=p1case6|p2case6
+||testcases.adguard.com$important,removeparam=p1case6
+||testcases.adguard.com$important,removeparam=p2case6
+@@||testcases.adguard.com$removeparam=p1case6
+@@||testcases.adguard.com$removeparam=p2case6
+||surge.sh$important,removeparam=p1case6
+||surge.sh$important,removeparam=p2case6
+@@||surge.sh$removeparam=p1case6
+@@||surge.sh$removeparam=p2case6
 !
 ! Case 7
-$removeparam=p1case7|p2case7,domain=testcases.adguard.com|surge.sh
+$removeparam=p1case7,domain=testcases.adguard.com|surge.sh
+$removeparam=p2case7,domain=testcases.adguard.com|surge.sh
+!
+! Case 8
+||testcases.adguard.com^$removeparam=~p1case8
+||surge.sh^$removeparam=~p1case8
+!
+! Case 9
+$removeparam=p1case9
+$removeparam=p2case9
+@@||testcases.adguard.com/*p1case9$removeparam
+@@||surge.sh/*p1case9$removeparam
