@@ -46,8 +46,8 @@ $removeparam=p1case7,domain=testcases.adguard.com|surge.sh
 $removeparam=p2case7,domain=testcases.adguard.com|surge.sh
 !
 ! Case 8
-||testcases.adguard.com^$removeparam=~p1case8
-||surge.sh^$removeparam=~p1case8
+||testcases.adguard.com/*p1case8$removeparam=~p2case8
+||surge.sh/*p1case8$removeparam=~p2case8
 !
 ! Case 9
 $removeparam=p1case9
