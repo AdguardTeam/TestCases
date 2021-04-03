@@ -7,7 +7,7 @@
  */
 window.addEventListener('DOMContentLoaded', () => {
     QUnit.test('1. Test simple :has', (assert) => {
-        assert.equal(window.getComputedStyle(branch - actions - menu).display, 'none');
+        assert.equal(window.getComputedStyle(case1).display, 'none');
     });
 
     QUnit.test('2. Test simple :contains', (assert) => {
