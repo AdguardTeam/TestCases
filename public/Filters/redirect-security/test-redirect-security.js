@@ -9,8 +9,10 @@
  * @param assert
  */
 const redirectResourcesSecurityTest = async (assert, urls) => {
+    /* eslint-disable-next-line no-restricted-syntax */
     for (const url of urls) {
         // first request
+        /* eslint-disable-next-line no-await-in-loop */
         const response1 = await fetch(url);
         assert.ok(
             response1.status === 200
@@ -20,24 +22,26 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
         );
 
         // second request with the same secret key
+        /* eslint-disable-next-line no-await-in-loop */
         await assert.rejects(
             fetch(response1.url),
-            "Second request with the same secret key should fail"
+            'Second request with the same secret key should fail'
         );
 
         // get url without secret key
         const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
 
         // third request without secret key
+        /* eslint-disable-next-line no-await-in-loop */
         await assert.rejects(
             fetch(urlNoSecret),
-            "Third request without secret key should fail"
+            'Third request without secret key should fail'
         );
     }
-}
+};
 
-window.addEventListener('DOMContentLoaded', function () {
-    QUnit.test("Case 1: $redirect resources security test", async assert => {
+window.addEventListener('DOMContentLoaded', () => {
+    QUnit.test('Case 1: $redirect resources security test', async (assert) => {
         await redirectResourcesSecurityTest(assert, [
             '../redirect-rules/test-files/redirect-test.png',
             '../redirect-rules/test-files/redirect-test.txt',

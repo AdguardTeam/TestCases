@@ -1,1 +1,2 @@
-let tmp = 0
+/* eslint-disable-next-line no-unused-vars */
+const tmp = 0;

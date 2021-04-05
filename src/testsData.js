@@ -173,8 +173,8 @@ const testsData = [
         title: '$badfilter rules',
         link: 'Filters/badfilter-rules/test-badfilter-rules.html',
         rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
-        compatibility: 'Windows, MacOS, Android, iOS, Chrome, Edge, FF, Edge Legacy, Safari, Opera',
-        incompatibility: 'Content Blocker',
+        compatibility: 'Chrome, Edge, FF, Edge Legacy, Safari, Opera, iOS',
+        incompatibility: 'Windows, MacOS, Android, Content Blocker',
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
     {
