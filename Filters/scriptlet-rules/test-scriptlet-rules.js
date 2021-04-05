@@ -1,4 +1,7 @@
-/* global window, QUnit */
+/* global QUnit */
+
+/* eslint-disable no-eval */
+
 /**
  * Before doing the test, import test-content-rules.txt to AdGuard
  */
@@ -26,8 +29,7 @@ const clearProperties = (...props) => {
 };
 
 window.addEventListener('load', () => {
-
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-scriptlet-rules-filter'), null).display === 'none';  
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-scriptlet-rules-filter'), null).display === 'none';
 
     QUnit.test('abort-on-property-write AdGuard syntax', (assert) => {
         assert.throws(
@@ -35,7 +37,7 @@ window.addEventListener('load', () => {
                 window.__testCase1 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property',
+            'should throw Reference error when try to access property'
         );
 
         assert.notOk(window.__testCase1);
@@ -47,7 +49,7 @@ window.addEventListener('load', () => {
                 window.__testCase2 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property',
+            'should throw Reference error when try to access property'
         );
 
         assert.notOk(window.__testCase2);
@@ -59,7 +61,7 @@ window.addEventListener('load', () => {
                 window.__testCase3 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property',
+            'should throw Reference error when try to access property'
         );
         assert.notOk(window.__testCase3);
     });
@@ -88,21 +90,24 @@ window.addEventListener('load', () => {
         let propReadCaseAG = null;
         assert.throws(
             () => {
+                /* eslint-disable-next-line prefer-destructuring */
                 propReadCaseAG = window.propReadCaseAG;
             },
             /ReferenceError/,
-            'AdGuard Syntax throws error',
+            'AdGuard Syntax throws error'
         );
         assert.notOk(propReadCaseAG, 'AG syntax prop remained undefined');
 
         window.propReadCaseUBO = 'propReadCaseUBO';
+        /* eslint-disable-next-line no-unused-vars */
         let propReadCaseUBO = null;
         assert.throws(
             () => {
+                /* eslint-disable-next-line prefer-destructuring */
                 propReadCaseUBO = window.propReadCaseUBO;
             },
             /ReferenceError/,
-            'UBO Syntax throws error',
+            'UBO Syntax throws error'
         );
         assert.notOk(propReadCaseAG, 'UBO syntax prop remained undefined');
 
@@ -110,10 +115,11 @@ window.addEventListener('load', () => {
         let propReadCaseABP = null;
         assert.throws(
             () => {
+                /* eslint-disable-next-line prefer-destructuring */
                 propReadCaseABP = window.propReadCaseABP;
             },
             /ReferenceError/,
-            'ABP Syntax throws error',
+            'ABP Syntax throws error'
         );
         assert.notOk(propReadCaseABP, 'ABP syntax prop remained undefined');
     });
@@ -125,7 +131,6 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('prevent-addEventListener', (assert) => {
-
         const sampleElement = document.createElement('div');
         const preventListenerSample = 'simple';
         sampleElement.addEventListener('click', () => {
@@ -335,18 +340,18 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('remove-cookie', (assert) => {
-        assert.ok(adgCheck && document.cookie.indexOf('example') === -1, "All cookies was deleted");
+        assert.ok(adgCheck && document.cookie.indexOf('example') === -1, 'All cookies was deleted');
         document.cookie = 'example=test';
         // todo check why remove-cookie with params does not work
     });
 
     QUnit.test('prevent-popads-net', (assert) => {
         assert.throws(() => {
-            window.PopAds = 'Som value'
+            window.PopAds = 'Som value';
         }, /Reference/, 'Try to write in "PopAds" prop');
 
         assert.throws(() => {
-            window.PopAds = 'Som value'
+            window.PopAds = 'Som value';
         }, /Reference/, 'Try to write in "popns" prop');
     });
 
