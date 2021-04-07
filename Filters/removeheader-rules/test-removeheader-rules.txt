@@ -1,0 +1,28 @@
+!
+! Title: Rules for $removeheader rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-removeheader-rules-filter
+!
+! Case 1
+||adguardtest.surge.sh^$removeheader=vary
+||testcases.adguard.com^$removeheader=vary
+!
+! Case 2
+||adguardtest.surge.sh^$removeheader=etag
+||testcases.adguardtest.com^$removeheader=etag
+@@||adguardtest.surge.sh^$removeheader=etag
+@@||testcases.adguardtest.com^$removeheader=etag
+!
+! Case 3
+||whoami.agrd.workers.dev^$removeheader=request:user-agent
+!
+! Case 4
+||whoami.agrd.workers.dev^$removeheader=cache-control
+@@||whoami.agrd.workers.dev^$removeheader=cache-control
+!
+! Case 5
+||whoami.agrd.workers.dev^$removeheader=origin
