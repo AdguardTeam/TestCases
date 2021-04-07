@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = `${baseUrl}/Filters/removeheader-rules/test-removeheader-rules.txt`;
         const result = await request(testUrl);
         assert.ok(
-            result.headers.get('vary')==null,
+            result.headers.get('vary') == null,
             '$removeheader rule removes passed parameter in a response'
         );
     });
@@ -25,18 +25,16 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = `${baseUrl}/Filters/removeheader-rules/test-removeheader-rules.txt`;
         const result = await request(testUrl);
         assert.ok(
-            result.headers.get('etag')!=null,
+            result.headers.get('etag') != null,
             '$removeheader exception rule prevents removing parameter in a response'
         );
     });
 
     QUnit.test('Case 3: $removeheader in request test', async (assert) => {
-        const testUrl = `https://whoami.agrd.workers.dev/`;
+        const testUrl = 'https://whoami.agrd.workers.dev/';
         const result = await request(testUrl);
         const json = await result.json();
-        const header = json.headers.find((header) => {
-            return header[0] === "user-agent";
-        });
+        const header = json.headers.find(header => header[0] === 'user-agent');
         assert.notOk(
             header,
             '$removeheader rule removes passed parameter in a request'
@@ -44,12 +42,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     QUnit.test('Case 4: negate $removeheader in request test', async (assert) => {
-        const testUrl = `https://whoami.agrd.workers.dev/`;
+        const testUrl = 'https://whoami.agrd.workers.dev/';
         const result = await request(testUrl);
         const json = await result.json();
-        const header = json.headers.find((header) => {
-            return header[0] === "cache-control";
-        });
+        const header = json.headers.find(header => header[0] === 'cache-control');
         assert.ok(
             header,
             '$removeheader exception rule prevents removing parameter in a request'
@@ -57,12 +53,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     QUnit.test('Case 5: $removeheader is not applied for some high-security headers', async (assert) => {
-        const testUrl = `https://whoami.agrd.workers.dev/`;
+        const testUrl = 'https://whoami.agrd.workers.dev/';
         const result = await request(testUrl);
         const json = await result.json();
-        const header = json.headers.find((header) => {
-            return header[0] === "origin";
-        });
+        const header = json.headers.find(header => header[0] === 'origin');
         assert.ok(
             header,
             '$removeheader modifier was not applied'
