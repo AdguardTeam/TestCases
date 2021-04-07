@@ -1,1 +1,1 @@
-'привет, я resource';
+"привет, я resource"
