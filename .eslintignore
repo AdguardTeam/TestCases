@@ -3,3 +3,4 @@ build
 qunit.js
 jquery*.js
 public/Userscripts
+public/Filters/replace-rules/test-files/case7-content-type-modifier.js
