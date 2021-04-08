@@ -240,7 +240,7 @@ const testsData = [
         id: 30,
         title: '$removeheader rules',
         link: 'Filters/removeheader-rules/test-removeheader-rules.html',
-        rulesUrl: 'Filters/denyallow-rules/test-removeheader-rules.txt',
+        rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
         compatibility: 'Windows, MacOS, Android',
         incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
     },
