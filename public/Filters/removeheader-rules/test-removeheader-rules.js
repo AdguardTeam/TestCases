@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = 'https://whoami.agrd.workers.dev/';
         const result = await request(testUrl);
         const json = await result.json();
-        const header = json.headers.find(header => header[0] === 'cache-control');
+        const header = json.headers.find(header => header[0] === 'referer');
         assert.ok(
             header,
             '$removeheader exception rule prevents removing parameter in a request'
