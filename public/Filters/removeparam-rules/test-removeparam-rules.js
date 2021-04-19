@@ -102,4 +102,13 @@ window.addEventListener('DOMContentLoaded', () => {
             '$removeparam'
         );
     });
+    QUnit.test('Case 10: match parameter with value by $removeparam rule with regexp', async (assert) => {
+        const testUrl = `${baseUrl}/?p1case10=xxx&p2case10=yyy`;
+        const result = await request(testUrl);
+        assert.ok(
+            !result.url.includes('p1case10=xxx')
+        && result.url.includes('p2case10=yyy'),
+            '$removeparam with regexp matches parameter with value'
+        );
+    });
 });
