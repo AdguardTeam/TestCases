@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     QUnit.test('1. Test valid websocket connection', (assert) => {
         const done = assert.async();
 
-        const ws = new WebSocket('wss://echo.websocket.org/?valid');
+        const ws = new WebSocket('wss://websocket-echo.agrd.workers.dev/ws?valid');
 
         ws.onopen = () => {
             assert.ok(adgCheck && 'Connection is open');
@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
         // const finished = false;
         const done = assert.async();
 
-        const ws = new WebSocket('wss://echo.websocket.org/?blocked');
+        const ws = new WebSocket('wss://websocket-echo.agrd.workers.dev/ws?blocked');
 
         ws.onopen = () => {
             assert.notOk('Connection is open');
