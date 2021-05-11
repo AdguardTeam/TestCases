@@ -22,5 +22,5 @@ testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
 ||*/tld*$script,domain=testcases.adguard.*|surge.*
 ! Test case 7: $third-party modifier
 ||antibanner.net^$third-party
-! Test case84: all domains elemhide rule exception
+! Test case 8: all domains elemhide rule exception
 #@##case-8-alldomains-elemhide-exception > .test-banner
