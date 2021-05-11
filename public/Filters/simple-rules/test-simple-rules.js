@@ -53,6 +53,11 @@ window.addEventListener('load', () => {
         }
     });
 
+    QUnit.test('8. Test all domains element hiding rule exception', (assert) => {
+        const element = document.querySelector('#case-8-alldomains-elemhide-exception > .test-banner');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
