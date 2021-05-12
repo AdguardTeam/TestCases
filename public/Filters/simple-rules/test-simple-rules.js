@@ -20,7 +20,13 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('3. Test element hiding rule exception', (assert) => {
-        const element = document.querySelector('#case-3-elemhide-exception > .test-banner');
+        let element = document.querySelector('#case-3-elemhide-exception > .test-banner');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
+        element = document.querySelector('#case-3-elemhide-exception > h1');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
+        element = document.querySelector('#case-3-elemhide-exception > h2');
+        assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
+        element = document.querySelector('#case-3-elemhide-exception > h3');
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
     });
 
