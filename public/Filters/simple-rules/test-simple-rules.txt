@@ -13,6 +13,15 @@ testcases.adguard.com,surge.sh###case-1-elemhide > .test-banner
 ! Test case 3: elemhide rule exception
 ###case-3-elemhide-exception > .test-banner
 testcases.adguard.com,surge.sh#@##case-3-elemhide-exception > .test-banner
+! Test case 3: wildcard exception
+testcases.adguard.com,surge.sh###case-3-elemhide-exception > h1
+*#@##case-3-elemhide-exception > h1
+! Test case 3: generic exception
+testcases.adguard.com,surge.sh###case-3-elemhide-exception > h2
+#@##case-3-elemhide-exception > h2
+! Test case 3: generic exception for generic elemhide
+###case-3-elemhide-exception > h3
+#@##case-3-elemhide-exception > h3
 ! Test case 4: domain exclusion
 ~testcases.adguard.com,~surge.sh###case-4-domain-exclusion > .test-banner
 ! Test case 5: wildcard for tld
