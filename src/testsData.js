@@ -217,8 +217,8 @@ const testsData = [
         title: '$removeparam rules',
         link: 'Filters/removeparam-rules/test-removeparam-rules.html',
         rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
-        compatibility: 'Windows, MacOS, Android',
-        incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera',
+        incompatibility: 'Safari, iOS, Content Blocker, Edge Legacy',
     },
     {
         id: 28,

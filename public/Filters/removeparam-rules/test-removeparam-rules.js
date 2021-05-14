@@ -12,6 +12,7 @@ const request = async (url) => {
 const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-removeparam-rules-filter')).display === 'none';
     QUnit.test('Case 1: $removeparam rule test', async (assert) => {
         const testUrl = `${baseUrl}/?p1case1=true&p2case1=true`;
         const result = await request(testUrl);
@@ -49,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = `${baseUrl}/?p1case4=true&p2case4=true`;
         const result = await request(testUrl);
         assert.ok(
-            result.url.includes('p1case4=true')
+            adgCheck && result.url.includes('p1case4=true')
         && result.url.includes('p2case4=true'),
             '$removeparam is case sensitive'
         );
@@ -97,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = `${baseUrl}/?p1case9=true&p2case9=true`;
         const result = await request(testUrl);
         assert.ok(
-            result.url.includes('p1case9=true')
+            adgCheck && result.url.includes('p1case9=true')
         && result.url.includes('p2case9=true'),
             '$removeparam'
         );
