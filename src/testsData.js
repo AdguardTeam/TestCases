@@ -244,6 +244,15 @@ const testsData = [
         compatibility: 'Windows, MacOS, Android',
         incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
     },
+    {
+        id: 31,
+        title: 'Domain with negated domain rules test',
+        link: 'Filters/negated-subdomain/test-negated-subdomain.html',
+        rulesUrl: 'Filters/negated-subdomain/test-negated-subdomain-rules.txt',
+        compatibility: 'Windows, MacOS, Android, Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+        // compatibility: 'Windows, MacOS, Android',
+        // incompatibility: 'Chrome, Edge, FF, Opera, Edge Legacy, Safari, iOS, Content Blocker',
+    },
 ];
 
 export default testsData;

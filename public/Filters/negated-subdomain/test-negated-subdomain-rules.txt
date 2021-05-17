@@ -1,0 +1,16 @@
+!
+! Title: Rules for negated subdomain test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-negated-subdomain-filter
+!
+! Case 1
+adguard.com,~testcases.adguard.com###app
+surge.sh,~ndmn.surge.sh###app
+!
+! Case 2
+testcases.adguard.com,~sub.testcases.adguard.com###case2
+ndmn.surge.sh,~sub.ndmn.surge.sh###case2
