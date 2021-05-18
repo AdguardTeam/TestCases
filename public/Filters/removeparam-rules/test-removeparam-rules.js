@@ -47,11 +47,11 @@ window.addEventListener('DOMContentLoaded', () => {
     );
 
     QUnit.test('Case 4: $removeparam case sensitivity test', async (assert) => {
-        const testUrl = `${baseUrl}/?p1case4=true&p2case4=true`;
+        const testUrl = `${baseUrl}/?p1case4=true&P1Case4=true`;
         const result = await request(testUrl);
         assert.ok(
             adgCheck && result.url.includes('p1case4=true')
-        && result.url.includes('p2case4=true'),
+        && !result.url.includes('P1Case4=true'),
             '$removeparam is case sensitive'
         );
     });
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
         assert.ok(
             adgCheck && result.url.includes('p1case9=true')
         && result.url.includes('p2case9=true'),
-            '$removeparam'
+            '$removeparam exception rule prevents removing parameter in a request'
         );
     });
     QUnit.test('Case 10: match parameter with value by $removeparam rule with regexp', async (assert) => {

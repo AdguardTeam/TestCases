@@ -22,8 +22,8 @@ testcases.adguard.com,surge.sh###subscribe-to-test-removeparam-rules-filter
 ||surge.sh$removeparam=/P2CASE3/i
 !
 ! Case 4
-||testcases.adguard.com$removeparam=P4case1
-||surge.sh$removeparam=p4Case1
+||testcases.adguard.com$removeparam=P1Case4
+||surge.sh$removeparam=P1Case4
 !
 ! Case 5
 $removeparam=p1case5
