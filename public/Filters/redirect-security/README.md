@@ -6,3 +6,6 @@
    #### Expected behaviour: web-accessible resource request with the same security key should fail.
 4. Makes third request to the same web-accessible resource, but without any security key.
    #### Expected behaviour: web-accessible resource request without security key should fail.
+
+* * *
+## Compatible with Browser extension with TSUrlFilter (>=v4.0)
