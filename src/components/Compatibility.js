@@ -5,11 +5,10 @@ import {
     ALL_PRODUCTS,
 } from '../constants';
 
-const Compatibility = (data) => {
-    const { compatibility } = data;
+const Compatibility = ({ compatibility }) => {
     const isFullyCompatible = compatibility?.full;
     const isPartlyCompatible = typeof compatibility?.partial !== 'undefined';
-    const isImcompatible = typeof compatibility?.none !== 'undefined';
+    const isIncompatible = typeof compatibility?.none !== 'undefined';
 
     const getPartlyCompatible = exceptions => (exceptions
         .map(ex => `${ex.product} (exception cases: ${ex.cases.join(', ')})`));
@@ -28,7 +27,7 @@ const Compatibility = (data) => {
             productsData.partial.push(getPartlyCompatible(compatibility.partial.exceptions));
             noneFullProducts.push(...compatibility.partial.exceptions.map(ex => ex.product));
         }
-        if (isImcompatible) {
+        if (isIncompatible) {
             productsData.none.push(...compatibility.none.products);
             noneFullProducts.push(...compatibility.none.products);
         }
