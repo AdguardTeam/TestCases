@@ -62,5 +62,16 @@ const Compatibility = ({ compatibility }) => {
 export default Compatibility;
 
 Compatibility.propTypes = {
-    compatibility: PropTypes.shape({}).isRequired,
+    compatibility: PropTypes.shape({
+        full: PropTypes.bool,
+        partial: PropTypes.shape({
+            exceptions: PropTypes.arrayOf(PropTypes.shape({
+                products: PropTypes.string,
+                cases: PropTypes.arrayOf(PropTypes.number),
+            })),
+        }),
+        none: PropTypes.shape({
+            products: PropTypes.arrayOf(PropTypes.string),
+        }),
+    }).isRequired,
 };
