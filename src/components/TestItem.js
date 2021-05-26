@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import Compatibility from './Compatibility';
 import StartTestBtn from './StartTestBtn';
 import ReadmeBtn from './ReadmeBtn';
 import CopyLinkBtn from './CopyLinkBtn';
@@ -8,7 +9,7 @@ import CopyRulesBtn from './CopyRulesBtn';
 import SubscribeFilterBtn from './SubscribeFilterBtn';
 
 const TestItem = ({
-    title, link, rulesUrl, compatibility, incompatibility, readmeUrl,
+    title, link, rulesUrl, compatibility, readmeUrl,
 }) => {
     const rulesBtn = () => (rulesUrl ? 'enabled' : 'disabled');
 
@@ -25,8 +26,7 @@ const TestItem = ({
                 >
                     {title}
                 </a>
-                <div className="compatibility">{compatibility}</div>
-                <div className="incompatibility">{incompatibility}</div>
+                <Compatibility compatibility={compatibility} />
             </div>
             <div className="test-actions">
 
@@ -67,13 +67,10 @@ TestItem.propTypes = {
     link: PropTypes.string.isRequired,
     rulesUrl: PropTypes.string,
     readmeUrl: PropTypes.string,
-    compatibility: PropTypes.string,
-    incompatibility: PropTypes.string,
+    compatibility: PropTypes.shape({}).isRequired,
 };
 
 TestItem.defaultProps = {
     rulesUrl: '',
     readmeUrl: '',
-    compatibility: '',
-    incompatibility: '',
 };

@@ -2,8 +2,9 @@
 $backgroundColor: #f4f4f4;
 $textColor: #4a4a4a;
 $testBgColor: white;
-$compatibilityColor: green;
-$incompatibilityColor: red;
+$fullCompatibilityColor: green;
+$partialCompatibilityColor: orange;
+$noneCompatibilityColor: red;
 // Font sizes:
 $bodySize: 1vw;
 $testTitleSize: 1.3vw;
@@ -222,19 +223,27 @@ header h3 {
 }
 
 .compatibility {
-  color: $compatibilityColor;
   font-size: $compatibilitySize;
-  background: url(../img/comp.png) left center no-repeat;
+}
+
+.compatibility > div {  
   background-size: 1vw;
   padding-left: 1.5vw;
 }
 
-.incompatibility {
-  color: $incompatibilityColor;
-  font-size: $compatibilitySize;
+.full-compatibility {
+  color: $fullCompatibilityColor;
+  background: url(../img/comp-full.png) left center no-repeat;
+}
+
+.partial-compatibility {
+  color: $partialCompatibilityColor;
+  background: url(../img/comp-partial.png) left center no-repeat;
+}
+
+.none-compatibility {
+  color: $noneCompatibilityColor;
   background: url(../img/incomp.png) left center no-repeat;
-  background-size: 1vw;
-  padding-left: 1.5vw;
 }
 
 .readmeText {
