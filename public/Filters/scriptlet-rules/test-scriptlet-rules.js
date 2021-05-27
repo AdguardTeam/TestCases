@@ -186,6 +186,7 @@ window.addEventListener('load', () => {
 
         const preventBabCase3 = 'preventBabCase3';
         const func = `(function test(id) {window.${preventBabCase3} = 'test'})(test.bab_elementid)`;
+        // eslint-disable-next-line no-implied-eval
         setTimeout(func);
         const done = assert.async();
         setTimeout(() => {
