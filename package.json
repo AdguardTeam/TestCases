@@ -1,16 +1,7 @@
 {
   "name": "filters-tests",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
-  "dependencies": {
-    "node-sass": "^4.12.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-markdown": "^4.1.0",
-    "react-modal": "^3.9.1",
-    "react-scripts": "^4.0.3"
-  },
   "scripts": {
     "start": "react-scripts start",
     "watch": "HOST=local.testcases.adguard.com react-scripts start",
@@ -24,9 +15,6 @@
     "hooks": {
       "pre-push": "yarn stylelint && yarn lint && CI=true react-scripts test"
     }
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "stylelint": {
     "extends": "stylelint-config-recommended-scss"
@@ -43,6 +31,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-modal": "^3.9.1",
+    "react-scripts": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
