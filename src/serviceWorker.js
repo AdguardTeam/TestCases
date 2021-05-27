@@ -13,6 +13,7 @@
 const { log, error } = console;
 
 const isLocalhost = Boolean(
+    /* eslint-disable compat/compat */
     window.location.hostname === 'localhost'
     // [::1] is the IPv6 localhost address.
     || window.location.hostname === '[::1]'
@@ -20,10 +21,11 @@ const isLocalhost = Boolean(
     || window.location.hostname.match(
         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
+    /* eslint-enable compat/compat */
 );
 
 function registerValidSW(swUrl, config) {
-    navigator.serviceWorker
+    navigator.serviceWorker // eslint-disable-line compat/compat
         .register(swUrl)
         .then((registration) => {
             /* eslint-disable no-param-reassign */
@@ -69,7 +71,7 @@ function registerValidSW(swUrl, config) {
 
 function checkValidServiceWorker(swUrl, config) {
     // Check if the service worker can be found. If it can't reload the page.
-    fetch(swUrl)
+    fetch(swUrl) // eslint-disable-line compat/compat
         .then((response) => {
             // Ensure service worker exists, and that we really are getting a JS file.
             const contentType = response.headers.get('content-type');

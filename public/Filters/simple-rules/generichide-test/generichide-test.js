@@ -1,7 +1,7 @@
 /* global QUnit */
 
 /**
- * Before doing the test, import test_filter.txt to Adguard
+ * Before doing the test, import generichide-test.txt to Adguard
  */
 window.addEventListener('load', () => {
     QUnit.test('Test generichide rule', (assert) => {

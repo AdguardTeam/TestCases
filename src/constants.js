@@ -1,4 +1,4 @@
-import { getObjectValues } from './helpers/object-utils'
+import { getObjectValues } from './helpers/object-utils';
 
 export const PRODUCT_TYPES = {
     WIN: 'Windows',

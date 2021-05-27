@@ -12,7 +12,7 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
     /* eslint-disable-next-line no-restricted-syntax */
     for (const url of urls) {
         // first request
-        /* eslint-disable-next-line no-await-in-loop */
+        // eslint-disable-next-line no-await-in-loop, compat/compat
         const response1 = await fetch(url);
         assert.ok(
             response1.status === 200
@@ -22,8 +22,9 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
         );
 
         // second request with the same secret key
-        /* eslint-disable-next-line no-await-in-loop */
+        // eslint-disable-next-line no-await-in-loop
         await assert.rejects(
+            // eslint-disable-next-line compat/compat
             fetch(response1.url),
             'Second request with the same secret key should fail'
         );
@@ -32,8 +33,9 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
         const urlNoSecret = response1.url.substring(0, response1.url.indexOf('?secret='));
 
         // third request without secret key
-        /* eslint-disable-next-line no-await-in-loop */
+        // eslint-disable-next-line no-await-in-loop
         await assert.rejects(
+            // eslint-disable-next-line no-await-in-loop, compat/compat
             fetch(urlNoSecret),
             'Third request without secret key should fail'
         );

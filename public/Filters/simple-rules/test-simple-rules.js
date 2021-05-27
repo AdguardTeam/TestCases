@@ -1,7 +1,7 @@
 /* global QUnit */
 
 /**
- * Before doing the test, import test_filter.txt to Adguard
+ * Before doing the test, import test-simple-rules.txt to Adguard
  */
 window.addEventListener('load', () => {
     const adgCheck = getComputedStyle(

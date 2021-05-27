@@ -22,6 +22,7 @@
 
     "rules": {
         "no-shadow": "off",
+        "import/prefer-default-export": "off",
         "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx" ]}],
         "import/no-extraneous-dependencies": 0,
         "indent": ["error", 4, {
