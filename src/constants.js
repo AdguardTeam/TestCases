@@ -1,3 +1,5 @@
+import { getObjectValues } from './helpers/object-utils'
+
 export const PRODUCT_TYPES = {
     WIN: 'Windows',
     MAC: 'MacOS',
@@ -12,7 +14,7 @@ export const PRODUCT_TYPES = {
     CON: 'Content Blocker',
 };
 
-export const ALL_PRODUCTS = Object.values(PRODUCT_TYPES);
+export const ALL_PRODUCTS = getObjectValues(PRODUCT_TYPES);
 
 /**
  * Windows, MacOS, Android
