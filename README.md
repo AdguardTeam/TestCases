@@ -3,7 +3,7 @@
 ## How to build
 
 1. `yarn install`
-2. `yarn run build`
+2. `yarn build`
 
 ## Development
 
@@ -23,13 +23,19 @@ and test code changes will be dynamically updated there
 
 ### Test on surge.sh
 
+Available domains can be checked by `surge list`.
+
+If there is not any domain, set up surge first:
+https://surge.sh/help/getting-started-with-surge
+
+Then:
 ```
-cd public
-yarn global add surge
-surge --domain=_any_domain_.surge.sh
+yarn build
+cd build
+surge --domain=_your_available_domain_.surge.sh
 ```
 
-Enjoy your testing at `_any_domain_.surge.sh`!
+Enjoy your testing at `_your_available_domain_.surge.sh`!
 
 ## Manage tests list:
 
