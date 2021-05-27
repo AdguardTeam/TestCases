@@ -6,9 +6,9 @@ import {
 } from '../constants';
 
 const Compatibility = ({ compatibility }) => {
-    const isFullyCompatible = compatibility?.full;
-    const isPartlyCompatible = typeof compatibility?.partial !== 'undefined';
-    const isIncompatible = typeof compatibility?.none !== 'undefined';
+    const isFullyCompatible = compatibility && compatibility.full;
+    const isPartlyCompatible = compatibility && typeof compatibility.partial !== 'undefined';
+    const isIncompatible = compatibility && typeof compatibility.none !== 'undefined';
 
     const getPartlyCompatible = exceptions => (exceptions
         .map(ex => `${ex.product} (exception cases: ${ex.cases.join(', ')})`));
