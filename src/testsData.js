@@ -320,7 +320,7 @@ const testsData = [
         compatibility: {
             none: {
                 products: [
-                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.iOS, PRODUCT_TYPES.CON,
+                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON,
                 ],
             },
         },
@@ -335,7 +335,7 @@ const testsData = [
             none: {
                 products: [
                     ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.iOS, PRODUCT_TYPES.CON,
+                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON,
                 ],
             },
         },
@@ -348,7 +348,7 @@ const testsData = [
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.iOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
             },
         },
     },
@@ -362,7 +362,7 @@ const testsData = [
                 products: [
                     PRODUCT_TYPES.EDL,
                     PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.iOS,
+                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
