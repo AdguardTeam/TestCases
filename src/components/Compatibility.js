@@ -31,7 +31,7 @@ const Compatibility = ({ compatibility }) => {
             productsData.none.push(...compatibility.none.products);
             noneFullProducts.push(...compatibility.none.products);
         }
-        productsData.full.push(...ALL_PRODUCTS.filter(p => !noneFullProducts.includes(p)));
+        productsData.full.push(...ALL_PRODUCTS.filter(p => !noneFullProducts.indexOf(p) > -1));
     }
 
     return (
