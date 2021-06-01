@@ -375,7 +375,15 @@ const testsData = [
         rulesUrl: 'Filters/specifichide-rules/test-specifichide-rules.txt',
         compatibility: {
             none: {
-                products: NONE_CORELIBS_PRODUCTS,
+                products: [
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.FOX,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
     },
