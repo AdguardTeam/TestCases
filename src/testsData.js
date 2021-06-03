@@ -381,7 +381,6 @@ const testsData = [
                     PRODUCT_TYPES.FOX,
                     PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
