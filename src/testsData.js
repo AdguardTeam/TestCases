@@ -393,7 +393,14 @@ const testsData = [
         rulesUrl: 'Filters/denyallow-rules/test-denyallow-rules.txt',
         compatibility: {
             none: {
-                products: NONE_CORELIBS_PRODUCTS,
+                products: [
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.FOX,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
     },
