@@ -1,25 +1,26 @@
 /* global QUnit */
+/* eslint-disable prefer-arrow-callback, func-names */
 
 /**
  * Before doing the test, import test-simple-rules.txt to Adguard
  */
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const adgCheck = getComputedStyle(
         window.document.getElementById('subscribe-to-test-simple-rules-filter'),
         null
     ).display === 'none';
 
-    QUnit.test('1. Test domain-specific element hiding rule', function(assert) {
+    QUnit.test('1. Test domain-specific element hiding rule', function (assert) {
         const element = document.querySelector('#case-1-elemhide > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('2. Test generic element hiding rule', function(assert) {
+    QUnit.test('2. Test generic element hiding rule', function (assert) {
         const element = document.querySelector('#case-2-generic-elemhide > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('3. Test element hiding rule exception', function(assert) {
+    QUnit.test('3. Test element hiding rule exception', function (assert) {
         let element = document.querySelector('#case-3-elemhide-exception > .test-banner');
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
         element = document.querySelector('#case-3-elemhide-exception > h1');
@@ -30,17 +31,17 @@ window.addEventListener('load', function() {
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
     });
 
-    QUnit.test('4. Test domain exclusion', function(assert) {
+    QUnit.test('4. Test domain exclusion', function (assert) {
         const element = document.querySelector('#case-4-domain-exclusion > .test-banner');
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
     });
 
-    QUnit.test('5. Test for wildcard for tld', function(assert) {
+    QUnit.test('5. Test for wildcard for tld', function (assert) {
         const element = document.querySelector('#case-5-wildcard-for-tld > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('6. Test wildcard for tld support with $domain modifier', function(assert) {
+    QUnit.test('6. Test wildcard for tld support with $domain modifier', function (assert) {
         const element = document.querySelector('#case-6-wildcard-for-tld-basic-rules > img');
         const isImageBlocked = !element || (getComputedStyle(element).width !== '40px');
         assert.ok(isImageBlocked, 'rule with wildcard in tld blocks image');
@@ -48,7 +49,7 @@ window.addEventListener('load', function() {
         assert.ok(adgCheck && txt === 'test', 'rule with wildcard in tld blocks script');
     });
 
-    QUnit.test('7. Test $third-party modifier', function(assert) {
+    QUnit.test('7. Test $third-party modifier', function (assert) {
         const testImg = document.querySelector('#case-7-third-party > img');
         if (testImg) {
             // browser extensions make image zero-size
