@@ -60,13 +60,13 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('8. Test $subdocument modifier', (assert) => {
-        const testImg1 = document.getElementById("test-image-1");
-        const iframe = document.getElementById("iframe-case-8");
-        const iframeImg1 = iframe.contentWindow.document.getElementById("test-image-1");
-        assert.ok(testImg1 && !iframeImg1, "Rule with subdocument modifier blocks image from iframe");
+        const testImg1 = document.getElementById('test-image-1');
+        const iframe = document.getElementById('iframe-case-8');
+        const iframeImg1 = iframe.contentWindow.document.getElementById('test-image-1');
+        assert.ok(testImg1 && !iframeImg1, 'Rule with subdocument modifier blocks image from iframe');
 
-        const testImg2 = document.getElementById("test-image-2");
-        const iframeImg2 = iframe.contentWindow.document.getElementById("test-image-2");
+        const testImg2 = document.getElementById('test-image-2');
+        const iframeImg2 = iframe.contentWindow.document.getElementById('test-image-2');
         assert.ok(!testImg2 && iframeImg2, "Rule with negated subdocument modifier doesn't block image from iframe");
     });
 
