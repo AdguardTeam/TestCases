@@ -29,5 +29,8 @@ testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
 ! Test case 6: wildcard for tld support with $domain modifier
 ||*/tld-test-files/$image,domain=testcases.adguard.*|surge.*
 ||*/tld*$script,domain=testcases.adguard.*|surge.*
-! Test case 6: $third-party modifier
+! Test case 7: $third-party modifier
 ||antibanner.net^$third-party
+! Test case 8: $subdocument modifier
+||test-image-1.png^$subdocument,domain=testcases.adguard.com|surge.sh
+||test-image-2.png^$~subdocument,domain=testcases.adguard.com|surge.sh

@@ -59,6 +59,17 @@ window.addEventListener('load', () => {
         }
     });
 
+    QUnit.test('8. Test $subdocument modifier', (assert) => {
+        const testImg1 = document.getElementById("test-image-1");
+        const iframe = document.getElementById("iframe-case-8");
+        const iframeImg1 = iframe.contentWindow.document.getElementById("test-image-1");
+        assert.ok(testImg1 && !iframeImg1, "Rule with subdocument modifier blocks image from iframe");
+
+        const testImg2 = document.getElementById("test-image-2");
+        const iframeImg2 = iframe.contentWindow.document.getElementById("test-image-2");
+        assert.ok(!testImg2 && iframeImg2, "Rule with negated subdocument modifier doesn't block image from iframe");
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
@@ -71,7 +82,7 @@ window.addEventListener('load', () => {
     // TODO: Simple basic rules
     // TODO: Basic rules with third-party modifier
     // TODO: Exception rules (@@)
-    // TODO: Content-type modifiers (script, style, xmlhttprequest, subdocument, media, etc)
+    // TODO: Content-type modifiers (script, style, xmlhttprequest, media, etc)
     // TODO: Basic rules with domain restrictions
     // TODO: JS rules
 });
