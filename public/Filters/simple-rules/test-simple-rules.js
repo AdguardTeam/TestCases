@@ -59,6 +59,28 @@ window.addEventListener('load', () => {
         }
     });
 
+    QUnit.test('8. Test $subdocument modifier', (assert) => {
+        const iframe1 = document.getElementById('iframe1-case-8');
+
+        if (!iframe1) {
+            // Corelibs engine cuts iframe from DOM
+            assert.ok(!iframe1, 'Rule with subdocument modifier blocks iframe');
+        } else {
+            try {
+                // Safari browser removes content from iframe's body (<body></body>)
+                const iframe1InnerHtml = iframe1?.contentWindow?.document?.querySelector('body')?.innerHTML;
+                assert.ok(iframe1InnerHtml === '', 'Rule with subdocument modifier blocks iframe');
+            } catch {
+                // Chromium browsers make iframe invisible (visibility: hidden)
+                const iframe1Visibility = window.getComputedStyle(iframe1).visibility;
+                assert.ok(iframe1Visibility === 'hidden', 'Rule with subdocument modifier blocks iframe');
+            }
+        }
+
+        const iframe2Visibility = window.getComputedStyle(document.getElementById('iframe2-case-8')).visibility;
+        assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
@@ -71,7 +93,7 @@ window.addEventListener('load', () => {
     // TODO: Simple basic rules
     // TODO: Basic rules with third-party modifier
     // TODO: Exception rules (@@)
-    // TODO: Content-type modifiers (script, style, xmlhttprequest, subdocument, media, etc)
+    // TODO: Content-type modifiers (script, style, xmlhttprequest, media, etc)
     // TODO: Basic rules with domain restrictions
     // TODO: JS rules
 });
