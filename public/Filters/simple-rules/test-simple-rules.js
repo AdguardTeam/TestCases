@@ -82,7 +82,7 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('9. Test $ping modifier', (assert) => {
-        assert.ok(adgCheck && navigator.sendBeacon("https://adguard.com", "Testdata"), "Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console");
+        assert.ok(adgCheck && navigator.sendBeacon('https://adguard.com', 'Testdata'), 'Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console');
     });
 
     // Add new test cases here
