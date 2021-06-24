@@ -81,6 +81,10 @@ window.addEventListener('load', () => {
         assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
     });
 
+    QUnit.test('9. Test $ping modifier', (assert) => {
+        assert.ok(adgCheck && navigator.sendBeacon("https://adguard.com", "Testdata"), "Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console");
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
