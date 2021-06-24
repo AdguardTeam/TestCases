@@ -32,5 +32,6 @@ testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
 ! Test case 7: $third-party modifier
 ||antibanner.net^$third-party
 ! Test case 8: $subdocument modifier
-||test-image-1.png^$subdocument,domain=testcases.adguard.com|surge.sh
-||test-image-2.png^$~subdocument,domain=testcases.adguard.com|surge.sh
+||*/iframe-test-1.html^$subdocument,domain=testcases.adguard.com|surge.sh
+||*/iframe-test-2.html^$domain=testcases.adguard.com|surge.sh
+@@||*/iframe-test-2.html^$subdocument,domain=testcases.adguard.com|surge.sh

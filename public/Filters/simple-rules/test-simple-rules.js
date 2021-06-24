@@ -60,14 +60,25 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('8. Test $subdocument modifier', (assert) => {
-        const testImg1 = document.getElementById('test-image-1');
-        const iframe = document.getElementById('iframe-case-8');
-        const iframeImg1 = iframe.contentWindow.document.getElementById('test-image-1');
-        assert.ok(testImg1 && !iframeImg1, 'Rule with subdocument modifier blocks image from iframe');
+        const iframe1 = document.getElementById('iframe1-case-8');
 
-        const testImg2 = document.getElementById('test-image-2');
-        const iframeImg2 = iframe.contentWindow.document.getElementById('test-image-2');
-        assert.ok(!testImg2 && iframeImg2, "Rule with negated subdocument modifier doesn't block image from iframe");
+        if (!iframe1) {
+            // Corelibs engine cuts iframe from DOM
+            assert.ok(!iframe1, 'Rule with subdocument modifier blocks iframe');
+        } else {
+            try {
+                // Safari browser removes content from iframe's body (<body></body>)
+                const iframe1InnerHtml = iframe1?.contentWindow?.document?.querySelector('body')?.innerHTML;
+                assert.ok(iframe1InnerHtml === "", 'Rule with subdocument modifier blocks iframe');
+            } catch {
+                // Chromium browsers make iframe invisible (visibility: hidden)
+                const iframe1Visibility = window.getComputedStyle(iframe1).visibility;
+                assert.ok(iframe1Visibility === 'hidden', 'Rule with subdocument modifier blocks iframe');
+            }
+        }
+
+        const iframe2Visibility = window.getComputedStyle(document.getElementById('iframe2-case-8')).visibility;
+        assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
     });
 
     // Add new test cases here
