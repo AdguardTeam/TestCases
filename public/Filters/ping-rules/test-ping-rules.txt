@@ -1,0 +1,10 @@
+!
+! Title: Rules for $ping rules tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-ping-rules-filter
+! Test case 1: $ping modifier
+||adguard.com/*^$ping

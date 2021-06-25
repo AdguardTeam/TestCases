@@ -415,6 +415,17 @@ const testsData = [
             },
         },
     },
+    {
+        id: 31,
+        title: '$ping rules',
+        link: 'Filters/ping-rules/test-ping-rules.html',
+        rulesUrl: 'Filters/ping-rules/test-ping-rules.txt',
+        compatibility: {
+            none: {
+                products: CORELIBS_PRODUCTS,
+            },
+        },
+    },
 ];
 
 export default testsData;
