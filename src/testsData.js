@@ -417,20 +417,9 @@ const testsData = [
     },
     {
         id: 31,
-        title: '$ping rules',
-        link: 'Filters/ping-rules/test-ping-rules.html',
-        rulesUrl: 'Filters/ping-rules/test-ping-rules.txt',
-        compatibility: {
-            none: {
-                products: CORELIBS_PRODUCTS,
-            },
-        },
-    },
-    {
-        id: 32,
-        title: '$xmlhttprequest rules',
-        link: 'Filters/xmlhttprequest-rules/test-xmlhttprequest-rules.html',
-        rulesUrl: 'Filters/xmlhttprequest-rules/test-xmlhttprequest-rules.txt',
+        title: '$ping, $websocket, $xmlhttprequest rules',
+        link: 'Filters/blocking-request-rules/test-blocking-request-rules.html',
+        rulesUrl: 'Filters/blocking-request-rules/test-blocking-request-rules.txt',
         compatibility: {
             none: {
                 products: CORELIBS_PRODUCTS,
