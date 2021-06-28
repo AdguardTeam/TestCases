@@ -10,3 +10,5 @@ testcases.adguard.com,surge.sh###subscribe-to-test-blocking-request-rules-filter
 ||adguard.com/*^$ping
 ! Test case 2: $xmlhttprequest modifier
 ||adguard-vpn.com^$xmlhttprequest,domain=testcases.adguard.com|surge.sh
+! Test case 3: $websocket modifier
+$websocket,domain=testcases.adguard.com|surge.sh

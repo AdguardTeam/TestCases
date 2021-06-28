@@ -19,9 +19,19 @@ window.addEventListener('load', () => {
     QUnit.test('2. Test $xmlhttprequest modifier', async (assert) => {
         try {
             await request('https://adguard-vpn.com');
-            assert.ok(false, 'Rule with $xmlhttprequest should block xmlhttprequest request');
+            assert.ok(false, 'Rule with $xmlhttprequest modifier should block xmlhttprequest request');
         } catch (e) {
-            assert.ok(true, 'Rule with $xmlhttprequest blocks xmlhttprequest request');
+            assert.ok(true, 'Rule with $xmlhttprequest modifier blocks xmlhttprequest request');
         }
+    });
+
+    QUnit.test('3. Test $websocket modifier', async (assert) => {
+        let websocket = new WebSocket("wss://echo.websocket.org");
+        websocket.onopen = () => websocket.send("Test message");
+        assert.timeout( 3000 );
+
+        websocket.onerror = () => {
+            assert.ok(true, 'Rule with $websocket modifier blocks websocket request');
+        };
     });
 });
