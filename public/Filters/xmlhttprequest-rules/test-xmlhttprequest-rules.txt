@@ -1,0 +1,10 @@
+!
+! Title: Rules for $xmlhttprequest rules tests
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-xmlhttprequest-rules-filter
+! Test case 1: $xmlhttprequest modifier
+||adguard-vpn.com^$xmlhttprequest,domain=testcases.adguard.com|surge.sh

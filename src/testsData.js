@@ -426,6 +426,17 @@ const testsData = [
             },
         },
     },
+    {
+        id: 32,
+        title: '$xmlhttprequest rules',
+        link: 'Filters/xmlhttprequest-rules/test-xmlhttprequest-rules.html',
+        rulesUrl: 'Filters/xmlhttprequest-rules/test-xmlhttprequest-rules.txt',
+        compatibility: {
+            none: {
+                products: CORELIBS_PRODUCTS,
+            },
+        },
+    },
 ];
 
 export default testsData;
