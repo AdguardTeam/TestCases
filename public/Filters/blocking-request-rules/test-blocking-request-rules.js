@@ -26,9 +26,9 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('3. Test $websocket modifier', async (assert) => {
-        let websocket = new WebSocket("wss://echo.websocket.org");
-        websocket.onopen = () => websocket.send("Test message");
-        assert.timeout( 3000 );
+        const websocket = new WebSocket('wss://echo.websocket.org');
+        websocket.onopen = () => websocket.send('Test message');
+        assert.timeout(3000);
 
         websocket.onerror = () => {
             assert.ok(true, 'Rule with $websocket modifier blocks websocket request');
