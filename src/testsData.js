@@ -425,6 +425,7 @@ const testsData = [
                 products: CORELIBS_PRODUCTS,
             },
         },
+        readmeUrl: 'Filters/blocking-request-rules/README.md',
     },
 ];
 
