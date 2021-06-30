@@ -415,6 +415,18 @@ const testsData = [
             },
         },
     },
+    {
+        id: 31,
+        title: '$ping, $websocket, $xmlhttprequest rules',
+        link: 'Filters/blocking-request-rules/test-blocking-request-rules.html',
+        rulesUrl: 'Filters/blocking-request-rules/test-blocking-request-rules.txt',
+        compatibility: {
+            none: {
+                products: CORELIBS_PRODUCTS,
+            },
+        },
+        readmeUrl: 'Filters/blocking-request-rules/README.md',
+    },
 ];
 
 export default testsData;
