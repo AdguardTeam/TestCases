@@ -11,5 +11,5 @@ testcases.adguard.com,surge.sh###subscribe-to-test-script-rules-filter
 testcases.adguard.com,surge.sh#%#window.__testCase1 = true;
 !
 ! Case 2
-testcases.adguard.com,surge.sh#%#window.location.href = adguard.com;
-testcases.adguard.com,surge.sh#@%#window.location.href = adguard.com;
+testcases.adguard.com,surge.sh#%#window.location.href = "adguard.com";
+testcases.adguard.com,surge.sh#@%#window.location.href = "adguard.com";
