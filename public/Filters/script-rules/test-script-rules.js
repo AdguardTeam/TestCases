@@ -11,6 +11,6 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('2. Test script rule exception', (assert) => {
-        assert.ok(adgCheck && window.location.href.endsWith('test-script-rules.html'), 'Exception script rule should disable script rule');
+        assert.ok(adgCheck && window.adg_test === true, 'Exception script rule should disable script rule');
     });
 });
