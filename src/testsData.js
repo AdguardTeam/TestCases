@@ -232,7 +232,7 @@ const testsData = [
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
         compatibility: {
             special: {
-                compatibile: [
+                compatible: [
                     FIREFOX_BUILDS.FOX_STDLN,
                     PRODUCT_TYPES.WIN,
                     PRODUCT_TYPES.MAC,
@@ -243,7 +243,7 @@ const testsData = [
                     PRODUCT_TYPES.EDL,
                     PRODUCT_TYPES.SAF,
                 ],
-                incompatibile: [
+                incompatible: [
                     FIREFOX_BUILDS.FOX_AMO,
                     PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
@@ -258,8 +258,8 @@ const testsData = [
         rulesUrl: 'Filters/script-rules/test-script-firefox/test-script-firefox.txt',
         compatibility: {
             special: {
-                compatibile: [FIREFOX_BUILDS.FOX_AMO],
-                incompatibile: [
+                compatible: [FIREFOX_BUILDS.FOX_AMO],
+                incompatible: [
                     FIREFOX_BUILDS.FOX_STDLN,
                     PRODUCT_TYPES.WIN,
                     PRODUCT_TYPES.MAC,

@@ -36,8 +36,8 @@ const Compatibility = ({ compatibility }) => {
     }
 
     if (specialCompatibility) {
-        productsData.full = [...compatibility.special.compatibile];
-        productsData.none = [...compatibility.special.incompatibile];
+        productsData.full = [...compatibility.special.compatible];
+        productsData.none = [...compatibility.special.incompatible];
     }
 
     return (
@@ -80,8 +80,8 @@ Compatibility.propTypes = {
             products: PropTypes.arrayOf(PropTypes.string),
         }),
         special: PropTypes.shape({
-            compatibile: PropTypes.arrayOf(PropTypes.string),
-            incompatibile: PropTypes.arrayOf(PropTypes.string),
+            compatible: PropTypes.arrayOf(PropTypes.string),
+            incompatible: PropTypes.arrayOf(PropTypes.string),
         }),
     }).isRequired,
 };
