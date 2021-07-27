@@ -12,6 +12,11 @@ export const PRODUCT_TYPES = {
     CON: 'Content Blocker',
 };
 
+export const FIREFOX_BUILDS = {
+    FOX_AMO: 'Firefox AMO',
+    FOX_STDLN: 'Firefox Standalone',
+};
+
 export const ALL_PRODUCTS = Object.values(PRODUCT_TYPES);
 
 /**
@@ -46,22 +51,6 @@ export const NO_REPLACE_CONTENT_PRODUCTS = [
  * Edge Legacy, Safari, iOS, Content Blocker
  */
 export const NO_CSP_PRODUCTS = [
-    PRODUCT_TYPES.EDL,
-    PRODUCT_TYPES.SAF,
-    PRODUCT_TYPES.IOS,
-    PRODUCT_TYPES.CON,
-];
-
-/**
- * All products except Firefox
- */
-export const NOT_FIREFOX_PRODUCTS = [
-    PRODUCT_TYPES.WIN,
-    PRODUCT_TYPES.MAC,
-    PRODUCT_TYPES.AND,
-    PRODUCT_TYPES.CHR,
-    PRODUCT_TYPES.EDG,
-    PRODUCT_TYPES.OPR,
     PRODUCT_TYPES.EDL,
     PRODUCT_TYPES.SAF,
     PRODUCT_TYPES.IOS,

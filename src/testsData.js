@@ -4,7 +4,7 @@ import {
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
-    NOT_FIREFOX_PRODUCTS,
+    FIREFOX_BUILDS,
 } from './constants';
 
 /**
@@ -231,19 +231,47 @@ const testsData = [
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+            special: {
+                compatibile: [
+                    FIREFOX_BUILDS.FOX_STDLN,
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                ],
+                incompatibile: [
+                    FIREFOX_BUILDS.FOX_AMO,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
     },
     {
         id: 17,
-        title: 'Script rules test for Firefox',
+        title: 'Script rules test for Firefox AMO',
         link: 'Filters/script-rules/test-script-firefox/test-script-firefox.html',
         rulesUrl: 'Filters/script-rules/test-script-firefox/test-script-firefox.txt',
         compatibility: {
-            none: {
-                products: NOT_FIREFOX_PRODUCTS,
+            special: {
+                compatibile: [FIREFOX_BUILDS.FOX_AMO],
+                incompatibile: [
+                    FIREFOX_BUILDS.FOX_STDLN,
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
     },
