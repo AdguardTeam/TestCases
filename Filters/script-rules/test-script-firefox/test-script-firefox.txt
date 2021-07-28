@@ -1,0 +1,13 @@
+!
+! Title: Rules for script rules test in Firefox browser
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-script-firefox-filter
+!
+! Case 1
+testcases.adguard.com,surge.sh#%#window.__firefoxTest1 = true;
+! Case 2
+testcases.adguard.com,surge.sh#%#document.cookie = "adg_test";
