@@ -12,6 +12,11 @@ export const PRODUCT_TYPES = {
     CON: 'Content Blocker',
 };
 
+export const FIREFOX_BUILDS = {
+    FOX_AMO: 'Firefox AMO',
+    FOX_STDLN: 'Firefox Standalone',
+};
+
 export const ALL_PRODUCTS = Object.values(PRODUCT_TYPES);
 
 /**

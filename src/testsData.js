@@ -4,6 +4,7 @@ import {
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
+    FIREFOX_BUILDS,
 } from './constants';
 
 /**
@@ -230,13 +231,52 @@ const testsData = [
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+            special: {
+                compatible: [
+                    FIREFOX_BUILDS.FOX_STDLN,
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                ],
+                incompatible: [
+                    FIREFOX_BUILDS.FOX_AMO,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
     },
     {
         id: 17,
+        title: 'Script rules test for Firefox AMO',
+        link: 'Filters/script-rules/test-script-firefox/test-script-firefox.html',
+        rulesUrl: 'Filters/script-rules/test-script-firefox/test-script-firefox.txt',
+        compatibility: {
+            special: {
+                compatible: [FIREFOX_BUILDS.FOX_AMO],
+                incompatible: [
+                    FIREFOX_BUILDS.FOX_STDLN,
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
+            },
+        },
+    },
+    {
+        id: 18,
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
@@ -247,7 +287,7 @@ const testsData = [
         },
     },
     {
-        id: 18,
+        id: 19,
         title: 'Userscripts',
         link: 'Userscripts/test-userscripts.html',
         rulesUrl: 'Userscripts/apiTester/api-tester.user.js',
@@ -258,7 +298,7 @@ const testsData = [
         },
     },
     {
-        id: 19,
+        id: 20,
         title: 'Userscripts: GM API v4 tests',
         link: 'Userscripts/gmapi-v4-tests.html',
         rulesUrl: 'Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js',
@@ -269,7 +309,7 @@ const testsData = [
         },
     },
     {
-        id: 20,
+        id: 21,
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
         compatibility: {
@@ -279,7 +319,7 @@ const testsData = [
         },
     },
     {
-        id: 21,
+        id: 22,
         title: 'Popup blocker event recovery',
         link: 'PopupBlocker/test-event-recovery.html',
         compatibility: {
@@ -289,7 +329,7 @@ const testsData = [
         },
     },
     {
-        id: 22,
+        id: 23,
         title: '$badfilter rules',
         link: 'Filters/badfilter-rules/test-badfilter-rules.html',
         rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
@@ -301,7 +341,7 @@ const testsData = [
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
     {
-        id: 23,
+        id: 24,
         title: '$network rules',
         link: 'Filters/network-rules/test-network-rules.html',
         rulesUrl: 'Filters/network-rules/test-network-rules.txt',
@@ -313,7 +353,7 @@ const testsData = [
         readmeUrl: 'Filters/network-rules/README.md',
     },
     {
-        id: 24,
+        id: 25,
         title: '$redirect rules',
         link: 'Filters/redirect-rules/test-redirect-rules.html',
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
@@ -327,7 +367,7 @@ const testsData = [
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
     {
-        id: 25,
+        id: 26,
         title: '$redirect resources security test',
         link: 'Filters/redirect-security/test-redirect-security.html',
         rulesUrl: 'Filters/redirect-security/test-redirect-security.txt',
@@ -342,7 +382,7 @@ const testsData = [
         readmeUrl: 'Filters/redirect-security/README.md',
     },
     {
-        id: 26,
+        id: 27,
         title: '$jsinject rules test',
         link: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.html',
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
@@ -353,7 +393,7 @@ const testsData = [
         },
     },
     {
-        id: 27,
+        id: 28,
         title: '$removeparam rules',
         link: 'Filters/removeparam-rules/test-removeparam-rules.html',
         rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
@@ -369,7 +409,7 @@ const testsData = [
         },
     },
     {
-        id: 28,
+        id: 29,
         title: '$specifichide rules',
         link: 'Filters/specifichide-rules/test-specifichide-rules.html',
         rulesUrl: 'Filters/specifichide-rules/test-specifichide-rules.txt',
@@ -387,7 +427,7 @@ const testsData = [
         },
     },
     {
-        id: 29,
+        id: 30,
         title: '$denyallow rules',
         link: 'Filters/denyallow-rules/test-denyallow-rules.html',
         rulesUrl: 'Filters/denyallow-rules/test-denyallow-rules.txt',
@@ -405,7 +445,7 @@ const testsData = [
         },
     },
     {
-        id: 30,
+        id: 31,
         title: '$removeheader rules',
         link: 'Filters/removeheader-rules/test-removeheader-rules.html',
         rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
