@@ -9,6 +9,7 @@ const Compatibility = ({ compatibility }) => {
     const isFullyCompatible = compatibility && compatibility.full;
     const isPartlyCompatible = compatibility && typeof compatibility.partial !== 'undefined';
     const isIncompatible = compatibility && typeof compatibility.none !== 'undefined';
+    const specialCompatibility = compatibility && typeof compatibility.special !== 'undefined';
 
     const getPartlyCompatible = exceptions => (exceptions
         .map(ex => `${ex.product} (exception cases: ${ex.cases.join(', ')})`));
@@ -32,6 +33,11 @@ const Compatibility = ({ compatibility }) => {
             noneFullProducts.push(...compatibility.none.products);
         }
         productsData.full.push(...ALL_PRODUCTS.filter(p => !noneFullProducts.indexOf(p) > -1));
+    }
+
+    if (specialCompatibility) {
+        productsData.full = [...compatibility.special.compatible];
+        productsData.none = [...compatibility.special.incompatible];
     }
 
     return (
@@ -72,6 +78,10 @@ Compatibility.propTypes = {
         }),
         none: PropTypes.shape({
             products: PropTypes.arrayOf(PropTypes.string),
+        }),
+        special: PropTypes.shape({
+            compatible: PropTypes.arrayOf(PropTypes.string),
+            incompatible: PropTypes.arrayOf(PropTypes.string),
         }),
     }).isRequired,
 };
