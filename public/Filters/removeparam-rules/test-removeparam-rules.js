@@ -7,7 +7,7 @@
 const request = async (url) => {
     const response = await fetch(url, {
         headers: {
-            'Accept': 'text/html'
+            Accept: 'text/html',
         },
     });
     return response;
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
         async (assert) => {
             const testUrl = `${baseUrl}/?p1case3=true&p2case3=true`;
             log('\nCase 3:');
-        log(`Requesting ${testUrl}`);
+            log(`Requesting ${testUrl}`);
             const result = await request(testUrl);
             log(`result.url is ${result.url}`);
             assert.ok(
