@@ -60,3 +60,15 @@ $removeparam=p2case9
 ||surge.sh$removeparam=/p1case10=x/
 ||testcases.adguard.com$removeparam=/p2case10=y$/
 ||surge.sh$removeparam=/p2case10=y$/
+!
+! Case 11
+||testcases.adguard.com$removeparam=p1case11
+||testcases.adguard.com$script,removeparam=p2case11
+||surge.sh$removeparam=p1case11
+||surge.sh$script,removeparam=p2case11
+!
+! Case 12
+||testcases.adguard.com$removeparam=p1case11
+||testcases.adguard.com$image,removeparam=p2case11
+||surge.sh$removeparam=p1case11
+||surge.sh$image,removeparam=p2case11

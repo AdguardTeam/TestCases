@@ -4,11 +4,10 @@
  * Before doing the test, import test-removeparam-rules.txt to AdGuard
  */
 
-const request = async (url) => {
+const request = async (url, header) => {
+    const headers = header || { Accept: 'text/html' };
     const response = await fetch(url, {
-        headers: {
-            Accept: 'text/html',
-        },
+        headers: headers,
     });
     return response;
 };
@@ -146,6 +145,31 @@ window.addEventListener('DOMContentLoaded', () => {
             !result.url.includes('p1case10=xxx')
         && result.url.includes('p2case10=yyy'),
             '$removeparam with regexp matches parameter with value'
+        );
+    });
+    QUnit.test('Case 11: $removeparam rule for script request test', async (assert) => {
+        const testUrl = `${baseUrl}/Filters/removeparam-rules/test-removeparam-rules.js?p1case11=true&p2case11=true`;
+        log('\nCase 11:');
+        log(`Requesting ${testUrl}`);
+        const result = await request(testUrl, { 'Content-Type': 'text/javascript' });
+        log(`result.url is ${result.url}`);
+        assert.ok(
+            adgCheck && result.url.includes('p1case11=true')
+            && !result.url.includes('p2case11=true'),
+            'Rule with $removeparams and $script modifier removes parameter for script request, but rule without $script modifier not'
+        );
+    });
+
+    QUnit.test('Case 12: $removeparam rule for image request test', async (assert) => {
+        const testUrl = `${baseUrl}/Filters/removeparam-rules/test-files/adg1.png?p1case12=true&p2case12=true`;
+        log('\nCase 12:');
+        log(`Requesting ${testUrl}`);
+        const result = await request(testUrl, { 'Content-Type': 'image/png' });
+        log(`result.url is ${result.url}`);
+        assert.ok(
+            adgCheck && result.url.includes('p1case11=true')
+            && !result.url.includes('p2case11=true'),
+            'Rule with $removeparams and $image modifier removes parameter for image request, but rule without $image modifier not'
         );
     });
 });
