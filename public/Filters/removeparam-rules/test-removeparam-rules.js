@@ -7,7 +7,7 @@
 const request = async (url, header) => {
     const headers = header || { Accept: 'text/html' };
     const response = await fetch(url, {
-        headers: headers,
+        headers,
     });
     return response;
 };
@@ -167,8 +167,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const result = await request(testUrl, { 'Content-Type': 'image/png' });
         log(`result.url is ${result.url}`);
         assert.ok(
-            adgCheck && result.url.includes('p1case11=true')
-            && !result.url.includes('p2case11=true'),
+            adgCheck && result.url.includes('p1case12=true')
+            && !result.url.includes('p2case12=true'),
             'Rule with $removeparams and $image modifier removes parameter for image request, but rule without $image modifier not'
         );
     });

@@ -68,7 +68,7 @@ $removeparam=p2case9
 ||surge.sh$script,removeparam=p2case11
 !
 ! Case 12
-||testcases.adguard.com$removeparam=p1case11
-||testcases.adguard.com$image,removeparam=p2case11
-||surge.sh$removeparam=p1case11
-||surge.sh$image,removeparam=p2case11
+||testcases.adguard.com$removeparam=p1case12
+||testcases.adguard.com$image,removeparam=p2case12
+||surge.sh$removeparam=p1case12
+||surge.sh$image,removeparam=p2case12
