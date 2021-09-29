@@ -69,7 +69,10 @@ window.addEventListener('load', function () {
         } else {
             try {
                 // Safari browser removes content from iframe's body (<body></body>)
-                const iframe1InnerHtml = iframe1?.contentWindow?.document?.querySelector('body')?.innerHTML;
+                const iframe1InnerHtml = iframe1.contentWindow
+                    && iframe1.contentWindow.document
+                    && iframe1.contentWindow.document.querySelector('body')
+                    && iframe1.contentWindow.document.querySelector('body').innerHTML;
                 assert.ok(iframe1InnerHtml === '', 'Rule with subdocument modifier blocks iframe');
             } catch {
                 // Chromium browsers make iframe invisible (visibility: hidden)
