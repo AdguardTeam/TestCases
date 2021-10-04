@@ -58,6 +58,7 @@ const testsData = [
         compatibility: {
             full: true,
         },
+        readmeUrl: 'Filters/simple-rules/README.md',
     },
     {
         id: 2,
@@ -74,6 +75,7 @@ const testsData = [
                 ],
             },
         },
+        readmeUrl: 'Filters/simple-rules/generichide-test/README.md',
     },
     {
         id: 3,
@@ -85,6 +87,7 @@ const testsData = [
                 products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
             },
         },
+        readmeUrl: 'Filters/extended-css-rules/README.md',
     },
     {
         id: 4,
