@@ -60,7 +60,7 @@ window.addEventListener('load', function () {
         }
     });
 
-    QUnit.test('8. Test $subdocument modifier', (assert) => {
+    QUnit.test('8. Test $subdocument modifier', function (assert) {
         const iframe1 = document.getElementById('iframe1-case-8');
 
         if (!iframe1) {
@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
                     && iframe1.contentWindow.document.querySelector('body')
                     && iframe1.contentWindow.document.querySelector('body').innerHTML;
                 assert.ok(iframe1InnerHtml === '', 'Rule with subdocument modifier blocks iframe');
-            } catch {
+            } catch (e) {
                 // Chromium browsers make iframe invisible (visibility: hidden)
                 const iframe1Visibility = window.getComputedStyle(iframe1).visibility;
                 assert.ok(iframe1Visibility === 'hidden', 'Rule with subdocument modifier blocks iframe');
