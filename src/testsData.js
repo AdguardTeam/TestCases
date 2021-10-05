@@ -456,7 +456,7 @@ const testsData = [
         },
     },
     {
-        id: 31,
+        id: 32,
         title: '$ping, $websocket, $xmlhttprequest rules',
         link: 'Filters/blocking-request-rules/test-blocking-request-rules.html',
         rulesUrl: 'Filters/blocking-request-rules/test-blocking-request-rules.txt',
@@ -466,6 +466,30 @@ const testsData = [
             },
         },
         readmeUrl: 'Filters/blocking-request-rules/README.md',
+    },
+    {
+        id: 33,
+        title: 'Test $subdocument rules for Safari 15+',
+        link: 'Filters/subdocument-rules/test-subdocument-rules.html',
+        rulesUrl: 'Filters/subdocument-rules/test-subdocument-rules.txt',
+        compatibility: {
+            special: {
+                compatible: [
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS
+                ],
+                incompatible: [
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.CON,
+                ],
+            },
+        },
     },
 ];
 
