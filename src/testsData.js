@@ -476,7 +476,7 @@ const testsData = [
             special: {
                 compatible: [
                     PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS
+                    PRODUCT_TYPES.IOS,
                 ],
                 incompatible: [
                     PRODUCT_TYPES.WIN,
