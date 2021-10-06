@@ -7,4 +7,11 @@
 ! Hide warning
 ###subscribe-to-test-subdocument-rules-filter
 ! Test case 1: Test rule with subdocument modifier
-||*\subdocument-test.png^$subdocument,domain=testcases.adguard.com|surge.sh
+||*/subdocument-test-1.png^$subdocument,domain=testcases.adguard.com|surge.sh
+! Test case 2: Test rule with negated subdocument modifier
+||*/subdocument-test-2.png^$~subdocument,domain=testcases.adguard.com|surge.sh
+! Test case 3: Test exclusion rule with subdocument modifier
+||*/subdocument-test-3.png^$subdocument,domain=testcases.adguard.com|surge.sh
+@@||*/subdocument-test-3.png^$subdocument,domain=testcases.adguard.com|surge.sh
+||*/subdocument-test-3.png^$~subdocument,domain=testcases.adguard.com|surge.sh
+@@||*/subdocument-test-3.png^$~subdocument,domain=testcases.adguard.com|surge.sh
