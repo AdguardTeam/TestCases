@@ -473,16 +473,13 @@ const testsData = [
         link: 'Filters/subdocument-rules/test-subdocument-rules.html',
         rulesUrl: 'Filters/subdocument-rules/test-subdocument-rules.txt',
         compatibility: {
-            special: {
-                compatible: [
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                ],
-                incompatible: [
+            none: {
+                products: [
                     PRODUCT_TYPES.WIN,
                     PRODUCT_TYPES.MAC,
                     PRODUCT_TYPES.AND,
                     PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.FOX,
                     PRODUCT_TYPES.EDG,
                     PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
