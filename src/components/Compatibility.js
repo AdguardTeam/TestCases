@@ -6,10 +6,10 @@ import {
 } from '../constants';
 
 const Compatibility = ({ compatibility }) => {
-    const isFullyCompatible = compatibility?.full;
-    const isPartlyCompatible = typeof compatibility?.partial !== 'undefined';
-    const isIncompatible = typeof compatibility?.none !== 'undefined';
-    const specialCompatibility = typeof compatibility?.special !== 'undefined';
+    const isFullyCompatible = compatibility && compatibility.full;
+    const isPartlyCompatible = compatibility && typeof compatibility.partial !== 'undefined';
+    const isIncompatible = compatibility && typeof compatibility.none !== 'undefined';
+    const specialCompatibility = compatibility && typeof compatibility.special !== 'undefined';
 
     const getPartlyCompatible = exceptions => (exceptions
         .map(ex => `${ex.product} (exception cases: ${ex.cases.join(', ')})`));
@@ -32,7 +32,7 @@ const Compatibility = ({ compatibility }) => {
             productsData.none.push(...compatibility.none.products);
             noneFullProducts.push(...compatibility.none.products);
         }
-        productsData.full.push(...ALL_PRODUCTS.filter(p => !noneFullProducts.includes(p)));
+        productsData.full.push(...ALL_PRODUCTS.filter(p => !noneFullProducts.indexOf(p) > -1));
     }
 
     if (specialCompatibility) {

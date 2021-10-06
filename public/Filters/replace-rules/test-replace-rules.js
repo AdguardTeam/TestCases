@@ -5,6 +5,7 @@
  */
 
 const download = async (url) => {
+    // eslint-disable-next-line compat/compat
     const response = await fetch(url);
     const responseText = await response.text();
     return responseText;

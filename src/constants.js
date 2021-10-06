@@ -1,3 +1,5 @@
+import { getObjectValues } from './helpers/object-utils';
+
 export const PRODUCT_TYPES = {
     WIN: 'Windows',
     MAC: 'MacOS',
@@ -17,7 +19,7 @@ export const FIREFOX_BUILDS = {
     FOX_STDLN: 'Firefox Standalone',
 };
 
-export const ALL_PRODUCTS = Object.values(PRODUCT_TYPES);
+export const ALL_PRODUCTS = getObjectValues(PRODUCT_TYPES);
 
 /**
  * Windows, MacOS, Android
@@ -32,7 +34,7 @@ export const CORELIBS_PRODUCTS = [
  * Chrome, Edge, Firefox, Opera, Edge Legacy, Safari, iOS, Content Blocker
  */
 export const NONE_CORELIBS_PRODUCTS = ALL_PRODUCTS
-    .filter(p => !CORELIBS_PRODUCTS.includes(p));
+    .filter(p => !CORELIBS_PRODUCTS.indexOf(p) > -1);
 
 /**
  * Chrome, Edge, Opera, Edge Legacy, Safari, iOS, Content Blocker

@@ -2,8 +2,10 @@
     "parser": "babel-eslint",
 
     "extends": [
+        "react-app",
         "airbnb", 
         "plugin:react/recommended",
+        "plugin:compat/recommended",
         "eslint:recommended"
     ],
 
@@ -21,6 +23,7 @@
 
     "rules": {
         "no-shadow": "off",
+        "import/prefer-default-export": "off",
         "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx" ]}],
         "import/no-extraneous-dependencies": 0,
         "indent": ["error", 4, {

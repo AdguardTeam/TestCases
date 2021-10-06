@@ -125,6 +125,12 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('nowebrtc', (assert) => {
+        if (!window.RTCPeerConnection) {
+            assert.ok(true, 'Browser does not support RTCPeerConnection');
+            return;
+        }
+
+        // eslint-disable-next-line compat/compat
         const localConnection = new RTCPeerConnection();
         const sendChannelAG = localConnection.createDataChannel('sendChannelAG');
         assert.notOk(sendChannelAG, 'AG syntax, channel is undefined');

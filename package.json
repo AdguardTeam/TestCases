@@ -1,16 +1,7 @@
 {
   "name": "filters-tests",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
-  "dependencies": {
-    "node-sass": "^4.12.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-markdown": "^4.1.0",
-    "react-modal": "^3.9.1",
-    "react-scripts": "3.4.1"
-  },
   "scripts": {
     "start": "react-scripts start",
     "watch": "HOST=local.testcases.adguard.com react-scripts start",
@@ -25,9 +16,6 @@
       "pre-push": "yarn stylelint && yarn lint && CI=true react-scripts test"
     }
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "stylelint": {
     "extends": "stylelint-config-recommended-scss"
   },
@@ -35,7 +23,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie >= 9"
     ],
     "development": [
       "last 1 chrome version",
@@ -43,12 +32,23 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-app-polyfill": "^2.0.0",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-modal": "^3.9.1",
+    "react-scripts": "^4.0.3"
+  },
   "devDependencies": {
-    "eslint": "^6.6.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-compat": "^3.9.0",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react": "^7.23.2",
     "husky": "^3.0.3",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",

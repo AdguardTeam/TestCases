@@ -1,4 +1,4 @@
-# $important rules test 
+# $important rules test
 
 ## Case 1
 * First rule with $important modifier blocks request for `adg1.png`.
