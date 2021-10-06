@@ -410,6 +410,7 @@ const testsData = [
                 ],
             },
         },
+        readmeUrl: 'Filters/removeparam-rules/README.md',
     },
     {
         id: 29,
@@ -419,15 +420,14 @@ const testsData = [
         compatibility: {
             none: {
                 products: [
-                    PRODUCT_TYPES.CHR,
-                    PRODUCT_TYPES.EDG,
-                    PRODUCT_TYPES.FOX,
-                    PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/specifichide-rules/README.md',
     },
     {
         id: 30,
@@ -437,15 +437,14 @@ const testsData = [
         compatibility: {
             none: {
                 products: [
-                    PRODUCT_TYPES.CHR,
-                    PRODUCT_TYPES.EDG,
-                    PRODUCT_TYPES.FOX,
-                    PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/denyallow-rules/README.md',
     },
     {
         id: 31,
@@ -454,9 +453,15 @@ const testsData = [
         rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
         compatibility: {
             none: {
-                products: NONE_CORELIBS_PRODUCTS,
+                products: [
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
             },
         },
+        readmeUrl: 'Filters/removeheader-rules/README.md',
     },
     {
         id: 32,
