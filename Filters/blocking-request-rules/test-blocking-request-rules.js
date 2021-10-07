@@ -10,9 +10,11 @@ window.addEventListener('load', () => {
         null
     ).display === 'none';
 
+    // eslint-disable-next-line compat/compat
     const request = async url => fetch(url, { mode: 'no-cors' });
 
     QUnit.test('1. Test $ping modifier', (assert) => {
+        // eslint-disable-next-line compat/compat
         assert.ok(adgCheck && navigator.sendBeacon('https://adguard.com', 'Testdata'), 'Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console');
     });
 
@@ -26,6 +28,7 @@ window.addEventListener('load', () => {
     });
 
     QUnit.test('3. Test $websocket modifier', async (assert) => {
+        // eslint-disable-next-line compat/compat
         const websocket = new WebSocket('wss://echo.websocket.org');
         websocket.onopen = () => websocket.send('Test message');
         assert.timeout(3000);

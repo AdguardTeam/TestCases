@@ -5,10 +5,12 @@
  */
 
 const request = async (url) => {
+    // eslint-disable-next-line compat/compat
     const response = await fetch(url);
     return response;
 };
 
+// eslint-disable-next-line compat/compat
 const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {

@@ -8,4 +8,4 @@
    #### Expected behaviour: web-accessible resource request without security key should fail.
 
 * * *
-## Compatible with Browser extension with TSUrlFilter (>=v4.0)
+## Compatible with AdGuard Browser extension with TSUrlFilter (version >= 4.0)

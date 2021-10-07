@@ -6,6 +6,7 @@
 
 const request = async (url, header) => {
     const headers = header || { Accept: 'text/html' };
+    // eslint-disable-next-line compat/compat
     const response = await fetch(url, {
         headers,
     });
@@ -14,6 +15,7 @@ const request = async (url, header) => {
 
 const { log } = console;
 
+// eslint-disable-next-line compat/compat
 const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {
