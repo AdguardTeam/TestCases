@@ -378,7 +378,7 @@ const testsData = [
             none: {
                 products: [
                     ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON,
+                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON, PRODUCT_TYPES.FOX,
                 ],
             },
         },
