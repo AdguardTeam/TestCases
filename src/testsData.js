@@ -479,6 +479,27 @@ const testsData = [
         },
         readmeUrl: 'Filters/blocking-request-rules/README.md',
     },
+    {
+        id: 33,
+        title: 'Test $subdocument rules for Safari 15+',
+        link: 'Filters/subdocument-rules/test-subdocument-rules.html',
+        rulesUrl: 'Filters/subdocument-rules/test-subdocument-rules.txt',
+        compatibility: {
+            none: {
+                products: [
+                    PRODUCT_TYPES.WIN,
+                    PRODUCT_TYPES.MAC,
+                    PRODUCT_TYPES.AND,
+                    PRODUCT_TYPES.CHR,
+                    PRODUCT_TYPES.FOX,
+                    PRODUCT_TYPES.EDG,
+                    PRODUCT_TYPES.OPR,
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.CON,
+                ],
+            },
+        },
+    },
 ];
 
 export default testsData;
