@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Subdocument rules tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+<div id="subscribe-to-test-subdocument-rules-filter" class="subscribe-link">
+    <a href="test-subdocument-rules.txt">Subscribe to test filter</a>
+</div>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="../qunit/qunit.js"></script>
+
+<style type="text/css">
+    .container { position: absolute; left: -9999px; }
+</style>
+
+<div class="container">
+    <div id="test-iframe">
+        <iframe src="test-files/subdocument-test.html"></iframe>
+    </div>
+    <div id="case-1">
+        <img src="test-files/subdocument-test-1.png" />
+    </div>
+    <div id="case-2">
+        <img src="test-files/subdocument-test-2.png" />
+    </div>
+    <div id="case-3">
+        <img src="test-files/subdocument-test-3.png" />
+    </div>
+</div>
+
+<script type="text/javascript" src="test-subdocument-rules.js"></script>
+</body>
+</html>
