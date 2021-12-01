@@ -6,9 +6,10 @@
     "start": "react-scripts start",
     "watch": "HOST=local.testcases.adguard.com react-scripts start",
     "build": "react-scripts build",
+    "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./public ./src",
+    "lint": "eslint . --ext .js",
     "stylelint": "stylelint ./src/styles/*.scss"
   },
   "husky": {
@@ -43,6 +44,8 @@
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
+    "esbuild": "^0.14.1",
+    "esbuild-register": "^3.2.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-compat": "^3.9.0",
