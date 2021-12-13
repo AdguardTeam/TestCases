@@ -91,12 +91,12 @@ const testsData = [
     },
     {
         id: 4,
-        title: 'Extended Css rules',
+        title: 'Extended CSS rules',
         link: 'Filters/extended-css-rules/test-extended-css-rules.html',
         rulesUrl: 'Filters/extended-css-rules/test-extended-css-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
         readmeUrl: 'Filters/extended-css-rules/README.md',
@@ -110,11 +110,11 @@ const testsData = [
             none: {
                 products: [
                     ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/README.md',
     },
     {
         id: 6,
@@ -257,14 +257,15 @@ const testsData = [
                     PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
                     PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
                 ],
                 incompatible: [
                     FIREFOX_BUILDS.FOX_AMO,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/script-rules/README.md',
     },
     {
         id: 18,
@@ -297,9 +298,10 @@ const testsData = [
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.EDL, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.EDL, PRODUCT_TYPES.CON],
             },
         },
+        readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
     {
         id: 20,
@@ -407,9 +409,10 @@ const testsData = [
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
+        readmeUrl: 'Filters/script-rules/jsinject-rules/README.md',
     },
     {
         id: 29,
