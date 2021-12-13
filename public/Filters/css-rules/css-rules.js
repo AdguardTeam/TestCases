@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
 
         const testStyle = getComputedStyle(window.document.querySelector(`#${TEST_ELEMENT_ID}`), null);
         assert.strictEqual(testStyle['margin-top'], '0px', 'margin-top changed');
-        assert.ok(testStyle['margin-right'] === INIT_VALUE && testStyle['margin-bottom'] === INIT_VALUE && testStyle['margin-left'] === INIT_VALUE , ' rest margins have not changed');
+        assert.ok(testStyle['margin-right'] === INIT_VALUE && testStyle['margin-bottom'] === INIT_VALUE && testStyle['margin-left'] === INIT_VALUE, ' rest margins have not changed');
         assert.strictEqual(testStyle['padding-right'], '0px', 'padding-right changed');
         assert.ok(testStyle['padding-bottom'] === INIT_VALUE && testStyle['padding-left'] === INIT_VALUE && testStyle['padding-top'] === INIT_VALUE, ' rest paddings have not changed');
     });
