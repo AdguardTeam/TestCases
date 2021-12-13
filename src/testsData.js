@@ -75,7 +75,7 @@ const testsData = [
                 ],
             },
         },
-        readmeUrl: 'Filters/simple-rules/generichide-rules/README.md',
+        readmeUrl: 'Filters/generichide-rules/README.md',
     },
     {
         id: 3,
