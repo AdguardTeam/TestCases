@@ -3,7 +3,7 @@
 /**
  * Before doing the test, import extended-css-iframejs-injection.txt to AdGuard
  */
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     QUnit.test('1. Test rules injection into iframe created by JS', (assert) => {
         const frame = document.querySelector('#case1 > #frame1');
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
