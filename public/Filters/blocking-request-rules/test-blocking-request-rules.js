@@ -1,7 +1,7 @@
 /* global QUnit */
 
 /**
- * Before doing the test, import test-blocking-request-rules.txt to Adguard
+ * Before doing the test, import test-blocking-request-rules.txt to AdGuard
  */
 
 window.addEventListener('load', () => {

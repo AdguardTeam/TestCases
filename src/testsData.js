@@ -16,23 +16,23 @@ import {
 
 /**
  * Partial compatibility data
- * @typedef PartialCompatiblityData
+ * @typedef PartialCompatibilityData
  * @property {PartialException[]} exceptions
  */
 
 /**
  * Partial compatibility data
- * @typedef NoneCompatiblityData
+ * @typedef NoneCompatibilityData
  * @property {string[]} products
  */
 
 /**
  * Describes the compatibility for test,
  * at least one of properties should be set
- * @typedef CompatiblityData
+ * @typedef CompatibilityData
  * @property {boolean} [full] - true for full compatibility
- * @property {PartialCompatiblityData} [partial]
- * @property {NoneCompatiblityData} [none]
+ * @property {PartialCompatibilityData} [partial]
+ * @property {NoneCompatibilityData} [none]
  */
 
 /**
@@ -42,7 +42,7 @@ import {
  * @property {string} link
  * @property {string} rulesUrl
  * @property {string} [readmeUrl]
- * @property {CompatiblityData} compatibility
+ * @property {CompatibilityData} compatibility
  */
 
 /**
@@ -52,19 +52,19 @@ import {
 const testsData = [
     {
         id: 1,
-        title: 'Simple rules',
-        link: 'Filters/simple-rules/test-simple-rules.html',
-        rulesUrl: 'Filters/simple-rules/test-simple-rules.txt',
+        title: 'Element hiding rules',
+        link: 'Filters/element-hiding-rules/test-element-hiding-rules.html',
+        rulesUrl: 'Filters/element-hiding-rules/test-element-hiding-rules.txt',
         compatibility: {
             full: true,
         },
-        readmeUrl: 'Filters/simple-rules/README.md',
+        readmeUrl: 'Filters/element-hiding-rules/README.md',
     },
     {
         id: 2,
         title: 'Generic hide rules',
-        link: 'Filters/simple-rules/generichide-test/generichide-test.html',
-        rulesUrl: 'Filters/simple-rules/generichide-test/generichide-test.txt',
+        link: 'Filters/generichide-rules/generichide-rules.html',
+        rulesUrl: 'Filters/generichide-rules/generichide-rules.txt',
         compatibility: {
             partial: {
                 exceptions: [
@@ -75,7 +75,7 @@ const testsData = [
                 ],
             },
         },
-        readmeUrl: 'Filters/simple-rules/generichide-test/README.md',
+        readmeUrl: 'Filters/simple-rules/generichide-rules/README.md',
     },
     {
         id: 3,
