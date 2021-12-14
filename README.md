@@ -7,6 +7,10 @@
 
 ## Development
 
+### Public static data
+
+While making any [tests data](#tests-data) changes, run `yarn build:static` to rebuild public static data needed for autotesting.
+
 ### Test on the local machine
 
 * Run `yarn install`
@@ -37,6 +41,7 @@ surge --domain=_your_available_domain_.surge.sh
 
 Enjoy your testing at `_your_available_domain_.surge.sh`!
 
+<a id="tests-data"></a>
 ## Manage tests list:
 
 The main data file is `./src/testsData.js`
