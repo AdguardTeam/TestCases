@@ -1,0 +1,13 @@
+!
+! Title: Rules for non-basic rules $path modifier test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-nonbasic-path-modifier
+!
+[$path=/subpage1]testcases.adguard.com,surge.sh$$div[id="case1"]
+[$path=/subpage2]testcases.adguard.com,surge.sh$$div[id="case2"]
+[$path=/sub.*/]testcases.adguard.com,surge.sh$$div[id="case3"]
+[$path=/subpage(?!1)/]testcases.adguard.com,surge.sh$$div[id="case4"]

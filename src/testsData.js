@@ -500,6 +500,23 @@ const testsData = [
             },
         },
     },
+    {
+        id: 34,
+        title: 'Non-basic $path modifier',
+        link: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.html',
+        rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',
+        compatibility: {
+            none: {
+                products: [
+                    PRODUCT_TYPES.EDL,
+                    PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
+                    PRODUCT_TYPES.CON,
+                ],
+            },
+        },
+        readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
+    },
 ];
 
 export default testsData;
