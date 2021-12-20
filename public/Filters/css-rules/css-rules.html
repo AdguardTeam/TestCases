@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CSS rules test</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+    <style>
+        .css-init {
+            width: 1px;
+            height: 1px;
+            margin: 1px;
+            padding: 1px;
+            overflow: hidden;
+            display: block;
+        }
+        .css-important {
+            width: 1px !important;
+            height: 1px !important;
+            margin: 1px !important;
+            padding: 1px !important;
+            overflow: hidden !important;
+            display: block !important;
+        }
+        .inner-div {
+            width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="subscribe-to-test-css-rules-filter" class="subscribe-link">
+        <a href="css-rules.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">
+        <div id="case-1-single" class="css-init"></div>
+        <div id="case-2-multiple" class="css-init"></div>
+        <div id="case-3-important" class="css-important"></div>
+        <div id="case-4-margin-padding" class="css-init"></div>
+        <div id="case-5-extended" class="css-init">
+            <div class="inner-div"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="css-rules.js"></script>
+</body>
+</html>

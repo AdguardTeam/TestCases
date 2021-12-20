@@ -16,23 +16,23 @@ import {
 
 /**
  * Partial compatibility data
- * @typedef PartialCompatiblityData
+ * @typedef PartialCompatibilityData
  * @property {PartialException[]} exceptions
  */
 
 /**
  * Partial compatibility data
- * @typedef NoneCompatiblityData
+ * @typedef NoneCompatibilityData
  * @property {string[]} products
  */
 
 /**
  * Describes the compatibility for test,
  * at least one of properties should be set
- * @typedef CompatiblityData
+ * @typedef CompatibilityData
  * @property {boolean} [full] - true for full compatibility
- * @property {PartialCompatiblityData} [partial]
- * @property {NoneCompatiblityData} [none]
+ * @property {PartialCompatibilityData} [partial]
+ * @property {NoneCompatibilityData} [none]
  */
 
 /**
@@ -42,7 +42,7 @@ import {
  * @property {string} link
  * @property {string} rulesUrl
  * @property {string} [readmeUrl]
- * @property {CompatiblityData} compatibility
+ * @property {CompatibilityData} compatibility
  */
 
 /**
@@ -52,19 +52,19 @@ import {
 const testsData = [
     {
         id: 1,
-        title: 'Simple rules',
-        link: 'Filters/simple-rules/test-simple-rules.html',
-        rulesUrl: 'Filters/simple-rules/test-simple-rules.txt',
+        title: 'Element hiding rules',
+        link: 'Filters/element-hiding-rules/test-element-hiding-rules.html',
+        rulesUrl: 'Filters/element-hiding-rules/test-element-hiding-rules.txt',
         compatibility: {
             full: true,
         },
-        readmeUrl: 'Filters/simple-rules/README.md',
+        readmeUrl: 'Filters/element-hiding-rules/README.md',
     },
     {
         id: 2,
         title: 'Generic hide rules',
-        link: 'Filters/simple-rules/generichide-test/generichide-test.html',
-        rulesUrl: 'Filters/simple-rules/generichide-test/generichide-test.txt',
+        link: 'Filters/generichide-rules/generichide-rules.html',
+        rulesUrl: 'Filters/generichide-rules/generichide-rules.txt',
         compatibility: {
             partial: {
                 exceptions: [
@@ -75,22 +75,34 @@ const testsData = [
                 ],
             },
         },
-        readmeUrl: 'Filters/simple-rules/generichide-test/README.md',
+        readmeUrl: 'Filters/generichide-rules/README.md',
     },
     {
         id: 3,
-        title: 'Extended Css rules',
+        title: 'CSS rules',
+        link: 'Filters/css-rules/css-rules.html',
+        rulesUrl: 'Filters/css-rules/css-rules.txt',
+        compatibility: {
+            none: {
+                products: [PRODUCT_TYPES.CON],
+            },
+        },
+        readmeUrl: 'Filters/css-rules/README.md',
+    },
+    {
+        id: 4,
+        title: 'Extended CSS rules',
         link: 'Filters/extended-css-rules/test-extended-css-rules.html',
         rulesUrl: 'Filters/extended-css-rules/test-extended-css-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
         readmeUrl: 'Filters/extended-css-rules/README.md',
     },
     {
-        id: 4,
+        id: 5,
         title: 'Extended CSS rules injection into iframe created with js',
         link: 'Filters/extended-css-rules/extended-css-iframejs-injection/extended-css-iframejs-injection.html',
         rulesUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/extended-css-iframejs-injection.txt',
@@ -98,14 +110,14 @@ const testsData = [
             none: {
                 products: [
                     ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/README.md',
     },
     {
-        id: 5,
+        id: 6,
         title: '$important rules',
         link: 'Filters/important-rules/test-important-rules.html',
         rulesUrl: 'Filters/important-rules/test-important-rules.txt',
@@ -115,7 +127,7 @@ const testsData = [
         readmeUrl: 'Filters/important-rules/README.md',
     },
     {
-        id: 6,
+        id: 7,
         title: '$important rule vs $urlblock exception',
         link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
         rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
@@ -127,7 +139,7 @@ const testsData = [
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
     },
     {
-        id: 7,
+        id: 8,
         title: '$replace rules',
         link: 'Filters/replace-rules/test-replace-rules.html',
         rulesUrl: 'Filters/replace-rules/test-replace-rules.txt',
@@ -139,7 +151,7 @@ const testsData = [
         readmeUrl: 'Filters/replace-rules/README.md',
     },
     {
-        id: 8,
+        id: 9,
         title: '$replace rule vs $generichide exception',
         link: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt',
@@ -150,7 +162,7 @@ const testsData = [
         },
     },
     {
-        id: 9,
+        id: 10,
         title: '$replace rule vs $content exception',
         link: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.txt',
@@ -161,7 +173,7 @@ const testsData = [
         },
     },
     {
-        id: 10,
+        id: 11,
         title: '$replace rule vs $elemhide exception',
         link: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.txt',
@@ -172,7 +184,7 @@ const testsData = [
         },
     },
     {
-        id: 11,
+        id: 12,
         title: '$csp rules',
         link: 'Filters/csp-rules/test-csp-rules.html',
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
@@ -184,7 +196,7 @@ const testsData = [
         readmeUrl: 'Filters/csp-rules/README.md',
     },
     {
-        id: 12,
+        id: 13,
         title: '$csp exception test',
         link: 'Filters/csp-rules/csp-global-exception/csp-global-exception.html',
         rulesUrl: 'Filters/csp-rules/csp-global-exception/csp-global-exception.txt',
@@ -196,7 +208,7 @@ const testsData = [
         readmeUrl: 'Filters/csp-rules/csp-global-exception/README.md',
     },
     {
-        id: 13,
+        id: 14,
         title: 'Websocket blocking',
         link: 'Filters/websockets/test-websockets.html',
         rulesUrl: 'Filters/websockets/test-websockets.txt',
@@ -207,7 +219,7 @@ const testsData = [
         },
     },
     {
-        id: 14,
+        id: 15,
         title: 'Content rules',
         link: 'Filters/content-rules/test-content-rules.html',
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
@@ -218,7 +230,7 @@ const testsData = [
         },
     },
     {
-        id: 15,
+        id: 16,
         title: '$content modifier tests',
         link: 'Filters/content-rules/content-modifier-test/content-modifier-test.html',
         rulesUrl: 'Filters/content-rules/content-modifier-test/content-modifier-test.txt',
@@ -229,7 +241,7 @@ const testsData = [
         },
     },
     {
-        id: 16,
+        id: 17,
         title: 'Script rules',
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
@@ -245,17 +257,18 @@ const testsData = [
                     PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
                     PRODUCT_TYPES.SAF,
+                    PRODUCT_TYPES.IOS,
                 ],
                 incompatible: [
                     FIREFOX_BUILDS.FOX_AMO,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
         },
+        readmeUrl: 'Filters/script-rules/README.md',
     },
     {
-        id: 17,
+        id: 18,
         title: 'Script rules test for Firefox AMO',
         link: 'Filters/script-rules/test-script-firefox/test-script-firefox.html',
         rulesUrl: 'Filters/script-rules/test-script-firefox/test-script-firefox.txt',
@@ -279,18 +292,19 @@ const testsData = [
         },
     },
     {
-        id: 18,
+        id: 19,
         title: 'Scriptlet rules',
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.EDL, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.EDL, PRODUCT_TYPES.CON],
             },
         },
+        readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
     {
-        id: 19,
+        id: 20,
         title: 'Userscripts',
         link: 'Userscripts/test-userscripts.html',
         rulesUrl: 'Userscripts/apiTester/api-tester.user.js',
@@ -301,7 +315,7 @@ const testsData = [
         },
     },
     {
-        id: 20,
+        id: 21,
         title: 'Userscripts: GM API v4 tests',
         link: 'Userscripts/gmapi-v4-tests.html',
         rulesUrl: 'Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js',
@@ -312,7 +326,7 @@ const testsData = [
         },
     },
     {
-        id: 21,
+        id: 22,
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
         compatibility: {
@@ -322,7 +336,7 @@ const testsData = [
         },
     },
     {
-        id: 22,
+        id: 23,
         title: 'Popup blocker event recovery',
         link: 'PopupBlocker/test-event-recovery.html',
         compatibility: {
@@ -332,7 +346,7 @@ const testsData = [
         },
     },
     {
-        id: 23,
+        id: 24,
         title: '$badfilter rules',
         link: 'Filters/badfilter-rules/test-badfilter-rules.html',
         rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
@@ -344,7 +358,7 @@ const testsData = [
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
     {
-        id: 24,
+        id: 25,
         title: '$network rules',
         link: 'Filters/network-rules/test-network-rules.html',
         rulesUrl: 'Filters/network-rules/test-network-rules.txt',
@@ -356,7 +370,7 @@ const testsData = [
         readmeUrl: 'Filters/network-rules/README.md',
     },
     {
-        id: 25,
+        id: 26,
         title: '$redirect rules',
         link: 'Filters/redirect-rules/test-redirect-rules.html',
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
@@ -370,7 +384,7 @@ const testsData = [
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
     {
-        id: 26,
+        id: 27,
         title: '$redirect resources security test',
         link: 'Filters/redirect-security/test-redirect-security.html',
         rulesUrl: 'Filters/redirect-security/test-redirect-security.txt',
@@ -389,18 +403,19 @@ const testsData = [
         readmeUrl: 'Filters/redirect-security/README.md',
     },
     {
-        id: 27,
+        id: 28,
         title: '$jsinject rules test',
         link: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.html',
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
+        readmeUrl: 'Filters/script-rules/jsinject-rules/README.md',
     },
     {
-        id: 28,
+        id: 29,
         title: '$removeparam rules',
         link: 'Filters/removeparam-rules/test-removeparam-rules.html',
         rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
@@ -417,7 +432,7 @@ const testsData = [
         readmeUrl: 'Filters/removeparam-rules/README.md',
     },
     {
-        id: 29,
+        id: 30,
         title: '$specifichide rules',
         link: 'Filters/specifichide-rules/test-specifichide-rules.html',
         rulesUrl: 'Filters/specifichide-rules/test-specifichide-rules.txt',
@@ -434,7 +449,7 @@ const testsData = [
         readmeUrl: 'Filters/specifichide-rules/README.md',
     },
     {
-        id: 30,
+        id: 31,
         title: '$denyallow rules',
         link: 'Filters/denyallow-rules/test-denyallow-rules.html',
         rulesUrl: 'Filters/denyallow-rules/test-denyallow-rules.txt',
@@ -451,7 +466,7 @@ const testsData = [
         readmeUrl: 'Filters/denyallow-rules/README.md',
     },
     {
-        id: 31,
+        id: 32,
         title: '$removeheader rules',
         link: 'Filters/removeheader-rules/test-removeheader-rules.html',
         rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
@@ -468,7 +483,7 @@ const testsData = [
         readmeUrl: 'Filters/removeheader-rules/README.md',
     },
     {
-        id: 32,
+        id: 33,
         title: '$ping, $websocket, $xmlhttprequest rules',
         link: 'Filters/blocking-request-rules/test-blocking-request-rules.html',
         rulesUrl: 'Filters/blocking-request-rules/test-blocking-request-rules.txt',
@@ -480,7 +495,7 @@ const testsData = [
         readmeUrl: 'Filters/blocking-request-rules/README.md',
     },
     {
-        id: 33,
+        id: 34,
         title: 'Test $subdocument rules for Safari 15+',
         link: 'Filters/subdocument-rules/test-subdocument-rules.html',
         rulesUrl: 'Filters/subdocument-rules/test-subdocument-rules.txt',
@@ -501,7 +516,7 @@ const testsData = [
         },
     },
     {
-        id: 34,
+        id: 35,
         title: 'Non-basic $path modifier',
         link: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.html',
         rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',

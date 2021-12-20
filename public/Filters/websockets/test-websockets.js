@@ -1,7 +1,7 @@
 /* global QUnit */
 
 /**
- * Before doing the test, import test-websockets.txt to Adguard
+ * Before doing the test, import test-websockets.txt to AdGuard
  */
 window.addEventListener('load', () => {
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-websockets-filter'), null).display === 'none';

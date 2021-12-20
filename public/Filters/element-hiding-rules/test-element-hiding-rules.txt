@@ -1,11 +1,11 @@
 !
-! Title: Rules for simple rules tests
+! Title: Rules for element hiding rules test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.adguard.com
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-simple-rules-filter
+testcases.adguard.com,surge.sh###subscribe-to-test-element-hiding-rules-filter
 ! Test case 1: domain-specific elemhide rule
 testcases.adguard.com,surge.sh###case-1-elemhide > .test-banner
 ! Test case 2: generic elemhide rule

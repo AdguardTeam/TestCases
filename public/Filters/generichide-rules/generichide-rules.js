@@ -2,7 +2,7 @@
 /* eslint-disable prefer-arrow-callback, func-names */
 
 /**
- * Before doing the test, import generichide-test.txt to Adguard
+ * Before doing the test, import generichide-rules.txt to AdGuard
  */
 window.addEventListener('load', function () {
     QUnit.test('Test generichide rule', function (assert) {

@@ -2,11 +2,11 @@
 /* eslint-disable prefer-arrow-callback, func-names */
 
 /**
- * Before doing the test, import test-simple-rules.txt to Adguard
+ * Before doing the test, import test-element-hiding-rules.txt to AdGuard
  */
 window.addEventListener('load', function () {
     const adgCheck = getComputedStyle(
-        window.document.getElementById('subscribe-to-test-simple-rules-filter'),
+        window.document.getElementById('subscribe-to-test-element-hiding-rules-filter'),
         null
     ).display === 'none';
 
