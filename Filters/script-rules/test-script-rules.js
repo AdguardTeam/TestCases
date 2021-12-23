@@ -13,4 +13,8 @@ window.addEventListener('load', () => {
     QUnit.test('2. Test script rule exception', (assert) => {
         assert.ok(adgCheck && window.adg_test === true, 'Exception script rule should disable script rule');
     });
+
+    QUnit.test('3. Test script rules order', (assert) => {
+        assert.ok(window.orderTestPassed, 'Rules have been applied in proper order');
+    });
 });
