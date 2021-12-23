@@ -14,3 +14,10 @@ testcases.adguard.com,surge.sh#%#window.__testCase1 = true;
 testcases.adguard.com,surge.sh#%#window.adg_test=true;
 testcases.adguard.com,surge.sh#%#window.adg_test=false;
 testcases.adguard.com,surge.sh#@%#window.adg_test=false;
+!
+! Case 3
+testcases.adguard.com,surge.sh#%#function finalStep() { window.orderTestPassed = true; }
+testcases.adguard.com,surge.sh#%#function previousStep() { finalStep(); }
+testcases.adguard.com,surge.sh#%#var otherStep = () => { previousStep(); }
+testcases.adguard.com,surge.sh#%#let someOtherStep = () => { otherStep(); }
+testcases.adguard.com,surge.sh#%#someOtherStep();
