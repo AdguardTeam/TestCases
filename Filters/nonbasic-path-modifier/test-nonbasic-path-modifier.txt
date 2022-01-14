@@ -7,7 +7,7 @@
 ! Hide warning
 testcases.adguard.com,surge.sh###subscribe-to-test-nonbasic-path-modifier
 !
-[$path=/subpage1]testcases.adguard.com,surge.sh$$div[id="case1"]
-[$path=/subpage2]testcases.adguard.com,surge.sh$$div[id="case2"]
-[$path=/sub.*/]testcases.adguard.com,surge.sh$$div[id="case3"]
-[$path=/subpage(?!1)/]testcases.adguard.com,surge.sh$$div[id="case4"]
+[$path=/subpage1]testcases.adguard.com,surge.sh##div#case1
+[$path=/subpage2]testcases.adguard.com,surge.sh##div#case2
+[$path=/sub.*/]testcases.adguard.com,surge.sh##div#case3
+[$path=/subpage(?!1)/]testcases.adguard.com,surge.sh##div#case4
