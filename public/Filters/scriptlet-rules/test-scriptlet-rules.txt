@@ -71,7 +71,7 @@ testcases.adguard.com,surge.sh#%#//scriptlet("set-constant", "illegalNumberProp"
 testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "1", "window1")
 testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "1", "/window2/")
 testcases.adguard.com,surge.sh#%#//scriptlet("prevent-window-open", "0", "window")
-testcases.adguard.com,surge.sh##+js(window.open-defuser.js, , window4)
+testcases.adguard.com,surge.sh##+js(window.open-defuser.js, 0, window4)
 testcases.adguard.com,surge.sh##+js(window.open-defuser.js, 0, anyOther)
 !
 ! prevent-eval-if
