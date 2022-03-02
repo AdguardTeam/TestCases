@@ -69,6 +69,10 @@ const testsData = [
             partial: {
                 exceptions: [
                     {
+                        product: FIREFOX_BUILDS.FOX_AMO,
+                        desc: 'check Readme',
+                    },
+                    {
                         product: PRODUCT_TYPES.SAF,
                         cases: [2],
                     },
