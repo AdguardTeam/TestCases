@@ -12,7 +12,12 @@ const Compatibility = ({ compatibility }) => {
     const specialCompatibility = compatibility && typeof compatibility.special !== 'undefined';
 
     const getPartlyCompatible = exceptions => (exceptions
-        .map(ex => `${ex.product} (exception cases: ${ex.cases.join(', ')})`));
+        .map((ex) => {
+            const cases = ex.cases ? ` (exception cases: ${ex.cases.join(', ')})` : '';
+            const description = ex.desc ? ` (${ex.desc})` : '';
+            return `${ex.product}${cases}${description}`;
+        })
+    );
 
     const productsData = {
         full: [],
@@ -25,7 +30,7 @@ const Compatibility = ({ compatibility }) => {
     } else {
         const noneFullProducts = [];
         if (isPartlyCompatible) {
-            productsData.partial.push(getPartlyCompatible(compatibility.partial.exceptions));
+            productsData.partial = getPartlyCompatible(compatibility.partial.exceptions);
             noneFullProducts.push(...compatibility.partial.exceptions.map(ex => ex.product));
         }
         if (isIncompatible) {
