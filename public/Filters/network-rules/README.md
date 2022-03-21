@@ -2,7 +2,7 @@
 
 ## Case 1
 * Fetching response from `https://unit-test3.adguard.com`
-* Applying `$network` rule for `https://unit-test3.adguard.com` IP address - 92.255.84.133
+* Applying `$network` rule for `https://unit-test3.adguard.com` IP address - 176.103.130.134
 #### Expecting result: `$network` rule blocks fetching url
 
 ## Case 2
