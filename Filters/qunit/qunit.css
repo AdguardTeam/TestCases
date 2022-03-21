@@ -41,7 +41,7 @@
 @supports (display: flex) or (display: -webkit-box) {
 	@media (min-height: 500px) {
 		#qunit {
-			position: fixed;
+			position: relative;
 			left: 0px;
 			right: 0px;
 			top: 0px;
