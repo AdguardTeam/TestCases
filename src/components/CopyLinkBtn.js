@@ -1,13 +1,13 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import toClipboard from '../helpers/toClipboard';
+import { copyToClipboard } from '../helpers';
 
 export default class CopyLinkBtn extends React.Component {
     copyLink = () => {
         if (this.props.rulesUrl) {
             const url = window.location.href + this.props.rulesUrl;
-            toClipboard(url, `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`);
+            copyToClipboard(url, `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`);
         }
     }
 

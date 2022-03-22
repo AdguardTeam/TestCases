@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
-import getFile from '../helpers/getFile';
+import { getFile } from '../helpers';
 
 export default class ShowReadme extends React.Component {
     state = {

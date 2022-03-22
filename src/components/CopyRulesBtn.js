@@ -1,8 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import getFile from '../helpers/getFile';
-import toClipboard from '../helpers/toClipboard';
+import { getFile, copyToClipboard } from '../helpers';
 
 export default class CopyRulesBtn extends React.Component {
     state = {
@@ -14,7 +13,7 @@ export default class CopyRulesBtn extends React.Component {
     }
 
     copyRules = async () => {
-        await toClipboard(this.state.rulesText, `The rules for the test "${this.props.title}" have been copied to your clipboard.`);
+        await copyToClipboard(this.state.rulesText, `The rules for the test "${this.props.title}" have been copied to your clipboard.`);
     }
 
     render() {

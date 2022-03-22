@@ -1,4 +1,4 @@
-const toClipboard = (data, successMessage) => {
+export const copyToClipboard = (data, successMessage) => {
     const dummy = document.createElement('textarea');
     document.body.appendChild(dummy);
     dummy.value = data;
@@ -7,5 +7,3 @@ const toClipboard = (data, successMessage) => {
     document.body.removeChild(dummy);
     alert(successMessage); // eslint-disable-line no-alert
 };
-
-export default toClipboard;
