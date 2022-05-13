@@ -109,7 +109,7 @@ window.addEventListener('load', () => {
             /ReferenceError/,
             'UBO Syntax throws error'
         );
-        assert.notOk(propReadCaseAG, 'UBO syntax prop remained undefined');
+        assert.notOk(propReadCaseUBO, 'UBO syntax prop remained undefined');
 
         window.propReadCaseABP = 'propReadCaseABP';
         let propReadCaseABP = null;
