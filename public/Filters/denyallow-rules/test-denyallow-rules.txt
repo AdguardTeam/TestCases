@@ -13,3 +13,12 @@ testcases.adguard.com,surge.sh###subscribe-to-test-denyallow-rules-filter
 ! Case 2
 /adguard_dns_map.png
 @@/adguard_dns_map.png$image,denyallow=cdn.adguard.com,domain=testcases.adguard.com|surge.sh
+!
+! Case 3
+! request to https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js - should NOT work
+*$denyallow=cloudflare.com,domain=testcases.adguard.com
+||cloudflare.com^
+!
+! Case 4
+! request to https://code.jquery.com/jquery-3.6.0.min.js - should work
+@@*$denyallow=jquery.com,domain=testcases.adguard.com
