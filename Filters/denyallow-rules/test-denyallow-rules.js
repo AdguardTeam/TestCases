@@ -45,16 +45,17 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     QUnit.test('Case 3: $denyallow with extra blocking rule', async (assert) => {
-        // eslint-disable-next-line compat/compat
-        const readme = await fetch('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js');
-        const loadedBytes = await readme.blob;
-        assert.notOk(loadedBytes.size > 0);
+        await assert.rejects(
+            // eslint-disable-next-line compat/compat
+            fetch('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'),
+            'Extra blocking rule should block request'
+        );
     });
 
     QUnit.test('Case 4: $denyallow domain that wasn`t blocked', async (assert) => {
         // eslint-disable-next-line compat/compat
         const page = await fetch('https://code.jquery.com/jquery-3.6.0.min.js');
-        const loadedBytes = await page.blob;
+        const loadedBytes = await page.blob();
         assert.ok(loadedBytes.size > 0);
     });
 });
