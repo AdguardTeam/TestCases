@@ -55,7 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
     QUnit.test('Case 4: $denyallow domain that wasn`t blocked', async (assert) => {
         // eslint-disable-next-line compat/compat
         const page = await fetch('https://code.jquery.com/jquery-3.6.0.min.js');
-        const loadedBytes = await page.blob();
-        assert.ok(loadedBytes.size > 0);
+        assert.ok(page.ok);
     });
 });
