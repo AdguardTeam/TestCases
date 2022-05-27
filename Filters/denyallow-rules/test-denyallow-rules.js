@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 4: $denyallow domain that wasn`t blocked', async (assert) => {
         // eslint-disable-next-line compat/compat
-        const page = await fetch('https://code.jquery.com/jquery-3.6.0.min.js');
+        const page = await fetch('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
         assert.ok(page.ok);
     });
 });
