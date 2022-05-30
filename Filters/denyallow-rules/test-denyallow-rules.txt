@@ -16,9 +16,9 @@ testcases.adguard.com,surge.sh###subscribe-to-test-denyallow-rules-filter
 !
 ! Case 3
 ! block request to https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
-*$script,denyallow=cloudflare.com,domain=testcases.adguard.com
+/jquery.min.js$script,denyallow=cloudflare.com,domain=testcases.adguard.com
 ||cloudflare.com^
 !
 ! Case 4
 ! allow request to https://use.fontawesome.com/releases/v5.15.4/css/all.css
-@@*$stylesheet,denyallow=fontawesome.com,domain=testcases.adguard.com
+@@/all.css$stylesheet,denyallow=fontawesome.com,domain=testcases.adguard.com
