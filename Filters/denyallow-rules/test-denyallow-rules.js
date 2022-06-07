@@ -45,11 +45,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     QUnit.test('Case 3: $denyallow with extra blocking rule', async (assert) => {
-        await assert.rejects(
-            // eslint-disable-next-line compat/compat
-            fetch('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'),
-            'Extra blocking rule should block request'
+        const testBlockedImg = await loadImage(
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NCDN_-_CDN.png/800px-NCDN_-_CDN.png'
         );
+        assert.notOk(testBlockedImg.height > 5);
     });
 
     QUnit.test('Case 4: $denyallow domain that wasn`t blocked', async (assert) => {

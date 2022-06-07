@@ -15,9 +15,9 @@ testcases.adguard.com,surge.sh###subscribe-to-test-denyallow-rules-filter
 @@/adguard_dns_map.png$image,denyallow=cdn.adguard.com,domain=testcases.adguard.com|surge.sh
 !
 ! Case 3
-! block request to https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
-/jquery.min.js$script,denyallow=cloudflare.com,domain=testcases.adguard.com
-||cloudflare.com^
+! block request to https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NCDN_-_CDN.png/800px-NCDN_-_CDN.png
+/800px-NCDN_-_CDN.png$script,denyallow=wikimedia.org,domain=testcases.adguard.com
+||wikimedia.org^
 !
 ! Case 4
 ! allow request to https://use.fontawesome.com/releases/v5.15.4/css/all.css
