@@ -8,13 +8,13 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-removeheader-rules-filter
 !
 ! Case 1
-||adguardtest.surge.sh^$removeheader=vary
+||surge.sh^$removeheader=vary
 ||testcases.adguard.com^$removeheader=vary
 !
 ! Case 2
-||adguardtest.surge.sh^$removeheader=etag
+||surge.sh^$removeheader=etag
 ||testcases.adguardtest.com^$removeheader=etag
-@@||adguardtest.surge.sh^$removeheader=etag
+@@||surge.sh^$removeheader=etag
 @@||testcases.adguardtest.com^$removeheader=etag
 !
 ! Case 3
