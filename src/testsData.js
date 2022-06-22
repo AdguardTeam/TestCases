@@ -461,7 +461,6 @@ const testsData = [
             none: {
                 products: [
                     PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.IOS,
                     PRODUCT_TYPES.CON,
                 ],
             },
