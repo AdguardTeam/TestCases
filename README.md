@@ -1,4 +1,4 @@
-__# AdGuard Test Cases
+# AdGuard Test Cases
 
 ## How to build
 
