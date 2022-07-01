@@ -39,7 +39,7 @@ export default class ReadmeBtn extends React.Component {
         const { readmeBtn, readmeUrl } = this.props;
         const { modalIsOpen } = this.state;
         return (
-            <span>
+            <>
                 <button
                     type="button"
                     name="Show Readme file"
@@ -63,7 +63,7 @@ export default class ReadmeBtn extends React.Component {
                     />
                     <ShowReadme readmeUrl={readmeUrl} />
                 </Modal>
-            </span>
+            </>
         );
     }
 }

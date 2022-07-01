@@ -145,7 +145,7 @@ header h3 {
 .test-info {
   background: url(../img/logo.png) left center no-repeat;
   background-size: 3.5vw;
-  padding-left: 5vw;
+  padding-left: 4.5vw;
   min-height: 4.5vw;
   display: flex;
   flex-direction: column;
@@ -226,9 +226,9 @@ header h3 {
   font-size: $compatibilitySize;
 }
 
-.compatibility > div {  
+.compatibility > div {
   background-size: 1vw;
-  padding-left: 1.5vw;
+  padding-left: 1.3vw;
 }
 
 .full-compatibility {
@@ -345,7 +345,7 @@ footer {
   }
   header h2 {
     font-size: 6vw;
-    margin: 0 0 5vw;
+    margin: 0 0 4vw;
   }
   header h3 {
     font-size: 5vw;
@@ -354,7 +354,7 @@ footer {
   .mission {
     font-size: 4vw;
     line-height: 5.5vw;
-    margin-top: 6vw;
+    margin-top: 4vw;
     padding: 0 3vw;
   }
   .instruction {
@@ -368,7 +368,7 @@ footer {
     position: relative;
     font-size: 3vw;
     line-height: 4vw;
-    margin-bottom: 3.5vw;
+    margin-bottom: 2vw;
   }
   .instruction ul {
     padding-left: 5vw;
@@ -408,7 +408,7 @@ footer {
   .test-title {
     font-size: 7vw;
     line-height: 8vw;
-    margin: 2vw 0 6vw;
+    margin: 2vw 0 4vw;
     background: none;
     background-size: 4vw;
     padding-left: 0;
@@ -422,10 +422,15 @@ footer {
     padding-left: 5.5vw;
     margin-bottom: 3vw;
   }
+  .compatibility > div {
+    background-size: 3vw;
+    padding-left: 4vw;
+    margin-bottom: 1vw;
+  }
   .btn {
     font-size: 4vw;
-    margin: 4vw 0 0 0;
-    padding: 7vw 0 0;
+    margin: 4vw 0 1vw 0;
+    padding: 10vw 0 0;
   }
   .startTest,
   .copyLink,
@@ -437,11 +442,10 @@ footer {
     width: 33%;
     text-align: center;
     float: left;
-    margin-bottom: 4vw;
   }
   .startTest,
   .subscribe {
-    padding-top: 8.8vw;
+    padding-top: 8.2vw;
   }
   .readmeText {
     font-size: 4vw;
@@ -489,7 +493,16 @@ footer {
     .readme {
       background-size: 6vw;
       width: 50%;
+    }
+
+    .startTest {
+      margin: 4vw 0 0 0;
+    }
+
+    .copyLink,
+    .copyRules,
+    .readme {
       margin: 4vw 0 5vw 0;
-    } 
+    }
   }
 }}
