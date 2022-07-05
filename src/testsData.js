@@ -356,7 +356,7 @@ const testsData = [
         rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
         compatibility: {
             none: {
-                products: [...CORELIBS_PRODUCTS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
         readmeUrl: 'Filters/badfilter-rules/README.md',
