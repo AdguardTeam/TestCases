@@ -218,7 +218,7 @@ const testsData = [
         rulesUrl: 'Filters/websockets/test-websockets.txt',
         compatibility: {
             none: {
-                products: [PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
+                products: [PRODUCT_TYPES.CON],
             },
         },
     },
