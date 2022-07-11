@@ -1,0 +1,15 @@
+!
+! Title: Rules for $hls rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.adguard.com
+!
+! Hide warning
+testcases.adguard.com,surge.sh###subscribe-to-test-hls-rules-filter
+!
+! Case 1
+||*/hls-test-1.m3u^$hls=preroll
+||*/hls-test-1.m3u^$hls=/#UPLYNK-SEGMENT:.*\,ad/t
+! Case 2
+||*/hls-test-2.m3u^$hls=preroll
+@@||*/hls-test-2.m3u^$hls
