@@ -534,6 +534,18 @@ const testsData = [
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },
+    {
+        id: 36,
+        title: '$jsonprune modifier tests',
+        link: 'Filters/jsonprune-rules/test-jsonprune-rules.html',
+        rulesUrl: 'Filters/jsonprune-rules/test-jsonprune-rules.txt',
+        compatibility: {
+            none: {
+                products: NONE_CORELIBS_PRODUCTS,
+            },
+        },
+        readmeUrl: 'Filters/jsonprune-rules/README.md',
+    },
 ];
 
 export default testsData;

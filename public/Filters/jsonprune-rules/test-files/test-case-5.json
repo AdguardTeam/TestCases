@@ -1,0 +1,8 @@
+{
+  "level1": {
+    "level2": {
+      "Some key": "Some value",
+      "test": "test data"
+    }
+  }
+}
