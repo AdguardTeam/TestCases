@@ -546,6 +546,18 @@ const testsData = [
         },
         readmeUrl: 'Filters/jsonprune-rules/README.md',
     },
+    {
+        id: 37,
+        title: '$hls modifier tests',
+        link: 'Filters/hls-rules/test-hls-rules.html',
+        rulesUrl: 'Filters/hls-rules/test-hls-rules.txt',
+        compatibility: {
+            none: {
+                products: NONE_CORELIBS_PRODUCTS,
+            },
+        },
+        readmeUrl: 'Filters/hls-rules/README.md',
+    },
 ];
 
 export default testsData;
