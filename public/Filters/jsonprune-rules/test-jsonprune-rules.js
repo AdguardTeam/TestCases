@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 3: $jsonprune rule for multiple keys', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-3.json');
-        assert.ok(!jsonData['one']
+        assert.ok(!jsonData.one
             && !jsonData['two three']
             && jsonData['three four five'], '$jsonprune rule should remove data from response json');
     });
