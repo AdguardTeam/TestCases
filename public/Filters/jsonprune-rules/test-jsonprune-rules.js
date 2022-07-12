@@ -4,14 +4,10 @@
  * Before doing the test, import test-jsonprune-rules.txt to AdGuard
  */
 
-const { log } = console;
-
 const getJsonData = async (path) => {
     // eslint-disable-next-line compat/compat
     const response = await fetch(path);
-    const data = await response.json();
-    log(data);
-    return response;
+    return response.json();
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -30,21 +26,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 3: $jsonprune rule for multiple keys', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-3.json');
-        assert.ok(!jsonData['one two']
-            && !jsonData['two three four']
+        assert.ok(!jsonData['one']
+            && !jsonData['two three']
             && jsonData['three four five'], '$jsonprune rule should remove data from response json');
     });
 
     QUnit.test('Case 4: $jsonprune rule with expressions', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-4.json');
-        assert.ok(jsonData.test_data.test1
-            && !jsonData.test_data.ad_origin
-            && jsonData.test_data.test2, '$jsonprune rule should remove data from response json by expression');
+        assert.ok(!jsonData.test_data.child1
+            && jsonData.test_data.child2, '$jsonprune rule should remove data from response json by expression');
     });
 
     QUnit.test('Case 5: $jsonprune rule with expressions', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-5.json');
-        assert.ok(!jsonData.level1.level2['Some key']
-            && jsonData.level1.level2.test, '$jsonprune rule should remove data from response json by expression');
+        assert.ok(!jsonData.level1.level2.child1
+            && jsonData.level1.level2.child2, '$jsonprune rule should remove data from response json by expression');
     });
 });

@@ -8,9 +8,9 @@
 testcases.adguard.com,surge.sh###subscribe-to-test-jsonprune-rules-filter
 !
 ! Case 1
-||*/test-case-1.json^$jsonprune=test2
+||*/test-case-1.json^$jsonprune=\$.test2
 ! Case 2
-||*/test-case-2.json^$jsonprune=test1
+||*/test-case-2.json^$jsonprune=\$.test1
 @@||*/test-case-2.json^$jsonprune
 ! Case 3
 ||*/test-case-3.json^$jsonprune=\$..[one\, "two three"]

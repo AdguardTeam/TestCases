@@ -1,5 +1,5 @@
 {
-  "one two": "test data 1",
-  "two three four": "test data 2",
+  "one": "test data 1",
+  "two three": "test data 2",
   "three four five": "test data 3"
 }
