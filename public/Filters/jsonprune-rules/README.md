@@ -1,4 +1,5 @@
 # $jsonprune rules tests
+Compatible with AdGuard for Windows, macOS and Android with **CoreLibs v1.10**
 
 ### Case 1
 Remove key "test2" from the response json.
