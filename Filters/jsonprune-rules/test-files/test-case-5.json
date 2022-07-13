@@ -1,0 +1,13 @@
+{
+  "level1": {
+    "level2": {
+      "child1": {
+        "Some key": "Some value",
+        "test1": "test data"
+      },
+      "child2": {
+        "test2": "test data"
+      }
+    }
+  }
+}
