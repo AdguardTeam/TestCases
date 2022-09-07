@@ -27,6 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 2: $network exception and priority test', async (assert) => {
         const result = await download('https://94.140.14.15/info.txt');
-        assert.ok(adgCheck && result.startsWith('dns2-dp-sg-'), '$network exception rule should disable $network rule and reject all other rules.');
+        assert.ok(adgCheck && result.startsWith('dns2-'), '$network exception rule should disable $network rule and reject all other rules.');
     });
 });
