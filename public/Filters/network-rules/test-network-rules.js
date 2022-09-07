@@ -19,14 +19,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 1: $network rule test', async (assert) => {
         try {
-            await request('https://unit-test3.adguard.com');
+            await request('https://94.140.14.14/');
         } catch (e) {
             assert.ok(true, '$network rule should block request');
         }
     });
 
     QUnit.test('Case 2: $network exception and priority test', async (assert) => {
-        const result = await download('https://unit-test5.adguard.com/test.txt');
-        assert.ok(adgCheck && result === 'OK', '$network exception rule should disable $network rule and reject all other rules.');
+        const result = await download('https://94.140.14.15/info.txt');
+        debugger
+        assert.ok(adgCheck && result.startsWith('dns2-dp-sg-'), '$network exception rule should disable $network rule and reject all other rules.');
     });
 });
