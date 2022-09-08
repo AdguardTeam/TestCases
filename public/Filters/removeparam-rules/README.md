@@ -4,4 +4,4 @@
 2. AdGuard for Windows, macOS and Android with **CoreLibs v1.8**
 
 ## Important:
-### $removeparam tests should be run over **https**
+### $removeparam tests should be run over **https** connection
