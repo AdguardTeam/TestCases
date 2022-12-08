@@ -39,7 +39,6 @@ testcases.adguard.com,surge.sh##+js(addEventListener-defuser.js, click, preventL
 ! prevent-bab
 !
 testcases.adguard.com,surge.sh#%#//scriptlet("prevent-bab")
-testcases.adguard.com,surge.sh##+js(bab-defuser.js)
 !
 ! prevent-setInterval
 !
