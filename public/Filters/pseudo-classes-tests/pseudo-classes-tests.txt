@@ -22,4 +22,9 @@ testcases.adguard.com,surge.sh#$##case5.banner:has(a.banner-link) { visibility: 
 ! Case 6
 testcases.adguard.com,surge.sh#$##case6.banner:has(a.banner-link) { visibility: hidden!important; }
 testcases.adguard.com,surge.sh#@$##case6.banner:has(a.banner-link) { visibility: hidden!important; }
-
+! Case 7
+###case7.banner:has(a.banner-link)
+#@##case7.banner:has(a.banner-link)
+! Case 8
+#?##case8.banner:has(a.banner-link)
+#@?##case8.banner:has(a.banner-link)
