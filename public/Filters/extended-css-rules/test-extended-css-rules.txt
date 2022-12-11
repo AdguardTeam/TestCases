@@ -37,3 +37,15 @@ testcases.adguard.com,surge.sh#?##case25 > div:matches-property("id"="/property-
 testcases.adguard.com,surge.sh#?##case26:remove()
 testcases.adguard.com,surge.sh#$?##case27:has(div) { remove: true; }
 testcases.adguard.com,surge.sh#?##case28 > :is(.case28, #main, footer, span):contains(isTest)
+!
+! Case 29
+testcases.adguard.com,surge.sh#?##case29.banner:has(a.banner-link)
+testcases.adguard.com,surge.sh#@?##case29.banner:has(a.banner-link)
+!
+! Case 30
+testcases.adguard.com,surge.sh#?##case30.banner:has(a.banner-link)
+testcases.adguard.com,surge.sh#@##case30.banner:has(a.banner-link)
+!
+! Case 31
+testcases.adguard.com,surge.sh###case31.banner:has(a.banner-link)
+testcases.adguard.com,surge.sh#@?##case31.banner:has(a.banner-link)

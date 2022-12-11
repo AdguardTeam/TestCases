@@ -6,6 +6,9 @@
  * Before doing the test, import test-extended-css-rules.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
+    const adgCheck = getComputedStyle(window.document
+        .getElementById('subscribe-to-test-extended-css-rules-filter')).display === 'none';
+
     QUnit.test('1. Test simple :has', (assert) => {
         assert.equal(window.getComputedStyle(case1).display, 'none');
     });
@@ -130,5 +133,20 @@ window.addEventListener('DOMContentLoaded', () => {
     QUnit.test('28. Test :is() pseudo-class', (assert) => {
         const case28 = document.querySelector('#case28 > #test-is-any-matches3');
         assert.equal(window.getComputedStyle(case28).display, 'none');
+    });
+
+    QUnit.test('29. Test pseudo-class :has() for extended-css rule exception', (assert) => {
+        const case29 = document.querySelector('#case29');
+        assert.ok(adgCheck && window.getComputedStyle(case29).display === 'block');
+    });
+
+    QUnit.test('30. Test extended-css rule with pseudo-class :has() with cosmetic rule exception', (assert) => {
+        const case30 = document.querySelector('#case30');
+        assert.ok(adgCheck && window.getComputedStyle(case30).display === 'block');
+    });
+
+    QUnit.test('31. Test cosmetic rule with pseudo-class :has() with extended-css rule exception', (assert) => {
+        const case31 = document.querySelector('#case31');
+        assert.ok(adgCheck && window.getComputedStyle(case31).display === 'block');
     });
 });

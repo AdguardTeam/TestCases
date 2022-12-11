@@ -558,18 +558,6 @@ const testsData = [
         },
         readmeUrl: 'Filters/hls-rules/README.md',
     },
-    {
-        id: 38,
-        title: 'Pseudo-classes tests',
-        link: 'Filters/pseudo-classes-tests/pseudo-classes-tests.html',
-        rulesUrl: 'Filters/pseudo-classes-tests/pseudo-classes-tests.txt',
-        compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
-        },
-        readmeUrl: 'Filters/pseudo-classes-tests/README.md',
-    },
 ];
 
 export default testsData;
