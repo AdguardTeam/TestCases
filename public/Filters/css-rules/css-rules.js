@@ -72,8 +72,13 @@ window.addEventListener('load', function () {
         assert.strictEqual(testStyle.width, '0px', 'selected element width changed');
     });
 
-    QUnit.test('6. Test pseudo-class :has() for css-inject rule exception', (assert) => {
+    QUnit.test('6. Test pseudo-class :has() for css-inject rule', (assert) => {
         const case6 = document.querySelector('#case6');
-        assert.ok(adgCheck && window.getComputedStyle(case6).visibility === 'visible');
+        assert.ok(window.getComputedStyle(case6).display === 'block');
+    });
+
+    QUnit.test('7. Test pseudo-class :has() for css-inject rule exception', (assert) => {
+        const case7 = document.querySelector('#case7');
+        assert.ok(adgCheck && window.getComputedStyle(case7).visibility === 'visible');
     });
 });
