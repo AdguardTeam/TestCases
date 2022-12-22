@@ -85,6 +85,11 @@ window.addEventListener('load', function () {
         assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
     });
 
+    QUnit.test('9. Test cosmetic rule with pseudo-class :has()', (assert) => {
+        const case9 = document.querySelector('#case9');
+        assert.ok(adgCheck && window.getComputedStyle(case9).display === 'none');
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
