@@ -30,3 +30,9 @@ testcases.adguard.com,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !i
 !
 ! Test case 5:
 testcases.adguard.com,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !important; }
+!
+! Test case 6:
+testcases.adguard.com,surge.sh#$##case6.banner:has(a.banner-link) { visibility: hidden!important; }
+! Test case 7:
+testcases.adguard.com,surge.sh#$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
+testcases.adguard.com,surge.sh#@$##case7.banner:has(a.banner-link) { visibility: hidden!important; }

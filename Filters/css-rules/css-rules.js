@@ -5,6 +5,9 @@
  * Before doing the test, import css-rules.txt to AdGuard
  */
 window.addEventListener('load', function () {
+    const adgCheck = getComputedStyle(window.document
+        .getElementById('subscribe-to-test-css-rules-filter')).display === 'none';
+
     QUnit.test('Test css rule: case 1 - single rule', function (assert) {
         const TEST_ELEMENT_ID = 'case-1-single';
         const testElement = window.document.querySelector(`#${TEST_ELEMENT_ID}`);
@@ -67,5 +70,15 @@ window.addEventListener('load', function () {
 
         const testStyle = getComputedStyle(window.document.querySelector(`#${TEST_ELEMENT_ID}`), null);
         assert.strictEqual(testStyle.width, '0px', 'selected element width changed');
+    });
+
+    QUnit.test('6. Test pseudo-class :has() for css-inject rule', (assert) => {
+        const case6 = document.querySelector('#case6');
+        assert.ok(window.getComputedStyle(case6).display === 'block');
+    });
+
+    QUnit.test('7. Test pseudo-class :has() for css-inject rule exception', (assert) => {
+        const case7 = document.querySelector('#case7');
+        assert.ok(adgCheck && window.getComputedStyle(case7).visibility === 'visible');
     });
 });

@@ -35,3 +35,5 @@ testcases.adguard.*,surge.*###case-5-wildcard-for-tld > .test-banner
 ||*/iframe-test-1.html^$subdocument,domain=testcases.adguard.com|surge.sh
 ||*/iframe-test-2.html^$domain=testcases.adguard.com|surge.sh
 @@||*/iframe-test-2.html^$subdocument,domain=testcases.adguard.com|surge.sh
+! Test case 9: pseudo-class ':has()'
+testcases.adguard.com,surge.sh###case9.banner:has(a.banner-link)
