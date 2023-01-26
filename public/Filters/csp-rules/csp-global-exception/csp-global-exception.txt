@@ -2,11 +2,11 @@
 ! Title: Rules for $csp global exception rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-csp-global-exception-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-csp-global-exception-rules-filter
 !
 ! Case 1
-||testcases.adguard.com,surge.sh$csp=script-src 'self'
-@@||testcases.adguard.com,surge.sh$csp
+||testcases.agrd.dev,surge.sh$csp=script-src 'self'
+@@||testcases.agrd.dev,surge.sh$csp

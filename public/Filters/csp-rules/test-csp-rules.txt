@@ -2,22 +2,22 @@
 ! Title: Rules for $csp rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-csp-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-csp-rules-filter
 !
 ! Case 1
-||testcases.adguard.com/*/csp-rules$csp=script-src 'self'
+||testcases.agrd.dev/*/csp-rules$csp=script-src 'self'
 ||surge.sh/*/csp-rules$csp=script-src 'self'
-testcases.adguard.com,surge.sh###some-element
+testcases.agrd.dev,surge.sh###some-element
 ! Case 2
-||testcases.adguard.com/*/csp-rules$csp=connect-src adguard.com
+||testcases.agrd.dev/*/csp-rules$csp=connect-src adguard.com
 ||surge.sh/*/csp-rules$csp=connect-src adguard.com
-||testcases.adguard.com/*/csp-rules$csp=connect-src https:
+||testcases.agrd.dev/*/csp-rules$csp=connect-src https:
 ||surge.sh/*/csp-rules$csp=connect-src https:
 ! Case 3
-||testcases.adguard.com/*/csp-rules$csp=style-src 'self'
+||testcases.agrd.dev/*/csp-rules$csp=style-src 'self'
 ||surge.sh/*/csp-rules$csp=style-src 'self'
-@@||testcases.adguard.com/*/csp-rules$csp=style-src 'self'
+@@||testcases.agrd.dev/*/csp-rules$csp=style-src 'self'
 @@||surge.sh/*/csp-rules$csp=style-src 'self'

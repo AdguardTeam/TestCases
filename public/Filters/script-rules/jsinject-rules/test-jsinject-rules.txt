@@ -2,12 +2,12 @@
 ! Title: Rules for jsinject rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-jsinject-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-jsinject-rules-filter
 !
 ! Case 1
-testcases.adguard.com,surge.sh#%#document.__jsinjectTest = true;
-@@||testcases.adguard.com^$jsinject
+testcases.agrd.dev,surge.sh#%#document.__jsinjectTest = true;
+@@||testcases.agrd.dev^$jsinject
 @@||surge.sh^$jsinject

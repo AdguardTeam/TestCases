@@ -2,73 +2,73 @@
 ! Title: Rules for $removeparam rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-removeparam-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-removeparam-rules-filter
 !
 ! Case 1
-||testcases.adguard.com$xmlhttprequest,removeparam=p1case1
+||testcases.agrd.dev$xmlhttprequest,removeparam=p1case1
 ||surge.sh$xmlhttprequest,removeparam=p1case1
 !
 ! Case 2
-||testcases.adguard.com$xmlhttprequest,removeparam=/P2CASE2/i
+||testcases.agrd.dev$xmlhttprequest,removeparam=/P2CASE2/i
 ||surge.sh$xmlhttprequest,removeparam=/P2CASE2/i
 !
 ! Case 3
-||testcases.adguard.com$xmlhttprequest,removeparam=p1case3
-||testcases.adguard.com$xmlhttprequest,removeparam=/P2CASE3/i
+||testcases.agrd.dev$xmlhttprequest,removeparam=p1case3
+||testcases.agrd.dev$xmlhttprequest,removeparam=/P2CASE3/i
 ||surge.sh$xmlhttprequest,removeparam=p1case3
 ||surge.sh$xmlhttprequest,removeparam=/P2CASE3/i
 !
 ! Case 4
-||testcases.adguard.com$xmlhttprequest,removeparam=P1Case4
+||testcases.agrd.dev$xmlhttprequest,removeparam=P1Case4
 ||surge.sh$xmlhttprequest,removeparam=P1Case4
 !
 ! Case 5
 $xmlhttprequest,removeparam=p1case5
 $xmlhttprequest,removeparam=p2case5
-@@||testcases.adguard.com$xmlhttprequest,removeparam=p2case5
+@@||testcases.agrd.dev$xmlhttprequest,removeparam=p2case5
 @@||surge.sh$xmlhttprequest,removeparam=p2case5
 !
 ! Case 6
-||testcases.adguard.com$important,xmlhttprequest,removeparam=p1case6
-||testcases.adguard.com$important,xmlhttprequest,removeparam=p2case6
-@@||testcases.adguard.com$xmlhttprequest,removeparam=p1case6
-@@||testcases.adguard.com$xmlhttprequest,removeparam=p2case6
+||testcases.agrd.dev$important,xmlhttprequest,removeparam=p1case6
+||testcases.agrd.dev$important,xmlhttprequest,removeparam=p2case6
+@@||testcases.agrd.dev$xmlhttprequest,removeparam=p1case6
+@@||testcases.agrd.dev$xmlhttprequest,removeparam=p2case6
 ||surge.sh$important,xmlhttprequest,removeparam=p1case6
 ||surge.sh$important,xmlhttprequest,removeparam=p2case6
 @@||surge.sh$xmlhttprequest,removeparam=p1case6
 @@||surge.sh$xmlhttprequest,removeparam=p2case6
 !
 ! Case 7
-$xmlhttprequest,removeparam=p1case7,domain=testcases.adguard.com|surge.sh
-$xmlhttprequest,removeparam=p2case7,domain=testcases.adguard.com|surge.sh
+$xmlhttprequest,removeparam=p1case7,domain=testcases.agrd.dev|surge.sh
+$xmlhttprequest,removeparam=p2case7,domain=testcases.agrd.dev|surge.sh
 !
 ! Case 8
-||testcases.adguard.com/*p1case8$xmlhttprequest,removeparam=~p2case8
+||testcases.agrd.dev/*p1case8$xmlhttprequest,removeparam=~p2case8
 ||surge.sh/*p1case8$xmlhttprequest,removeparam=~p2case8
 !
 ! Case 9
 $xmlhttprequest,removeparam=p1case9
 $xmlhttprequest,removeparam=p2case9
-@@||testcases.adguard.com/*p1case9$xmlhttprequest,removeparam
+@@||testcases.agrd.dev/*p1case9$xmlhttprequest,removeparam
 @@||surge.sh/*p1case9$xmlhttprequest,removeparam
 !
 ! Case 10
-||testcases.adguard.com$xmlhttprequest,removeparam=/p1case10=x/
+||testcases.agrd.dev$xmlhttprequest,removeparam=/p1case10=x/
 ||surge.sh$xmlhttprequest,removeparam=/p1case10=x/
-||testcases.adguard.com$xmlhttprequest,removeparam=/p2case10=y$/
+||testcases.agrd.dev$xmlhttprequest,removeparam=/p2case10=y$/
 ||surge.sh$xmlhttprequest,removeparam=/p2case10=y$/
 !
 ! Case 11
-||testcases.adguard.com$removeparam=p1case11
-||testcases.adguard.com$script,xmlhttprequest,removeparam=p2case11
+||testcases.agrd.dev$removeparam=p1case11
+||testcases.agrd.dev$script,xmlhttprequest,removeparam=p2case11
 ||surge.sh$removeparam=p1case11
 ||surge.sh$script,xmlhttprequest,removeparam=p2case11
 !
 ! Case 12
-||testcases.adguard.com$removeparam=p1case12
-||testcases.adguard.com$image,xmlhttprequest,removeparam=p2case12
+||testcases.agrd.dev$removeparam=p1case12
+||testcases.agrd.dev$image,xmlhttprequest,removeparam=p2case12
 ||surge.sh$removeparam=p1case12
 ||surge.sh$image,xmlhttprequest,removeparam=p2case12

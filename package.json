@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "watch": "HOST=local.testcases.adguard.com react-scripts start",
+    "watch": "HOST=local.testcases.agrd.dev react-scripts start",
     "build": "react-scripts build",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",

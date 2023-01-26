@@ -2,10 +2,10 @@
 ! Title: Rules for $jsonprune rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-jsonprune-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-jsonprune-rules-filter
 !
 ! Case 1
 ||*/test-case-1.json^$jsonprune=\$.test2

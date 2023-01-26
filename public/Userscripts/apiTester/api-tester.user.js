@@ -5,8 +5,10 @@
 // @version      2.0.9
 // @description AdGuard's userscripts API tester
 // @description:ru API тестер юзерскриптов для AdGuard
-// @match  https://testcases.adguard.com/Userscripts/*
-// @match  http://testcases.adguard.com/Userscripts/*
+// @match  https://testcases.agrd.dev/Userscripts/*
+// @match  http://testcases.agrd.dev/Userscripts/*
+// @match  https://local.testcases.agrd.dev/Userscripts/*
+// @match  http://local.testcases.agrd.dev/Userscripts/*
 // @match  https://*.surge.sh/Userscripts/*
 // @match  http://*.surge.sh/Userscripts/*
 // @require         jquery-2.1.1.min.js

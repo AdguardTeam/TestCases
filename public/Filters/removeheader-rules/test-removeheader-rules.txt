@@ -2,14 +2,14 @@
 ! Title: Rules for $removeheader rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-removeheader-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-removeheader-rules-filter
 !
 ! Case 1
 ||surge.sh^$removeheader=vary
-||testcases.adguard.com^$removeheader=vary
+||testcases.agrd.dev^$removeheader=vary
 !
 ! Case 2
 ||surge.sh^$removeheader=etag

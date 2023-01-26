@@ -2,10 +2,10 @@
 ! Title: Rules for $network rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-network-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-network-rules-filter
 !
 ! Case 1
 94.140.14.14^$network
