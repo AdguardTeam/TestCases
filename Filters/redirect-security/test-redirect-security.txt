@@ -2,10 +2,10 @@
 ! Title: Rules for $redirect security test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-redirect-security-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-redirect-security-filter
 !
 ! Case 1
 ||*/redirect-test.js$redirect=noopjs

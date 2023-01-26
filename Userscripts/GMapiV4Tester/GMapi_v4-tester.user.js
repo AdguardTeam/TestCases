@@ -5,8 +5,10 @@
 // @version      1.0.0
 // @description AdGuard's Greasemonkey API v4 tester
 // @description:ru тестер Greasemonkey API v4 для AdGuard
-// @match			      https://testcases.adguard.com/Userscripts/*
-// @match			      http://testcases.adguard.com/Userscripts/*
+// @match			      https://testcases.agrd.dev/Userscripts/*
+// @match			      http://testcases.agrd.dev/Userscripts/*
+// @match			      https://local.testcases.agrd.dev/Userscripts/*
+// @match			      http://local.testcases.agrd.dev/Userscripts/*
 // @match			      https://*.surge.sh/Userscripts/*
 // @match			      http://*.surge.sh/Userscripts/*
 // @require         jquery-2.1.1.min.js

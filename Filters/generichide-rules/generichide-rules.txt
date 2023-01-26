@@ -2,16 +2,16 @@
 ! Title: Rules for generic hide tests
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-generichide-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-generichide-rules-filter
 ! Test case: generichide
-testcases.adguard.com,surge.sh###case-1-generichide > .test-banner
+testcases.agrd.dev,surge.sh###case-1-generichide > .test-banner
 ###case-1-generichide > .test-banner1
-@@||testcases.adguard.com$generichide
+@@||testcases.agrd.dev$generichide
 @@||surge.sh$generichide
 !
 ! Test case: generichide rule and js rules
-testcases.adguard.com#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
+testcases.agrd.dev#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
 surge.sh#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });

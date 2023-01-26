@@ -24,7 +24,7 @@ function loadImage(src) {
 window.addEventListener('DOMContentLoaded', () => {
     QUnit.test('Case 1: $denyallow blocking rule test', async (assert) => {
         const testLoadImg = await loadImage(
-            'https://cdn.adguard.com/public/Adguard/Common/adguard_circle.png'
+            'https://cdn.adtidy.org/public/Adguard/Common/adguard_circle.png'
         );
         assert.ok(testLoadImg.height > 5);
         const testBlockedImg = await loadImage(
@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 2: $denyallow whitelist rule test', async (assert) => {
         const testBlockedImg = await loadImage(
-            'https://cdn.adguard.com/public/Adguard/Common/adguard_dns_map.png'
+            'https://cdn.adtidy.org/public/Adguard/Common/adguard_dns_map.png'
         );
         assert.notOk(testBlockedImg.height > 5);
         const testLoadImg = await loadImage(

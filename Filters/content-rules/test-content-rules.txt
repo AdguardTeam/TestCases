@@ -2,14 +2,14 @@
 ! Title: Rules for content rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-content-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-content-rules-filter
 !
-testcases.adguard.com,surge.sh$$div[id="case1"]
-testcases.adguard.com,surge.sh$$div[id="case2"][tag-content="test-case-2-content"]
-testcases.adguard.com,surge.sh$$div[class="test-case-3-class"]
-testcases.adguard.com,surge.sh$$div[id="case4"][wildcard="*teasernet*tararar*"]
-testcases.adguard.com,surge.sh$$div[id="case5"]
-testcases.adguard.com,surge.sh$@$div[id="case5"]
+testcases.agrd.dev,surge.sh$$div[id="case1"]
+testcases.agrd.dev,surge.sh$$div[id="case2"][tag-content="test-case-2-content"]
+testcases.agrd.dev,surge.sh$$div[class="test-case-3-class"]
+testcases.agrd.dev,surge.sh$$div[id="case4"][wildcard="*teasernet*tararar*"]
+testcases.agrd.dev,surge.sh$$div[id="case5"]
+testcases.agrd.dev,surge.sh$@$div[id="case5"]

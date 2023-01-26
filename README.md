@@ -4,7 +4,7 @@ All kinds of test cases for AdGuard products.
 
 ### How to use test cases
 
-Open https://testcases.adguard.com and follow the instructions there.
+Open https://testcases.agrd.dev and follow the instructions there.
 
 ### Development
 
@@ -13,11 +13,11 @@ Open https://testcases.adguard.com and follow the instructions there.
 * Run `yarn install`
 
 * Add to the `/etc/hosts` next line
-    `127.0.0.1 local.testcases.adguard.com`
+    `127.0.0.1 local.testcases.agrd.dev`
 
 * Run the local server
     `yarn watch`
-It will open `http://local.testcases.adguard.com:3000/` in your browser
+It will open `http://local.testcases.agrd.dev:3000/` in your browser
 and test code changes will be dynamically updated there
 
 > **Please note, that AdGuard for Mac does not filter localhost connections by default!**.

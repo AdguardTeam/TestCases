@@ -2,37 +2,37 @@
 ! Title: Rules for CSS tests
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-css-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-css-rules-filter
 ! Test case 1:
-testcases.adguard.com,surge.sh#$##case-1-single { width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; display: none !important; }
+testcases.agrd.dev,surge.sh#$##case-1-single { width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; display: none !important; }
 !
 ! Test case 2:
-testcases.adguard.com,surge.sh#$##case-2-multiple { width: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-2-multiple { height: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-2-multiple { margin: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-2-multiple { padding: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-2-multiple { overflow: visible !important; }
-testcases.adguard.com,surge.sh#$##case-2-multiple { display: none !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { width: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { height: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { margin: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { padding: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { overflow: visible !important; }
+testcases.agrd.dev,surge.sh#$##case-2-multiple { display: none !important; }
 !
 ! Test case 3:
-testcases.adguard.com,surge.sh#$##case-3-important { width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-3-important { overflow: visible !important; display: none !important; }
+testcases.agrd.dev,surge.sh#$##case-3-important { width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-3-important { overflow: visible !important; display: none !important; }
 !
 ! Test case 4:
-testcases.adguard.com,surge.sh#$##case-4-margin-padding { margin-top: 0 !important; }
-testcases.adguard.com,surge.sh#$##case-4-margin-padding { padding-right: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-4-margin-padding { margin-top: 0 !important; }
+testcases.agrd.dev,surge.sh#$##case-4-margin-padding { padding-right: 0 !important; }
 !
 ! Test case 5:
-testcases.adguard.com,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !important; }
+testcases.agrd.dev,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !important; }
 !
 ! Test case 5:
-testcases.adguard.com,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !important; }
+testcases.agrd.dev,surge.sh#$?#div[id][class]:has(> .inner-div) { width: 0 !important; }
 !
 ! Test case 6:
-testcases.adguard.com,surge.sh#$##case6.banner:has(a.banner-link) { visibility: hidden!important; }
+testcases.agrd.dev,surge.sh#$##case6.banner:has(a.banner-link) { visibility: hidden!important; }
 ! Test case 7:
-testcases.adguard.com,surge.sh#$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
-testcases.adguard.com,surge.sh#@$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
+testcases.agrd.dev,surge.sh#$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
+testcases.agrd.dev,surge.sh#@$##case7.banner:has(a.banner-link) { visibility: hidden!important; }

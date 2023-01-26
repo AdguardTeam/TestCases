@@ -2,9 +2,9 @@
 ! Title: Rules for extended css rules injection into iframe created with js test
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-extended-css-iframejs-injection
+testcases.agrd.dev,surge.sh###subscribe-to-test-extended-css-iframejs-injection
 ! Case 1
-testcases.adguard.com,surge.sh#?##inframe1:has(.content)
+testcases.agrd.dev,surge.sh#?##inframe1:has(.content)

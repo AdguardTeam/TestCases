@@ -2,13 +2,13 @@
 ! Title: Rules for blocking-request (ping, websocket, xmlhttprequest) tests
 !
 ! Filter to be used for testing purposes
-! https://testcases.adguard.com
+! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.adguard.com,surge.sh###subscribe-to-test-blocking-request-rules-filter
+testcases.agrd.dev,surge.sh###subscribe-to-test-blocking-request-rules-filter
 ! Test case 1: $ping modifier
 ||adguard.com/*^$ping
 ! Test case 2: $xmlhttprequest modifier
-||adguard-vpn.com^$xmlhttprequest,domain=testcases.adguard.com|surge.sh
+||adguard-vpn.com^$xmlhttprequest,domain=testcases.agrd.dev|surge.sh
 ! Test case 3: $websocket modifier
-$websocket,domain=testcases.adguard.com|surge.sh
+$websocket,domain=testcases.agrd.dev|surge.sh
