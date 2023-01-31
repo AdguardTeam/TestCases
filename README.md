@@ -13,13 +13,35 @@ While making any [tests data](#tests-data) changes, run `yarn build:static` to r
 
 ### Test on the local machine
 
-* Run `yarn install`
+#### Install all dependencies:
+```
+yarn install
+```
 
-* Add to the `/etc/hosts` next line
-    `127.0.0.1 local.testcases.agrd.dev`
+#### Add to the `/etc/hosts` next line
+```
+127.0.0.1 local.testcases.agrd.dev
+```
 
-* Run the local server
-    `yarn watch`
+#### Create `cert` directory
+if there is no one in the repository root
+
+#### Install [`mkcert`](https://github.com/FiloSottile/mkcert#readme)
+```
+brew install mkcert
+```
+
+#### Create locally-trusted development certificate
+```
+mkcert -install
+mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
+```
+
+#### Run the local server
+```
+yarn watch
+```
+
 It will open `http://local.testcases.agrd.dev:3000/` in your browser
 and test code changes will be dynamically updated there
 
@@ -36,7 +58,7 @@ Then:
 ```
 yarn build
 cd build
-surge --domain=_your_available_domain_.surge.sh
+surge --domain=<available-domain>.surge.sh
 ```
 
 Enjoy your testing at `_your_available_domain_.surge.sh`!

@@ -9,6 +9,7 @@ export default class CopyRulesBtn extends React.Component {
     }
 
     componentDidMount = async () => {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.rulesText = await getFile(this.props.rulesUrl);
     }
 

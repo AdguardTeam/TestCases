@@ -52,6 +52,7 @@ const TestItem = ({
                 <SubscribeFilterBtn
                     subscribeBtn={rulesBtn()}
                     rulesUrl={rulesUrl}
+                    filterTitle={title}
                 />
 
             </div>

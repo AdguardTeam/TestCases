@@ -3,9 +3,8 @@
   "version": "0.1.13",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "watch": "HOST=local.testcases.agrd.dev react-scripts start",
     "build": "react-scripts build",
+    "watch": "react-scripts start",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -19,6 +18,11 @@
   },
   "stylelint": {
     "extends": "stylelint-config-recommended-scss"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
+    }
   },
   "browserslist": {
     "production": [
@@ -34,24 +38,26 @@
     ]
   },
   "dependencies": {
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-app-polyfill": "^2.0.0",
-    "react-dom": "^16.8.6",
-    "react-markdown": "^4.1.0",
-    "react-modal": "^3.9.1",
-    "react-scripts": "^4.0.3"
+    "@babel/runtime": "^7.20.13",
+    "node-sass": "^8.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.5",
+    "react-modal": "^3.16.1",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "esbuild": "^0.14.1",
-    "esbuild-register": "^3.2.0",
+    "esbuild": "^0.17.4",
+    "esbuild-register": "^3.4.2",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-app": "^6.2.2",
     "husky": "^3.0.3",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
