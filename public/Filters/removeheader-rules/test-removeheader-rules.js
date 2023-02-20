@@ -14,6 +14,9 @@ const request = async (url) => {
 const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {
+    const adgCheck = getComputedStyle(window.document
+        .getElementById('subscribe-to-test-removeheader-rules-filter')).display === 'none';
+
     QUnit.test('Case 1: $removeheader in response rule test', async (assert) => {
         const testUrl = `${baseUrl}/Filters/removeheader-rules/test-removeheader-rules.txt`;
         const result = await request(testUrl);
@@ -49,7 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const json = await result.json();
         const header = json.headers.find(header => header[0] === 'referer');
         assert.ok(
-            header,
+            adgCheck && header,
             '$removeheader exception rule prevents removing parameter in a request'
         );
     });
@@ -60,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const json = await result.json();
         const header = json.headers.find(header => header[0] === 'origin');
         assert.ok(
-            header,
+            adgCheck && header,
             '$removeheader modifier was not applied'
         );
     });
