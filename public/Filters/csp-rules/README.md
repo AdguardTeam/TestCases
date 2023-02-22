@@ -1,4 +1,4 @@
-# $csp rules test 
+# $csp rules test
 
 ## Case 1
 * The inline script creates element `id="csp-test"` with the following text `Inline script works`.
@@ -7,10 +7,10 @@
 #### Expecting result: inline script rejected, basic rule works (there is no element `id="csp-test"`; element `id="some-element"` is hidden)
 
 ## Case 2
-* Requesting for https://adguard.com and http://adguard.com
-* first $csp rule allows requests only for `adguard.com`
+* Requesting for https://adguard.app and http://adguard.app
+* first $csp rule allows requests only for `adguard.app`
 * second $csp rule allows requests only for `https`
-#### Expecting result: all $csp rules work together (only request for https://adguard.com has sent)
+#### Expecting result: all $csp rules work together (only request for https://adguard.app has sent)
 
 ## Case 3
 * inline style hides `id="case3"`.

@@ -17,12 +17,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QUnit.test('Case 2: multiple $csp rules', async (assert) => {
         // eslint-disable-next-line compat/compat
-        const case3 = await fetch('https://adguard.com', { mode: 'no-cors' });
+        const case3 = await fetch('https://adguard.app', { mode: 'no-cors' });
         assert.ok(case3, '$csp rule works allows to fetch matching url');
 
         await assert.rejects(
             // eslint-disable-next-line compat/compat
-            fetch('http://adguard.com', { mode: 'no-cors' }),
+            fetch('http://adguard.app', { mode: 'no-cors' }),
             'multiple $csp rules should work together'
         );
     });

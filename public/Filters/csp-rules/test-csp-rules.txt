@@ -12,8 +12,8 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-csp-rules-filter
 ||surge.sh/*/csp-rules$csp=script-src 'self'
 testcases.agrd.dev,surge.sh###some-element
 ! Case 2
-||testcases.agrd.dev/*/csp-rules$csp=connect-src adguard.com
-||surge.sh/*/csp-rules$csp=connect-src adguard.com
+||testcases.agrd.dev/*/csp-rules$csp=connect-src adguard.app
+||surge.sh/*/csp-rules$csp=connect-src adguard.app
 ||testcases.agrd.dev/*/csp-rules$csp=connect-src https:
 ||surge.sh/*/csp-rules$csp=connect-src https:
 ! Case 3
