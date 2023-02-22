@@ -8,11 +8,11 @@
 testcases.agrd.dev,surge.sh###subscribe-to-test-denyallow-rules-filter
 !
 ! Case 1
-/adguard_circle.png$image,denyallow=cdn.adtidy.org,domain=testcases.agrd.dev|surge.sh
+/adguard_circle.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|surge.sh
 !
 ! Case 2
 /adguard_dns_map.png
-@@/adguard_dns_map.png$image,denyallow=cdn.adtidy.org,domain=testcases.agrd.dev|surge.sh
+@@/adguard_dns_map.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|surge.sh
 !
 ! Case 3
 ! block request to https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NCDN_-_CDN.png/800px-NCDN_-_CDN.png
