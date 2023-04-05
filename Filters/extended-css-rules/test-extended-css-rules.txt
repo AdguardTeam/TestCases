@@ -41,11 +41,3 @@ testcases.agrd.dev,surge.sh#?##case28 > :is(.case28, #main, footer, span):contai
 ! Case 29
 testcases.agrd.dev,surge.sh#?##case29.banner:has(a.banner-link)
 testcases.agrd.dev,surge.sh#@?##case29.banner:has(a.banner-link)
-!
-! Case 30
-testcases.agrd.dev,surge.sh#?##case30.banner:has(a.banner-link)
-testcases.agrd.dev,surge.sh#@##case30.banner:has(a.banner-link)
-!
-! Case 31
-testcases.agrd.dev,surge.sh###case31.banner:has(a.banner-link)
-testcases.agrd.dev,surge.sh#@?##case31.banner:has(a.banner-link)

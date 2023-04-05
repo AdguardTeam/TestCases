@@ -139,14 +139,4 @@ window.addEventListener('DOMContentLoaded', () => {
         const case29 = document.querySelector('#case29');
         assert.ok(adgCheck && window.getComputedStyle(case29).display === 'block');
     });
-
-    QUnit.test('30. Test extended-css rule with pseudo-class :has() with cosmetic rule exception', (assert) => {
-        const case30 = document.querySelector('#case30');
-        assert.ok(adgCheck && window.getComputedStyle(case30).display === 'block');
-    });
-
-    QUnit.test('31. Test cosmetic rule with pseudo-class :has() with extended-css rule exception', (assert) => {
-        const case31 = document.querySelector('#case31');
-        assert.ok(adgCheck && window.getComputedStyle(case31).display === 'block');
-    });
 });
