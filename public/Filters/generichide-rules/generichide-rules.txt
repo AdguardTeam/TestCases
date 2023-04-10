@@ -13,5 +13,5 @@ testcases.agrd.dev,surge.sh###case-1-generichide > .test-banner
 @@||surge.sh$generichide
 !
 ! Test case: generichide rule and js rules
-testcases.agrd.dev#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
-surge.sh#%#window.document.addEventListener('DOMContentLoaded', function () { document.querySelector('#case-1-generichide > .test-banner1').style.width='200px' });
+testcases.agrd.dev#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
+surge.sh#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
