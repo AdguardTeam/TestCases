@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+
 import { getFile } from '../helpers';
 
 export default class ShowReadme extends React.Component {
@@ -14,7 +15,8 @@ export default class ShowReadme extends React.Component {
 
     getReadme = async () => {
         const { readmeUrl } = this.props;
-        this.setState({ readmeFile: await getFile(readmeUrl) });
+        const file = await getFile(readmeUrl);
+        this.setState({ readmeFile: file });
     }
 
     render() {
@@ -23,8 +25,9 @@ export default class ShowReadme extends React.Component {
             <div>
                 <ReactMarkdown
                     className="readmeText"
-                    source={readmeFile}
-                />
+                >
+                    {readmeFile}
+                </ReactMarkdown>
             </div>
         );
     }
