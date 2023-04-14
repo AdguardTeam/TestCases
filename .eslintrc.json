@@ -3,7 +3,7 @@
 
     "extends": [
         "react-app",
-        "airbnb", 
+        "airbnb",
         "plugin:react/recommended",
         "plugin:compat/recommended",
         "eslint:recommended"
@@ -22,6 +22,7 @@
     },
 
     "rules": {
+        "max-len": ["error", 120],
         "no-shadow": "off",
         "import/prefer-default-export": "off",
         "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx" ]}],

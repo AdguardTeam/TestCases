@@ -47,6 +47,7 @@ and test code changes will be dynamically updated there
 
 > **Please note, that AdGuard for Mac does not filter localhost connections by default!**.
 
+
 ### Test on surge.sh
 
 Available domains can be checked by `surge list`.
@@ -63,10 +64,11 @@ surge --domain=<available-domain>.surge.sh
 
 Enjoy your testing at `_your_available_domain_.surge.sh`!
 
-<a id="tests-data"></a>
-## Manage tests list:
+
+## <a name="tests-data"></a> Manage tests list:
 
 The main data file is `./src/testsData.js`
+
 
 ## Known issues
 

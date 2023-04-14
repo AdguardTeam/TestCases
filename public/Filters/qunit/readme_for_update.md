@@ -1,4 +1,4 @@
-## Please do the following steps  updating Qunit library:
+## Please do the following steps  updating QUnit library:
 
 * Delete the old version of `qunit.js` and `qunit.css`
 * Download the actual version from https://qunitjs.com/
