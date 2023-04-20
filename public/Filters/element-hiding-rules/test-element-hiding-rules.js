@@ -1,6 +1,13 @@
 /* global QUnit */
 /* eslint-disable prefer-arrow-callback, func-names */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
+// TODO: remake the approach of setting the compatibility of the testcases —
+// it would be better to set the compatibility directly in the test file instead of testsData.js. AG-21523
+
 /**
  * Before doing the test, import test-element-hiding-rules.txt to AdGuard
  */
@@ -10,17 +17,17 @@ window.addEventListener('load', function () {
         null
     ).display === 'none';
 
-    QUnit.test('1. Test domain-specific element hiding rule', function (assert) {
+    agTest(1, 'domain-specific element hiding rule', function (assert) {
         const element = document.querySelector('#case-1-elemhide > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('2. Test generic element hiding rule', function (assert) {
+    agTest(2, 'generic element hiding rule', function (assert) {
         const element = document.querySelector('#case-2-generic-elemhide > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('3. Test element hiding rule exception', function (assert) {
+    agTest(3, 'element hiding rule exception', function (assert) {
         let element = document.querySelector('#case-3-elemhide-exception > .test-banner');
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
         element = document.querySelector('#case-3-elemhide-exception > h1');
@@ -31,17 +38,17 @@ window.addEventListener('load', function () {
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
     });
 
-    QUnit.test('4. Test domain exclusion', function (assert) {
+    agTest(4, 'domain exclusion', function (assert) {
         const element = document.querySelector('#case-4-domain-exclusion > .test-banner');
         assert.ok(adgCheck && window.getComputedStyle(element).display === 'block');
     });
 
-    QUnit.test('5. Test for wildcard for tld', function (assert) {
+    agTest(5, 'wildcard for tld', function (assert) {
         const element = document.querySelector('#case-5-wildcard-for-tld > .test-banner');
         assert.ok(window.getComputedStyle(element).display === 'none');
     });
 
-    QUnit.test('6. Test wildcard for tld support with $domain modifier', function (assert) {
+    agTest(6, 'wildcard for tld support with $domain modifier', function (assert) {
         const element = document.querySelector('#case-6-wildcard-for-tld-basic-rules > img');
         const isImageBlocked = !element || (getComputedStyle(element).width !== '40px');
         assert.ok(isImageBlocked, 'rule with wildcard in tld blocks image');
@@ -49,7 +56,7 @@ window.addEventListener('load', function () {
         assert.ok(adgCheck && txt === 'test', 'rule with wildcard in tld blocks script');
     });
 
-    QUnit.test('7. Test $third-party modifier', function (assert) {
+    agTest(7, '$third-party modifier', function (assert) {
         const testImg = document.querySelector('#case-7-third-party > img');
         if (testImg) {
             // browser extensions make image zero-size
@@ -60,7 +67,7 @@ window.addEventListener('load', function () {
         }
     });
 
-    QUnit.test('8. Test $subdocument modifier', function (assert) {
+    agTest(8, '$subdocument modifier', function (assert) {
         const iframe1 = document.getElementById('iframe1-case-8');
 
         if (!iframe1) {
@@ -85,7 +92,7 @@ window.addEventListener('load', function () {
         assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
     });
 
-    QUnit.test('9. Test cosmetic rule with pseudo-class :has()', (assert) => {
+    agTest(9, 'cosmetic rule with pseudo-class :has()', (assert) => {
         const case9 = document.querySelector('#case9');
         assert.ok(adgCheck && window.getComputedStyle(case9).display === 'none');
     });

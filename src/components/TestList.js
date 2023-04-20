@@ -1,9 +1,15 @@
 import React from 'react';
 import TestItem from './TestItem';
 import testsData from '../testsData';
+import { parseCompatibility } from '../helpers';
+import { FIREFOX_BUILDS, PRODUCT_TYPES } from '../constants';
+
+const ANY_PRODUCT = 'All products';
 
 export default class TestList extends React.Component {
-    state = {};
+    state = {
+        selectedProduct: ANY_PRODUCT,
+    };
 
     onSearch = (event) => {
         const { value } = event.target;
@@ -12,38 +18,114 @@ export default class TestList extends React.Component {
         this.setState({ searchTerm });
     };
 
+    onProductFilter = (event) => {
+        const { value } = event.target;
+        this.setState({ selectedProduct: value });
+    }
+
     renderTestsData = testsData => testsData
         .map(testsData => <TestItem key={testsData.id} {...testsData} />)
 
-    filterTests = (testsData, searchTerm) => {
-        if (!searchTerm) {
-            return this.renderTestsData(testsData);
+    filterTests = (testsData, searchTerm, selectedProduct) => {
+        // default state - nothing in search field and no specific product selected
+        if (!searchTerm
+            && selectedProduct === ANY_PRODUCT) {
+            return testsData;
         }
-        const filteredTests = testsData.filter((testData) => {
+
+        let filteredTests = [];
+
+        // filter by product first
+        if (selectedProduct === ANY_PRODUCT) {
+            filteredTests = testsData;
+        } else {
+            // filter test data objects by supported products
+            testsData.forEach((testData) => {
+                const { compatibility, exceptions } = parseCompatibility(testData.compatibility).publicData;
+                // array of fully or partially supported products
+                if (compatibility.includes(selectedProduct)) {
+                    const exceptionCases = [];
+                    const productExceptionsData = exceptions
+                        && exceptions.find(ex => Object.keys(ex)[0] === selectedProduct);
+                    if (productExceptionsData) {
+                        exceptionCases.push(...productExceptionsData[selectedProduct]);
+                    }
+                    // add exceptions to the test data object
+                    // so they can be retrieved later and added into query string during rendering
+                    const preparedTestData = {
+                        ...testData,
+                        exceptions: exceptionCases,
+                    };
+                    filteredTests.push(preparedTestData);
+                }
+            });
+        }
+
+        // if search term is empty, we need to match any test name
+        const searchRegexp = searchTerm || new RegExp('.?');
+
+        // filters by test name
+        filteredTests = filteredTests.filter((testData) => {
             const testTitle = testData.title.toLowerCase();
-            return searchTerm.test(testTitle);
+            return searchRegexp.test(testTitle);
         });
+
         if (filteredTests.length > 0) {
-            return this.renderTestsData(filteredTests);
+            return filteredTests;
         }
-        return 'There is no test matching this name.';
+
+        return null;
+    }
+
+    renderTests = (testsData, searchTerm, selectedProduct) => {
+        const filteredTests = this.filterTests(testsData, searchTerm, selectedProduct);
+
+        return filteredTests
+            ? this.renderTestsData(filteredTests)
+            : <div className="no-test-found">No test found</div>;
+    };
+
+    getProductOptions = () => {
+        const anyProductOption = <option key={ANY_PRODUCT} value={ANY_PRODUCT}>{ANY_PRODUCT}</option>;
+        const specificProductOptions = Object.values(PRODUCT_TYPES)
+            .map(product => <option key={product} value={product}>{product}</option>);
+        const specificFirefoxBuilds = Object.values(FIREFOX_BUILDS)
+            .map(product => <option key={product} value={product}>{product}</option>);
+        return [
+            anyProductOption,
+            ...specificProductOptions,
+            ...specificFirefoxBuilds,
+        ];
     };
 
     render() {
-        const { searchTerm } = this.state;
+        const { searchTerm, selectedProduct } = this.state;
         return (
             <div className="testList-container">
-                <form>
+                <form className="testList-control">
                     <input
                         type="text"
                         className="search-form"
-                        placeholder="Search for the test"
+                        placeholder="Search by test name"
                         onChange={this.onSearch}
                         // eslint-disable-next-line jsx-a11y/no-autofocus
                         autoFocus
                     />
                 </form>
-                {this.filterTests(testsData, searchTerm)}
+                <form className="testList-control product-form">
+                    <select
+                        size="1"
+                        name="product"
+                        className="product-select"
+                        onChange={this.onProductFilter}
+                        value={selectedProduct}
+                    >
+                        {this.getProductOptions()}
+                    </select>
+                </form>
+                <div>
+                    {this.renderTests(testsData, searchTerm, selectedProduct)}
+                </div>
             </div>
         );
     }

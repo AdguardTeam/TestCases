@@ -8,18 +8,44 @@ import CopyLinkBtn from './CopyLinkBtn';
 import CopyRulesBtn from './CopyRulesBtn';
 import SubscribeFilterBtn from './SubscribeFilterBtn';
 
+const EXCEPTIONS_QUERY_KEY = 'exceptions';
+
 const TestItem = ({
-    title, link, rulesUrl, compatibility, readmeUrl,
+    title,
+    link,
+    rulesUrl,
+    compatibility,
+    readmeUrl,
+    exceptions,
 }) => {
     const rulesBtn = () => (rulesUrl ? 'enabled' : 'disabled');
 
     const readmeBtn = () => (readmeUrl ? 'enabled' : 'disabled');
 
+    let testPageUrl = link;
+
+    // if some specific product is selected,
+    // add its exception as query string to skip some tests,
+    if (exceptions.length > 0) {
+        let newExceptions = exceptions.join(',');
+        const url = new URL(link, window.location.origin);
+        const currentQueryStrExceptions = url.searchParams.get(EXCEPTIONS_QUERY_KEY);
+        // check whether the link already contains a query string with exceptions
+        if (currentQueryStrExceptions) {
+            newExceptions = `${currentQueryStrExceptions},${newExceptions}`;
+        }
+        url.searchParams.set(EXCEPTIONS_QUERY_KEY, newExceptions);
+        // due to consistency with the link
+        // combine pathname and search part of the url
+        // instead of using url.href
+        testPageUrl = `${url.pathname}${url.search}`;
+    }
+
     return (
         <div className="testItem-container">
             <div className="test-info">
                 <a
-                    href={link}
+                    href={testPageUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="test-title"
@@ -30,7 +56,7 @@ const TestItem = ({
             </div>
             <div className="test-actions">
 
-                <StartTestBtn link={link} />
+                <StartTestBtn link={testPageUrl} />
 
                 <ReadmeBtn
                     readmeBtn={readmeBtn()}
@@ -69,9 +95,11 @@ TestItem.propTypes = {
     rulesUrl: PropTypes.string,
     readmeUrl: PropTypes.string,
     compatibility: PropTypes.shape({}).isRequired,
+    exceptions: PropTypes.arrayOf(PropTypes.number),
 };
 
 TestItem.defaultProps = {
     rulesUrl: '',
     readmeUrl: '',
+    exceptions: [],
 };

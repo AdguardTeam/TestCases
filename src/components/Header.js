@@ -34,6 +34,10 @@ function Header() {
                         <li>If any tests doesn&lsquo;t pass, clear your browser cache.</li>
                     </ul>
                     <p>Expected result: all tests are marked as passed.</p>
+                    <p>
+                        If any specific product is selected,
+                        some tests may be skipped due to the compatibility exceptions.
+                    </p>
                 </div>
             </div>
         </header>

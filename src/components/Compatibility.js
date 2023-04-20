@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { parseCompatibility } from '../helpers';
 
 const Compatibility = ({ compatibility }) => {
-    const productsData = parseCompatibility(compatibility);
+    const productsData = parseCompatibility(compatibility).frontendData;
 
     return (
         <div className="compatibility">
@@ -35,15 +35,11 @@ export default Compatibility;
 Compatibility.propTypes = {
     compatibility: PropTypes.shape({
         full: PropTypes.bool,
-        partial: PropTypes.shape({
-            exceptions: PropTypes.arrayOf(PropTypes.shape({
-                products: PropTypes.string,
-                cases: PropTypes.arrayOf(PropTypes.number),
-            })),
-        }),
-        none: PropTypes.shape({
-            products: PropTypes.arrayOf(PropTypes.string),
-        }),
+        partial: PropTypes.arrayOf(PropTypes.shape({
+            products: PropTypes.string,
+            cases: PropTypes.arrayOf(PropTypes.number),
+        })),
+        none: PropTypes.arrayOf(PropTypes.string),
         special: PropTypes.shape({
             compatible: PropTypes.arrayOf(PropTypes.string),
             incompatible: PropTypes.arrayOf(PropTypes.string),

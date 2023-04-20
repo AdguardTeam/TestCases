@@ -1,5 +1,9 @@
 /* global QUnit */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
 // Before doing the test, import test-redirect-security.txt to AdGuard
 
 /**
@@ -43,7 +47,7 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    QUnit.test('Case 1: $redirect resources security test', async (assert) => {
+    agTest(1, '$redirect resources security test', async (assert) => {
         await redirectResourcesSecurityTest(assert, [
             '../redirect-rules/test-files/redirect-test.png',
             '../redirect-rules/test-files/redirect-test.txt',

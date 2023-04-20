@@ -1,5 +1,9 @@
 /* global QUnit */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
 /**
  * Before doing the test, import test-removeparam-rules.txt to AdGuard
  */
@@ -20,7 +24,7 @@ const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-removeparam-rules-filter')).display === 'none';
-    QUnit.test('Case 1: $removeparam rule test', async (assert) => {
+    agTest(1, '$removeparam rule', async (assert) => {
         const testUrl = `${baseUrl}/?p1case1=true&p2case1=true`;
         log('\nCase 1:');
         log(`Requesting ${testUrl}`);
@@ -33,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 2: $removeparam with regexp test', async (assert) => {
+    agTest(2, '$removeparam with regexp', async (assert) => {
         const testUrl = `${baseUrl}/?p1case2=true&p2case2=true`;
         log('\nCase 2:');
         log(`Requesting ${testUrl}`);
@@ -46,8 +50,9 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test(
-        'Case 3: Test two $removeparam rules for the same request',
+    agTest(
+        3,
+        'two $removeparam rules for the same request',
         async (assert) => {
             const testUrl = `${baseUrl}/?p1case3=true&p2case3=true`;
             log('\nCase 3:');
@@ -62,7 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     );
 
-    QUnit.test('Case 4: $removeparam case sensitivity test', async (assert) => {
+    agTest(4, '$removeparam case sensitivity', async (assert) => {
         const testUrl = `${baseUrl}/?p1case4=true&P1Case4=true`;
         log('\nCase 4:');
         log(`Requesting ${testUrl}`);
@@ -75,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 5: $removeparam exception test', async (assert) => {
+    agTest(5, '$removeparam exception', async (assert) => {
         const testUrl = `${baseUrl}/?p1case5=true&p2case5=true`;
         log('\nCase 5:');
         log(`Requesting ${testUrl}`);
@@ -88,7 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 6: $removeparam with $important test', async (assert) => {
+    agTest(6, '$removeparam with $important', async (assert) => {
         const testUrl = `${baseUrl}/?p1case6=true&p2case6=true`;
         log('\nCase 6:');
         log(`Requesting ${testUrl}`);
@@ -101,7 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 7: $removeparam with $domain test', async (assert) => {
+    agTest(7, '$removeparam with $domain', async (assert) => {
         const testUrl = `${baseUrl}/?p1case7=true&p2case7=true`;
         log('\nCase 7:');
         log(`Requesting ${testUrl}`);
@@ -113,7 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
             '$removeparam works with $domain modifier'
         );
     });
-    QUnit.test('Case 8: $removeparam with inversion test', async (assert) => {
+    agTest(8, '$removeparam with inversion', async (assert) => {
         const testUrl = `${baseUrl}/?p1case8=true&p2case8=true`;
         log('\nCase 8:');
         log(`Requesting ${testUrl}`);
@@ -125,7 +130,7 @@ window.addEventListener('DOMContentLoaded', () => {
             '$removeparam works with inversion'
         );
     });
-    QUnit.test('Case 9: negate $removeparam test', async (assert) => {
+    agTest(9, 'negate $removeparam', async (assert) => {
         const testUrl = `${baseUrl}/?p1case9=true&p2case9=true`;
         log('\nCase 9');
         log(`Requesting ${testUrl}`);
@@ -137,7 +142,7 @@ window.addEventListener('DOMContentLoaded', () => {
             '$removeparam exception rule prevents removing parameter in a request'
         );
     });
-    QUnit.test('Case 10: match parameter with value by $removeparam rule with regexp', async (assert) => {
+    agTest(10, 'match parameter with value by $removeparam rule with regexp', async (assert) => {
         const testUrl = `${baseUrl}/?p1case10=xxx&p2case10=yyy`;
         log('\nCase 10:');
         log(`Requesting ${testUrl}`);
@@ -149,7 +154,7 @@ window.addEventListener('DOMContentLoaded', () => {
             '$removeparam with regexp matches parameter with value'
         );
     });
-    QUnit.test('Case 11: $removeparam rule for script request test', async (assert) => {
+    agTest(11, '$removeparam rule for script request', async (assert) => {
         const testUrl = `${baseUrl}/Filters/removeparam-rules/test-removeparam-rules.js?p1case11=true&p2case11=true`;
         log('\nCase 11:');
         log(`Requesting ${testUrl}`);
@@ -162,7 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 12: $removeparam rule for image request test', async (assert) => {
+    agTest(12, '$removeparam rule for image request', async (assert) => {
         const testUrl = `${baseUrl}/Filters/removeparam-rules/test-files/adg1.png?p1case12=true&p2case12=true`;
         log('\nCase 12:');
         log(`Requesting ${testUrl}`);

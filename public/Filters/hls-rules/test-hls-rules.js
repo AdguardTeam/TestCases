@@ -1,5 +1,9 @@
 /* global QUnit */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
 /**
  * Before doing the test, import test-hls-rules.txt to AdGuard
  */
@@ -29,12 +33,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const adgCheck = getComputedStyle(window.document
         .getElementById('subscribe-to-test-hls-rules-filter')).display === 'none';
 
-    QUnit.test('Case 1: $hls rule test', async (assert) => {
+    agTest(1, '$hls rule', async (assert) => {
         const hlsData = await getHlsData('test-files/hls-test-1.m3u');
         assert.ok(hlsData === expectedData1, '$hls rule should remove segments by provided pattern');
     });
 
-    QUnit.test('Case 2: $hls exception rule test', async (assert) => {
+    agTest(2, '$hls exception rule', async (assert) => {
         const hlsData = await getHlsData('test-files/hls-test-2.m3u');
         assert.ok(adgCheck && hlsData === expectedData2, '$hls exception rule should disable $hls rule');
     });

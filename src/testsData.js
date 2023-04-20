@@ -5,34 +5,41 @@ import {
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
     FIREFOX_BUILDS,
+    SAFARI_CONVERTER_LIB_PRODUCTS,
+    LEGACY_PRODUCTS,
 } from './constants';
 
 /**
- * Exception data for partial compatibility
+ * Exception data for partial compatibility,
+ * `cases` or `desc` should be set.
+ *
  * @typedef PartialException
- * @property {string} product
- * @property {number[]} cases
+ * @property {string} product Product name.
+ * @property {number[]} [cases] Exception cases.
+ * @property {string} [desc] Exception description which is not related to test cases.
  */
 
 /**
- * Partial compatibility data
- * @typedef PartialCompatibilityData
- * @property {PartialException[]} exceptions
+ * Special compatibility data.
+ * Used for specific Firefox build versions.
+ *
+ * @typedef SpecialCompatibility
+ * @property {string[]} compatible List of supported products.
+ * @property {string[]} incompatible List of unsupported products.
  */
 
 /**
- * Partial compatibility data
- * @typedef NoneCompatibilityData
- * @property {string[]} products
- */
-
-/**
- * Describes the compatibility for test,
+ * Describes the compatibility for a test,
  * at least one of properties should be set
+ *
  * @typedef CompatibilityData
- * @property {boolean} [full] - true for full compatibility
- * @property {PartialCompatibilityData} [partial]
- * @property {NoneCompatibilityData} [none]
+ * @property {boolean} [full] `true` for full compatibility which means all products are compatible.
+ * @property {PartialException[]} [partial] Almost full compatibility:
+ * products which are listed in the array are compatible except listed cases,
+ * all other products are fully compatible.
+ * @property {string[]} [none] Array of non-compatible products,
+ * all other products should be considered as fully compatible.
+ * @property {SpecialCompatibility} [special] Special compatibility data.
  */
 
 /**
@@ -56,7 +63,12 @@ const testsData = [
         link: 'Filters/element-hiding-rules/test-element-hiding-rules.html',
         rulesUrl: 'Filters/element-hiding-rules/test-element-hiding-rules.txt',
         compatibility: {
-            full: true,
+            partial: [
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [6, 7, 8],
+                },
+            ],
         },
         readmeUrl: 'Filters/element-hiding-rules/README.md',
     },
@@ -66,18 +78,21 @@ const testsData = [
         link: 'Filters/generichide-rules/generichide-rules.html',
         rulesUrl: 'Filters/generichide-rules/generichide-rules.txt',
         compatibility: {
-            partial: {
-                exceptions: [
-                    {
-                        product: FIREFOX_BUILDS.FOX_AMO,
-                        desc: 'check Readme',
-                    },
-                    {
-                        product: PRODUCT_TYPES.SAF,
-                        cases: [2],
-                    },
-                ],
-            },
+            partial: [
+                {
+                    product: FIREFOX_BUILDS.FOX_AMO,
+                    desc: 'check Readme',
+                },
+                {
+                    product: PRODUCT_TYPES.SAF,
+                    cases: [2],
+                },
+                {
+                    // not implemented yet
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [1, 2],
+                },
+            ],
         },
         readmeUrl: 'Filters/generichide-rules/README.md',
     },
@@ -87,9 +102,7 @@ const testsData = [
         link: 'Filters/css-rules/css-rules.html',
         rulesUrl: 'Filters/css-rules/css-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
+            none: [PRODUCT_TYPES.CON],
         },
         readmeUrl: 'Filters/css-rules/README.md',
     },
@@ -99,9 +112,7 @@ const testsData = [
         link: 'Filters/extended-css-rules/test-extended-css-rules.html',
         rulesUrl: 'Filters/extended-css-rules/test-extended-css-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
+            none: [PRODUCT_TYPES.CON],
         },
         readmeUrl: 'Filters/extended-css-rules/README.md',
     },
@@ -111,12 +122,11 @@ const testsData = [
         link: 'Filters/extended-css-rules/extended-css-iframejs-injection/extended-css-iframejs-injection.html',
         rulesUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/extended-css-iframejs-injection.txt',
         compatibility: {
-            none: {
-                products: [
-                    ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...CORELIBS_PRODUCTS,
+                PRODUCT_TYPES.CON,
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/README.md',
     },
@@ -136,9 +146,11 @@ const testsData = [
         link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
         rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.SAF],
-            },
+            none: [
+                PRODUCT_TYPES.SAF,
+                // $urlblock has not been implemented correctly
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
     },
@@ -148,9 +160,7 @@ const testsData = [
         link: 'Filters/replace-rules/test-replace-rules.html',
         rulesUrl: 'Filters/replace-rules/test-replace-rules.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
         readmeUrl: 'Filters/replace-rules/README.md',
     },
@@ -160,9 +170,7 @@ const testsData = [
         link: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-generichide-rule/replace-vs-generichide-rule.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
     },
     {
@@ -171,9 +179,7 @@ const testsData = [
         link: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-content-rule/replace-vs-content-rule.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
     },
     {
@@ -182,9 +188,7 @@ const testsData = [
         link: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.html',
         rulesUrl: 'Filters/replace-rules/replace-vs-elemhide-rule/replace-vs-elemhide-rule.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
     },
     {
@@ -193,21 +197,25 @@ const testsData = [
         link: 'Filters/csp-rules/test-csp-rules.html',
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
         compatibility: {
-            none: {
-                products: NO_CSP_PRODUCTS,
-            },
+            none: [
+                ...NO_CSP_PRODUCTS,
+                // not implemented yet
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/csp-rules/README.md',
     },
     {
         id: 13,
-        title: '$csp exception test',
+        title: '$csp global exception test',
         link: 'Filters/csp-rules/csp-global-exception/csp-global-exception.html',
         rulesUrl: 'Filters/csp-rules/csp-global-exception/csp-global-exception.txt',
         compatibility: {
-            none: {
-                products: NO_CSP_PRODUCTS,
-            },
+            none: [
+                ...NO_CSP_PRODUCTS,
+                // not implemented yet
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/csp-rules/csp-global-exception/README.md',
     },
@@ -217,9 +225,7 @@ const testsData = [
         link: 'Filters/websockets/test-websockets.html',
         rulesUrl: 'Filters/websockets/test-websockets.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
+            none: [PRODUCT_TYPES.CON],
         },
     },
     {
@@ -228,9 +234,7 @@ const testsData = [
         link: 'Filters/content-rules/test-content-rules.html',
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
     },
     {
@@ -239,9 +243,7 @@ const testsData = [
         link: 'Filters/content-rules/content-modifier-test/content-modifier-test.html',
         rulesUrl: 'Filters/content-rules/content-modifier-test/content-modifier-test.txt',
         compatibility: {
-            none: {
-                products: NO_REPLACE_CONTENT_PRODUCTS,
-            },
+            none: NO_REPLACE_CONTENT_PRODUCTS,
         },
     },
     {
@@ -253,15 +255,12 @@ const testsData = [
             special: {
                 compatible: [
                     FIREFOX_BUILDS.FOX_STDLN,
-                    PRODUCT_TYPES.WIN,
-                    PRODUCT_TYPES.MAC,
-                    PRODUCT_TYPES.AND,
+                    ...CORELIBS_PRODUCTS,
                     PRODUCT_TYPES.CHR,
                     PRODUCT_TYPES.EDG,
                     PRODUCT_TYPES.OPR,
                     PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
+                    ...SAFARI_CONVERTER_LIB_PRODUCTS,
                 ],
                 incompatible: [
                     FIREFOX_BUILDS.FOX_AMO,
@@ -281,16 +280,12 @@ const testsData = [
                 compatible: [FIREFOX_BUILDS.FOX_AMO],
                 incompatible: [
                     FIREFOX_BUILDS.FOX_STDLN,
-                    PRODUCT_TYPES.WIN,
-                    PRODUCT_TYPES.MAC,
-                    PRODUCT_TYPES.AND,
+                    ...CORELIBS_PRODUCTS,
                     PRODUCT_TYPES.CHR,
                     PRODUCT_TYPES.EDG,
                     PRODUCT_TYPES.OPR,
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
+                    ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                    ...LEGACY_PRODUCTS,
                 ],
             },
         },
@@ -301,9 +296,7 @@ const testsData = [
         link: 'Filters/scriptlet-rules/test-scriptlet-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/test-scriptlet-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.EDL, PRODUCT_TYPES.CON],
-            },
+            none: LEGACY_PRODUCTS,
         },
         readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
@@ -313,9 +306,7 @@ const testsData = [
         link: 'Userscripts/test-userscripts.html',
         rulesUrl: 'Userscripts/apiTester/api-tester.user.js',
         compatibility: {
-            none: {
-                products: NONE_CORELIBS_PRODUCTS,
-            },
+            none: NONE_CORELIBS_PRODUCTS,
         },
     },
     {
@@ -324,9 +315,7 @@ const testsData = [
         link: 'Userscripts/gmapi-v4-tests.html',
         rulesUrl: 'Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js',
         compatibility: {
-            none: {
-                products: NONE_CORELIBS_PRODUCTS,
-            },
+            none: NONE_CORELIBS_PRODUCTS,
         },
     },
     {
@@ -334,9 +323,11 @@ const testsData = [
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
-            },
+            none: [
+                PRODUCT_TYPES.IOS,
+                PRODUCT_TYPES.CON,
+                PRODUCT_TYPES.MV3,
+            ],
         },
     },
     {
@@ -344,9 +335,11 @@ const testsData = [
         title: 'Popup blocker event recovery',
         link: 'PopupBlocker/test-event-recovery.html',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON],
-            },
+            none: [
+                PRODUCT_TYPES.IOS,
+                PRODUCT_TYPES.CON,
+                PRODUCT_TYPES.MV3,
+            ],
         },
     },
     {
@@ -355,9 +348,7 @@ const testsData = [
         link: 'Filters/badfilter-rules/test-badfilter-rules.html',
         rulesUrl: 'Filters/badfilter-rules/test-badfilter-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
+            none: [PRODUCT_TYPES.CON],
         },
         readmeUrl: 'Filters/badfilter-rules/README.md',
     },
@@ -367,9 +358,7 @@ const testsData = [
         link: 'Filters/network-rules/test-network-rules.html',
         rulesUrl: 'Filters/network-rules/test-network-rules.txt',
         compatibility: {
-            none: {
-                products: NONE_CORELIBS_PRODUCTS,
-            },
+            none: NONE_CORELIBS_PRODUCTS,
         },
         readmeUrl: 'Filters/network-rules/README.md',
     },
@@ -379,11 +368,10 @@ const testsData = [
         link: 'Filters/redirect-rules/test-redirect-rules.html',
         rulesUrl: 'Filters/redirect-rules/test-redirect-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL, PRODUCT_TYPES.SAF, PRODUCT_TYPES.IOS, PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+            ],
         },
         readmeUrl: 'Filters/redirect-rules/README.md',
     },
@@ -393,16 +381,13 @@ const testsData = [
         link: 'Filters/redirect-security/test-redirect-security.html',
         rulesUrl: 'Filters/redirect-security/test-redirect-security.txt',
         compatibility: {
-            none: {
-                products: [
-                    ...CORELIBS_PRODUCTS,
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
-                    PRODUCT_TYPES.FOX,
-                ],
-            },
+            none: [
+                ...CORELIBS_PRODUCTS,
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+                PRODUCT_TYPES.FOX,
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/redirect-security/README.md',
     },
@@ -412,9 +397,11 @@ const testsData = [
         link: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.html',
         rulesUrl: 'Filters/script-rules/jsinject-rules/test-jsinject-rules.txt',
         compatibility: {
-            none: {
-                products: [PRODUCT_TYPES.CON],
-            },
+            none: [
+                PRODUCT_TYPES.CON,
+                // not implemented yet
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/script-rules/jsinject-rules/README.md',
     },
@@ -424,14 +411,12 @@ const testsData = [
         link: 'Filters/removeparam-rules/test-removeparam-rules.html',
         rulesUrl: 'Filters/removeparam-rules/test-removeparam-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+                // "partial support" — almost all tests fail
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/removeparam-rules/README.md',
     },
@@ -441,14 +426,12 @@ const testsData = [
         link: 'Filters/specifichide-rules/test-specifichide-rules.html',
         rulesUrl: 'Filters/specifichide-rules/test-specifichide-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+                // not implemented yet
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/specifichide-rules/README.md',
     },
@@ -458,12 +441,7 @@ const testsData = [
         link: 'Filters/denyallow-rules/test-denyallow-rules.html',
         rulesUrl: 'Filters/denyallow-rules/test-denyallow-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: LEGACY_PRODUCTS,
         },
         readmeUrl: 'Filters/denyallow-rules/README.md',
     },
@@ -473,14 +451,12 @@ const testsData = [
         link: 'Filters/removeheader-rules/test-removeheader-rules.html',
         rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+                // not implemented yet
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/removeheader-rules/README.md',
     },
@@ -490,9 +466,7 @@ const testsData = [
         link: 'Filters/blocking-request-rules/test-blocking-request-rules.html',
         rulesUrl: 'Filters/blocking-request-rules/test-blocking-request-rules.txt',
         compatibility: {
-            none: {
-                products: CORELIBS_PRODUCTS,
-            },
+            none: CORELIBS_PRODUCTS,
         },
         readmeUrl: 'Filters/blocking-request-rules/README.md',
     },
@@ -502,19 +476,15 @@ const testsData = [
         link: 'Filters/subdocument-rules/test-subdocument-rules.html',
         rulesUrl: 'Filters/subdocument-rules/test-subdocument-rules.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.WIN,
-                    PRODUCT_TYPES.MAC,
-                    PRODUCT_TYPES.AND,
-                    PRODUCT_TYPES.CHR,
-                    PRODUCT_TYPES.FOX,
-                    PRODUCT_TYPES.EDG,
-                    PRODUCT_TYPES.OPR,
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...CORELIBS_PRODUCTS,
+                PRODUCT_TYPES.CHR,
+                PRODUCT_TYPES.FOX,
+                PRODUCT_TYPES.EDG,
+                PRODUCT_TYPES.OPR,
+                PRODUCT_TYPES.MV3,
+                ...LEGACY_PRODUCTS,
+            ],
         },
     },
     {
@@ -523,14 +493,10 @@ const testsData = [
         link: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.html',
         rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',
         compatibility: {
-            none: {
-                products: [
-                    PRODUCT_TYPES.EDL,
-                    PRODUCT_TYPES.SAF,
-                    PRODUCT_TYPES.IOS,
-                    PRODUCT_TYPES.CON,
-                ],
-            },
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+            ],
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },
@@ -540,9 +506,7 @@ const testsData = [
         link: 'Filters/jsonprune-rules/test-jsonprune-rules.html',
         rulesUrl: 'Filters/jsonprune-rules/test-jsonprune-rules.txt',
         compatibility: {
-            none: {
-                products: NONE_CORELIBS_PRODUCTS,
-            },
+            none: NONE_CORELIBS_PRODUCTS,
         },
         readmeUrl: 'Filters/jsonprune-rules/README.md',
     },
@@ -552,9 +516,7 @@ const testsData = [
         link: 'Filters/hls-rules/test-hls-rules.html',
         rulesUrl: 'Filters/hls-rules/test-hls-rules.txt',
         compatibility: {
-            none: {
-                products: NONE_CORELIBS_PRODUCTS,
-            },
+            none: NONE_CORELIBS_PRODUCTS,
         },
         readmeUrl: 'Filters/hls-rules/README.md',
     },

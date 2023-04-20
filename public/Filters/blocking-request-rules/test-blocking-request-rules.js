@@ -1,5 +1,9 @@
 /* global QUnit */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
 /**
  * Before doing the test, import test-blocking-request-rules.txt to AdGuard
  */
@@ -10,7 +14,7 @@ window.addEventListener('load', () => {
         null
     ).display === 'none';
 
-    QUnit.test('1. Test $ping modifier', (assert) => {
+    agTest(1, '$ping modifier', (assert) => {
         assert.ok(
             // eslint-disable-next-line compat/compat
             adgCheck && navigator.sendBeacon('https://adguard.com', 'Testdata'),
@@ -18,7 +22,7 @@ window.addEventListener('load', () => {
         );
     });
 
-    QUnit.test('2. Test $xmlhttprequest modifier', async (assert) => {
+    agTest(2, '$xmlhttprequest modifier', async (assert) => {
         await assert.rejects(
             // eslint-disable-next-line compat/compat
             fetch('https://adguard-vpn.com', { mode: 'no-cors' }),
@@ -26,7 +30,7 @@ window.addEventListener('load', () => {
         );
     });
 
-    QUnit.test('3. Test $websocket modifier', (assert) => {
+    agTest(3, '$websocket modifier', (assert) => {
         const done = assert.async();
         // eslint-disable-next-line compat/compat
         const websocket = new WebSocket('wss://echo.websocket.org');

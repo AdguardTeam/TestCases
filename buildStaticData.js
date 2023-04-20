@@ -4,11 +4,19 @@ import testsData from './src/testsData';
 
 const publicData = testsData
     .map((testData) => {
-        const compatibleProducts = parseCompatibility(testData.compatibility);
-        return {
+        const publicTestData = {
             ...testData,
-            compatibility: compatibleProducts.full,
         };
+
+        const { compatibility, exceptions } = parseCompatibility(testData.compatibility).publicData;
+
+        publicTestData.compatibility = compatibility;
+
+        if (exceptions.length > 0) {
+            publicTestData.exceptions = exceptions;
+        }
+
+        return publicTestData;
     });
 
 writeFileSync('./public/data.json', JSON.stringify(publicData));

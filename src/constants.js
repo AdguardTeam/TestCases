@@ -12,6 +12,7 @@ export const PRODUCT_TYPES = {
     SAF: 'Safari',
     IOS: 'iOS',
     CON: 'Content Blocker',
+    MV3: 'Browser Extension MV3',
 };
 
 export const FIREFOX_BUILDS = {
@@ -37,7 +38,23 @@ export const NONE_CORELIBS_PRODUCTS = ALL_PRODUCTS
     .filter(p => !(CORELIBS_PRODUCTS.indexOf(p) > -1));
 
 /**
- * Chrome, Edge, Opera, Edge Legacy, Safari, iOS, Content Blocker
+ * Edge Legacy and Content Blocker
+ */
+export const LEGACY_PRODUCTS = [
+    PRODUCT_TYPES.EDL,
+    PRODUCT_TYPES.CON,
+];
+
+/**
+ * Safari and iOS
+ */
+export const SAFARI_CONVERTER_LIB_PRODUCTS = [
+    PRODUCT_TYPES.SAF,
+    PRODUCT_TYPES.IOS,
+];
+
+/**
+ * Chrome, Edge, Opera, Edge Legacy, Safari, iOS, Content Blocker, Browser Extension MV3
  */
 export const NO_REPLACE_CONTENT_PRODUCTS = [
     PRODUCT_TYPES.CHR,
@@ -47,14 +64,13 @@ export const NO_REPLACE_CONTENT_PRODUCTS = [
     PRODUCT_TYPES.SAF,
     PRODUCT_TYPES.IOS,
     PRODUCT_TYPES.CON,
+    PRODUCT_TYPES.MV3,
 ];
 
 /**
  * Edge Legacy, Safari, iOS, Content Blocker
  */
 export const NO_CSP_PRODUCTS = [
-    PRODUCT_TYPES.EDL,
-    PRODUCT_TYPES.SAF,
-    PRODUCT_TYPES.IOS,
-    PRODUCT_TYPES.CON,
+    ...LEGACY_PRODUCTS,
+    ...SAFARI_CONVERTER_LIB_PRODUCTS,
 ];
