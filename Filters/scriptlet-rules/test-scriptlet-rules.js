@@ -1,6 +1,9 @@
 /* global QUnit */
-
 /* eslint-disable no-eval */
+
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
 
 /**
  * Before doing the test, import test-content-rules.txt to AdGuard
@@ -24,14 +27,24 @@ const addAndRemoveInlineScript = (scriptText) => {
 
 const clearProperties = (...props) => {
     props.forEach((prop) => {
-        delete window[prop];
+        try {
+            delete window[prop];
+        } catch (e) {
+            try {
+                // sometimes property deleting is not allowed
+                // e.g. in Safari
+                window[prop] = null;
+            } catch (e) {
+                // ignore
+            }
+        }
     });
 };
 
 window.addEventListener('load', () => {
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-scriptlet-rules-filter'), null).display === 'none';
 
-    QUnit.test('abort-on-property-write AdGuard syntax', (assert) => {
+    agTest(1, 'abort-on-property-write AdGuard syntax', (assert) => {
         assert.throws(
             () => {
                 window.__testCase1 = 'ok';
@@ -43,7 +56,7 @@ window.addEventListener('load', () => {
         assert.notOk(window.__testCase1);
     });
 
-    QUnit.test('abort-on-property-write.js UBO syntax', (assert) => {
+    agTest(2, 'abort-on-property-write.js UBO syntax', (assert) => {
         assert.throws(
             () => {
                 window.__testCase2 = 'ok';
@@ -55,7 +68,7 @@ window.addEventListener('load', () => {
         assert.notOk(window.__testCase2);
     });
 
-    QUnit.test('abort-on-property-write ABP syntax', (assert) => {
+    agTest(3, 'abort-on-property-write ABP syntax', (assert) => {
         assert.throws(
             () => {
                 window.__testCase3 = 'ok';
@@ -66,7 +79,7 @@ window.addEventListener('load', () => {
         assert.notOk(window.__testCase3);
     });
 
-    QUnit.test('abort-current-inline-script', (assert) => {
+    agTest(4, 'abort-current-inline-script', (assert) => {
         window.onerror = onError(assert);
         addAndRemoveInlineScript('window.__testCase4 = "ok"');
         assert.notOk(window.__testCase4, 'AdGuard syntax');
@@ -85,7 +98,7 @@ window.addEventListener('load', () => {
         assert.notOk(window.__testCase8, 'AdGuard syntax, search inline script');
     });
 
-    QUnit.test('abort-on-property-read', (assert) => {
+    agTest(5, 'abort-on-property-read', (assert) => {
         window.propReadCaseAG = 'propReadCaseAG';
         let propReadCaseAG = null;
         assert.throws(
@@ -124,7 +137,7 @@ window.addEventListener('load', () => {
         assert.notOk(propReadCaseABP, 'ABP syntax prop remained undefined');
     });
 
-    QUnit.test('nowebrtc', (assert) => {
+    agTest(6, 'nowebrtc', (assert) => {
         if (!window.RTCPeerConnection) {
             assert.ok(true, 'Browser does not support RTCPeerConnection');
             return;
@@ -136,7 +149,7 @@ window.addEventListener('load', () => {
         assert.notOk(sendChannelAG, 'AG syntax, channel is undefined');
     });
 
-    QUnit.test('prevent-addEventListener', (assert) => {
+    agTest(7, 'prevent-addEventListener', (assert) => {
         const sampleElement = document.createElement('div');
         const preventListenerSample = 'simple';
         sampleElement.addEventListener('click', () => {
@@ -171,7 +184,7 @@ window.addEventListener('load', () => {
         assert.strictEqual(window[preventListenerCaseUBO], undefined, 'UBO syntax, property should be undefined');
     });
 
-    QUnit.test('prevent-bab', (assert) => {
+    agTest(8, 'prevent-bab', (assert) => {
         const preventBabCaseSampleEval = 'preventBabCaseSampleEval';
         eval(`(function test() { window.${preventBabCaseSampleEval} = 'test';})()`);
         assert.strictEqual(window[preventBabCaseSampleEval], 'test', 'eval function works for other scripts');
@@ -195,7 +208,7 @@ window.addEventListener('load', () => {
         }, 20);
     });
 
-    QUnit.test('prevent-setInterval AG syntax', (assert) => {
+    agTest(9, 'prevent-setInterval AG syntax', (assert) => {
         const done = assert.async();
 
         window.setIntervalAGSyntax = 'value';
@@ -208,7 +221,7 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
-    QUnit.test('prevent-setInterval UBO syntax', (assert) => {
+    agTest(10, 'prevent-setInterval UBO syntax', (assert) => {
         const done = assert.async();
 
         window.setIntervalUBOSyntax = 'value';
@@ -221,7 +234,7 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
-    QUnit.test('prevent-setTimeout AG syntax', (assert) => {
+    agTest(11, 'prevent-setTimeout AG syntax', (assert) => {
         const done = assert.async();
 
         window.setTimeoutAGSyntax = 'value';
@@ -235,7 +248,7 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
-    QUnit.test('prevent-setTimeout UBO syntax', (assert) => {
+    agTest(12, 'prevent-setTimeout UBO syntax', (assert) => {
         const done = assert.async();
 
         window.setTimeoutUBOSyntax = 'value';
@@ -248,7 +261,7 @@ window.addEventListener('load', () => {
         }, 15);
     });
 
-    QUnit.test('set-constant', (assert) => {
+    agTest(13, 'set-constant', (assert) => {
         assert.strictEqual(window.setConstantAGSyntax, true, 'AG syntax');
         assert.strictEqual(window.setConstantUBOSyntax, true, 'UBO syntax');
 
@@ -304,7 +317,7 @@ window.addEventListener('load', () => {
         clearProperties(illegalNumberProp);
     });
 
-    QUnit.test('prevent-window-open', (assert) => {
+    agTest(14, 'prevent-window-open', (assert) => {
         let result;
 
         const window1 = window.open('window1');
@@ -338,7 +351,7 @@ window.addEventListener('load', () => {
         if (typeof window5.close === 'function') window5.close();
     });
 
-    QUnit.test('prevent-eval-if', (assert) => {
+    agTest(15, 'prevent-eval-if', (assert) => {
         eval('function(preventIfTest) { window.test = "value" }');
         assert.notEqual(window.test, 'value', 'Prevent eval by string "preventIfTest"');
 
@@ -346,13 +359,13 @@ window.addEventListener('load', () => {
         assert.notEqual(window.test1, 'value', 'UBO RULE: Prevent eval by string "preventIfTest1"');
     });
 
-    QUnit.test('remove-cookie', (assert) => {
+    agTest(16, 'remove-cookie', (assert) => {
         assert.ok(adgCheck && document.cookie.indexOf('example') === -1, 'All cookies was deleted');
         document.cookie = 'example=test';
         // todo check why remove-cookie with params does not work
     });
 
-    QUnit.test('prevent-popads-net', (assert) => {
+    agTest(17, 'prevent-popads-net', (assert) => {
         assert.throws(() => {
             window.PopAds = 'Som value';
         }, /Reference/, 'Try to write in "PopAds" prop');

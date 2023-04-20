@@ -1,12 +1,16 @@
 /* global QUnit */
 
+import { getAgTestRunner } from '../helpers.js';
+
+const agTest = getAgTestRunner(window.location);
+
 /**
  * Before doing the test, import test-csp-rules.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
     const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-csp-rules-filter'), null).display === 'none';
 
-    QUnit.test('Case 1: Using with basic rules', (assert) => {
+    agTest(1, 'using with basic rules', (assert) => {
         const testElement1 = document.getElementById('csp-test');
         assert.ok(!testElement1, '$csp rule prevents executing inline script');
 
@@ -15,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
         assert.ok(testElement2Hidden, '$csp rule should work together with basic rules.');
     });
 
-    QUnit.test('Case 2: multiple $csp rules', async (assert) => {
+    agTest(2, 'multiple $csp rules', async (assert) => {
         // eslint-disable-next-line compat/compat
         const case3 = await fetch('https://adguard.app', { mode: 'no-cors' });
         assert.ok(case3, '$csp rule works allows to fetch matching url');
@@ -27,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    QUnit.test('Case 3: $scp exception and multiple $csp rules', (assert) => {
+    agTest(3, '$scp exception and multiple $csp rules', (assert) => {
         const testElement = document.querySelector('#case3');
         const testElementHidden = getComputedStyle(testElement).display === 'none';
         assert.ok(adgCheck && testElementHidden, '$scp exception should disable the $csp rule with matching pattern.');

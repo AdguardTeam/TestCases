@@ -7,7 +7,7 @@
 ! Hide warning
 testcases.agrd.dev,surge.sh###subscribe-to-test-important-vs-urlblock-filter
 !
-! Case 3
+! Case 1
 ||*/test-files/adg3.png$important
 @@||testcases.agrd.dev$urlblock
 @@||surge.sh$urlblock
