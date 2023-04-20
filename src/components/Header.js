@@ -1,4 +1,5 @@
 import React from 'react';
+import Mission from './Mission';
 import project from '../../package.json';
 
 function Header() {
@@ -15,12 +16,7 @@ function Header() {
                             <h3 title={versionHover}>Automatic tests</h3>
                         </div>
                     </div>
-                    <div className="mission">
-                        This small website is supposed to assist AdGuard QA department in testing
-                        different versions of AdGuard.
-                        The task of testing content blocking was always the most complicated,
-                        and this website aims to fix the situation, and make it as easy as possible.
-                    </div>
+                    <Mission />
                 </div>
                 <div className="instruction">
                     <h2>Testing instruction:</h2>
