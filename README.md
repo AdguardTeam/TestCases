@@ -42,7 +42,7 @@ mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
 yarn watch
 ```
 
-It will open `http://local.testcases.agrd.dev:3000/` in your browser
+It will open `http://local.testcases.agrd.dev:4000/` in your browser
 and test code changes will be dynamically updated there
 
 > **Please note, that AdGuard for Mac does not filter localhost connections by default!**.
