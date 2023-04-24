@@ -19,4 +19,4 @@ const publicData = testsData
         return publicTestData;
     });
 
-writeFileSync('./public/data.json', JSON.stringify(publicData));
+writeFileSync('./public/data.json', JSON.stringify(publicData, null, 2));

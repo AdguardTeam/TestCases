@@ -81,6 +81,15 @@ export const parseCompatibility = (compatibility) => {
         throw new Error('No compatibility data provided');
     }
 
+    const { full, special } = compatibility;
+    const isFullOrSpecialSet = typeof full !== 'undefined'
+        || typeof special !== 'undefined';
+
+    // for 'full' or 'special' there is no sense to define other properties
+    if (isFullOrSpecialSet && Object.keys(compatibility).length > 1) {
+        throw new Error("Invalid compatibility: 'full' or 'special' should be defined alone");
+    }
+
     const frontendData = {
         full: [],
         partial: [],
@@ -98,12 +107,32 @@ export const parseCompatibility = (compatibility) => {
         frontendData.full = ALL_PRODUCTS;
         publicData.compatibility = ALL_PRODUCTS;
     }
+    /**
+     * SPECIAL
+     */
+    if (typeof compatibility.special !== 'undefined') {
+        frontendData.full = compatibility.special.compatible;
+        frontendData.none = compatibility.special.incompatible;
+        publicData.compatibility = compatibility.special.compatible;
+        publicData.none = compatibility.special.incompatible;
+    }
+
+    /**
+     * Since `full` and `special` should not be set with any other compatibility properties,
+     * `none` and 'partial' can be combined:
+     *
+     * For example, 'Extended CSS rules':
+     * - supported by MV3 extension but partially — except case 22 (until ExtendedCss v2.0.52)
+     * - absolutely not supported by Android Content Blocker
+     * - fully supported by all other products.
+     */
+    let supportedProducts = ALL_PRODUCTS;
 
     /**
      * NONE
      */
     if (typeof compatibility.none !== 'undefined') {
-        const supportedProducts = ALL_PRODUCTS.filter(p => !(compatibility.none.indexOf(p) > -1));
+        supportedProducts = supportedProducts.filter(p => !(compatibility.none.indexOf(p) > -1));
 
         frontendData.full = supportedProducts;
         frontendData.none = compatibility.none;
@@ -118,23 +147,17 @@ export const parseCompatibility = (compatibility) => {
     if (typeof compatibility.partial !== 'undefined') {
         // needed to exclude products from "green" supported products in the frontend
         const noneFullProducts = compatibility.partial.map(ex => ex.product);
-        const supportedProducts = ALL_PRODUCTS.filter(p => !(noneFullProducts.indexOf(p) > -1));
+        // we should check the products which were filtered by 'none' property
+        // as it may be set along with 'partial'.
+        // this filtering is needed to display the compatibility on frontend correctly
+        supportedProducts = supportedProducts.filter(p => !(noneFullProducts.indexOf(p) > -1));
+
         frontendData.full = supportedProducts;
         frontendData.partial = getPartlyCompatibleStrings(compatibility.partial);
 
         // not fully supported products considered as supported for public data
         publicData.compatibility = [...supportedProducts, ...noneFullProducts];
         publicData.exceptions = getPartlyCompatibleExceptions(compatibility.partial);
-    }
-
-    /**
-     * SPECIAL
-     */
-    if (typeof compatibility.special !== 'undefined') {
-        frontendData.full = compatibility.special.compatible;
-        frontendData.none = compatibility.special.incompatible;
-        publicData.compatibility = compatibility.special.compatible;
-        publicData.none = compatibility.special.incompatible;
     }
 
     return {

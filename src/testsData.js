@@ -113,6 +113,14 @@ const testsData = [
         rulesUrl: 'Filters/extended-css-rules/test-extended-css-rules.txt',
         compatibility: {
             none: [PRODUCT_TYPES.CON],
+            // TODO: remove this when tsurlfilter and tswebextension are update in MV3 extension
+            // as it should already be fixed in ExtendedCss v2.0.52
+            partial: [
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [22],
+                },
+            ],
         },
         readmeUrl: 'Filters/extended-css-rules/README.md',
     },
