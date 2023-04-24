@@ -282,13 +282,13 @@ footer > .mission {
   border: none;
   font-size: 1.2vw;
   width: 19vw;
+  color: #4a4a4a;
   background: #fff url(../img/search.png) 2.2vw center no-repeat;
   background-size: 2.5vw;
 }
 
 .product-form {
   margin: 0 0 2vw;
-  color: #737373;
   padding: 1.2vw 0 1.2vw 1.5vw;
   border-radius: 0.3vw;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
@@ -302,6 +302,12 @@ footer > .mission {
 .product-select {
   border: none;
   font-size: 1.2vw;
+  color: #4a4a4a;
+  background: #fff url(../img/arrow-down.png) right center no-repeat;
+  background-size: 24px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .no-test-found {
