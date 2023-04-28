@@ -501,10 +501,7 @@ const testsData = [
         link: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.html',
         rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',
         compatibility: {
-            none: [
-                ...SAFARI_CONVERTER_LIB_PRODUCTS,
-                ...LEGACY_PRODUCTS,
-            ],
+            none: LEGACY_PRODUCTS,
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },

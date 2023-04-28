@@ -580,6 +580,8 @@
       "Edge",
       "Firefox",
       "Opera",
+      "Safari",
+      "iOS",
       "Browser Extension MV3"
     ],
     "readmeUrl": "Filters/nonbasic-path-modifier/README.md"
