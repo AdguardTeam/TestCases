@@ -21,8 +21,8 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-removeheader-rules-filter
 ||whoami.agrd.workers.dev^$removeheader=request:user-agent
 !
 ! Case 4
-||whoami.agrd.workers.dev^$removeheader=dnt:1
-@@||whoami.agrd.workers.dev^$removeheader=dnt:1
+||whoami.agrd.workers.dev^$removeheader=referer
+@@||whoami.agrd.workers.dev^$removeheader=referer
 !
 ! Case 5
 ||whoami.agrd.workers.dev^$removeheader=origin
