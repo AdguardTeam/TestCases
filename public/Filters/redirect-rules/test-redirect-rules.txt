@@ -19,7 +19,7 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-redirect-rules-filter
 ||*/redirect-test.txt$redirect=nooptext
 ! Case 6
 ||*/redirect-exception-test.js$redirect=noopjs
-@@||*/redirect-exception-test.js
+@@||*/redirect-exception-test.js$important
 ! Case 7
 ||*/redirect-priority-test.js$redirect=noopjs
 ||*/redirect-priority-test.js$important,csp=script-src 'self'
