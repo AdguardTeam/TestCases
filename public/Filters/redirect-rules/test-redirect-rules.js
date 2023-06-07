@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(6, '$redirect exception', async (assert) => {
         const case6 = document.getElementById('case6').innerText;
-        assert.ok(adgCheck && case6 === 'redirect test', '$redirect exception rule should disable $redirect rule');
+        assert.ok(adgCheck && case6 === 'redirect test', 'exception rule @@ with $important should disable $redirect rule');
     });
 
     agTest(7, '$redirect priority', async (assert) => {
