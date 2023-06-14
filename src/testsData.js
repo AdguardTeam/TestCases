@@ -525,6 +525,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/hls-rules/README.md',
     },
+    {
+        id: 37,
+        title: '$method modifier tests',
+        link: 'Filters/method-rules/test-method-rules.html',
+        rulesUrl: 'Filters/method-rules/test-method-rules.txt',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/method-rules/README.md',
+    },
 ];
 
 export default testsData;
