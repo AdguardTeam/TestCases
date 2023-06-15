@@ -531,7 +531,12 @@ const testsData = [
         link: 'Filters/method-rules/test-method-rules.html',
         rulesUrl: 'Filters/method-rules/test-method-rules.txt',
         compatibility: {
-            none: NONE_CORELIBS_PRODUCTS,
+            none: [
+                CORELIBS_PRODUCTS,
+                PRODUCT_TYPES.CHR,
+                PRODUCT_TYPES.FOX,
+                PRODUCT_TYPES.EDG,
+            ],
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },
