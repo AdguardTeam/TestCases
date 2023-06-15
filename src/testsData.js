@@ -4,6 +4,7 @@ import {
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
+    NO_METHOD_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
     LEGACY_PRODUCTS,
@@ -526,17 +527,12 @@ const testsData = [
         readmeUrl: 'Filters/hls-rules/README.md',
     },
     {
-        id: 37,
+        id: 38,
         title: '$method modifier tests',
         link: 'Filters/method-rules/test-method-rules.html',
         rulesUrl: 'Filters/method-rules/test-method-rules.txt',
         compatibility: {
-            none: [
-                CORELIBS_PRODUCTS,
-                PRODUCT_TYPES.CHR,
-                PRODUCT_TYPES.FOX,
-                PRODUCT_TYPES.EDG,
-            ],
+            none: NO_METHOD_PRODUCTS,
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },

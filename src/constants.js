@@ -74,3 +74,11 @@ export const NO_CSP_PRODUCTS = [
     ...LEGACY_PRODUCTS,
     ...SAFARI_CONVERTER_LIB_PRODUCTS,
 ];
+
+/**
+ * Edge Legacy, Safari, iOS, Content Blocker
+ */
+export const NO_METHOD_PRODUCTS = [
+    ...LEGACY_PRODUCTS,
+    ...SAFARI_CONVERTER_LIB_PRODUCTS,
+];
