@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
             cache: 'no-cache',
             method: 'OPTIONS',
         });
-        assert.ok(response.ok, '$method=get rule should pass request with OPTIONS method');
+        assert.ok(response.ok, '$method=get rule should not block requests with the OPTIONS method.');
     });
 
     agTest(2, '$method rule unblocks requests by specified method', async (assert) => {
