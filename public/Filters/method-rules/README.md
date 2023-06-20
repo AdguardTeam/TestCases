@@ -1,5 +1,5 @@
 # $method rules tests
-Compatible with AdGuard products, **that run CoreLibs v1.12 or later**, and AdGuard Browser extensions, **that run tsurlfilter X.X.X or later** FIXME
+Compatible with AdGuard products, **that run CoreLibs v1.12 or later**, and AdGuard Browser extensions, **that run tsurlfilter 2.1.1 or later**
 
 ### Case 1
 Rule with `$method` modifier blocks requests with `get` method.
