@@ -536,6 +536,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },
+    {
+        id: 39,
+        title: '$to modifier tests',
+        link: 'Filters/to-rules/test-to-rules.html',
+        rulesUrl: 'Filters/to-rules/test-to-rules.txt',
+        compatibility: {
+            none: NO_METHOD_PRODUCTS,
+        },
+        readmeUrl: 'Filters/to-rules/README.md',
+    },
 ];
 
 export default testsData;
