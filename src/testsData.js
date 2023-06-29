@@ -546,6 +546,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/to-rules/README.md',
     },
+    {
+        id: 40,
+        title: '$permissions modifier tests',
+        link: 'Filters/to-rules/test-permissions-rules.html',
+        rulesUrl: 'Filters/to-rules/test-permissions-rules.txt',
+        compatibility: {
+            none: 'FIXME',
+        },
+        readmeUrl: 'Filters/permissions-rules/README.md',
+    },
 ];
 
 export default testsData;
