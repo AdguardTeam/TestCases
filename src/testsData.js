@@ -549,12 +549,22 @@ const testsData = [
     {
         id: 40,
         title: '$permissions modifier tests',
-        link: 'Filters/to-rules/test-permissions-rules.html',
-        rulesUrl: 'Filters/to-rules/test-permissions-rules.txt',
+        link: 'Filters/permissions-rules/test-permissions-rules.html',
+        rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
         compatibility: {
-            none: 'FIXME',
+            none: ['FIXME'],
         },
         readmeUrl: 'Filters/permissions-rules/README.md',
+    },
+    {
+        id: 41,
+        title: '$permissions global exception test',
+        link: 'Filters/permissions-rules/permissions-global-exception/permissions-global-exception.html',
+        rulesUrl: 'Filters/permissions-rules/permissions-global-exception/permissions-global-exception.txt',
+        compatibility: {
+            none: ['FIXME'],
+        },
+        readmeUrl: 'Filters/permissions-rules/permissions-global-exception/README.md',
     },
 ];
 

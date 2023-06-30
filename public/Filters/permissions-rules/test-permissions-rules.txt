@@ -8,14 +8,5 @@
 testcases.agrd.dev,surge.sh###subscribe-to-test-permissions-rules-filter
 !
 ! Case 1
-! Case 1
-||*/test-case-1.json^$permissions=accelerator=self
-! Case 2
-||*/test-case-2.json^$permissions=microphone=self\,magnetometer=()
-! Case 3
-||*/test-case-3.json^$permissions=screen-wake-lock=self
-||*/test-case-3.json^$permissions=accelerator=*\,magnetometer=src
-! Case 4
-||*/test-case-4.json^$permissions=web-share=()
-||*/test-case-4.json^$permissions=usb=self\,display-capture=()
-@@||*/test-case-4.json$permissions
+||*/test-permissions-rules.html^$permissions=geolocation=()
+||*/test-permissions-rules.html^$permissions=camera=()\,microphone=()

@@ -1,0 +1,13 @@
+!
+! Title: Rules for $permissions global exception test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,surge.sh###subscribe-to-test-permissions-rules-filter
+!
+! Case 1
+||*/permissions-global-exception.html^$permissions=geolocation=()
+||*/permissions-global-exception.html^$permissions=camera=()\,microphone=()
+@@||*/permissions-global-exception.html^$permissions

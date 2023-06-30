@@ -9,47 +9,43 @@ const agTest = getAgTestRunner(window.location);
  */
 
 window.addEventListener('DOMContentLoaded', () => {
-    agTest(1, '$permissions rules apply properly and dont conflict', async (assert) => {
+    agTest(1, 'allowlist rule disables all $permissions rules of the same pattern', async (assert) => {
         const done = assert.async();
         const done2 = assert.async();
         const done3 = assert.async();
 
-        // Rule applies single directive
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-              assert.ok(false, 'Geolocation API is not blocked!');
-              done();
-            },
-            (error) => {
-              assert.ok(true, 'Geolocation API is restricted.');
-              done();
-            }
-          );
-
-
-        // Next rule applies multiple directives at once
+                (position) => {
+                    assert.ok(position, 'Geolocation API was unblocked!');
+                    done();
+                },
+                (error) => {
+                    assert.ok(false, 'Geolocation API was not unblocked.');
+                    done();
+                }
+        );
 
         // Check 'camera' directive
         let mediaConstraints = { video: true };
         navigator.mediaDevices.getUserMedia(mediaConstraints)
-            .then((position) => {
-                assert.ok(false, 'Camera access is not blocked!');
+            .then((mediaStream) => {
+                assert.ok(mediaStream, 'Camera access was unblocked!');
                 done2();
             })
-            .catch((error) => {
-                assert.ok(true,'Camera access is restricted.');
+            .catch(() => {
+                assert.ok(false,'Camera access was not unblocked.');
                 done2();
             });
 
         // Check 'microphone' directive
         mediaConstraints = { audio: true };
         navigator.mediaDevices.getUserMedia(mediaConstraints)
-            .then((position) => {
-                assert.ok(false, 'Microphone access is not blocked!');
+            .then((mediaStream) => {
+                assert.ok(mediaStream, 'Microphone access was unblocked!');
                 done3();
             })
-            .catch((error) => {
-                assert.ok(true,'Microphone access is restricted.');
+            .catch(() => {
+                assert.ok(false,'Microphone access was not unblocked.');
                 done3();
             });
     });
