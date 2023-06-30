@@ -1,6 +1,6 @@
 /* global QUnit */
 
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner } from '../../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
