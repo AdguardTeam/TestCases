@@ -552,7 +552,8 @@ const testsData = [
         link: 'Filters/permissions-rules/test-permissions-rules.html',
         rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
         compatibility: {
-            none: ['FIXME'],
+            // Compatibility mirrors $csp modifier
+            none: NO_CSP_PRODUCTS,
         },
         readmeUrl: 'Filters/permissions-rules/README.md',
     },
@@ -562,7 +563,8 @@ const testsData = [
         link: 'Filters/permissions-rules/permissions-global-exception/permissions-global-exception.html',
         rulesUrl: 'Filters/permissions-rules/permissions-global-exception/permissions-global-exception.txt',
         compatibility: {
-            none: ['FIXME'],
+            // Compatibility mirrors $csp modifier
+            none: NO_CSP_PRODUCTS,
         },
         readmeUrl: 'Filters/permissions-rules/permissions-global-exception/README.md',
     },
