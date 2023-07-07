@@ -59,7 +59,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-app": "^6.2.2",
     "husky": "^3.0.3",
-    "stylelint": "^10.1.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-scss": "^3.9.3"
   }
