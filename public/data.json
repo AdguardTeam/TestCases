@@ -149,6 +149,25 @@
     "readmeUrl": "Filters/important-rules/README.md"
   },
   {
+    "id": 7,
+    "title": "$important rule vs $urlblock exception",
+    "link": "Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html",
+    "rulesUrl": "Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt",
+    "compatibility": [
+      "Windows",
+      "MacOS",
+      "Android",
+      "Chrome",
+      "Edge",
+      "Firefox",
+      "Opera",
+      "Edge Legacy",
+      "iOS",
+      "Content Blocker"
+    ],
+    "readmeUrl": "Filters/important-rules/important-vs-urlblock/README.md"
+  },
+  {
     "id": 8,
     "title": "$replace rules",
     "link": "Filters/replace-rules/test-replace-rules.html",
@@ -590,39 +609,5 @@
       "Android"
     ],
     "readmeUrl": "Filters/hls-rules/README.md"
-  },
-  {
-    "id": 38,
-    "title": "$method modifier tests",
-    "link": "Filters/method-rules/test-method-rules.html",
-    "rulesUrl": "Filters/method-rules/test-method-rules.txt",
-    "compatibility": [
-      "Windows",
-      "MacOS",
-      "Android",
-      "Chrome",
-      "Edge",
-      "Firefox",
-      "Opera",
-      "Browser Extension MV3"
-    ],
-    "readmeUrl": "Filters/method-rules/README.md"
-  },
-  {
-    "id": 39,
-    "title": "$to modifier tests",
-    "link": "Filters/to-rules/test-to-rules.html",
-    "rulesUrl": "Filters/to-rules/test-to-rules.txt",
-    "compatibility": [
-      "Windows",
-      "MacOS",
-      "Android",
-      "Chrome",
-      "Edge",
-      "Firefox",
-      "Opera",
-      "Browser Extension MV3"
-    ],
-    "readmeUrl": "Filters/to-rules/README.md"
   }
 ]
