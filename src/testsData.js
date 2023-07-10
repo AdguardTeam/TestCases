@@ -156,15 +156,17 @@ const testsData = [
         rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
         compatibility: {
             none: [
-                /**
-                 * TODO CORELIBS_PRODUCTS must be removed when CoreLibs
-                 * start supporting new priority rules
-                 */
-                ...CORELIBS_PRODUCTS,
                 PRODUCT_TYPES.SAF,
                 // $urlblock has not been implemented correctly
                 PRODUCT_TYPES.MV3,
             ],
+            special: {
+                /**
+                 * TODO CORELIBS_PRODUCTS must be removed when CoreLibs
+                 * start supporting new priority rules
+                 */
+                incompatible: CORELIBS_PRODUCTS,
+            },
         },
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
     },
