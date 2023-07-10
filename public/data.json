@@ -154,9 +154,6 @@
     "link": "Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html",
     "rulesUrl": "Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt",
     "compatibility": [
-      "Windows",
-      "MacOS",
-      "Android",
       "Chrome",
       "Edge",
       "Firefox",
