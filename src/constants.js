@@ -1,12 +1,8 @@
 import { getObjectValues } from './helpers/object-utils';
 
 export const PRODUCT_TYPES = {
-    /**
-     * TODO this must be uncommented when CoreLibs
-     * start supporting new priority rules
-     */
-    // WIN: 'Windows',
-    // MAC: 'MacOS',
+    WIN: 'Windows',
+    MAC: 'MacOS',
     AND: 'Android',
     CHR: 'Chrome',
     EDG: 'Edge',
