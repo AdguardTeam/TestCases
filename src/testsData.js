@@ -149,24 +149,20 @@ const testsData = [
         },
         readmeUrl: 'Filters/important-rules/README.md',
     },
-    /**
-     * TODO this must be uncommented when CoreLibs
-     * start supporting new priority rules
-     */
-    // {
-    //     id: 7,
-    //     title: '$important rule vs $urlblock exception',
-    //     link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
-    //     rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
-    //     compatibility: {
-    //         none: [
-    //             PRODUCT_TYPES.SAF,
-    //             // $urlblock has not been implemented correctly
-    //             PRODUCT_TYPES.MV3,
-    //         ],
-    //     },
-    //     readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
-    // },
+    {
+        id: 7,
+        title: '$important rule vs $urlblock exception',
+        link: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.html',
+        rulesUrl: 'Filters/important-rules/important-vs-urlblock/test-important-vs-urlblock.txt',
+        compatibility: {
+            none: [
+                PRODUCT_TYPES.SAF,
+                // $urlblock has not been implemented correctly
+                PRODUCT_TYPES.MV3,
+            ],
+        },
+        readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
+    },
     {
         id: 8,
         title: '$replace rules',
