@@ -21,25 +21,28 @@ Rule with `$header` modifier only blocks request with which it matches by a spec
 Unmatched request does not get blocked.
 
 ### Case 3
-Allowlist rule unblocks a request that would be blocked by a header rule otherwise, if their `$header` modifier values are the same.
+Basic allowlist rule cancels out blocking rule with `$header` modifier.
 
 ### Case 4
-Blocking rule with `$header` and $important won't be cancelled out by a matching allowlist rule.
+Allowlist rule unblocks a request that would be blocked by a header rule otherwise, if their `$header` modifier values are the same.
 
 ### Case 5
-Allowlist `$header` rule that matches request by header value won't cancel out blocking rule without `$header` modifier.
+Blocking rule with `$header` and $important won't be cancelled out by a matching allowlist rule.
 
 ### Case 6
-Allowlist `$header` rule that matches request by header value won't cancel out blocking rule with different value of `$header` modifier.
+Allowlist `$header` rule that matches request by header value won't cancel out blocking rule without `$header` modifier.
 
 ### Case 7
-Document-level allowlist rule cancels out all blocking `$header` rules.
+Allowlist `$header` rule that matches request by header value won't cancel out blocking rule with different value of `$header` modifier.
 
 ### Case 8
+Document-level allowlist rule cancels out all blocking `$header` rules.
+
+### Case 9
 `$header` is compatible with `$removeheader` modifier when targeting response headers.
-##### Case 8.1
-`$header,removeheader` rule will remove request's response header if matched by $header value.
-##### Case 8.2
-`$header,removeheader` rule will be cancelled out by `$removeheader` allowlist rule.
-##### Case 8.2
-`$header` allowlist rule won't cancel out `$header,removeheader` blocking rule, even if `$header` modifier values are the same.
+##### Case 9.1
+`$header,$removeheader` rule will remove request's response header if matched by `$header` value.
+##### Case 9.2
+`$header,$removeheader` rule will be cancelled out by `$removeheader` allowlist rule.
+##### Case 9.3
+`$header` allowlist rule won't cancel out `$header,$removeheader` blocking rule, even if `$header` modifier values are the same.
