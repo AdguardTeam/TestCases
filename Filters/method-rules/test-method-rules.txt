@@ -1,0 +1,19 @@
+!
+! Title: Rules for $method rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,surge.sh###subscribe-to-test-method-rules-filter
+!
+! Case 1
+||*/test-case-1.json^$method=get
+! Case 2
+||*/test-case-2.json^
+@@||*/test-case-2.json^$method=options
+! Case 3
+||*/test-case-3.json^$method=~options
+! Case 4
+||*/test-case-4.json^
+@@||*/test-case-4.json^$method=~get
