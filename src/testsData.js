@@ -5,6 +5,7 @@ import {
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
     NO_METHOD_PRODUCTS,
+    NO_TO_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
     LEGACY_PRODUCTS,
@@ -164,13 +165,6 @@ const testsData = [
                 PRODUCT_TYPES.WIN,
                 PRODUCT_TYPES.AND,
             ],
-            special: {
-                /**
-                 * TODO CORELIBS_PRODUCTS must be removed when CoreLibs
-                 * start supporting new priority rules
-                 */
-                incompatible: CORELIBS_PRODUCTS,
-            },
         },
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
     },
@@ -553,7 +547,7 @@ const testsData = [
         link: 'Filters/to-rules/test-to-rules.html',
         rulesUrl: 'Filters/to-rules/test-to-rules.txt',
         compatibility: {
-            none: NO_METHOD_PRODUCTS,
+            none: NO_TO_PRODUCTS,
         },
         readmeUrl: 'Filters/to-rules/README.md',
     },
