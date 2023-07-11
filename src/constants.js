@@ -67,23 +67,7 @@ export const NO_REPLACE_CONTENT_PRODUCTS = [
     PRODUCT_TYPES.MV3,
 ];
 
-/**
- * Edge Legacy, Safari, iOS, Content Blocker
- */
-export const NO_CSP_PRODUCTS = [
-    ...LEGACY_PRODUCTS,
-    ...SAFARI_CONVERTER_LIB_PRODUCTS,
-];
-
-/**
- * Edge Legacy, Safari, iOS, Content Blocker
- */
-export const NO_METHOD_PRODUCTS = [
-    ...LEGACY_PRODUCTS,
-    ...SAFARI_CONVERTER_LIB_PRODUCTS,
-];
-
-export const NO_TO_PRODUCTS = [
+export const NO_LEGACY_AND_SAFARI_PRODUCTS = [
     ...LEGACY_PRODUCTS,
     ...SAFARI_CONVERTER_LIB_PRODUCTS,
 ];

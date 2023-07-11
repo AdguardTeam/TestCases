@@ -3,9 +3,7 @@ import {
     CORELIBS_PRODUCTS,
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
-    NO_CSP_PRODUCTS,
-    NO_METHOD_PRODUCTS,
-    NO_TO_PRODUCTS,
+    NO_LEGACY_AND_SAFARI_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
     LEGACY_PRODUCTS,
@@ -212,7 +210,7 @@ const testsData = [
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
         compatibility: {
             none: [
-                ...NO_CSP_PRODUCTS,
+                ...NO_LEGACY_AND_SAFARI_PRODUCTS,
                 // not implemented yet
                 PRODUCT_TYPES.MV3,
             ],
@@ -226,7 +224,7 @@ const testsData = [
         rulesUrl: 'Filters/csp-rules/csp-global-exception/csp-global-exception.txt',
         compatibility: {
             none: [
-                ...NO_CSP_PRODUCTS,
+                ...NO_LEGACY_AND_SAFARI_PRODUCTS,
                 // not implemented yet
                 PRODUCT_TYPES.MV3,
             ],
@@ -537,7 +535,7 @@ const testsData = [
         link: 'Filters/method-rules/test-method-rules.html',
         rulesUrl: 'Filters/method-rules/test-method-rules.txt',
         compatibility: {
-            none: NO_METHOD_PRODUCTS,
+            none: NO_LEGACY_AND_SAFARI_PRODUCTS,
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },
@@ -547,7 +545,7 @@ const testsData = [
         link: 'Filters/to-rules/test-to-rules.html',
         rulesUrl: 'Filters/to-rules/test-to-rules.txt',
         compatibility: {
-            none: NO_TO_PRODUCTS,
+            none: NO_LEGACY_AND_SAFARI_PRODUCTS,
         },
         readmeUrl: 'Filters/to-rules/README.md',
     },
@@ -558,7 +556,7 @@ const testsData = [
         rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
         compatibility: {
             // Compatibility mirrors $csp modifier
-            none: NO_CSP_PRODUCTS,
+            none: NO_LEGACY_AND_SAFARI_PRODUCTS,
         },
         readmeUrl: 'Filters/permissions-rules/README.md',
     },
@@ -569,7 +567,7 @@ const testsData = [
         rulesUrl: 'Filters/permissions-rules/permissions-global-exception/permissions-global-exception.txt',
         compatibility: {
             // Compatibility mirrors $csp modifier
-            none: NO_CSP_PRODUCTS,
+            none: NO_LEGACY_AND_SAFARI_PRODUCTS,
         },
         readmeUrl: 'Filters/permissions-rules/permissions-global-exception/README.md',
     },
