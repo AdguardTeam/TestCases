@@ -159,6 +159,10 @@ const testsData = [
                 PRODUCT_TYPES.SAF,
                 // $urlblock has not been implemented correctly
                 PRODUCT_TYPES.MV3,
+                // TODO: remove following products when CoreLibs v1.13 is released
+                PRODUCT_TYPES.MAC,
+                PRODUCT_TYPES.WIN,
+                PRODUCT_TYPES.AND,
             ],
             special: {
                 /**
