@@ -4,6 +4,8 @@ import {
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
+    NO_METHOD_PRODUCTS,
+    NO_TO_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
     LEGACY_PRODUCTS,
@@ -528,6 +530,26 @@ const testsData = [
             none: NONE_CORELIBS_PRODUCTS,
         },
         readmeUrl: 'Filters/hls-rules/README.md',
+    },
+    {
+        id: 38,
+        title: '$method modifier tests',
+        link: 'Filters/method-rules/test-method-rules.html',
+        rulesUrl: 'Filters/method-rules/test-method-rules.txt',
+        compatibility: {
+            none: NO_METHOD_PRODUCTS,
+        },
+        readmeUrl: 'Filters/method-rules/README.md',
+    },
+    {
+        id: 39,
+        title: '$to modifier tests',
+        link: 'Filters/to-rules/test-to-rules.html',
+        rulesUrl: 'Filters/to-rules/test-to-rules.txt',
+        compatibility: {
+            none: NO_TO_PRODUCTS,
+        },
+        readmeUrl: 'Filters/to-rules/README.md',
     },
 ];
 
