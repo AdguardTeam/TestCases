@@ -5,6 +5,7 @@ import {
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
     NO_METHOD_PRODUCTS,
+    NO_TO_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
     LEGACY_PRODUCTS,
@@ -159,6 +160,10 @@ const testsData = [
                 PRODUCT_TYPES.SAF,
                 // $urlblock has not been implemented correctly
                 PRODUCT_TYPES.MV3,
+                // TODO: remove following products when CoreLibs v1.13 is released
+                PRODUCT_TYPES.MAC,
+                PRODUCT_TYPES.WIN,
+                PRODUCT_TYPES.AND,
             ],
         },
         readmeUrl: 'Filters/important-rules/important-vs-urlblock/README.md',
@@ -542,7 +547,7 @@ const testsData = [
         link: 'Filters/to-rules/test-to-rules.html',
         rulesUrl: 'Filters/to-rules/test-to-rules.txt',
         compatibility: {
-            none: NO_METHOD_PRODUCTS,
+            none: NO_TO_PRODUCTS,
         },
         readmeUrl: 'Filters/to-rules/README.md',
     },
