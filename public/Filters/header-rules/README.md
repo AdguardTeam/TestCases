@@ -40,7 +40,7 @@ Allowlist `$header` rule that matches request by header value won't cancel out b
 Allowlist `$header` rule that matches request by header value won't cancel out blocking rule with different value of `$header` modifier.
 
 ### Case 8
-Document-level allowlist rule cancels out all blocking `$header` rules. FIXME add this
+Document-level allowlist rule cancels out all blocking `$header` rules.
 
 ### Case 9
 `$header` is compatible with `$removeheader` modifier when targeting response headers.
