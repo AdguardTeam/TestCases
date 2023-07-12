@@ -33,6 +33,8 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-header-rules-filter
 ! Case 7
 ||*/header-rules/*/case-7.json$header=Content-Type:/app/
 @@||*/header-rules/*/case-7.json$header=vary:/Accept/
+! Case 8
+! Currently there is no way to test $document rule
 ! Case 9.1
 ||*/header-rules/*/case-9-1.json$header=vary,removeheader=vary
 ! Case 9.2
