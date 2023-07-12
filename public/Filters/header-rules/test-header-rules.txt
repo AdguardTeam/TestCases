@@ -1,0 +1,45 @@
+!
+! Title: Rules for $header rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,surge.sh###subscribe-to-test-header-rules-filter
+!
+! Case 1.1
+||*/header-rules/*/case-1-1.json$header=vary
+! Case 1.2
+||*/header-rules/*/case-1-2.json$header=vary:Accept-Encoding
+! Case 1.3
+||*/header-rules/*/case-1-3.json$header=Content-Type:/app/
+! Case 2
+||*/header-rules/*/case-2.json$header=not_a_header
+! Case 3
+||*/header-rules/*/case-3.json$header=vary
+@@||*/header-rules/*/case-3.json
+! Case 4.1
+||*/header-rules/*/case-4-1.json$header=vary:/Accept/
+@@||*/header-rules/*/case-4-1.json$header=vary:/Accept/
+! Case 4.2
+||*/header-rules/*/case-4-2.json$header=vary:/Accept/
+@@||*/header-rules/*/case-4-2.json$header=vary
+! Case 5
+||*/header-rules/*/case-5.json$header=vary:/Accept/,important
+@@||*/header-rules/*/case-5.json$header=vary:/Accept/
+! Case 6
+||*/header-rules/*/case-6.json
+@@||*/header-rules/*/case-6.json$header=vary:/Accept/
+! Case 7
+||*/header-rules/*/case-7.json$header=Content-Type:/app/
+@@||*/header-rules/*/case-7.json$header=vary:/Accept/
+! Case 9.1
+||*/header-rules/*/case-9-1.json$header=vary,removeheader=vary
+! Case 9.2
+||*/header-rules/*/case-9-2.json$header=not_header,removeheader=vary
+! Case 9.3
+||*/header-rules/*/case-9-3.json$header=vary,removeheader=vary
+@@||*/header-rules/*/case-9-3.json$header=vary,removeheader=vary
+! Case 9.4
+||*/header-rules/*/case-9-4.json$header=vary,removeheader=vary
+@@||*/header-rules/*/case-9-4.json$header=vary
