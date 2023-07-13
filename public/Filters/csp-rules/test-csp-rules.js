@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -8,7 +6,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-csp-rules.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-csp-rules-filter'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-csp-rules-filter');
 
     agTest(1, 'using with basic rules', (assert) => {
         const testElement1 = document.getElementById('csp-test');
@@ -27,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
         await assert.rejects(
             // eslint-disable-next-line compat/compat
             fetch('http://adguard.app', { mode: 'no-cors' }),
-            'multiple $csp rules should work together'
+            'multiple $csp rules should work together',
         );
     });
 

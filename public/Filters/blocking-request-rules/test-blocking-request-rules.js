@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,16 +7,13 @@ const agTest = getAgTestRunner(window.location);
  */
 
 window.addEventListener('load', () => {
-    const adgCheck = window.getComputedStyle(
-        window.document.getElementById('subscribe-to-test-blocking-request-rules-filter'),
-        null
-    ).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-blocking-request-rules-filter');
 
     agTest(1, '$ping modifier', (assert) => {
         assert.ok(
             // eslint-disable-next-line compat/compat
             adgCheck && navigator.sendBeacon('https://adguard.com', 'Testdata'),
-            'Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console'
+            'Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console',
         );
     });
 
@@ -26,7 +21,7 @@ window.addEventListener('load', () => {
         await assert.rejects(
             // eslint-disable-next-line compat/compat
             fetch('https://adguard-vpn.com', { mode: 'no-cors' }),
-            'Rule with $xmlhttprequest modifier should block xmlhttprequest request'
+            'Rule with $xmlhttprequest modifier should block xmlhttprequest request',
         );
     });
 

@@ -1,4 +1,4 @@
-/* global QUnit */
+/* eslint-disable compat/compat */
 
 import { getAgTestRunner } from '../helpers.js';
 
@@ -13,13 +13,13 @@ const baseUrl = `${window.location.origin}/Filters/method-rules/test-files`;
 window.addEventListener('DOMContentLoaded', () => {
     let testDataUrl;
     agTest(1, '$method rule blocks requests by specified method', async (assert) => {
-       testDataUrl = `${baseUrl}/test-case-1.json`;
+        testDataUrl = `${baseUrl}/test-case-1.json`;
         assert.rejects(fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'GET',
         }), '$method=get rule should block request with GET method');
 
-        let response = await fetch(testDataUrl,{
+        const response = await fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(testDataUrl,{
+        const response = await fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(testDataUrl,{
+        const response = await fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(testDataUrl,{
+        const response = await fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'OPTIONS',
         });

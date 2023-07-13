@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,7 +7,7 @@ const agTest = getAgTestRunner(window.location);
  */
 
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-redirect-rules-filter'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-redirect-rules-filter');
 
     agTest(1, '$redirect noopcss', async (assert) => {
         const case1 = document.getElementById('case1').style.width;
@@ -59,6 +57,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(7, '$redirect priority', async (assert) => {
         const case7 = document.getElementById('case7').innerText;
-        assert.ok(case7 !== 'redirect test', '$redirect rule should have priority over basic rule with $important modifier');
+        assert.ok(
+            case7 !== 'redirect test',
+            '$redirect rule should have priority over basic rule with $important modifier',
+        );
     });
 });

@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -19,7 +17,7 @@ const download = async (url) => {
 const request = async url => fetch(url, { mode: 'no-cors' });
 
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-network-rules-filter')).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-network-rules-filter');
 
     agTest(1, '$network rule', async (assert) => {
         try {
@@ -31,6 +29,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(2, '$network exception and priority test', async (assert) => {
         const result = await download('https://94.140.14.15/info.txt');
-        assert.ok(adgCheck && result.startsWith('dns2-'), '$network exception rule should disable $network rule and reject all other rules.');
+        assert.ok(
+            adgCheck && result.startsWith('dns2-'),
+            '$network exception rule should disable $network rule and reject all other rules.',
+        );
     });
 });

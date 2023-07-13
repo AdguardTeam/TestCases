@@ -1,3 +1,5 @@
+/* global QUnit */
+
 /**
  * Some tests are not supported by some products.
  * For integration tests they may be passed in the query string.
@@ -12,10 +14,11 @@ const EXCEPTIONS_QUERY_KEY = 'exceptions';
  * @returns {number[]} List of testcase ids to skip.
  */
 const getExceptions = (windowLocation) => {
+    // eslint-disable-next-line compat/compat
     const url = new URL(windowLocation);
     const exceptions = url.searchParams.get(EXCEPTIONS_QUERY_KEY);
-    return !!exceptions
-        ? exceptions.split(',').map((ex) => Number(ex))
+    return exceptions
+        ? exceptions.split(',').map(ex => Number(ex))
         : [];
 };
 
@@ -54,9 +57,21 @@ export const getAgTestRunner = (windowLocation) => {
     const exceptions = getExceptions(windowLocation);
 
     return (id, name, callback) => {
-        const testRunner = getQunitRunner(id, exceptions)
+        const testRunner = getQunitRunner(id, exceptions);
         // the testcase id should be displayed explicitly
         // because QUnit may change the order of tests
         testRunner(`Testcase ${id} — ${name}`, callback);
     };
-}
+};
+
+/**
+ * Checks whether the Subscribe button with the `id` displayed.
+ *
+ * @param {string} id Element id.
+ *
+ * @returns True if the element is hidden, false otherwise.
+ */
+export const isSubscribed = (id) => {
+    const subscribeElement = window.document.getElementById(id);
+    return getComputedStyle(subscribeElement, null).display === 'none';
+};

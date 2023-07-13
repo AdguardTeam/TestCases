@@ -1,7 +1,6 @@
-/* global QUnit */
 /* eslint-disable no-undef */
 
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,7 +8,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-nonbasic-path-modifier.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-nonbasic-path-modifier'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-nonbasic-path-modifier');
 
     agTest(1, 'plain match', (assert) => {
         assert.ok(document.querySelector('#case1'));

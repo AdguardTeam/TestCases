@@ -22,9 +22,18 @@
     },
 
     "rules": {
-        "max-len": ["error", 120],
+        "max-len": ["error", {
+            "code": 120,
+            "comments": 120,
+            "tabWidth": 4,
+            "ignoreUrls": false,
+            "ignoreTrailingComments": false,
+            "ignoreComments": false
+        }],
         "no-shadow": "off",
         "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "arrow-body-style": "off",
         "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx" ]}],
         "import/no-extraneous-dependencies": 0,
         "indent": ["error", 4, {
@@ -60,16 +69,6 @@
                 "ignoreClassFields": true
             }
         ],
-        "class-methods-use-this": "off",
-        "comma-dangle": [
-            "error",
-            {
-                "functions": "never",
-                "arrays": "always-multiline",
-                "exports": "always-multiline",
-                "imports": "always-multiline",
-                "objects": "always-multiline"
-            }
-        ]
+        "class-methods-use-this": "off"
     }
 }

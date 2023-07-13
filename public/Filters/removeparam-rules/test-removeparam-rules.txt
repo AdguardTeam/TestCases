@@ -46,13 +46,15 @@ $xmlhttprequest,removeparam=p1case7,domain=testcases.agrd.dev|surge.sh
 $xmlhttprequest,removeparam=p2case7,domain=testcases.agrd.dev|surge.sh
 !
 ! Case 8
-||testcases.agrd.dev/*p1case8$xmlhttprequest,removeparam=~p2case8
+! the url may be `testcases.agrd.dev:4000/?p1case8` while debugging
+! that's why `testcases.agrd.dev*p1case8` is preferred over `testcases.agrd.dev/*p1case8`
+||testcases.agrd.dev*p1case8$xmlhttprequest,removeparam=~p2case8
 ||surge.sh/*p1case8$xmlhttprequest,removeparam=~p2case8
 !
 ! Case 9
 $xmlhttprequest,removeparam=p1case9
 $xmlhttprequest,removeparam=p2case9
-@@||testcases.agrd.dev/*p1case9$xmlhttprequest,removeparam
+@@||testcases.agrd.dev*p1case9$xmlhttprequest,removeparam
 @@||surge.sh/*p1case9$xmlhttprequest,removeparam
 !
 ! Case 10

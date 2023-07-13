@@ -1,4 +1,3 @@
-/* global QUnit */
 /* eslint-disable prefer-arrow-callback, func-names */
 
 import { getAgTestRunner } from '../helpers.js';
@@ -10,8 +9,14 @@ const agTest = getAgTestRunner(window.location);
  */
 window.addEventListener('load', function () {
     agTest(1, '$generichide rule', function (assert) {
-        const condition1 = getComputedStyle(window.document.querySelector('#case-1-generichide > .test-banner'), null).display === 'none';
-        const condition2 = getComputedStyle(window.document.querySelector('#case-1-generichide > .test-banner1'), null).display === 'block';
+        const condition1 = getComputedStyle(
+            window.document.querySelector('#case-1-generichide > .test-banner'),
+            null,
+        ).display === 'none';
+        const condition2 = getComputedStyle(
+            window.document.querySelector('#case-1-generichide > .test-banner1'),
+            null,
+        ).display === 'block';
         assert.ok(condition1 && condition2, '$generichide exception rule disables all generic cosmetic rules');
     });
 

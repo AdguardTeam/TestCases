@@ -1,5 +1,6 @@
 node_modules/
 build/
-public/
+public/Userscripts/
+public/Filters/replace-rules/test-files/
 qunit.js
 jquery*.js

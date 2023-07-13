@@ -16,7 +16,7 @@ export default class CopyRulesBtn extends React.Component {
     copyRules = async () => {
         await copyToClipboard(
             this.state.rulesText,
-            `The rules for the test "${this.props.title}" have been copied to your clipboard.`
+            `The rules for the test "${this.props.title}" have been copied to your clipboard.`,
         );
     }
 

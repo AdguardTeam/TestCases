@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -15,8 +13,7 @@ const getJsonData = async (path) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document
-        .getElementById('subscribe-to-test-jsonprune-rules-filter')).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-jsonprune-rules-filter');
 
     agTest(1, '$jsonprune rule', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-1.json');
@@ -25,7 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(2, '$jsonprune exception rule', async (assert) => {
         const jsonData = await getJsonData('test-files/test-case-2.json');
-        assert.ok(adgCheck && jsonData.test1 && jsonData.test2, '$jsonprune exception rule should disable $jsonprune rule');
+        assert.ok(
+            adgCheck && jsonData.test1 && jsonData.test2,
+            '$jsonprune exception rule should disable $jsonprune rule',
+        );
     });
 
     agTest(3, '$jsonprune rule for multiple keys', async (assert) => {

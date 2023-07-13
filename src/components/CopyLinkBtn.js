@@ -9,7 +9,7 @@ export default class CopyLinkBtn extends React.Component {
             const url = window.location.href + this.props.rulesUrl;
             copyToClipboard(
                 url,
-                `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`
+                `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`,
             );
         }
     }

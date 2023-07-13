@@ -1,5 +1,3 @@
-/* global QUnit */
-
 import { getAgTestRunner } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
@@ -22,7 +20,7 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
             response1.status === 200
             && response1.redirected
             && response1.url.includes('?secret='),
-            `First request for ${url} is ok`
+            `First request for ${url} is ok`,
         );
 
         // second request with the same secret key
@@ -30,7 +28,7 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
         await assert.rejects(
             // eslint-disable-next-line compat/compat
             fetch(response1.url),
-            'Second request with the same secret key should fail'
+            'Second request with the same secret key should fail',
         );
 
         // get url without secret key
@@ -41,7 +39,7 @@ const redirectResourcesSecurityTest = async (assert, urls) => {
         await assert.rejects(
             // eslint-disable-next-line no-await-in-loop, compat/compat
             fetch(urlNoSecret),
-            'Third request without secret key should fail'
+            'Third request without secret key should fail',
         );
     }
 };
