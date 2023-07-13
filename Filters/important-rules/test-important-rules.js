@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -8,8 +6,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-important-rules.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document
-        .getElementById('subscribe-to-test-important-rules-filter')).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-important-rules-filter');
 
     agTest(1, '$important rule vs exception rule', (assert) => {
         const testImg = document.querySelector('#case1 > img');

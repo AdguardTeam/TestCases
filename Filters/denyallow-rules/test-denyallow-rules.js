@@ -1,5 +1,3 @@
-/* global QUnit */
-
 import { getAgTestRunner } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
@@ -26,6 +24,7 @@ function loadImage(src) {
 window.addEventListener('DOMContentLoaded', () => {
     agTest(1, '$denyallow blocking rule test', async (assert) => {
         const FIRST_PARTY_URL = '/Filters/denyallow-rules/assets/adguard_circle.png';
+        // eslint-disable-next-line max-len
         const THIRD_PARTY_URL = 'https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Filters/denyallow-rules/assets/adguard_circle.png';
 
         const testLoadImg = await loadImage(THIRD_PARTY_URL);
@@ -37,6 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(2, '$denyallow whitelist rule test', async (assert) => {
         const FIRST_PARTY_URL = '/Filters/denyallow-rules/assets/adguard_dns_map.png';
+        // eslint-disable-next-line max-len
         const THIRD_PARTY_URL = 'https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Filters/denyallow-rules/assets/adguard_dns_map.png';
 
         const testBlockedImg = await loadImage(THIRD_PARTY_URL);
@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(3, '$denyallow with extra blocking rule', async (assert) => {
+        // eslint-disable-next-line max-len
         const BLOCKED_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NCDN_-_CDN.png/800px-NCDN_-_CDN.png';
         const testBlockedImg = await loadImage(BLOCKED_URL);
         assert.notOk(testBlockedImg.height > 5);

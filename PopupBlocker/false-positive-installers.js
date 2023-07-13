@@ -87,6 +87,7 @@
         },
         handleEvent() {
             this._removeFrame();
+            // eslint-disable-next-line max-len
             document.body.innerHTML += "<iframe id='popup-opener-iframe' src='popup-opener-iframe.html' style='display:none;'></iframe>";
             this._frame = document.getElementById('popup-opener-iframe');
         },

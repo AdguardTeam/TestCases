@@ -1,5 +1,3 @@
-/* global QUnit */
-
 import { getAgTestRunner } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
@@ -23,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const result = await request(testUrl);
         assert.ok(
             result.headers.get('vary') == null,
-            '$removeheader rule removes passed parameter in a response'
+            '$removeheader rule removes passed parameter in a response',
         );
     });
 
@@ -32,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const result = await request(testUrl);
         assert.ok(
             result.headers.get('etag') != null,
-            '$removeheader exception rule prevents removing parameter in a response'
+            '$removeheader exception rule prevents removing parameter in a response',
         );
     });
 
@@ -43,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const header = json.headers.find(header => header[0] === 'user-agent');
         assert.notOk(
             header,
-            '$removeheader rule removes passed parameter in a request'
+            '$removeheader rule removes passed parameter in a request',
         );
     });
 
@@ -54,7 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const header = json.headers.find(header => header[0] === 'referer');
         assert.ok(
             header,
-            '$removeheader exception rule prevents removing parameter in a request'
+            '$removeheader exception rule prevents removing parameter in a request',
         );
     });
 
@@ -65,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const header = json.headers.find(header => header[0] === 'origin');
         assert.ok(
             header,
-            '$removeheader modifier was not applied'
+            '$removeheader modifier was not applied',
         );
     });
 });

@@ -1,5 +1,3 @@
-/* global QUnit */
-
 import { getAgTestRunner } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
@@ -26,6 +24,7 @@ function loadImage(src) {
 window.addEventListener('DOMContentLoaded', () => {
     agTest(1, '$to rule blocks request to a specified domain', async (assert) => {
         const PASS_URL = '/Filters/to-rules/assets/adguard_circle.png';
+        // eslint-disable-next-line max-len
         const BLOCK_URL = 'https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Filters/denyallow-rules/assets/adguard_circle.png';
 
         const testLoadImg = await loadImage(PASS_URL);
@@ -36,6 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     agTest(2, '$to rule ublocks request to a specified domain', async (assert) => {
         const PASS_URL = '/Filters/to-rules/assets/adguard_dns_map.png';
+        // eslint-disable-next-line max-len
         const BLOCK_URL = 'https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Filters/denyallow-rules/assets/adguard_dns_map.png';
 
         const testLoadImg = await loadImage(PASS_URL);

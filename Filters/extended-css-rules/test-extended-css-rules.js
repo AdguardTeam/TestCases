@@ -1,7 +1,6 @@
-/* global QUnit */
 /* eslint-disable no-undef */
 
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,8 +8,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-extended-css-rules.txt to AdGuard
  */
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document
-        .getElementById('subscribe-to-test-extended-css-rules-filter')).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-extended-css-rules-filter');
 
     agTest(1, 'simple :has()', (assert) => {
         assert.equal(window.getComputedStyle(case1).display, 'none');
@@ -99,7 +97,10 @@ window.addEventListener('DOMContentLoaded', () => {
     agTest(22, 'rules injection into iframe with localsource', (assert) => {
         const frame = document.querySelector('#case22 > #frame1');
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
-        assert.ok(innerDoc.querySelector('#inframe1').style.display === 'none', 'Extended CSS rules should work inside of iframes with local source');
+        assert.ok(
+            innerDoc.querySelector('#inframe1').style.display === 'none',
+            'Extended CSS rules should work inside of iframes with local source',
+        );
         // clean up test frame
         frame.style.cssText = 'display:none!important;';
     });

@@ -1,7 +1,6 @@
-/* global QUnit */
 /* eslint-disable prefer-arrow-callback, func-names */
 
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -12,10 +11,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-element-hiding-rules.txt to AdGuard
  */
 window.addEventListener('load', function () {
-    const adgCheck = getComputedStyle(
-        window.document.getElementById('subscribe-to-test-element-hiding-rules-filter'),
-        null
-    ).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-element-hiding-rules-filter');
 
     agTest(1, 'domain-specific element hiding rule', function (assert) {
         const element = document.querySelector('#case-1-elemhide > .test-banner');
@@ -60,7 +56,10 @@ window.addEventListener('load', function () {
         const testImg = document.querySelector('#case-7-third-party > img');
         if (testImg) {
             // browser extensions make image zero-size
-            assert.ok(window.getComputedStyle(testImg).height === '0px', 'rule with $third-party modifier blocks the test-image');
+            assert.ok(
+                window.getComputedStyle(testImg).height === '0px',
+                'rule with $third-party modifier blocks the test-image',
+            );
         } else {
             // corelibs cuts image from DOM
             assert.ok(true, 'rule with $third-party modifier blocks the test-image');
@@ -89,7 +88,10 @@ window.addEventListener('load', function () {
         }
 
         const iframe2Visibility = window.getComputedStyle(document.getElementById('iframe2-case-8')).visibility;
-        assert.ok(adgCheck && iframe2Visibility === 'visible', 'Exception rule with subdocument modifier unblocks iframe');
+        assert.ok(
+            adgCheck && iframe2Visibility === 'visible',
+            'Exception rule with subdocument modifier unblocks iframe',
+        );
     });
 
     agTest(9, 'cosmetic rule with pseudo-class :has()', (assert) => {

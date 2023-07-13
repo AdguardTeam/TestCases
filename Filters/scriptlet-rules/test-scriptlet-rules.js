@@ -1,7 +1,6 @@
-/* global QUnit */
 /* eslint-disable no-eval */
 
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -42,7 +41,7 @@ const clearProperties = (...props) => {
 };
 
 window.addEventListener('load', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-scriptlet-rules-filter'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-scriptlet-rules-filter');
 
     agTest(1, 'abort-on-property-write AdGuard syntax', (assert) => {
         assert.throws(
@@ -50,7 +49,7 @@ window.addEventListener('load', () => {
                 window.__testCase1 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property'
+            'should throw Reference error when try to access property',
         );
 
         assert.notOk(window.__testCase1);
@@ -62,7 +61,7 @@ window.addEventListener('load', () => {
                 window.__testCase2 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property'
+            'should throw Reference error when try to access property',
         );
 
         assert.notOk(window.__testCase2);
@@ -74,7 +73,7 @@ window.addEventListener('load', () => {
                 window.__testCase3 = 'ok';
             },
             /ReferenceError/,
-            'should throw Reference error when try to access property'
+            'should throw Reference error when try to access property',
         );
         assert.notOk(window.__testCase3);
     });
@@ -107,7 +106,7 @@ window.addEventListener('load', () => {
                 propReadCaseAG = window.propReadCaseAG;
             },
             /ReferenceError/,
-            'AdGuard Syntax throws error'
+            'AdGuard Syntax throws error',
         );
         assert.notOk(propReadCaseAG, 'AG syntax prop remained undefined');
 
@@ -120,7 +119,7 @@ window.addEventListener('load', () => {
                 propReadCaseUBO = window.propReadCaseUBO;
             },
             /ReferenceError/,
-            'UBO Syntax throws error'
+            'UBO Syntax throws error',
         );
         assert.notOk(propReadCaseUBO, 'UBO syntax prop remained undefined');
 
@@ -132,7 +131,7 @@ window.addEventListener('load', () => {
                 propReadCaseABP = window.propReadCaseABP;
             },
             /ReferenceError/,
-            'ABP Syntax throws error'
+            'ABP Syntax throws error',
         );
         assert.notOk(propReadCaseABP, 'ABP syntax prop remained undefined');
     });
@@ -166,13 +165,21 @@ window.addEventListener('load', () => {
         });
         agElement.click();
 
-        assert.strictEqual(window[preventListenerCaseAG], undefined, 'AG syntax, after click property should be undefined');
+        assert.strictEqual(
+            window[preventListenerCaseAG],
+            undefined,
+            'AG syntax, after click property should be undefined',
+        );
 
         agElement.addEventListener('focus', () => {
             window[preventListenerCaseAG] = preventListenerCaseAG;
         });
         agElement.dispatchEvent(new Event('focus'));
-        assert.strictEqual(window[preventListenerCaseAG], undefined, 'AG syntax, after focus property should be undefined');
+        assert.strictEqual(
+            window[preventListenerCaseAG],
+            undefined,
+            'AG syntax, after focus property should be undefined',
+        );
 
         const uboElement = document.createElement('div');
         const preventListenerCaseUBO = 'preventListenerCaseUBO';

@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -30,8 +28,7 @@ const getHlsData = async (path) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = getComputedStyle(window.document
-        .getElementById('subscribe-to-test-hls-rules-filter')).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-hls-rules-filter');
 
     agTest(1, '$hls rule', async (assert) => {
         const hlsData = await getHlsData('test-files/hls-test-1.m3u');

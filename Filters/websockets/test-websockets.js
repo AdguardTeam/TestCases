@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -8,7 +6,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-websockets.txt to AdGuard
  */
 window.addEventListener('load', () => {
-    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-websockets-filter'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-websockets-filter');
 
     agTest(1, 'valid websocket connection', (assert) => {
         if (!window.WebSocket) {

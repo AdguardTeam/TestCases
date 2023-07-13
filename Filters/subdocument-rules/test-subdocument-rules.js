@@ -1,6 +1,4 @@
-/* global QUnit */
-
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,8 +7,7 @@ const agTest = getAgTestRunner(window.location);
  */
 
 window.addEventListener('load', () => {
-    const adgCheck = getComputedStyle(window.document
-        .getElementById('subscribe-to-test-subdocument-rules-filter'), null).display === 'none';
+    const adgCheck = isSubscribed('subscribe-to-test-subdocument-rules-filter');
 
     agTest(1, '$subdocument modifier', (assert) => {
         const iframe = document.querySelector('#test-iframe > iframe');
