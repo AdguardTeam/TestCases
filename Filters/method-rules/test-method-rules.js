@@ -8,17 +8,18 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-method-rules.txt to AdGuard
  */
 
-const baseUrl = window.location.origin;
+const baseUrl = `${window.location.origin}/Filters/method-rules/test-files`;
 
 window.addEventListener('DOMContentLoaded', () => {
+    let testDataUrl;
     agTest(1, '$method rule blocks requests by specified method', async (assert) => {
-       const TEST_DATA_URL = `${baseUrl}/test-case-1.json`;
-        assert.rejects(fetch(TEST_DATA_URL, {
+       testDataUrl = `${baseUrl}/test-case-1.json`;
+        assert.rejects(fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'GET',
         }), '$method=get rule should block request with GET method');
 
-        let response = await fetch(TEST_DATA_URL,{
+        let response = await fetch(testDataUrl,{
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -26,13 +27,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(2, '$method rule unblocks requests by specified method', async (assert) => {
-        const TEST_DATA_URL = `${baseUrl}/test-case-2.json`;
-        assert.rejects(fetch(TEST_DATA_URL, {
+        testDataUrl = `${baseUrl}/test-case-2.json`;
+        assert.rejects(fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(TEST_DATA_URL,{
+        let response = await fetch(testDataUrl,{
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -40,13 +41,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(3, '$method rule with inverted value', async (assert) => {
-        const TEST_DATA_URL = `${baseUrl}/test-case-3.json`;
-        assert.rejects(fetch(TEST_DATA_URL, {
+        testDataUrl = `${baseUrl}/test-case-3.json`;
+        assert.rejects(fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(TEST_DATA_URL,{
+        let response = await fetch(testDataUrl,{
             cache: 'no-cache',
             method: 'OPTIONS',
         });
@@ -54,13 +55,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(4, '$method rule with inverted value', async (assert) => {
-        const TEST_DATA_URL = `${baseUrl}/test-case-4.json`;
-        assert.rejects(fetch(TEST_DATA_URL, {
+        testDataUrl = `${baseUrl}/test-case-4.json`;
+        assert.rejects(fetch(testDataUrl, {
             cache: 'no-cache',
             method: 'GET',
         }), '$method=options allowlist rule should not unblock request with GET method');
 
-        let response = await fetch(TEST_DATA_URL,{
+        let response = await fetch(testDataUrl,{
             cache: 'no-cache',
             method: 'OPTIONS',
         });
