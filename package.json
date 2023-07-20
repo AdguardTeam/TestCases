@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "watch": "react-scripts start",
     "proxy": "node -r esbuild-register ./proxy.ts",
-    "serve": "concurrently \"yarn proxy\" \"wrangler pages dev build\"",
+    "serve": "concurrently \"wrangler pages dev build\" \"yarn proxy\"",
     "deploy": "wrangler pages deploy build",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",
