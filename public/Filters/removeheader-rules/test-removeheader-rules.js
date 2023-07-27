@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(3, '$removeheader in request', async (assert) => {
-        const testUrl = 'https://whoami.agrd.workers.dev/';
+        const testUrl = `${baseUrl}/api/whoami`;
         const result = await request(testUrl);
         const json = await result.json();
         const header = json.headers.find(header => header[0] === 'user-agent');
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(4, 'negate $removeheader in request', async (assert) => {
-        const testUrl = 'https://whoami.agrd.workers.dev/';
+        const testUrl = `${baseUrl}/api/whoami`;
         const result = await request(testUrl);
         const json = await result.json();
         const header = json.headers.find(header => header[0] === 'referer');
@@ -57,10 +57,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(5, '$removeheader is not applied for some high-security headers', async (assert) => {
-        const testUrl = 'https://whoami.agrd.workers.dev/';
+        const testUrl = `${baseUrl}/api/whoami`;
         const result = await request(testUrl);
         const json = await result.json();
-        const header = json.headers.find(header => header[0] === 'origin');
+        const header = json.headers.find(header => header[0] === 'cache-control');
         assert.ok(
             header,
             '$removeheader modifier was not applied',
