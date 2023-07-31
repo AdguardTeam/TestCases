@@ -46,6 +46,6 @@ Deploy:
 
             yarn install ${bamboo.varsYarn}
             yarn build
-            CLOUDFLARE_API_TOKEN=$bamboo.cloudflareWorkersDeployerTokenPassword yarn deploy
+            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} yarn deploy
 other:
   concurrent-build-plugin: system-default
