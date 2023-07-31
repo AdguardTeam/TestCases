@@ -18,11 +18,11 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-removeheader-rules-filter
 @@||testcases.adguardtest.com^$removeheader=etag
 !
 ! Case 3
-||whoami.agrd.workers.dev^$removeheader=request:user-agent
+||*/api/whoami^$removeheader=request:user-agent
 !
 ! Case 4
-||whoami.agrd.workers.dev^$removeheader=referer
-@@||whoami.agrd.workers.dev^$removeheader=referer
+||*/api/whoami^$removeheader=referer
+@@||*/api/whoami^$removeheader=referer
 !
 ! Case 5
-||whoami.agrd.workers.dev^$removeheader=origin
+||*/api/whoami^$removeheader=cache-control
