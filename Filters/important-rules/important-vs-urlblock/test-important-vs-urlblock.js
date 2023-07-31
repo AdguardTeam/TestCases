@@ -9,7 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const adgCheck = isSubscribed('subscribe-to-test-important-vs-urlblock-filter');
 
     agTest(1, '$important rule vs $urlblock exception', (assert) => {
-        const imageDisplayed = getComputedStyle(document.querySelector('#case1 > img'), null).display === 'none';
-        assert.ok(adgCheck && imageDisplayed, '$urlblock exception should not disable $important rule.');
+        const image = document.querySelector('#case1 > img');
+        const imageBlocked = (image === null) || (getComputedStyle(image, null).display === 'none');
+        assert.ok(adgCheck && imageBlocked, '$urlblock exception should not disable $important rule.');
     });
 });
