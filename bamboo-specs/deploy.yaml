@@ -1,6 +1,7 @@
 version: 2
 plan:
-  project-key: ADGTEST
+  project-key: QA
+  key: FILTERSTEST
   name: filters test - deploy
 variables:
   dockerNode: node:18.17.1
