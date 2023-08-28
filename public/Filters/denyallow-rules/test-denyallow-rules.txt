@@ -5,20 +5,20 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-denyallow-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-denyallow-rules-filter
 !
 ! Case 1
-/adguard_circle.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|surge.sh
+/adguard_circle.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|pages.dev
 !
 ! Case 2
 /adguard_dns_map.png
-@@/adguard_dns_map.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|surge.sh
+@@/adguard_dns_map.png$image,denyallow=raw.githubusercontent.com,domain=testcases.agrd.dev|pages.dev
 !
 ! Case 3
 ! block request to https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NCDN_-_CDN.png/800px-NCDN_-_CDN.png
-/800px-NCDN_-_CDN.png$script,denyallow=wikimedia.org,domain=testcases.agrd.dev
+/800px-NCDN_-_CDN.png$script,denyallow=wikimedia.org,domain=testcases.agrd.dev|pages.dev
 ||wikimedia.org^
 !
 ! Case 4
 ! allow request to https://use.fontawesome.com/releases/v5.15.4/css/all.css
-@@/all.css$stylesheet,denyallow=fontawesome.com,domain=testcases.agrd.dev
+@@/all.css$stylesheet,denyallow=fontawesome.com,domain=testcases.agrd.dev|pages.dev

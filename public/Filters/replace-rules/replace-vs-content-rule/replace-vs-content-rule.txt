@@ -6,11 +6,11 @@
 !
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-replace-vs-content-rule-filter
+testcases.agrd.dev,pages.dev###subscribe-to-replace-vs-content-rule-filter
 !
 ! Case 1: using with exception rules including $content modifier for a same request
-testcases.agrd.dev,surge.sh$$div[id="case1-block2"]
+testcases.agrd.dev,pages.dev$$div[id="case1-block2"]
 ||testcases.agrd.dev$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
-||surge.sh$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
+||pages.dev$replace=/content\s+rule\s+disable\s+a\s+replace\s+rule\./replace rule works/i
 @@||testcases.agrd.dev$content
-@@||surge.sh$content
+@@||pages.dev$content

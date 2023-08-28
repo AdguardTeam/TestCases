@@ -5,9 +5,9 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-jsinject-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-jsinject-rules-filter
 !
 ! Case 1
-testcases.agrd.dev,surge.sh#%#document.__jsinjectTest = true;
-@@||testcases.agrd.dev^$jsinject
-@@||surge.sh^$jsinject
+testcases.agrd.dev,pages.dev#%#document.__jsinjectTest = true;
+@@testcases.agrd.dev^$jsinject
+@@pages.dev^$jsinject

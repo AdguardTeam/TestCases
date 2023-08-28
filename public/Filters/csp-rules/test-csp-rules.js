@@ -18,15 +18,28 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(2, 'multiple $csp rules', async (assert) => {
-        // eslint-disable-next-line compat/compat
-        const case3 = await fetch('https://adguard.app', { mode: 'no-cors' });
-        assert.ok(case3, '$csp rule works allows to fetch matching url');
+        const baseUrl = 'https://httpbin.agrd.workers.dev/anything';
 
-        await assert.rejects(
-            // eslint-disable-next-line compat/compat
-            fetch('http://adguard.app', { mode: 'no-cors' }),
-            'multiple $csp rules should work together',
-        );
+        const response = await fetch(`${baseUrl}/test-1`);
+        const test = await response.text();
+        await assert.ok(test === 'test-1');
+
+        await assert.rejects(fetch(`${baseUrl}/test-2`));
+
+
+        await assert.ok(new Promise((resolve) => {
+            const frame1 = document.getElementById('test-1');
+            frame1.onload = () => {
+                resolve(true);
+            };
+        }));
+
+        await assert.ok(new Promise((resolve) => {
+            const frame2 = document.getElementById('test-2');
+            frame2.onerror = () => {
+                resolve(true);
+            };
+        }));
     });
 
     agTest(3, '$scp exception and multiple $csp rules', (assert) => {

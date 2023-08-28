@@ -5,8 +5,8 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-csp-global-exception-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-csp-global-exception-rules-filter
 !
 ! Case 1
-||testcases.agrd.dev,surge.sh$csp=script-src 'self'
-@@||testcases.agrd.dev,surge.sh$csp
+testcases.agrd.dev,pages.dev$csp=script-src 'self'
+@@testcases.agrd.dev,pages.dev$csp

@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-badfilter-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-badfilter-rules-filter
 !
 ! Case 1
 ||*/test-files/adg1.png
@@ -15,7 +15,5 @@ testcases.agrd.dev,surge.sh###subscribe-to-test-badfilter-rules-filter
 @@||*/test-files/adg2.png
 @@||*/test-files/adg2.png$badfilter
 ! Case 3
-||*/test-files/adg3.png$domain=testcases.agrd.dev
-||*/test-files/adg3.png$domain=surge.sh
-||*/test-files/adg3.png$domain=testcases.agrd.dev,badfilter
-||*/test-files/adg3.png$domain=surge.sh,badfilter
+||*/test-files/adg3.png$domain=testcases.agrd.dev|pages.dev
+||*/test-files/adg3.png$domain=testcases.agrd.dev|pages.dev,badfilter

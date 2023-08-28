@@ -5,24 +5,20 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-removeheader-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-removeheader-rules-filter
 !
 ! Case 1
-||surge.sh^$removeheader=vary
-||testcases.agrd.dev^$removeheader=vary
-!
+||*/httpbin/response-headers^$removeheader=case1
 ! Case 2
-||surge.sh^$removeheader=etag
-||testcases.adguardtest.com^$removeheader=etag
-@@||surge.sh^$removeheader=etag
-@@||testcases.adguardtest.com^$removeheader=etag
+||*/httpbin/response-headers^$removeheader=case2
+@@||*/httpbin/response-headers^$removeheader=case2
 !
 ! Case 3
-||whoami.agrd.workers.dev^$removeheader=request:user-agent
+||*/httpbin/headers^$removeheader=request:case3
 !
 ! Case 4
-||whoami.agrd.workers.dev^$removeheader=referer
-@@||whoami.agrd.workers.dev^$removeheader=referer
+||*/httpbin/headers^$removeheader=case4
+@@||*/httpbin/headers^$removeheader=case4
 !
 ! Case 5
-||whoami.agrd.workers.dev^$removeheader=origin
+||*/httpbin/headers^$removeheader=cache-control

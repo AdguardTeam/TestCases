@@ -6,53 +6,53 @@
 !
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-replace-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-replace-rules-filter
 !
 !
 ! Case 1: text response
 ||testcases.agrd.dev/*/case1-text-response.txt$replace=/adguard/Test passed/i
-||surge.sh/*/case1-text-response.txt$replace=/adguard/Test passed/i
+||pages.dev/*/case1-text-response.txt$replace=/adguard/Test passed/i
 !
 !
 ! Case 2: response is more then 3MB
 ||testcases.agrd.dev/*/case2-response-over-3mb.txt$replace=/Adguard/Replaced/i
-||surge.sh/*/case2-response-over-3mb.txt$replace=/Adguard/Replaced/i
+||pages.dev/*/case2-response-over-3mb.txt$replace=/Adguard/Replaced/i
 !
 !
 ! Case 3: using with other rules (without $replace modifier) for a same request
 ||testcases.agrd.dev/*/case3-using-with-other-rules.txt$replace=/adguard/Test passed/i
-||surge.sh/*/case3-using-with-other-rules.txt$replace=/adguard/Test passed/i
+||pages.dev/*/case3-using-with-other-rules.txt$replace=/adguard/Test passed/i
 ||testcases.agrd.dev/*/case3-using-with-other-rules.txt
-||surge.sh/*/case3-using-with-other-rules.txt
+||pages.dev/*/case3-using-with-other-rules.txt
 !
 !
 ! Case 4: multiple $replace rules matching a single request
 ||testcases.agrd.dev/*/case4-multiple-replace-rules.txt$replace=/adguard/first replace rule work/i
-||surge.sh/*/case4-multiple-replace-rules.txt$replace=/adguard/first replace rule work/i
+||pages.dev/*/case4-multiple-replace-rules.txt$replace=/adguard/first replace rule work/i
 ||testcases.agrd.dev/*/case4-multiple-replace-rules.txt$replace=/team/and second as well/i
-||surge.sh/*/case4-multiple-replace-rules.txt$replace=/team/and second as well/i
+||pages.dev/*/case4-multiple-replace-rules.txt$replace=/team/and second as well/i
 !
 !
 ! Case 5: disabling $replace rules
 ||testcases.agrd.dev/*/case5-disabling-replace-rule.txt$replace=/adguard/first replace rule works/i
-||surge.sh/*/case5-disabling-replace-rule.txt$replace=/adguard/first replace rule works/i
+||pages.dev/*/case5-disabling-replace-rule.txt$replace=/adguard/first replace rule works/i
 ||testcases.agrd.dev/*/case5-disabling-replace-rule.txt$replace=/team/and second as well/i
-||surge.sh/*/case5-disabling-replace-rule.txt$replace=/team/and second as well/i
+||pages.dev/*/case5-disabling-replace-rule.txt$replace=/team/and second as well/i
 @@||testcases.agrd.dev/*/case5-disabling-replace-rule.txt$replace
-@@||surge.sh/*/case5-disabling-replace-rule.txt$replace
+@@||pages.dev/*/case5-disabling-replace-rule.txt$replace
 !
 !
 ! Case 6: multiple $replace rules
 ||testcases.agrd.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/adguard/first replace rule/i
-||surge.sh/*/case6-disabling-multiple-replace-rules.txt$replace=/adguard/first replace rule/i
+||pages.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/adguard/first replace rule/i
 ||testcases.agrd.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
-||surge.sh/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
+||pages.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
 @@||testcases.agrd.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
-@@||surge.sh/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
+@@||pages.dev/*/case6-disabling-multiple-replace-rules.txt$replace=/works/works and second as well/i
 !
 !
 ! Case 7: using with $script exception modifier for a same request
 ||testcases.agrd.dev/*/case7-content-type-modifier.js$replace=/tmp\s+\=\s+0/tmp = 1/i
-||surge.sh/*/case7-content-type-modifier.js$replace=/tmp\s+\=\s+0/tmp = 1/i
+||pages.dev/*/case7-content-type-modifier.js$replace=/tmp\s+\=\s+0/tmp = 1/i
 ||testcases.agrd.dev/*/case7-content-type-modifier.js$script
-||surge.sh/*/case7-content-type-modifier.js$script
+||pages.dev/*/case7-content-type-modifier.js$script

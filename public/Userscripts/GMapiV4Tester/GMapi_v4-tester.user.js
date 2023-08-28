@@ -9,8 +9,8 @@
 // @match			      http://testcases.agrd.dev/Userscripts/*
 // @match			      https://local.testcases.agrd.dev/Userscripts/*
 // @match			      http://local.testcases.agrd.dev/Userscripts/*
-// @match			      https://*.surge.sh/Userscripts/*
-// @match			      http://*.surge.sh/Userscripts/*
+// @match			      https://*.pages.dev/Userscripts/*
+// @match			      http://*.pages.dev/Userscripts/*
 // @require         jquery-2.1.1.min.js
 // @resource		1x1.png 1x1.png
 // @resource        testResource.js resource.js

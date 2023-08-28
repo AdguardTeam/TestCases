@@ -5,19 +5,19 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-script-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-script-rules-filter
 !
 ! Case 1
-testcases.agrd.dev,surge.sh#%#window.__testCase1 = true;
+testcases.agrd.dev,pages.dev#%#window.__testCase1 = true;
 !
 ! Case 2
-testcases.agrd.dev,surge.sh#%#window.adg_test=true;
-testcases.agrd.dev,surge.sh#%#window.adg_test=false;
-testcases.agrd.dev,surge.sh#@%#window.adg_test=false;
+testcases.agrd.dev,pages.dev#%#window.adg_test=true;
+testcases.agrd.dev,pages.dev#%#window.adg_test=false;
+testcases.agrd.dev,pages.dev#@%#window.adg_test=false;
 !
 ! Case 3
-testcases.agrd.dev,surge.sh#%#function finalStep() { window.orderTestPassed = true; }
-testcases.agrd.dev,surge.sh#%#function previousStep() { finalStep(); }
-testcases.agrd.dev,surge.sh#%#var otherStep = () => { previousStep(); }
-testcases.agrd.dev,surge.sh#%#let someOtherStep = () => { otherStep(); }
-testcases.agrd.dev,surge.sh#%#someOtherStep();
+testcases.agrd.dev,pages.dev#%#function finalStep() { window.orderTestPassed = true; }
+testcases.agrd.dev,pages.dev#%#function previousStep() { finalStep(); }
+testcases.agrd.dev,pages.dev#%#var otherStep = () => { previousStep(); }
+testcases.agrd.dev,pages.dev#%#let someOtherStep = () => { otherStep(); }
+testcases.agrd.dev,pages.dev#%#someOtherStep();

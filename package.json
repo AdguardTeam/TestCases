@@ -5,6 +5,7 @@
   "scripts": {
     "build": "react-scripts build",
     "watch": "react-scripts start",
+    "deploy": "wrangler pages deploy build",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -39,8 +40,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
+    "dotenv": "^16.3.1",
+    "http-proxy-middleware": "^2.0.6",
     "node-sass": "^8.0.0",
     "prop-types": "^15.8.1",
+    "proxy-agent": "^6.3.0",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0",
@@ -49,6 +53,7 @@
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230814.0",
     "esbuild": "^0.17.4",
     "esbuild-register": "^3.4.2",
     "eslint": "^7.11.0",
@@ -61,6 +66,8 @@
     "husky": "^3.0.3",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.9.3"
+    "stylelint-scss": "^3.9.3",
+    "typescript": "^5.1.6",
+    "wrangler": "3.2.0"
   }
 }

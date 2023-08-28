@@ -5,9 +5,9 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-nonbasic-path-modifier
+testcases.agrd.dev,pages.dev###subscribe-to-test-nonbasic-path-modifier
 !
-[$path=/subpage1]testcases.agrd.dev,surge.sh##div#case1
-[$path=/subpage2]testcases.agrd.dev,surge.sh##div#case2
-[$path=/sub.*/]testcases.agrd.dev,surge.sh##div#case3
-[$path=/subpage(?!1)/]testcases.agrd.dev,surge.sh##div#case4
+[$path=/subpage1]testcases.agrd.dev,pages.dev##div#case1
+[$path=/subpage2]testcases.agrd.dev,pages.dev##div#case2
+[$path=/sub.*/]testcases.agrd.dev,pages.dev##div#case3
+[$path=/subpage(?!1)/]testcases.agrd.dev,pages.dev##div#case4

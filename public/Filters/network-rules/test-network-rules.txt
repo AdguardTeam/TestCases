@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-network-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-network-rules-filter
 !
 ! Case 1
 94.140.14.14^$network

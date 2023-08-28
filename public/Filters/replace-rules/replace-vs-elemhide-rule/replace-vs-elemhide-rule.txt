@@ -7,12 +7,12 @@
 !
 ! Hide warning
 ||testcases.agrd.dev^$replace=/subscribe\s+to\s+test\s+filter//i
-||surge.sh^$replace=/subscribe\s+to\s+test\s+filter//i
+||pages.dev^$replace=/subscribe\s+to\s+test\s+filter//i
 ||testcases.agrd.dev^$replace=/and\s+disable\s+all\s+other\s+filters\s+before\s+doing\s+these\s+tests//i
-||surge.sh^$replace=/and\s+disable\s+all\s+other\s+filters\s+before\s+doing\s+these\s+tests//i
+||pages.dev^$replace=/and\s+disable\s+all\s+other\s+filters\s+before\s+doing\s+these\s+tests//i
 !
 !
 ! Case 1: using with exception rules including $elemhide modifier for a same request
-testcases.agrd.dev,surge.sh###subscribe-to-replace-vs-elemhide-rule-filter
+testcases.agrd.dev,pages.dev###subscribe-to-replace-vs-elemhide-rule-filter
 @@||testcases.agrd.dev^$elemhide
-@@||surge.sh^$elemhide
+@@||pages.dev^$elemhide

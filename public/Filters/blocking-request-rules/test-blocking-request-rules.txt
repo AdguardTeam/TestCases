@@ -5,10 +5,10 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-blocking-request-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-blocking-request-rules-filter
 ! Test case 1: $ping modifier
 ||adguard.com/*^$ping
 ! Test case 2: $xmlhttprequest modifier
-||adguard-vpn.com^$xmlhttprequest,domain=testcases.agrd.dev|surge.sh
+||adguard-vpn.com^$xmlhttprequest,domain=testcases.agrd.dev|pages.dev
 ! Test case 3: $websocket modifier
-$websocket,domain=testcases.agrd.dev|surge.sh
+$websocket,domain=testcases.agrd.dev|pages.dev

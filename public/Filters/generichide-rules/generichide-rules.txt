@@ -5,13 +5,12 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-generichide-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-generichide-rules-filter
 ! Test case: generichide
-testcases.agrd.dev,surge.sh###case-1-generichide > .test-banner
+testcases.agrd.dev,pages.dev###case-1-generichide > .test-banner
 ###case-1-generichide > .test-banner1
 @@||testcases.agrd.dev$generichide
-@@||surge.sh$generichide
+@@||pages.dev$generichide
 !
 ! Test case: generichide rule and js rules
-testcases.agrd.dev#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
-surge.sh#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
+testcases.agrd.dev,pages.dev#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();

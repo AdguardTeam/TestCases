@@ -547,6 +547,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/to-rules/README.md',
     },
+    {
+        id: 40,
+        title: '$cookie modifier tests',
+        link: 'Filters/cookie-rules/test-cookie-rules.html',
+        rulesUrl: 'Filters/cookie-rules/test-cookie-rules.txt',
+        compatibility: {
+            full: true,
+        },
+        readmeUrl: 'Filters/cookie-rules/README.md',
+    },
 ];
 
 export default testsData;

@@ -5,11 +5,11 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-content-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-content-rules-filter
 !
-testcases.agrd.dev,surge.sh$$div[id="case1"]
-testcases.agrd.dev,surge.sh$$div[id="case2"][tag-content="test-case-2-content"]
-testcases.agrd.dev,surge.sh$$div[class="test-case-3-class"]
-testcases.agrd.dev,surge.sh$$div[id="case4"][wildcard="*teasernet*tararar*"]
-testcases.agrd.dev,surge.sh$$div[id="case5"]
-testcases.agrd.dev,surge.sh$@$div[id="case5"]
+testcases.agrd.dev,pages.dev$$div[id="case1"]
+testcases.agrd.dev,pages.dev$$div[id="case2"][tag-content="test-case-2-content"]
+testcases.agrd.dev,pages.dev$$div[class="test-case-3-class"]
+testcases.agrd.dev,pages.dev$$div[id="case4"][wildcard="*teasernet*tararar*"]
+testcases.agrd.dev,pages.dev$$div[id="case5"]
+testcases.agrd.dev,pages.dev$@$div[id="case5"]

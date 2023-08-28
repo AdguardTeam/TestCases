@@ -2,6 +2,8 @@ import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
+const baseUrl = 'wss://httpbin.agrd.workers.dev';
+
 /**
  * Before doing the test, import test-websockets.txt to AdGuard
  */
@@ -15,8 +17,7 @@ window.addEventListener('load', () => {
         }
 
         const done = assert.async();
-        // eslint-disable-next-line compat/compat
-        const ws = new WebSocket('wss://websocket-echo.agrd.workers.dev/ws?valid');
+        const ws = new WebSocket(`${baseUrl}/ws?valid`);
 
         ws.onopen = () => {
             assert.ok(adgCheck && 'Connection is open');
@@ -37,8 +38,7 @@ window.addEventListener('load', () => {
         }
 
         const done = assert.async();
-        // eslint-disable-next-line compat/compat
-        const ws = new WebSocket('wss://websocket-echo.agrd.workers.dev/ws?blocked');
+        const ws = new WebSocket(`${baseUrl}/ws?blocked`);
 
         ws.onopen = () => {
             assert.notOk('Connection is open');

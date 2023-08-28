@@ -7,68 +7,66 @@
 
 ## Development
 
+We use [Cloudflare pages](https://developers.cloudflare.com/pages) for hosting the app.
+
+Local development powered by [Create React App](https://create-react-app.dev) with local proxy middleware, that proxies requests to [httpbin](https://httpbin.agrd.workers.dev/) API.
+
+Static data is stored in the `build` directory, CF pages functions are in the `functions` directory.
+
 ### Public static data
 
 While making any [tests data](#tests-data) changes, run `yarn build:static` to rebuild public static data needed for autotesting.
 
 ### Test on the local machine
 
-#### Install all dependencies:
-```
+#### Install all dependencies
+
+```shell
 yarn install
 ```
 
 #### Add to the `/etc/hosts` next line
-```
+
+```shell
 127.0.0.1 local.testcases.agrd.dev
 ```
 
 #### Create `cert` directory
+
 if there is no one in the repository root
 
 #### Install [`mkcert`](https://github.com/FiloSottile/mkcert#readme)
-```
+
+```shell
 brew install mkcert
 ```
 
 #### Create locally-trusted development certificate
-```
+
+```shell
 mkcert -install
 mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
 ```
 
-#### Run the local server
+#### Build static content
+
+```shell
+yarn build
 ```
+
+#### Run the local server
+
+```shell
 yarn watch
 ```
 
-It will open `http://local.testcases.agrd.dev:4000/` in your browser
-and test code changes will be dynamically updated there
+Thr app will be available on `https://local.testcases.agrd.dev:4000/`
 
 > **Please note, that AdGuard for Mac does not filter localhost connections by default!**.
 
-
-### Test on surge.sh
-
-Available domains can be checked by `surge list`.
-
-If there is not any domain, set up surge first:
-https://surge.sh/help/getting-started-with-surge
-
-Then:
-```
-yarn build
-cd build
-surge --domain=<available-domain>.surge.sh
-```
-
-Enjoy your testing at `_your_available_domain_.surge.sh`!
-
-
-## <a name="tests-data"></a> Manage tests list:
+## <a name="tests-data"></a> Manage tests list
 
 The main data file is `./src/testsData.js`
-
 
 ## Known issues
 

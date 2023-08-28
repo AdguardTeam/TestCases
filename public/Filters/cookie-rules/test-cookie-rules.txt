@@ -1,0 +1,18 @@
+!
+! Title: Rules for $cookie tests
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+[$path=|/Filters/cookie-rules/test-cookie-rules]###subscribe-to-test-cookie-rules-filter
+! Test case 1: $cookie rule blocks request cookie
+||*/httpbin/cookies^$cookie=case1
+! Test case 2: $cookie rule blocks response cookie
+||*/httpbin/cookies/set?case2$cookie=case2
+! Test case 3: $cookie allowlist rule bypass request cookie
+||*/httpbin/cookies^$cookie=case3
+@@||*/httpbin/cookies^$cookie=case3
+! Test case 4: $cookie allowlist rule bypass response cookie
+||*/httpbin/cookies/set?case4$cookie=case4
+@@||*/httpbin/cookies/set?case4$cookie=case4

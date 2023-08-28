@@ -7,9 +7,9 @@
 ! Hide warning
 ###subscribe-to-test-specifichide-rules-filter
 ! Test case 1: Test rule with specifichide modifier
-testcases.agrd.dev,surge.sh###case-1 > .test-banner-1
+testcases.agrd.dev,pages.dev###case-1 > .test-banner-1
 @@||testcases.agrd.dev^$specifichide
-@@||surge.sh^$specifichide
+@@||pages.dev^$specifichide
 ! Test case 2: Test rule with specifichide modifier vs generic basic rule
 ###case-2 > .test-banner-2
 ! Test case 3: Test rule with specifichide modifier vs generic css rule

@@ -5,9 +5,9 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-script-firefox-filter
+testcases.agrd.dev###subscribe-to-test-script-firefox-filter
 !
 ! Case 1
-testcases.agrd.dev,surge.sh#%#window.__firefoxTest1 = true;
+testcases.agrd.dev#%#window.__firefoxTest1 = true;
 ! Case 2
-testcases.agrd.dev,surge.sh#%#document.cookie = "adg_test";
+testcases.agrd.dev#%#document.cookie = "adg_test";

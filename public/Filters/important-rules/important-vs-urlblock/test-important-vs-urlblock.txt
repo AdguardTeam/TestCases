@@ -5,9 +5,9 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-important-vs-urlblock-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-important-vs-urlblock-filter
 !
 ! Case 1
 ||*/test-files/adg1.png$important
-@@||testcases.agrd.dev$urlblock
-@@||surge.sh$urlblock
+@@testcases.agrd.dev$urlblock
+@@pages.dev$urlblock

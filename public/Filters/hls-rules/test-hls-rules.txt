@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-hls-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-hls-rules-filter
 !
 ! Case 1
 ||*/hls-test-1.m3u^$hls=preroll

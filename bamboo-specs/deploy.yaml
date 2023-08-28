@@ -1,0 +1,51 @@
+version: 2
+plan:
+  project-key: ADGTEST
+  name: filters test - deploy
+variables:
+  dockerNode: node:18.17.1
+stages:
+  - Deploy:
+      manual: 'true'
+      jobs:
+        - Deploy
+  
+
+Deploy:
+  key: Deploy
+  other:
+    clean-working-dir: true
+  docker:
+    image: ${bamboo.dockerNode}
+    volumes:
+      ${system.YARN_DIR}: "${bamboo.cacheYarn}"
+  tasks:
+    - checkout:
+        force-clean-build: 'true'
+    - script:
+        interpreter: SHELL
+        scripts:
+          - |-
+            branch="${bamboo.planRepository.branchName}"
+
+            # Throw error if current branch is not "master",
+            # because we do not deploy changes from other branches
+            if [ $branch != "master" ]
+            then
+              echo "deploy is not supported on branch ${branch}"
+              exit 1;
+            fi
+
+            set -x
+            set -e
+
+            # Fix mixed logs
+            exec 2>&1
+
+            ls -la
+
+            yarn install ${bamboo.varsYarn}
+            yarn build
+            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} yarn deploy
+other:
+  concurrent-build-plugin: system-default

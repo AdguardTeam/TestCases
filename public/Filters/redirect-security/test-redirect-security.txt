@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-redirect-security-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-redirect-security-filter
 !
 ! Case 1
 ||*/redirect-test.js$redirect=noopjs

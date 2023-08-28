@@ -5,10 +5,10 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-to-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-to-rules-filter
 !
 ! Case 1
 /adguard_circle.png$image,to=raw.githubusercontent.com
 ! Case 2
 /adguard_dns_map.png
-@@/adguard_dns_map.png^$to=testcases.agrd.dev|surge.sh|~raw.githubusercontent.com
+@@/adguard_dns_map.png^$to=testcases.agrd.dev|pages.dev|~raw.githubusercontent.com

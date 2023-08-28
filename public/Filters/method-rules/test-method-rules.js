@@ -8,7 +8,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-method-rules.txt to AdGuard
  */
 
-const baseUrl = `${window.location.origin}/Filters/method-rules/test-files`;
+const baseUrl = `${window.location.origin}/httpbin/anything`;
 
 window.addEventListener('DOMContentLoaded', () => {
     let testDataUrl;

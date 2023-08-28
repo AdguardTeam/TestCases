@@ -5,6 +5,6 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-extended-css-iframejs-injection
+testcases.agrd.dev,pages.dev###subscribe-to-test-extended-css-iframejs-injection
 ! Case 1
-testcases.agrd.dev,surge.sh#?##inframe1:has(.content)
+testcases.agrd.dev,pages.dev#?##inframe1:has(.content)

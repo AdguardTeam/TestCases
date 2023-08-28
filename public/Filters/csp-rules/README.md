@@ -7,10 +7,10 @@
 #### Expecting result: inline script rejected, basic rule works (there is no element `id="csp-test"`; element `id="some-element"` is hidden)
 
 ## Case 2
-* Requesting for https://adguard.app and http://adguard.app
-* first $csp rule allows requests only for `adguard.app`
-* second $csp rule allows requests only for `https`
-#### Expecting result: all $csp rules work together (only request for https://adguard.app has sent)
+* Requesting to `/api/csp-rules/test-1` and `/api/csp-rules/test-2` via `fetch` and frame `src` attribute
+* first $csp rule allows requests via js api (fetch) only for `/api/csp-rules/test-1`
+* second $csp rule allows requests via frame src only for `/api/csp-rules/test-1`
+#### Expecting result: all $csp rules work together (only requests for /api/csp-rules/test-1 has sent)
 
 ## Case 3
 * inline style hides `id="case3"`.

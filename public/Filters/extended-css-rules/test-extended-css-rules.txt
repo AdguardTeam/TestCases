@@ -5,39 +5,39 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-extended-css-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-extended-css-rules-filter
 !
-testcases.agrd.dev,surge.sh#?##case1.banner:has(a.banner-link)
-testcases.agrd.dev,surge.sh#?##case2.banner:contains(Click Me!)
-testcases.agrd.dev,surge.sh#?##case3.banner:matches-css(opacity: 0.9)
-testcases.agrd.dev,surge.sh#?##case4.banner:matches-css-after(content: sponsored)
-testcases.agrd.dev,surge.sh#?##case5.banner:matches-css-before(content: sponsored)
-testcases.agrd.dev,surge.sh#?##case6.banner:has-text(You would want to click me for sure!)
-testcases.agrd.dev,surge.sh#?##case7.banner:-abp-has(a.banner-link)
-testcases.agrd.dev,surge.sh#?##case8.banner:contains(Click Me!)
-testcases.agrd.dev,surge.sh#?##case9.banner:contains(/[aа]{20,}/)
-testcases.agrd.dev,surge.sh#?##case10.banner:matches-css(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.agrd.dev,surge.sh#?##case11.banner:matches-css-after(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.agrd.dev,surge.sh#?##case12.banner:matches-css-before(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
-testcases.agrd.dev,surge.sh#?#body #case13.banner[-ext-has="a.banner-link"]
-testcases.agrd.dev,surge.sh#?#.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
-testcases.agrd.dev,surge.sh#?##case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
-testcases.agrd.dev,surge.sh#?##case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
-testcases.agrd.dev,surge.sh#?#*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
-testcases.agrd.dev,surge.sh#?#.test-xpath-case18:xpath(//*[@class="test-case18-div"]/../..)
-testcases.agrd.dev,surge.sh#?#.test-nth-ancestor-case19:nth-ancestor(3)
-testcases.agrd.dev,surge.sh#?#.test-upward-selector:upward(#case20)
-testcases.agrd.dev,surge.sh#?#.test-upward-number-case21:upward(4)
+testcases.agrd.dev,pages.dev#?##case1.banner:has(a.banner-link)
+testcases.agrd.dev,pages.dev#?##case2.banner:contains(Click Me!)
+testcases.agrd.dev,pages.dev#?##case3.banner:matches-css(opacity: 0.9)
+testcases.agrd.dev,pages.dev#?##case4.banner:matches-css-after(content: sponsored)
+testcases.agrd.dev,pages.dev#?##case5.banner:matches-css-before(content: sponsored)
+testcases.agrd.dev,pages.dev#?##case6.banner:has-text(You would want to click me for sure!)
+testcases.agrd.dev,pages.dev#?##case7.banner:-abp-has(a.banner-link)
+testcases.agrd.dev,pages.dev#?##case8.banner:contains(Click Me!)
+testcases.agrd.dev,pages.dev#?##case9.banner:contains(/[aа]{20,}/)
+testcases.agrd.dev,pages.dev#?##case10.banner:matches-css(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.agrd.dev,pages.dev#?##case11.banner:matches-css-after(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.agrd.dev,pages.dev#?##case12.banner:matches-css-before(background-image: /url\(data\:image\/svg\+xml;base64,[A-Za-z0-9]{100,}/)
+testcases.agrd.dev,pages.dev#?#body #case13.banner[-ext-has="a.banner-link"]
+testcases.agrd.dev,pages.dev#?#.container > #case14.banner[-ext-contains="/[aа]{20,}/"]
+testcases.agrd.dev,pages.dev#?##case14 + #case15.banner[-ext-matches-css-after="content:sponsored"]
+testcases.agrd.dev,pages.dev#?##case1 ~ #case16.banner[-ext-matches-css-before="content:sponsored"]
+testcases.agrd.dev,pages.dev#?#*:contains(/absolute[\s\S]*-\d{4}/) + * > .banner:contains(/а/) ~ #case17.banner:has(> div:contains(/а/):nth-child(100n + 2))
+testcases.agrd.dev,pages.dev#?#.test-xpath-case18:xpath(//*[@class="test-case18-div"]/../..)
+testcases.agrd.dev,pages.dev#?#.test-nth-ancestor-case19:nth-ancestor(3)
+testcases.agrd.dev,pages.dev#?#.test-upward-selector:upward(#case20)
+testcases.agrd.dev,pages.dev#?#.test-upward-number-case21:upward(4)
 ! Case 22
-testcases.agrd.dev,surge.sh#?##inframe1:has(.content)
+testcases.agrd.dev,pages.dev#?##inframe1:has(.content)
 !
-testcases.agrd.dev,surge.sh#?##case23 > div:contains(/kick me!|\(18\+\)|https:\/\/vk.cc|testTEXT|vk.com\/test_id/)
-testcases.agrd.dev,surge.sh#?##case24 > div:matches-attr("/^data-.{4}$/"="/banner/")
-testcases.agrd.dev,surge.sh#?##case25 > div:matches-property("id"="/property-match/")
-testcases.agrd.dev,surge.sh#?##case26:remove()
-testcases.agrd.dev,surge.sh#$?##case27:has(div) { remove: true; }
-testcases.agrd.dev,surge.sh#?##case28 > :is(.case28, #main, footer, span):contains(isTest)
+testcases.agrd.dev,pages.dev#?##case23 > div:contains(/kick me!|\(18\+\)|https:\/\/vk.cc|testTEXT|vk.com\/test_id/)
+testcases.agrd.dev,pages.dev#?##case24 > div:matches-attr("/^data-.{4}$/"="/banner/")
+testcases.agrd.dev,pages.dev#?##case25 > div:matches-property("id"="/property-match/")
+testcases.agrd.dev,pages.dev#?##case26:remove()
+testcases.agrd.dev,pages.dev#$?##case27:has(div) { remove: true; }
+testcases.agrd.dev,pages.dev#?##case28 > :is(.case28, #main, footer, span):contains(isTest)
 !
 ! Case 29
-testcases.agrd.dev,surge.sh#?##case29.banner:has(a.banner-link)
-testcases.agrd.dev,surge.sh#@?##case29.banner:has(a.banner-link)
+testcases.agrd.dev,pages.dev#?##case29.banner:has(a.banner-link)
+testcases.agrd.dev,pages.dev#@?##case29.banner:has(a.banner-link)
