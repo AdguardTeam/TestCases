@@ -45,7 +45,8 @@ Deploy:
 
             ls -la
 
-            yarn install ${bamboo.varsYarn}
+            # don't use --ignore-optional flag, because wrangler requires optional deps 
+            yarn install --silent --ignore-engines --ignore-platform --ignore-scripts
             yarn build
             CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} yarn deploy
 other:
