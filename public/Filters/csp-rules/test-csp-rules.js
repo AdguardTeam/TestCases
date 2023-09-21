@@ -21,11 +21,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const baseUrl = 'https://httpbin.agrd.workers.dev/anything';
 
         const response = await fetch(`${baseUrl}/test-1`);
-        const test = await response.text();
-        await assert.ok(test === 'test-1');
+        const test = await response.json();
+        await assert.ok(test.url.endsWith('test-1'));
 
         await assert.rejects(fetch(`${baseUrl}/test-2`));
-
 
         await assert.ok(new Promise((resolve) => {
             const frame1 = document.getElementById('test-1');
@@ -42,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }));
     });
 
-    agTest(3, '$scp exception and multiple $csp rules', (assert) => {
+    agTest(3, '$csp exception and multiple $csp rules', (assert) => {
         const testElement = document.querySelector('#case3');
         const testElementHidden = getComputedStyle(testElement).display === 'none';
         assert.ok(adgCheck && testElementHidden, '$scp exception should disable the $csp rule with matching pattern.');

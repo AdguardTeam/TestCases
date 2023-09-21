@@ -1,4 +1,4 @@
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -9,11 +9,13 @@ const agTest = getAgTestRunner(window.location);
 const baseUrl = window.location.origin;
 
 window.addEventListener('DOMContentLoaded', () => {
+    const adgCheck = isSubscribed('subscribe-to-test-removeheader-rules-filter');
+
     agTest(1, '$removeheader in response', async (assert) => {
         const testUrl = `${baseUrl}/httpbin/response-headers?case1=1`;
         const result = await fetch(testUrl);
         assert.ok(
-            result.headers.get('Case1') == null,
+            adgCheck && result.headers.get('Case1') == null,
             '$removeheader rule removes passed parameter in a response',
         );
     });
@@ -22,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const testUrl = `${baseUrl}/httpbin/response-headers?case2=1`;
         const result = await fetch(testUrl);
         assert.ok(
-            result.headers.get('Case2') != null,
+            adgCheck && result.headers.get('Case2') != null,
             '$removeheader exception rule prevents removing parameter in a response',
         );
     });
@@ -54,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const headers = await result.json();
 
         assert.ok(
-            headers.case4,
+            adgCheck && headers.case4,
             '$removeheader exception rule prevents removing parameter in a request',
         );
     });
@@ -64,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const result = await fetch(testUrl);
         const header = result.headers.get('Cache-control');
         assert.ok(
-            header,
+            adgCheck && header,
             '$removeheader modifier was not applied',
         );
     });
