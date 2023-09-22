@@ -6,13 +6,13 @@ plan:
 variables:
   dockerNode: node:18.17.1
 stages:
-  - Deploy:
+  - Build:
       manual: 'true'
       jobs:
-        - Deploy
+        - Build
 
-Deploy:
-  key: DEPLOY
+Build:
+  key: BUILD
   other:
     clean-working-dir: true
   docker:
@@ -57,4 +57,4 @@ notifications:
     recipients:
       - webhook:
           name: Build webhook
-          url: http://prod.jirahub.service.eu.consul/v1/webhook/bamboo?channel=adguard-qa-vcs
+          url: http://prod.jirahub.service.eu.consul/v1/webhook/bamboo
