@@ -1,0 +1,19 @@
+!
+! Title: Rules for $match-case modifier
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-match-case-rules-filter
+!
+! Test case 1 — uppercase match
+||*/MATCH-CASE-1^$match-case
+!
+! Test case 2 — lowercase match
+||*/match-case-2^$match-case
+!
+! Test case 3 - no $match-case modifier
+||*/Match-Case-3^
+!
+! TODO: add unblocking rules later if needed

@@ -557,6 +557,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/cookie-rules/README.md',
     },
+    {
+        id: 41,
+        title: '$match-case modifier tests',
+        link: 'Filters/match-case-rules/test-match-case-rules.html',
+        rulesUrl: 'Filters/match-case-rules/test-match-case-rules.txt',
+        compatibility: {
+            full: true,
+        },
+        readmeUrl: 'Filters/match-case-rules/README.md',
+    },
 ];
 
 export default testsData;

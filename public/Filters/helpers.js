@@ -75,3 +75,26 @@ export const isSubscribed = (id) => {
     const subscribeElement = window.document.getElementById(id);
     return getComputedStyle(subscribeElement, null).display === 'none';
 };
+
+/**
+ * Does fetch request and checks if request is blocked:
+ * - for corelibs — if response.ok is false;
+ * - for browser extension — if request is failed.
+ *
+ * @param {string} url
+ * @param {object} options
+ *
+ * @returns True if fetch request is blocked, false otherwise.
+ */
+export const isBlockedFetch = async (url, options) => {
+    let isRejected = false;
+    try {
+        const response = await fetch(url, options);
+        // corelibs do not reject fetch promise, response with status 500 and 'ok: false' is returned
+        isRejected = !response.ok;
+    } catch (e) {
+        // fetch calls are simply fail if blocked by the browser extension
+        isRejected = true;
+    }
+    return isRejected;
+};

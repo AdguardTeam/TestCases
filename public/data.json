@@ -609,5 +609,81 @@
       "Android"
     ],
     "readmeUrl": "Filters/hls-rules/README.md"
+  },
+  {
+    "id": 38,
+    "title": "$method modifier tests",
+    "link": "Filters/method-rules/test-method-rules.html",
+    "rulesUrl": "Filters/method-rules/test-method-rules.txt",
+    "compatibility": [
+      "Windows",
+      "MacOS",
+      "Android",
+      "Chrome",
+      "Edge",
+      "Firefox",
+      "Opera",
+      "Browser Extension MV3"
+    ],
+    "readmeUrl": "Filters/method-rules/README.md"
+  },
+  {
+    "id": 39,
+    "title": "$to modifier tests",
+    "link": "Filters/to-rules/test-to-rules.html",
+    "rulesUrl": "Filters/to-rules/test-to-rules.txt",
+    "compatibility": [
+      "Windows",
+      "MacOS",
+      "Android",
+      "Chrome",
+      "Edge",
+      "Firefox",
+      "Opera",
+      "Browser Extension MV3"
+    ],
+    "readmeUrl": "Filters/to-rules/README.md"
+  },
+  {
+    "id": 40,
+    "title": "$cookie modifier tests",
+    "link": "Filters/cookie-rules/test-cookie-rules.html",
+    "rulesUrl": "Filters/cookie-rules/test-cookie-rules.txt",
+    "compatibility": [
+      "Windows",
+      "MacOS",
+      "Android",
+      "Chrome",
+      "Edge",
+      "Firefox",
+      "Opera",
+      "Edge Legacy",
+      "Safari",
+      "iOS",
+      "Content Blocker",
+      "Browser Extension MV3"
+    ],
+    "readmeUrl": "Filters/cookie-rules/README.md"
+  },
+  {
+    "id": 41,
+    "title": "$match-case modifier tests",
+    "link": "Filters/match-case-rules/test-match-case-rules.html",
+    "rulesUrl": "Filters/match-case-rules/test-match-case-rules.txt",
+    "compatibility": [
+      "Windows",
+      "MacOS",
+      "Android",
+      "Chrome",
+      "Edge",
+      "Firefox",
+      "Opera",
+      "Edge Legacy",
+      "Safari",
+      "iOS",
+      "Content Blocker",
+      "Browser Extension MV3"
+    ],
+    "readmeUrl": "Filters/match-case-rules/README.md"
   }
 ]
