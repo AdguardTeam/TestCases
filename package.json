@@ -8,6 +8,7 @@
     "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
     "test": "react-scripts test",
+    "increment": "yarn version --patch --no-git-tag-version",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js --cache",
     "stylelint": "stylelint ./src/styles/*.scss"
