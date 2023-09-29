@@ -1,6 +1,4 @@
-/* eslint-disable compat/compat */
-
-import { getAgTestRunner, isBlockedFetch } from '../helpers.js';
+import { getAgTestRunner, isBlockedFetch, isSubscribed } from '../helpers.js';
 
 const GET_METHOD_NAME = 'GET';
 const OPTIONS_METHOD_NAME = 'OPTIONS';
@@ -28,49 +26,56 @@ const getNoCacheOptions = (method) => {
 const baseUrl = `${window.location.origin}/httpbin/anything`;
 
 window.addEventListener('DOMContentLoaded', () => {
-    let testDataUrl;
+    const adgCheck = isSubscribed('subscribe-to-test-method-rules-filter');
 
     agTest(1, '$method rule blocks requests by specified method', async (assert) => {
-        let isBlocked;
-        testDataUrl = `${baseUrl}/test-case-1.json`;
+        assert.ok(adgCheck);
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
-        assert.ok(isBlocked, '$method=get rule should block request with GET method');
+        const testDataUrl = `${baseUrl}/test-case-1.json`;
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
-        assert.ok(isBlocked, '$method=get rule should not block requests with the OPTIONS method.');
+        const isBlockedMethod = await isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
+        assert.ok(isBlockedMethod, '$method=get rule should block request with GET method');
+
+        const isBlockedOptions = await isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
+        assert.notOk(isBlockedOptions, '$method=get rule should not block requests with the OPTIONS method.');
     });
 
     agTest(2, '$method rule unblocks requests by specified method', async (assert) => {
-        let isBlocked;
-        testDataUrl = `${baseUrl}/test-case-2.json`;
+        assert.ok(adgCheck);
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
-        assert.ok(isBlocked, '$method=options allowlist rule should not unblock request with GET method');
+        const testDataUrl = `${baseUrl}/test-case-2.json`;
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
-        assert.ok(isBlocked, '$method=options allowlist rule should unblock request with OPTIONS method');
+        const isBlockedGet = await isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
+        assert.ok(isBlockedGet, '$method=options allowlist rule should not unblock request with GET method');
+
+        const isBlockedOptions = await isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
+        assert.notOk(isBlockedOptions, '$method=options allowlist rule should unblock request with OPTIONS method');
     });
 
     agTest(3, '$method blocking rule with inverted value', async (assert) => {
-        let isBlocked;
-        testDataUrl = `${baseUrl}/test-case-3.json`;
+        assert.ok(adgCheck);
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
-        assert.ok(isBlocked, '$method=~options blocking rule should block request with GET method');
+        const testDataUrl = `${baseUrl}/test-case-3.json`;
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
-        assert.ok(isBlocked, '$method=~options blocking rule should NOT block request with OPTIONS method');
+        const isBlockedGet = await isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
+        assert.ok(isBlockedGet, '$method=~options blocking rule should block request with GET method');
+
+        const isBlockedOptions = await isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
+        assert.notOk(isBlockedOptions, '$method=~options blocking rule should NOT block request with OPTIONS method');
     });
 
     agTest(4, '$method unblocking rule with inverted value', async (assert) => {
-        let isBlocked;
-        testDataUrl = `${baseUrl}/test-case-4.json`;
+        assert.ok(adgCheck);
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
-        assert.ok(isBlocked, 'because of $method=~get allowlist rule, request with GET method should NOT be unblocked');
+        const testDataUrl = `${baseUrl}/test-case-4.json`;
 
-        isBlocked = isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
-        assert.ok(isBlocked, '$method=~get allowlist rule unblocks the request with OPTIONS method');
+        const isBlockedMethod = await isBlockedFetch(testDataUrl, getNoCacheOptions(GET_METHOD_NAME));
+        assert.ok(
+            isBlockedMethod,
+            'because of $method=~get allowlist rule, request with GET method should NOT be unblocked',
+        );
+
+        const isBlockedOptions = await isBlockedFetch(testDataUrl, getNoCacheOptions(OPTIONS_METHOD_NAME));
+        assert.notOk(isBlockedOptions, '$method=~get allowlist rule unblocks the request with OPTIONS method');
     });
 });

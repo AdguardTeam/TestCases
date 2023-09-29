@@ -87,7 +87,7 @@ export const isSubscribed = (id) => {
  * @returns True if fetch request is blocked, false otherwise.
  */
 export const isBlockedFetch = async (url, options) => {
-    let isRejected = false;
+    let isRejected;
     try {
         const response = await fetch(url, options);
         // corelibs do not reject fetch promise, response with status 500 and 'ok: false' is returned
