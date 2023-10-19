@@ -45,20 +45,14 @@
       "Edge Legacy",
       "iOS",
       "Content Blocker",
+      "Browser Extension MV3",
       "Firefox AMO",
-      "Safari",
-      "Browser Extension MV3"
+      "Safari"
     ],
     "readmeUrl": "Filters/generichide-rules/README.md",
     "exceptions": [
       {
         "Safari": [
-          2
-        ]
-      },
-      {
-        "Browser Extension MV3": [
-          1,
           2
         ]
       }
@@ -102,14 +96,7 @@
       "iOS",
       "Browser Extension MV3"
     ],
-    "readmeUrl": "Filters/extended-css-rules/README.md",
-    "exceptions": [
-      {
-        "Browser Extension MV3": [
-          22
-        ]
-      }
-    ]
+    "readmeUrl": "Filters/extended-css-rules/README.md"
   },
   {
     "id": 5,
@@ -123,7 +110,8 @@
       "Opera",
       "Edge Legacy",
       "Safari",
-      "iOS"
+      "iOS",
+      "Browser Extension MV3"
     ],
     "readmeUrl": "Filters/extended-css-rules/extended-css-iframejs-injection/README.md"
   },
@@ -228,9 +216,17 @@
       "Chrome",
       "Edge",
       "Firefox",
-      "Opera"
+      "Opera",
+      "Browser Extension MV3"
     ],
-    "readmeUrl": "Filters/csp-rules/README.md"
+    "readmeUrl": "Filters/csp-rules/README.md",
+    "exceptions": [
+      {
+        "Browser Extension MV3": [
+          3
+        ]
+      }
+    ]
   },
   {
     "id": 13,
@@ -244,7 +240,8 @@
       "Chrome",
       "Edge",
       "Firefox",
-      "Opera"
+      "Opera",
+      "Browser Extension MV3"
     ],
     "readmeUrl": "Filters/csp-rules/csp-global-exception/README.md"
   },
@@ -500,7 +497,8 @@
       "Chrome",
       "Edge",
       "Firefox",
-      "Opera"
+      "Opera",
+      "Browser Extension MV3"
     ],
     "readmeUrl": "Filters/specifichide-rules/README.md"
   },
@@ -535,9 +533,18 @@
       "Chrome",
       "Edge",
       "Firefox",
-      "Opera"
+      "Opera",
+      "Browser Extension MV3"
     ],
-    "readmeUrl": "Filters/removeheader-rules/README.md"
+    "readmeUrl": "Filters/removeheader-rules/README.md",
+    "exceptions": [
+      {
+        "Browser Extension MV3": [
+          2,
+          4
+        ]
+      }
+    ]
   },
   {
     "id": 33,
@@ -660,8 +667,7 @@
       "Edge Legacy",
       "Safari",
       "iOS",
-      "Content Blocker",
-      "Browser Extension MV3"
+      "Content Blocker"
     ],
     "readmeUrl": "Filters/cookie-rules/README.md"
   },

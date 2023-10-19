@@ -17,8 +17,8 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-removeheader-rules-filter
 ||*/httpbin/headers^$removeheader=request:case3
 !
 ! Case 4
-||*/httpbin/headers^$removeheader=case4
-@@||*/httpbin/headers^$removeheader=case4
+||*/httpbin/headers^$removeheader=request:case4
+@@||*/httpbin/headers^$removeheader=request:case4
 !
 ! Case 5
 ||*/httpbin/headers^$removeheader=cache-control

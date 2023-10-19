@@ -66,6 +66,8 @@ const testsData = [
         rulesUrl: 'Filters/element-hiding-rules/test-element-hiding-rules.txt',
         compatibility: {
             partial: [
+                // 6 will work after AG-24593 done.
+                // 7 and 8 will work after AG-17605 done.
                 {
                     product: PRODUCT_TYPES.MV3,
                     cases: [6, 7, 8],
@@ -89,11 +91,6 @@ const testsData = [
                     product: PRODUCT_TYPES.SAF,
                     cases: [2],
                 },
-                {
-                    // not implemented yet
-                    product: PRODUCT_TYPES.MV3,
-                    cases: [1, 2],
-                },
             ],
         },
         readmeUrl: 'Filters/generichide-rules/README.md',
@@ -115,14 +112,6 @@ const testsData = [
         rulesUrl: 'Filters/extended-css-rules/test-extended-css-rules.txt',
         compatibility: {
             none: [PRODUCT_TYPES.CON],
-            // TODO: remove this when tsurlfilter and tswebextension are update in MV3 extension
-            // as it should already be fixed in ExtendedCss v2.0.52
-            partial: [
-                {
-                    product: PRODUCT_TYPES.MV3,
-                    cases: [22],
-                },
-            ],
         },
         readmeUrl: 'Filters/extended-css-rules/README.md',
     },
@@ -135,7 +124,6 @@ const testsData = [
             none: [
                 ...CORELIBS_PRODUCTS,
                 PRODUCT_TYPES.CON,
-                PRODUCT_TYPES.MV3,
             ],
         },
         readmeUrl: 'Filters/extended-css-rules/extended-css-iframejs-injection/README.md',
@@ -158,7 +146,7 @@ const testsData = [
         compatibility: {
             none: [
                 PRODUCT_TYPES.SAF,
-                // $urlblock has not been implemented correctly
+                // $urlblock has not been implemented correctly (AG-24598)
                 PRODUCT_TYPES.MV3,
             ],
         },
@@ -207,10 +195,15 @@ const testsData = [
         link: 'Filters/csp-rules/test-csp-rules.html',
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
         compatibility: {
+            partial: [
+                // Allowrules not supported.
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [3],
+                },
+            ],
             none: [
                 ...NO_CSP_PRODUCTS,
-                // not implemented yet
-                PRODUCT_TYPES.MV3,
             ],
         },
         readmeUrl: 'Filters/csp-rules/README.md',
@@ -223,8 +216,6 @@ const testsData = [
         compatibility: {
             none: [
                 ...NO_CSP_PRODUCTS,
-                // not implemented yet
-                PRODUCT_TYPES.MV3,
             ],
         },
         readmeUrl: 'Filters/csp-rules/csp-global-exception/README.md',
@@ -409,7 +400,7 @@ const testsData = [
         compatibility: {
             none: [
                 PRODUCT_TYPES.CON,
-                // not implemented yet
+                // not implemented yet (AG-24586)
                 PRODUCT_TYPES.MV3,
             ],
         },
@@ -424,7 +415,8 @@ const testsData = [
             none: [
                 ...SAFARI_CONVERTER_LIB_PRODUCTS,
                 ...LEGACY_PRODUCTS,
-                // "partial support" — almost all tests fail
+                // Almost all tests fail due to a single possible redirect
+                // in DNR (AG-26824).
                 PRODUCT_TYPES.MV3,
             ],
         },
@@ -439,8 +431,6 @@ const testsData = [
             none: [
                 ...SAFARI_CONVERTER_LIB_PRODUCTS,
                 ...LEGACY_PRODUCTS,
-                // not implemented yet
-                PRODUCT_TYPES.MV3,
             ],
         },
         readmeUrl: 'Filters/specifichide-rules/README.md',
@@ -461,11 +451,16 @@ const testsData = [
         link: 'Filters/removeheader-rules/test-removeheader-rules.html',
         rulesUrl: 'Filters/removeheader-rules/test-removeheader-rules.txt',
         compatibility: {
+            partial: [
+                // Allowrules not supported.
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [2, 4],
+                },
+            ],
             none: [
                 ...SAFARI_CONVERTER_LIB_PRODUCTS,
                 ...LEGACY_PRODUCTS,
-                // not implemented yet
-                PRODUCT_TYPES.MV3,
             ],
         },
         readmeUrl: 'Filters/removeheader-rules/README.md',
@@ -553,7 +548,10 @@ const testsData = [
         link: 'Filters/cookie-rules/test-cookie-rules.html',
         rulesUrl: 'Filters/cookie-rules/test-cookie-rules.txt',
         compatibility: {
-            full: true,
+            none: [
+                // TODO: Wait until tsurlfilter@release/v2.3 will be merged
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/cookie-rules/README.md',
     },

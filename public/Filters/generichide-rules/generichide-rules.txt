@@ -6,11 +6,11 @@
 !
 ! Hide warning
 testcases.agrd.dev,pages.dev###subscribe-to-test-generichide-rules-filter
-! Test case: generichide
+! Test case 1: generichide
 testcases.agrd.dev,pages.dev###case-1-generichide > .test-banner
 ###case-1-generichide > .test-banner1
 @@||testcases.agrd.dev$generichide
 @@||pages.dev$generichide
 !
-! Test case: generichide rule and js rules
+! Test case 2: generichide rule and js rules
 testcases.agrd.dev,pages.dev#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
