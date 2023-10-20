@@ -6,10 +6,11 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-removeparam-rules.txt to AdGuard
  */
 
-const request = async (url, header) => {
+const request = async (url, header, method = 'GET') => {
     const headers = header || { Accept: 'text/html' };
     // eslint-disable-next-line compat/compat
     const response = await fetch(url, {
+        method,
         headers,
     });
     return response;
@@ -17,8 +18,7 @@ const request = async (url, header) => {
 
 const { log } = console;
 
-// eslint-disable-next-line compat/compat
-const baseUrl = window.location.origin;
+const baseUrl = `${window.location.origin}/httpbin/anything`;
 
 window.addEventListener('DOMContentLoaded', () => {
     const adgCheck = isSubscribed('subscribe-to-test-removeparam-rules-filter');
@@ -167,6 +167,20 @@ window.addEventListener('DOMContentLoaded', () => {
             adgCheck && result.url.includes('p1case12=true') && !result.url.includes('p2case12=true'),
             // eslint-disable-next-line max-len
             'Rule with $removeparam and $image modifier removes parameter for image request, but rule without $image modifier not',
+        );
+    });
+
+    agTest(13, '$removeparam rule for POST request', async (assert) => {
+        const testUrl = `${baseUrl}/?p1case13=true&p2case13=true`;
+        log('\nCase 13:');
+        log(`POSTing to ${testUrl}`);
+        const result = await request(testUrl, null, 'POST');
+        const resultJson = await result.json();
+        log(`result.url is ${resultJson.url}`);
+        assert.ok(
+            adgCheck && !resultJson.url.includes('p1case13=true') && resultJson.url.includes('p2case13=true'),
+            // eslint-disable-next-line max-len
+            'Rule with $removeparam removes parameter for POST request',
         );
     });
 });

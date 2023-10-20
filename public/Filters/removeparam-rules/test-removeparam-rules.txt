@@ -74,3 +74,6 @@ $xmlhttprequest,removeparam=p2case9
 ||testcases.agrd.dev$image,xmlhttprequest,removeparam=p2case12
 ||pages.dev$removeparam=p1case12
 ||pages.dev$image,xmlhttprequest,removeparam=p2case12
+! Case 13
+||testcases.agrd.dev$xmlhttprequest,removeparam=p1case13
+||pages.dev$xmlhttprequest,removeparam=p1case13
