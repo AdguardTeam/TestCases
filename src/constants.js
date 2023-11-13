@@ -1,5 +1,14 @@
 import { getObjectValues } from './helpers/object-utils';
 
+/**
+ * IDs of tests which are userscripts
+ * in testsData array in testsData.js
+ */
+export const USERSCRIPTS_TEST_IDS = [
+    20,
+    21,
+];
+
 export const PRODUCT_TYPES = {
     WIN: 'Windows',
     MAC: 'MacOS',

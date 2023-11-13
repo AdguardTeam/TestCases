@@ -7,10 +7,12 @@ import ReadmeBtn from './ReadmeBtn';
 import CopyLinkBtn from './CopyLinkBtn';
 import CopyRulesBtn from './CopyRulesBtn';
 import SubscribeFilterBtn from './SubscribeFilterBtn';
+import { USERSCRIPTS_TEST_IDS } from '../constants';
 
 const EXCEPTIONS_QUERY_KEY = 'exceptions';
 
 const TestItem = ({
+    id,
     title,
     link,
     rulesUrl,
@@ -40,6 +42,8 @@ const TestItem = ({
         // instead of using url.href
         testPageUrl = `${url.pathname}${url.search}`;
     }
+
+    const isUserscriptTest = USERSCRIPTS_TEST_IDS.includes(id);
 
     return (
         <div className="testItem-container">
@@ -79,6 +83,7 @@ const TestItem = ({
                     subscribeBtn={rulesBtn()}
                     rulesUrl={rulesUrl}
                     filterTitle={title}
+                    isUserscriptTest={isUserscriptTest}
                 />
 
             </div>
@@ -90,6 +95,7 @@ const TestItem = ({
 export default TestItem;
 
 TestItem.propTypes = {
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     rulesUrl: PropTypes.string,
