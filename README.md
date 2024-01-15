@@ -9,7 +9,7 @@
 
 We use [Cloudflare pages](https://developers.cloudflare.com/pages) for hosting the app.
 
-Local development powered by [Create React App](https://create-react-app.dev) with local proxy middleware, that proxies requests to [httpbin](https://httpbin.agrd.workers.dev/) API.
+Local development powered by [Create React App](https://create-react-app.dev) with local proxy middleware, that proxies requests to [httpbin](https://httpbin.agrd.dev/) API.
 
 Static data is stored in the `build` directory, CF pages functions are in the `functions` directory.
 

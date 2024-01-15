@@ -7,7 +7,7 @@
 ! Hide warning
 testcases.agrd.dev,pages.dev###subscribe-to-test-websockets-filter
 ! Test case 1: unblocking connection
-||httpbin.agrd.workers.dev/ws?valid
-@@||httpbin.agrd.workers.dev/ws?valid
+||httpbin.agrd.dev/ws?valid
+@@||httpbin.agrd.dev/ws?valid
 ! Test case 2: blocking connection
-||httpbin.agrd.workers.dev/ws?blocked
+||httpbin.agrd.dev/ws?blocked

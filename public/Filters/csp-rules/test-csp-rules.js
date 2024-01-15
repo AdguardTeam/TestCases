@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(2, 'multiple $csp rules', async (assert) => {
-        const baseUrl = 'https://httpbin.agrd.workers.dev/anything';
+        const baseUrl = 'https://httpbin.agrd.dev/anything';
 
         const response = await fetch(`${baseUrl}/test-1`);
         const test = await response.json();

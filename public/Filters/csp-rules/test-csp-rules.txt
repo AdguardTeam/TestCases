@@ -11,8 +11,8 @@
 ||*/Filters/csp-rules/test-csp-rules$csp=script-src 'self'
 [$path=|/Filters/csp-rules/test-csp-rules]###some-element
 ! Case 2
-||*/Filters/csp-rules/test-csp-rules$csp=connect-src https://httpbin.agrd.workers.dev/anything/test-1
-||*/Filters/csp-rules/test-csp-rules$csp=frame-src https://httpbin.agrd.workers.dev/anything/test-1
+||*/Filters/csp-rules/test-csp-rules$csp=connect-src https://httpbin.agrd.dev/anything/test-1
+||*/Filters/csp-rules/test-csp-rules$csp=frame-src https://httpbin.agrd.dev/anything/test-1
 ! Case 3
 ||*/Filters/csp-rules/test-csp-rules$csp=style-src 'self'
 @@||*/Filters/csp-rules/test-csp-rules$csp=style-src 'self'

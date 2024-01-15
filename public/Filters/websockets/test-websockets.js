@@ -2,7 +2,7 @@ import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
-const baseUrl = 'wss://httpbin.agrd.workers.dev';
+const baseUrl = 'wss://httpbin.agrd.dev';
 
 /**
  * Before doing the test, import test-websockets.txt to AdGuard

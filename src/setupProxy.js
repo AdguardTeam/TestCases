@@ -4,7 +4,7 @@ module.exports = function setupProxy(app) {
     app.use(
         '/httpbin',
         createProxyMiddleware({
-            target: 'https://httpbin.agrd.workers.dev/',
+            target: 'https://httpbin.agrd.dev/',
             changeOrigin: true,
             pathRewrite: { '^/httpbin': '' },
             secure: true,
