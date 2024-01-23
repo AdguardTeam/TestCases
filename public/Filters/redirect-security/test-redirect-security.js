@@ -1,5 +1,11 @@
 import { getAgTestRunner } from '../helpers.js';
 
+/**
+ * NOTE: non-blocking redirects don't use native urls anymore, thus making
+ * these tests obsolete for all redirect resources except for click2load,
+ * which is not actually being tested here. AG-19259
+ */
+
 const agTest = getAgTestRunner(window.location);
 
 // Before doing the test, import test-redirect-security.txt to AdGuard
