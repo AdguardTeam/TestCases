@@ -146,6 +146,8 @@ const testsData = [
         compatibility: {
             none: [
                 PRODUCT_TYPES.SAF,
+                PRODUCT_TYPES.IOS,
+                PRODUCT_TYPES.CON,
                 // $urlblock has not been implemented correctly (AG-24598)
                 PRODUCT_TYPES.MV3,
             ],
@@ -549,6 +551,9 @@ const testsData = [
         rulesUrl: 'Filters/cookie-rules/test-cookie-rules.txt',
         compatibility: {
             none: [
+                PRODUCT_TYPES.SAF,
+                PRODUCT_TYPES.IOS,
+                PRODUCT_TYPES.CON,
                 // TODO: Wait until tsurlfilter@release/v2.3 will be merged
                 PRODUCT_TYPES.MV3,
             ],

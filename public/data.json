@@ -149,9 +149,7 @@
       "Edge",
       "Firefox",
       "Opera",
-      "Edge Legacy",
-      "iOS",
-      "Content Blocker"
+      "Edge Legacy"
     ],
     "readmeUrl": "Filters/important-rules/important-vs-urlblock/README.md"
   },
@@ -664,10 +662,7 @@
       "Edge",
       "Firefox",
       "Opera",
-      "Edge Legacy",
-      "Safari",
-      "iOS",
-      "Content Blocker"
+      "Edge Legacy"
     ],
     "readmeUrl": "Filters/cookie-rules/README.md"
   },
