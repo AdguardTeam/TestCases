@@ -4,7 +4,7 @@ plan:
   key: FILTERSTEST
   name: filters test - deploy
 variables:
-  dockerNode: node:18.17.1
+  dockerNode: adguard/node-ssh:21.7--1
 stages:
   - Build:
       manual: 'true'
