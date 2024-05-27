@@ -17,11 +17,7 @@ const getSubscribeUrl = (rulesUrl, filterTitle, isUserscriptTest) => {
         return `adguard:userscript?location=${absoluteUrl}`;
     }
 
-    const SAFARI_USER_AGENT_REGEXP = /\sVersion\/(\d{2}\.\d)(.+\s|\s)(Safari)\//;
-    const isSafariBrowser = SAFARI_USER_AGENT_REGEXP.test(navigator.userAgent);
-    return isSafariBrowser
-        ? `abp:subscribe?location=${absoluteUrl}&title=${filterTitle}`
-        : `https://subscribe.adblockplus.org?location=${absoluteUrl}`;
+    return `abp:subscribe?location=${absoluteUrl}&title=${filterTitle}`;
 };
 
 const SubscribeFilterBtn = ({
