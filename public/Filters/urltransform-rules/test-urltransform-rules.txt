@@ -1,0 +1,14 @@
+!
+! Title: Rules for $urltransform rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-urltransform-rules-filter
+!
+! Case 1
+||httpbin.agrd.dev^$urltransform=/^\/status\/500\$/\/status\/200/
+!
+! Case 2
+||httpbin.agrd.dev^$urltransform=/royalmail/post/

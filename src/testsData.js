@@ -570,6 +570,16 @@ const testsData = [
         },
         readmeUrl: 'Filters/match-case-rules/README.md',
     },
+    {
+        id: 44,
+        title: '$urltransform rules test',
+        link: 'Filters/urltransform-rules/test-urltransform-rules.html',
+        rulesUrl: 'Filters/urltransform-rules/test-urltransform-rules.txt',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/urltransform-rules/README.md',
+    },
 ];
 
 export default testsData;
