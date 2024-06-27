@@ -3,7 +3,7 @@
   "version": "0.2.42",
   "private": true,
   "scripts": {
-    "build": "react-scripts build && yarn build:static",
+    "build": "react-scripts build",
     "watch": "react-scripts start",
     "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
     "build:static": "node -r esbuild-register ./buildStaticData.js",
