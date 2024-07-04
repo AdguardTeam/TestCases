@@ -1,0 +1,19 @@
+!
+! Title: Rules for $permissions rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+[$path=|/Filters/permissions-rules/test-permissions-rules]###subscribe-to-test-permissions-rules-filter
+!
+
+! Case 1
+/\/Filters\/permissions-rules(?!\/subpage)/$permissions=autoplay=(self "https://example.com"),domain=testcases.agrd.dev
+/\/Filters\/permissions-rules(?!\/subpage)/$permissions=autoplay=(self "https://example.net"),domain=testcases.agrd.dev
+@@/\/Filters\/permissions-rules(?!\/subpage)/$permissions=autoplay=(self "https://example.net"),domain=testcases.agrd.dev
+
+! Case 2
+||*/Filters/permissions-rules/subpage$permissions=geolocation=(self "https://example.com"),subdocument,domain=testcases.agrd.dev
+||*/Filters/permissions-rules/subpage$permissions=geolocation=(self "https://example.net"),subdocument,domain=testcases.agrd.dev
+@@||*/Filters/permissions-rules/subpage$permissions=geolocation=(self "https://example.net"),subdocument,domain=testcases.agrd.dev

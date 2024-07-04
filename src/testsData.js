@@ -580,6 +580,17 @@ const testsData = [
         },
         readmeUrl: 'Filters/urltransform-rules/README.md',
     },
+    {
+        id: 45,
+        title: '$permissions rules test',
+        link: 'Filters/permissions-rules/test-permissions-rules.html',
+        rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
+        compatibility: {
+            // TODO: Add browser extension here after 4.4 released
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/permissions-rules/README.md',
+    },
 ];
 
 export default testsData;
