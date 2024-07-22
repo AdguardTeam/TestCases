@@ -591,6 +591,17 @@ const testsData = [
         },
         readmeUrl: 'Filters/permissions-rules/README.md',
     },
+    {
+        id: 46,
+        title: 'Strict party (strict-third-party and strict-first-party) modifiers tests',
+        link: 'Filters/strict-party-rules/test-strict-party-rules.html',
+        rulesUrl: 'Filters/strict-party-rules/test-strict-party-rules.txt',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/strict-party-rules/README.md',
+
+    },
 ];
 
 export default testsData;

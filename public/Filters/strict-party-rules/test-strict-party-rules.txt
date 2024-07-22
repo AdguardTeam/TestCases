@@ -1,0 +1,15 @@
+!
+! Title: Rules for strict-party rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-strict-party-rules-filter
+!
+! Case 1 - strict-third-party
+||httpbin.agrd.dev/xml^$strict-third-party
+||*/httpbin/xml^$strict-third-party
+! Case 2 - strict-first-party
+||httpbin.agrd.dev/anything^$strict-first-party
+||*/httpbin/anything^$strict-first-party
