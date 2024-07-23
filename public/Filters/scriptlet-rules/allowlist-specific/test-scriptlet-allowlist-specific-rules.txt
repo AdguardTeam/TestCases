@@ -1,0 +1,21 @@
+!
+! Title: Rules for scriptlet allowlist specific rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-scriptlet-allowlist-specific-rules-filter
+!
+! allowlist-specific
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "firstVal", "true")
+testcases.agrd.dev,pages.dev#@%#//scriptlet("set-constant", "firstVal", "false")
+testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "secondVal", "true")
+testcases.agrd.dev,pages.dev#@%#//scriptlet("set-constant", "secondVal", "true")
+!
+! allowlist-by-name
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "testVal", "true")
+testcases.agrd.dev,pages.dev#%#//scriptlet("prevent-eval-if", "preventIfTest")
+testcases.agrd.dev,pages.dev#@%#//scriptlet("prevent-eval-if")

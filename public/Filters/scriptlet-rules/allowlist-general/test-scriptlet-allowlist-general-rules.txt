@@ -1,0 +1,14 @@
+!
+! Title: Rules for scriptlet allowlist general rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-scriptlet-allowlist-general-rules-filter
+!
+! allowlist-all
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "testVal", "true")
+testcases.agrd.dev,pages.dev#%#//scriptlet("prevent-eval-if", "preventIfTest")
+testcases.agrd.dev,pages.dev#@%#//scriptlet()

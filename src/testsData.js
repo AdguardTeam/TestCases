@@ -571,6 +571,26 @@ const testsData = [
         readmeUrl: 'Filters/match-case-rules/README.md',
     },
     {
+        id: 42,
+        title: 'Scriptlet allowlist specific rules',
+        link: 'Filters/scriptlet-rules/allowlist-specific/test-scriptlet-allowlist-specific-rules.html',
+        rulesUrl: 'Filters/scriptlet-rules/allowlist-specific/test-scriptlet-allowlist-specific-rules.txt',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/scriptlet-rules/README.md',
+    },
+    {
+        id: 43,
+        title: 'Scriptlet allowlist general rules',
+        link: 'Filters/scriptlet-rules/allowlist-general/test-scriptlet-allowlist-general-rules.html',
+        rulesUrl: 'Filters/scriptlet-rules/allowlist-general/test-scriptlet-allowlist-general-rules.txt',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        readmeUrl: 'Filters/scriptlet-rules/README.md',
+    },
+    {
         id: 44,
         title: '$urltransform rules test',
         link: 'Filters/urltransform-rules/test-urltransform-rules.html',
