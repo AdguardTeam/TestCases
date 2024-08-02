@@ -28,9 +28,9 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(2, '$network exception and priority test', async (assert) => {
-        const result = await download('https://94.140.14.15/info.txt');
+        const result = await download('https://1.0.0.1/cdn-cgi/trace');
         assert.ok(
-            adgCheck && result.startsWith('dns2-'),
+            adgCheck && result.indexOf('h=1.0.0.1') != -1,
             '$network exception rule should disable $network rule and reject all other rules.',
         );
     });

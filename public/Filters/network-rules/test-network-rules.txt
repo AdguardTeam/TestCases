@@ -10,6 +10,6 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-network-rules-filter
 ! Case 1
 94.140.14.14^$network
 ! Case 2
-94.140.14.15^$network
-@@94.140.14.15^$network
-||94.140.14.15/info.txt
+1.0.0.1^$network
+@@1.0.0.1^$network
+||1.0.0.1/cdn-cgi/trace
