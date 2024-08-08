@@ -52,6 +52,7 @@ import {
  * @property {string} rulesUrl
  * @property {string} [readmeUrl]
  * @property {CompatibilityData} compatibility
+ * @property {boolean} [manual] `true` if test should be run manually.
  */
 
 /**
@@ -325,6 +326,8 @@ const testsData = [
         id: 22,
         title: 'Popup blocker',
         link: 'PopupBlocker/test-popup-blocker.html',
+        readmeUrl: 'PopupBlocker/README.md',
+        rulesUrl: 'PopupBlocker/test-popup-blocker-rules.txt',
         compatibility: {
             none: [
                 PRODUCT_TYPES.IOS,
@@ -332,6 +335,7 @@ const testsData = [
                 PRODUCT_TYPES.MV3,
             ],
         },
+        manual: true,
     },
     {
         id: 23,
@@ -344,6 +348,7 @@ const testsData = [
                 PRODUCT_TYPES.MV3,
             ],
         },
+        manual: true,
     },
     {
         id: 24,
