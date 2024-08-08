@@ -611,8 +611,15 @@ const testsData = [
         link: 'Filters/permissions-rules/test-permissions-rules.html',
         rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
         compatibility: {
-            // TODO: Add browser extension here after 4.4 released
-            none: NONE_CORELIBS_PRODUCTS,
+            none: [
+                // TODO: Wait until Permissions-Policy header bug is resolved to remove Firefox from the list
+                PRODUCT_TYPES.FOX,
+                PRODUCT_TYPES.EDL,
+                PRODUCT_TYPES.SAF,
+                PRODUCT_TYPES.IOS,
+                PRODUCT_TYPES.CON,
+                PRODUCT_TYPES.MV3,
+            ],
         },
         readmeUrl: 'Filters/permissions-rules/README.md',
     },
