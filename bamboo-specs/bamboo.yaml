@@ -1,5 +1,5 @@
 ---
-!include 'deploy.yaml'
+!include 'build.yaml'
 
 ---
 !include 'increment.yaml'

@@ -1,0 +1,127 @@
+---
+version: 2
+plan:
+  project-key: QA
+  key: FILTERSTESTBUILD
+  name: filters test - build
+
+variables:
+  dockerNode: adguard/node-ssh:21.7--1
+
+stages:
+  - Build:
+      jobs:
+        - Build
+
+  - Check:
+      jobs:
+        - Check
+
+  - Deploy:
+      jobs:
+        - Deploy
+
+Build:
+  key: BUILD
+  other:
+    clean-working-dir: true
+  docker: &docker-settings
+    image: ${bamboo.dockerNode}
+    volumes:
+      ${system.YARN_DIR}: "${bamboo.cacheYarn}"
+  tasks:
+    - checkout:
+        force-clean-build: true
+    - script: &build-script
+        interpreter: SHELL
+        scripts:
+          - |-
+            set -x
+            set -e
+
+            # Fix mixed logs
+            exec 2>&1
+
+            ls -la
+
+            # don't use --ignore-optional flag, because wrangler requires optional deps
+            yarn install --silent --ignore-engines --ignore-platform --ignore-scripts
+
+            yarn build:static
+            yarn build
+  final-tasks: &cleanup-task
+    - script:
+        interpreter: SHELL
+        scripts:
+          - |-
+            set -x
+            set -e
+
+            # Fix mixed logs
+            exec 2>&1
+
+            ls -la
+
+            echo "Size before cleanup:" && du -h | tail -n 1
+            rm -rf node_modules
+            echo "Size after cleanup:" && du -h | tail -n 1
+
+# check state needed for extra protection if 'branch-overrides' is deleted
+Check:
+  key: CHECK
+  other:
+    clean-working-dir: true
+  docker: *docker-settings
+  tasks:
+    - checkout:
+        force-clean-build: true
+    - script:
+        interpreter: SHELL
+        scripts:
+          - |-
+            branch="${bamboo.planRepository.branchName}"
+
+            # Throw error if current branch is not "master",
+            # because we do not deploy changes from other branches
+            if [ $branch != "master" ]
+            then
+              echo "Deploy is not supported on branch ${branch}"
+              echo "Skipping deploy"
+              exit 1;
+            fi
+
+Deploy:
+  key: DEPLOY
+  other:
+    clean-working-dir: true
+  docker: *docker-settings
+  tasks:
+    - checkout:
+        force-clean-build: true
+    - script: *build-script
+    - script:
+        interpreter: SHELL
+        scripts:
+          - |-
+            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} CLOUDFLARE_ACCOUNT_ID=${bamboo.cloudflareWorkerDeployerAccountID} yarn deploy
+  final-tasks: *cleanup-task
+
+other:
+  concurrent-build-plugin: system-default
+
+notifications:
+  - events:
+      - plan-status-changed
+    recipients:
+      - webhook:
+          name: Build webhook
+          url: http://prod.jirahub.service.eu.consul/v1/webhook/bamboo
+
+branch-overrides:
+  -
+    ^(master.+|(?!master).*)$:
+      # for branched other than 'master' we run only 'Build' stage
+      # since 'Deploy' should be run only for 'master'
+      stages:
+        - Build:
+            - Build
