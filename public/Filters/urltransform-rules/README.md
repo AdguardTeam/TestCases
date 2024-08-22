@@ -1,5 +1,7 @@
 # $urltransform rules test
 
+Note: Cases 3 and 4 are valid starting with CoreLibs 1.16.19.
+
 ## Case 1
 * Try fetching a resource from an invalid URL.
 * A `$urltransform` rule should transform an invalid URL into a valid one.
