@@ -1,6 +1,6 @@
 {
     "name": "filters-tests",
-    "version": "0.2.54",
+    "version": "0.2.55",
     "private": true,
     "scripts": {
         "build": "react-scripts build",
