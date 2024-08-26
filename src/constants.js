@@ -44,7 +44,7 @@ export const CORELIBS_PRODUCTS = [
  * Chrome, Edge, Firefox, Opera, Edge Legacy, Safari, iOS, Content Blocker
  */
 export const NONE_CORELIBS_PRODUCTS = ALL_PRODUCTS
-    .filter(p => !(CORELIBS_PRODUCTS.indexOf(p) > -1));
+    .filter((p) => !(CORELIBS_PRODUCTS.indexOf(p) > -1));
 
 /**
  * Edge Legacy and Content Blocker

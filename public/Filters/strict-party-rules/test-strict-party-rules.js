@@ -1,4 +1,3 @@
-
 import { getAgTestRunner, isBlockedFetch, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);

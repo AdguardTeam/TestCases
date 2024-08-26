@@ -40,7 +40,7 @@ import { ALL_PRODUCTS } from '../constants';
  *
  * @returns {string[]} Array of strings formatted for frontend — exceptions and descriptions.
  */
-const getPartlyCompatibleStrings = exceptions => (exceptions
+const getPartlyCompatibleStrings = (exceptions) => (exceptions
     .map((ex) => {
         const cases = ex.cases ? ` (exception cases: ${ex.cases.join(', ')})` : '';
         const description = ex.desc ? ` (${ex.desc})` : '';
@@ -132,7 +132,7 @@ export const parseCompatibility = (compatibility) => {
      * NONE
      */
     if (typeof compatibility.none !== 'undefined') {
-        supportedProducts = supportedProducts.filter(p => !(compatibility.none.indexOf(p) > -1));
+        supportedProducts = supportedProducts.filter((p) => !(compatibility.none.indexOf(p) > -1));
 
         frontendData.full = supportedProducts;
         frontendData.none = compatibility.none;
@@ -146,11 +146,11 @@ export const parseCompatibility = (compatibility) => {
      */
     if (typeof compatibility.partial !== 'undefined') {
         // needed to exclude products from "green" supported products in the frontend
-        const noneFullProducts = compatibility.partial.map(ex => ex.product);
+        const noneFullProducts = compatibility.partial.map((ex) => ex.product);
         // we should check the products which were filtered by 'none' property
         // as it may be set along with 'partial'.
         // this filtering is needed to display the compatibility on frontend correctly
-        supportedProducts = supportedProducts.filter(p => !(noneFullProducts.indexOf(p) > -1));
+        supportedProducts = supportedProducts.filter((p) => !(noneFullProducts.indexOf(p) > -1));
 
         frontendData.full = supportedProducts;
         frontendData.partial = getPartlyCompatibleStrings(compatibility.partial);

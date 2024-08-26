@@ -16,9 +16,9 @@
         uninstall() {
             $(document).off('click', '.delgated-target', this.handleEvent);
             const delegatedTarget = this._delegatedTarget;
-            /* eslint-disable-next-line no-unused-expressions */
-            delegatedTarget && delegatedTarget.parentNode
-                && delegatedTarget.parentNode.removeChild(delegatedTarget);
+            if (delegatedTarget && delegatedTarget.parentNode) {
+                delegatedTarget.parentNode.removeChild(delegatedTarget);
+            }
             this._delegatedTarget = null;
         },
         handleEvent() {
@@ -26,7 +26,6 @@
         },
         _delegatedTarget: null,
     };
-
 
     const dispatchOnSameTarget = {
         name: 'Artificial Click On The Same Target',
@@ -43,8 +42,9 @@
         uninstall() {
             document.removeEventListener('mousedown', this);
             const target = this._target;
-            /* eslint-disable-next-line no-unused-expressions */
-            target && target.parentNode && target.parentNode.removeChild(target);
+            if (target && target.parentNode) {
+                target.parentNode.removeChild(target);
+            }
             this._target = null;
         },
         handleEvent(evt) {
@@ -92,7 +92,6 @@
             this._frame = document.getElementById('popup-opener-iframe');
         },
     };
-
 
     window.falsePositiveInstallers = [
         jQueryDelegated,

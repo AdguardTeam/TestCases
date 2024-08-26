@@ -11,7 +11,7 @@ import { USERSCRIPTS_TEST_IDS } from '../constants';
 
 const EXCEPTIONS_QUERY_KEY = 'exceptions';
 
-const TestItem = ({
+function TestItem({
     id,
     title,
     link,
@@ -19,7 +19,7 @@ const TestItem = ({
     compatibility,
     readmeUrl,
     exceptions,
-}) => {
+}) {
     const rulesBtn = () => (rulesUrl ? 'enabled' : 'disabled');
 
     const readmeBtn = () => (readmeUrl ? 'enabled' : 'disabled');
@@ -90,7 +90,7 @@ const TestItem = ({
             <div className="spacer" />
         </div>
     );
-};
+}
 
 export default TestItem;
 

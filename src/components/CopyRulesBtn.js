@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import { getFile, copyToClipboard } from '../helpers';
 
 export default class CopyRulesBtn extends React.Component {
-    state = {
-        rulesText: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            rulesText: '',
+        };
     }
 
-    componentDidMount = async () => {
-        // eslint-disable-next-line react/no-direct-mutation-state
-        this.state.rulesText = await getFile(this.props.rulesUrl);
+    componentDidMount() {
+        const { rulesUrl } = this.props;
+        (async () => {
+            const rulesText = await getFile(rulesUrl);
+            this.setState({ rulesText });
+        })();
     }
 
     copyRules = async () => {
@@ -18,7 +24,7 @@ export default class CopyRulesBtn extends React.Component {
             this.state.rulesText,
             `The rules for the test "${this.props.title}" have been copied to your clipboard.`,
         );
-    }
+    };
 
     render() {
         const { copyRulesBtn } = this.props;

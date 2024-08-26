@@ -7,7 +7,6 @@ const agTest = getAgTestRunner(window.location);
  */
 
 function loadImage(src) {
-    // eslint-disable-next-line compat/compat
     return new Promise(((resolve) => {
         const testImg = document.createElement('img');
         testImg.setAttribute('src', src);

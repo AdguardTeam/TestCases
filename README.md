@@ -13,6 +13,12 @@ Local development powered by [Create React App](https://create-react-app.dev) wi
 
 Static data is stored in the `build` directory, CF pages functions are in the `functions` directory.
 
+To launch functions in the dev mode run:
+
+```
+wrangler pages dev build
+```
+
 ### Public static data
 
 While making any [tests data](#tests-data) changes, run `yarn build:static` to rebuild public static data needed for autotesting.

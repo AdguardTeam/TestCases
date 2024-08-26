@@ -5,9 +5,12 @@ import ReactMarkdown from 'react-markdown';
 import { getFile } from '../helpers';
 
 export default class ShowReadme extends React.Component {
-    state = {
-        readmeFile: '',
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            readmeFile: '',
+        };
+    }
 
     async componentDidMount() {
         await this.getReadme();
@@ -17,7 +20,7 @@ export default class ShowReadme extends React.Component {
         const { readmeUrl } = this.props;
         const file = await getFile(readmeUrl);
         this.setState({ readmeFile: file });
-    }
+    };
 
     render() {
         const { readmeFile } = this.state;

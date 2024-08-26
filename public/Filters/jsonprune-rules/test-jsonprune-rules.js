@@ -7,7 +7,6 @@ const agTest = getAgTestRunner(window.location);
  */
 
 const getJsonData = async (path) => {
-    // eslint-disable-next-line compat/compat
     const response = await fetch(path);
     return response.json();
 };

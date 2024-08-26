@@ -78,8 +78,9 @@
 
             freshClick.call(anchor);
 
-            /* eslint-disable-next-line no-unused-expressions */
-            freshFrame.parentNode && freshFrame.parentNode.removeChild(freshFrame);
+            if (freshFrame.parentNode) {
+                freshFrame.parentNode.removeChild(freshFrame);
+            }
         },
     };
 
@@ -96,10 +97,10 @@
             const freshFrame = document.getElementById('a-fresh-frame');
             const freshFrameDoc = freshFrame.contentDocument;
             freshFrameDoc.write('<script>open("http://evilsite.com/","_blank");</script>');
-            /* eslint-disable-next-line no-unused-expressions */
             freshFrameDoc.close();
-            /* eslint-disable-next-line no-unused-expressions */
-            freshFrame.parentNode && freshFrame.parentNode.removeChild(freshFrame);
+            if (freshFrame.parentNode) {
+                freshFrame.parentNode.removeChild(freshFrame);
+            }
         },
     };
 

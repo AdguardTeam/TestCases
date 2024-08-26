@@ -634,6 +634,28 @@ const testsData = [
         readmeUrl: 'Filters/strict-party-rules/README.md',
 
     },
+    {
+        id: 47,
+        title: 'Content security policy tests',
+        link: 'csp',
+        rulesUrl: 'Filters/content-security-policy/test-content-security-policy.txt',
+        compatibility: {
+            // TODO improve compatibility later
+            full: true,
+        },
+        manual: true,
+    },
+    {
+        id: 48,
+        title: 'Injection speed tests',
+        link: 'Filters/injection-speed/injection-speed.html',
+        rulesUrl: 'Filters/injection-speed/test-injection-speed.txt',
+        compatibility: {
+            // TODO improve compatibility later
+            full: true,
+        },
+        manual: true,
+    },
 ];
 
 export default testsData;

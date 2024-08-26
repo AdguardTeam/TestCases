@@ -21,7 +21,6 @@ const expectedData2 = `#EXTINF,5
 preroll.ts`;
 
 const getHlsData = async (path) => {
-    // eslint-disable-next-line compat/compat
     const response = await fetch(path);
     const hlsData = await response.text();
     return hlsData.trim();

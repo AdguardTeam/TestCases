@@ -13,20 +13,16 @@
 const { log, error } = console;
 
 const isLocalhost = Boolean(
-    /* eslint-disable-next-line compat/compat */
     window.location.hostname === 'localhost'
     // [::1] is the IPv6 localhost address.
-    /* eslint-disable-next-line compat/compat */
     || window.location.hostname === '[::1]'
     // 127.0.0.1/8 is considered localhost for IPv4.
-    /* eslint-disable-next-line compat/compat */
     || window.location.hostname.match(
         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
     ),
 );
 
 function registerValidSW(swUrl, config) {
-    /* eslint-disable-next-line compat/compat */
     navigator.serviceWorker
         .register(swUrl)
         .then((registration) => {
@@ -73,7 +69,6 @@ function registerValidSW(swUrl, config) {
 
 function checkValidServiceWorker(swUrl, config) {
     // Check if the service worker can be found. If it can't reload the page.
-    /* eslint-disable-next-line compat/compat */
     fetch(swUrl)
         .then((response) => {
             // Ensure service worker exists, and that we really are getting a JS file.

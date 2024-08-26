@@ -8,7 +8,6 @@ const agTest = getAgTestRunner(window.location);
 
 const request = async (url, header, method = 'GET') => {
     const headers = header || { Accept: 'text/html' };
-    // eslint-disable-next-line compat/compat
     const response = await fetch(url, {
         method,
         headers,

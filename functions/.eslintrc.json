@@ -1,7 +1,0 @@
-{
-    "rules": {
-        "compat/compat": "off",
-        "no-restricted-globals": "off",
-        "no-restricted-syntax": "off"
-    }
-}

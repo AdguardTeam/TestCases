@@ -7,7 +7,6 @@ const agTest = getAgTestRunner(window.location);
  */
 
 function loadImage(src) {
-    // eslint-disable-next-line compat/compat
     return new Promise(((resolve) => {
         const testImg = document.createElement('img');
         testImg.setAttribute('src', src);
@@ -55,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(4, '$denyallow domain that was not blocked', async (assert) => {
         const NOT_BLOCKED_URL = 'https://use.fontawesome.com/releases/v5.15.4/css/all.css';
-        // eslint-disable-next-line compat/compat
+
         const page = await fetch(NOT_BLOCKED_URL);
         assert.ok(page.ok);
     });

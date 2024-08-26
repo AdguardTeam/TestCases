@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        "src/**/*",
+        "tests/**/*",
+        "public/**/*",
+        "functions/**/*",
+        ".eslintrc.js",
+        "buildStaticData.js",
+        "babel.config.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}

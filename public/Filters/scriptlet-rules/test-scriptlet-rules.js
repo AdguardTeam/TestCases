@@ -1,4 +1,4 @@
-/* eslint-disable no-eval */
+/* eslint-disable no-eval,@typescript-eslint/no-implied-eval */
 
 import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
@@ -8,7 +8,7 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-content-rules.txt to AdGuard
  */
 
-const onError = assert => (message) => {
+const onError = (assert) => (message) => {
     const browserErrorMessage = 'Script error.';
     const nodePuppeteerErrorMessageRgx = /ReferenceError/;
     const checkResult = message === browserErrorMessage
@@ -33,6 +33,7 @@ const clearProperties = (...props) => {
                 // sometimes property deleting is not allowed
                 // e.g. in Safari
                 window[prop] = null;
+            // eslint-disable-next-line @typescript-eslint/no-shadow
             } catch (e) {
                 // ignore
             }
@@ -142,7 +143,6 @@ window.addEventListener('load', () => {
             return;
         }
 
-        // eslint-disable-next-line compat/compat
         const localConnection = new RTCPeerConnection();
         const sendChannelAG = localConnection.createDataChannel('sendChannelAG');
         assert.notOk(sendChannelAG, 'AG syntax, channel is undefined');
@@ -271,7 +271,6 @@ window.addEventListener('load', () => {
     agTest(13, 'set-constant', (assert) => {
         assert.strictEqual(window.setConstantAGSyntax, true, 'AG syntax');
         assert.strictEqual(window.setConstantUBOSyntax, true, 'UBO syntax');
-
 
         // setting constant to true;
         const trueProp = 'trueProp';

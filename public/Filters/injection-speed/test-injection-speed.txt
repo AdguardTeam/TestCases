@@ -1,0 +1,9 @@
+!
+! Title: Rules for content security policy test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet('log', 'scriptlet rule is executed')
+testcases.agrd.dev,pages.dev#%#console.log(Date.now(), 'script rule is executed');
+

@@ -16,8 +16,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case1');
-        assert.ok(adgCheck && getComputedStyle(element).display === 'none',
-            'Rule with subpage1 path should be found');
+        assert.ok(
+            adgCheck && getComputedStyle(element).display === 'none',
+            'Rule with subpage1 path should be found',
+        );
     });
 
     agTest(2, 'plain no match', (assert) => {
@@ -26,8 +28,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case2');
-        assert.ok(adgCheck && getComputedStyle(element).display === 'block',
-            'Rule with subpage2 path should not be found');
+        assert.ok(
+            adgCheck && getComputedStyle(element).display === 'block',
+            'Rule with subpage2 path should not be found',
+        );
     });
 
     agTest(3, 'regex match', (assert) => {
@@ -36,8 +40,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case3');
-        assert.ok(adgCheck && getComputedStyle(element).display === 'none',
-            'Rule with sub regex path should be found');
+        assert.ok(
+            adgCheck && getComputedStyle(element).display === 'none',
+            'Rule with sub regex path should be found',
+        );
     });
 
     agTest(4, 'regex no match', (assert) => {
@@ -46,7 +52,9 @@ window.addEventListener('DOMContentLoaded', () => {
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case4');
-        assert.ok(adgCheck && getComputedStyle(element).display === 'block',
-            'Rule with non-matching regex path should not be found');
+        assert.ok(
+            adgCheck && getComputedStyle(element).display === 'block',
+            'Rule with non-matching regex path should not be found',
+        );
     });
 });

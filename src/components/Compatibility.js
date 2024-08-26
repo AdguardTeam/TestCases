@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { parseCompatibility } from '../helpers';
 
-const Compatibility = ({ compatibility }) => {
+function Compatibility({ compatibility }) {
     const productsData = parseCompatibility(compatibility).frontendData;
 
     return (
@@ -13,22 +13,22 @@ const Compatibility = ({ compatibility }) => {
             {
                 productsData.partial.length > 0
                 && (
-                <div className="partial-compatibility">
-                    {productsData.partial.join(', ')}
-                </div>
+                    <div className="partial-compatibility">
+                        {productsData.partial.join(', ')}
+                    </div>
                 )
             }
             {
                 productsData.none.length > 0
                 && (
-                <div className="none-compatibility">
-                    {productsData.none.join(', ')}
-                </div>
+                    <div className="none-compatibility">
+                        {productsData.none.join(', ')}
+                    </div>
                 )
             }
         </div>
     );
-};
+}
 
 export default Compatibility;
 

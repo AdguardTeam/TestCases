@@ -23,17 +23,20 @@ const customStyles = {
 Modal.setAppElement(document.getElementById('root'));
 
 export default class ReadmeBtn extends React.Component {
-    state = {
-        modalIsOpen: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalIsOpen: false,
+        };
+    }
 
     openModal = () => {
         this.setState({ modalIsOpen: true });
-    }
+    };
 
     closeModal = () => {
         this.setState({ modalIsOpen: false });
-    }
+    };
 
     render() {
         const { readmeBtn, readmeUrl } = this.props;
@@ -44,7 +47,6 @@ export default class ReadmeBtn extends React.Component {
                     type="button"
                     name="Show Readme file"
                     onClick={this.openModal}
-                    rel="noopener noreferrer"
                     className={`btn readme ${readmeBtn}`}
                     title="README.md"
                 >
@@ -56,6 +58,7 @@ export default class ReadmeBtn extends React.Component {
                     style={customStyles}
                     contentLabel="README.md"
                 >
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                     <button
                         onClick={this.closeModal}
                         type="button"

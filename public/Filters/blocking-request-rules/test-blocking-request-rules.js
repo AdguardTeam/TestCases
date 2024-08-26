@@ -11,7 +11,6 @@ window.addEventListener('load', () => {
 
     agTest(1, '$ping modifier', (assert) => {
         assert.ok(
-            // eslint-disable-next-line compat/compat
             adgCheck && navigator.sendBeacon('https://adguard.com', 'Testdata'),
             'Rule with $ping modifier blocks navigator.sendBeacon request, check the devtools console',
         );
@@ -19,7 +18,6 @@ window.addEventListener('load', () => {
 
     agTest(2, '$xmlhttprequest modifier', async (assert) => {
         await assert.rejects(
-            // eslint-disable-next-line compat/compat
             fetch('https://adguard-vpn.com', { mode: 'no-cors' }),
             'Rule with $xmlhttprequest modifier should block xmlhttprequest request',
         );
@@ -27,7 +25,7 @@ window.addEventListener('load', () => {
 
     agTest(3, '$websocket modifier', (assert) => {
         const done = assert.async();
-        // eslint-disable-next-line compat/compat
+
         const websocket = new WebSocket('wss://echo.websocket.org');
         websocket.onopen = () => websocket.send('Test message');
         websocket.onerror = () => {

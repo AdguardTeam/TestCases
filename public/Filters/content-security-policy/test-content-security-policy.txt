@@ -1,0 +1,11 @@
+!
+! Title: Rules for content security policy test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-content-rules-filter
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet('log', 'scriptlet rule is executed')
+! TODO add scriptlets which use eval inside themselves

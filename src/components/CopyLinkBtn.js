@@ -12,7 +12,7 @@ export default class CopyLinkBtn extends React.Component {
                 `Link for the rules for test "${this.props.title}" have been copied to your clipboard.`,
             );
         }
-    }
+    };
 
     render() {
         const { copyLinkBtn } = this.props;

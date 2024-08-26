@@ -14,11 +14,10 @@ const EXCEPTIONS_QUERY_KEY = 'exceptions';
  * @returns {number[]} List of testcase ids to skip.
  */
 const getExceptions = (windowLocation) => {
-    // eslint-disable-next-line compat/compat
     const url = new URL(windowLocation);
     const exceptions = url.searchParams.get(EXCEPTIONS_QUERY_KEY);
     return exceptions
-        ? exceptions.split(',').map(ex => Number(ex))
+        ? exceptions.split(',').map((ex) => Number(ex))
         : [];
 };
 

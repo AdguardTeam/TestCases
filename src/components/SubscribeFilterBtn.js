@@ -20,12 +20,12 @@ const getSubscribeUrl = (rulesUrl, filterTitle, isUserscriptTest) => {
     return `abp:subscribe?location=${absoluteUrl}&title=${filterTitle}`;
 };
 
-const SubscribeFilterBtn = ({
+function SubscribeFilterBtn({
     subscribeBtn,
     rulesUrl,
     filterTitle,
     isUserscriptTest,
-}) => {
+}) {
     const subscribeUrl = getSubscribeUrl(rulesUrl, filterTitle, isUserscriptTest);
     return (
         <a
@@ -36,7 +36,7 @@ const SubscribeFilterBtn = ({
             Subscribe
         </a>
     );
-};
+}
 
 export default SubscribeFilterBtn;
 

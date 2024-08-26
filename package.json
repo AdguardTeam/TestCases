@@ -1,75 +1,80 @@
 {
-  "name": "filters-tests",
-  "version": "0.2.53",
-  "private": true,
-  "scripts": {
-    "build": "react-scripts build",
-    "watch": "react-scripts start",
-    "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
-    "build:static": "node -r esbuild-register ./buildStaticData.js",
-    "test": "react-scripts test",
-    "increment": "yarn version --patch --no-git-tag-version",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js --cache",
-    "stylelint": "stylelint ./src/styles/*.scss"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn stylelint && yarn lint && cross-env CI=true react-scripts test"
+    "name": "filters-tests",
+    "version": "0.2.53",
+    "private": true,
+    "scripts": {
+        "build": "react-scripts build",
+        "watch": "react-scripts start",
+        "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
+        "build:static": "node -r esbuild-register ./buildStaticData.js",
+        "test": "react-scripts test",
+        "increment": "yarn version --patch --no-git-tag-version",
+        "eject": "react-scripts eject",
+        "lint": "eslint . --ext .js,.ts --cache",
+        "stylelint": "stylelint ./src/styles/*.scss"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn stylelint && yarn lint && cross-env CI=true react-scripts test"
+        }
+    },
+    "stylelint": {
+        "extends": "stylelint-config-recommended-scss"
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.20.13",
+        "dotenv": "^16.3.1",
+        "http-proxy-middleware": "^2.0.6",
+        "prop-types": "^15.8.1",
+        "proxy-agent": "^6.3.0",
+        "react": "^18.2.0",
+        "react-app-polyfill": "^3.0.0",
+        "react-dom": "^18.2.0",
+        "react-markdown": "^8.0.5",
+        "react-modal": "^3.16.1",
+        "react-scripts": "^5.0.1",
+        "sass": "^1.66.1"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20240815.0",
+        "@types/mustache": "^4.2.5",
+        "@typescript-eslint/eslint-plugin": "^7.18.0",
+        "@typescript-eslint/parser": "^7.18.0",
+        "cross-env": "^7.0.3",
+        "esbuild": "^0.17.4",
+        "esbuild-register": "^3.4.2",
+        "eslint": "^8.57.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-typescript": "^18.0.0",
+        "eslint-config-react-app": "^7.0.1",
+        "eslint-plugin-compat": "^6.0.0",
+        "eslint-plugin-import": "^2.25.3",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-react": "^7.28.0",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "husky": "^3.0.3",
+        "mustache": "^4.2.0",
+        "stylelint": "^10.1.0",
+        "stylelint-config-recommended-scss": "^3.3.0",
+        "stylelint-scss": "^3.9.3",
+        "typescript": "^5.5.4",
+        "wrangler": "3.72.0"
     }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-recommended-scss"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all",
-      "ie >= 9"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "dotenv": "^16.3.1",
-    "http-proxy-middleware": "^2.0.6",
-    "prop-types": "^15.8.1",
-    "proxy-agent": "^6.3.0",
-    "react": "^18.2.0",
-    "react-app-polyfill": "^3.0.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.5",
-    "react-modal": "^3.16.1",
-    "react-scripts": "^5.0.1",
-    "sass": "^1.66.1"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230814.0",
-    "cross-env": "^7.0.3",
-    "esbuild": "^0.17.4",
-    "esbuild-register": "^3.4.2",
-    "eslint": "^7.11.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-compat": "^3.9.0",
-    "eslint-plugin-import": "^2.23.3",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-app": "^6.2.2",
-    "husky": "^3.0.3",
-    "stylelint": "^10.1.0",
-    "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.9.3",
-    "typescript": "^5.1.6",
-    "wrangler": "3.2.0"
-  }
 }

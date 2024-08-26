@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "lib": ["esnext"],
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowJs": true,
+        "checkJs": false,
+        "types": ["@cloudflare/workers-types"]
+    },
+    "include": ["src/**/*", "functions/**/*"],
+    "exclude": ["node_modules", "build"],
+}

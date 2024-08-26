@@ -17,6 +17,7 @@ const clearProperties = (...props) => {
                 // sometimes property deleting is not allowed
                 // e.g. in Safari
                 window[prop] = null;
+            // eslint-disable-next-line @typescript-eslint/no-shadow
             } catch (e) {
                 // ignore
             }
