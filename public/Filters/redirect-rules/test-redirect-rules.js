@@ -62,4 +62,14 @@ window.addEventListener('DOMContentLoaded', () => {
             '$redirect rule should have priority over basic rule with $important modifier',
         );
     });
+
+    agTest(8, '$redirect not blocked by csp', async (assert) => {
+        const iframe = document.querySelector('#case8 iframe');
+        const case8 = iframe.contentWindow.document.getElementById('case8');
+        const jsRedirected = case8.innerText === '';
+        assert.ok(
+            adgCheck && jsRedirected,
+            '$redirect url should not be blocked by csp',
+        );
+    });
 });

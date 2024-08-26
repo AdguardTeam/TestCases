@@ -27,8 +27,6 @@ Build:
     clean-working-dir: true
   docker: &docker-settings
     image: ${bamboo.dockerNode}
-    volumes:
-      ${system.YARN_DIR}: "${bamboo.cacheYarn}"
   tasks:
     - checkout:
         force-clean-build: true

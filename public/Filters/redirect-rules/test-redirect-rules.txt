@@ -23,3 +23,6 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-redirect-rules-filter
 ! Case 7
 ||*/redirect-priority-test.js$redirect=noopjs
 ||*/redirect-priority-test.js$important,csp=script-src 'self'
+
+! Case 8
+||*/csp-redirect.js$redirect=noopjs
