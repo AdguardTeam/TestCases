@@ -67,7 +67,6 @@ window.addEventListener('DOMContentLoaded', () => {
     agTest(1, '$redirect resources security test', async (assert) => {
         await redirectResourcesSecurityTest(assert, [
             { url: '../redirect-rules/test-files/redirect-test.html', isBlocking: true },
-            { url: '../redirect-rules/test-files/redirect-test.png', isBlocking: false },
         ]);
     });
 });

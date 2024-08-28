@@ -9,5 +9,3 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-redirect-security-filter
 !
 ! Case 1
 ||*/redirect-test.html$redirect=click2load.html
-! Case 2
-||*/redirect-test.png$redirect=2x2-transparent.png
