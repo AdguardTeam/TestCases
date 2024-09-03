@@ -648,7 +648,7 @@ const testsData = [
     {
         id: 48,
         title: 'Injection speed tests',
-        link: 'Filters/injection-speed/injection-speed.html',
+        link: 'Filters/injection-speed/index.html',
         rulesUrl: 'Filters/injection-speed/test-injection-speed.txt',
         compatibility: {
             // TODO improve compatibility later

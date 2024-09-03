@@ -19,6 +19,12 @@ To launch functions in the dev mode run:
 wrangler pages dev build
 ```
 
+If you want to update public directory in the watch mode run:
+
+```
+yarn build:watch
+```
+
 ### Public static data
 
 While making any [tests data](#tests-data) changes, run `yarn build:static` to rebuild public static data needed for autotesting.
