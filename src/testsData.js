@@ -636,7 +636,7 @@ const testsData = [
     },
     {
         id: 47,
-        title: 'Content security policy tests',
+        title: 'Content security policy (CSP) tests',
         link: 'csp',
         rulesUrl: 'Filters/content-security-policy/test-content-security-policy.txt',
         compatibility: {

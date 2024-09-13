@@ -4,6 +4,7 @@ import { caseTemplate, rootTemplate } from './templates';
 type Policy = {
     key: string,
     value: string,
+    note?: string,
     asMetaTag?: boolean,
 };
 
@@ -45,6 +46,7 @@ const cases: Cases = {
         policy: {
             key: HeaderKey.ContentSecurityPolicy,
             value: 'trusted-types one two default',
+            note: 'Supported only for Scriptlets, not JS rules',
         },
     },
     [CaseId.HeaderTrustedTypesAdguard]: {
@@ -80,6 +82,7 @@ const cases: Cases = {
             base-uri 'none';
             frame-ancestors 'none';
         `,
+            note: 'Supported only for Scriptlets, not JS rules',
         },
     },
     [CaseId.MetaTrustedTypesDefault]: {
