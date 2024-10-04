@@ -1,0 +1,15 @@
+!
+! Title: Rules for $permissions rules test for MV3
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+[$path=|/Filters/permissions-rules-mv3/test-permissions-rules-mv3]###subscribe-to-test-permissions-rules-mv3-filter
+!
+
+! Case 1
+||*/Filters/permissions-rules-mv3$permissions=autoplay=(self "https://example.com"),domain=testcases.agrd.dev
+
+! Case 2
+||*/Filters/permissions-rules-mv3/subpage$permissions=geolocation=(self "https://example.com"),subdocument,domain=testcases.agrd.dev

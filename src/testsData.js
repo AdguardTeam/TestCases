@@ -656,6 +656,29 @@ const testsData = [
         },
         manual: true,
     },
+    /**
+     * TODO: This is copy of `$permissions rules test` but slightly
+     * adjusted for MV3, we may remove it after AG-22490 done.
+     */
+    {
+        id: 49,
+        title: '$permissions rules test for MV3',
+        link: 'Filters/permissions-rules-mv3/test-permissions-rules-mv3.html',
+        rulesUrl: 'Filters/permissions-rules-mv3/test-permissions-rules-mv3.txt',
+        compatibility: {
+            none: [
+                ...CORELIBS_PRODUCTS,
+                PRODUCT_TYPES.CHR,
+                PRODUCT_TYPES.FOX,
+                PRODUCT_TYPES.EDG,
+                PRODUCT_TYPES.OPR,
+                PRODUCT_TYPES.SAF,
+                PRODUCT_TYPES.IOS,
+                ...LEGACY_PRODUCTS,
+            ],
+        },
+        readmeUrl: 'Filters/permissions-rules-mv3/README.md',
+    },
 ];
 
 export default testsData;
