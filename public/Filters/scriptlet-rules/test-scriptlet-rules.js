@@ -41,6 +41,10 @@ const clearProperties = (...props) => {
     });
 };
 
+const clearCookie = (cName) => {
+    document.cookie = `${cName}=; path=/; secure; max-age=0`;
+};
+
 window.addEventListener('load', () => {
     const adgCheck = isSubscribed('subscribe-to-test-scriptlet-rules-filter');
 
@@ -379,6 +383,17 @@ window.addEventListener('load', () => {
         assert.throws(() => {
             window.PopAds = 'Som value';
         }, /Reference/, 'Try to write in "popns" prop');
+    });
+
+    agTest(18, 'trusted-set-cookie', (assert) => {
+        const hostCookie = '__Host-prefix';
+        const secureCookie = '__Secure-prefix';
+
+        assert.strictEqual(document.cookie.includes(hostCookie), true, '"__Host-prefix" cookie has been set');
+        assert.strictEqual(document.cookie.includes(secureCookie), true, '"__Secure-prefix" cookie has been set');
+
+        clearCookie(hostCookie);
+        clearCookie(secureCookie);
     });
 
     // no tests for

@@ -85,3 +85,8 @@ testcases.agrd.dev,pages.dev#%#//scriptlet("remove-cookie")
 ! prevent-popads-net
 !
 testcases.agrd.dev,pages.dev#%#//scriptlet("prevent-popads-net")
+!
+! trusted-set-cookie
+!
+testcases.agrd.dev,pages.dev#%#//scriptlet("trusted-set-cookie", "__Host-prefix", "host_prefix")
+testcases.agrd.dev,pages.dev#%#//scriptlet("trusted-set-cookie", "__Secure-prefix", "secure_prefix")
