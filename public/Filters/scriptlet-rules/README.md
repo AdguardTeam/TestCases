@@ -5,4 +5,4 @@ Supported by AdGuard for iOS since iOS 15 and AdGuard for iOS v4.3
 Supported by CoreLibs since v1.16
 
 ## Scriptlets trusted-set-cookie rules tests
-Supported by scriptlets after version 1.11.27
+Supported by Scriptlets v1.12.1 or later
