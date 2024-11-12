@@ -17,6 +17,6 @@ window.addEventListener('load', () => {
     });
 
     agTest(3, 'script rules order', (assert) => {
-        assert.ok(window.orderTestPassed, 'Rules have been applied in proper order');
+        assert.ok(window.orderTest === "1234", 'Rules have been applied in proper order');
     });
 });

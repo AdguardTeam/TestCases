@@ -16,8 +16,8 @@ testcases.agrd.dev,pages.dev#%#window.adg_test=false;
 testcases.agrd.dev,pages.dev#@%#window.adg_test=false;
 !
 ! Case 3
-testcases.agrd.dev,pages.dev#%#function finalStep() { window.orderTestPassed = true; }
-testcases.agrd.dev,pages.dev#%#function previousStep() { finalStep(); }
-testcases.agrd.dev,pages.dev#%#var otherStep = () => { previousStep(); }
-testcases.agrd.dev,pages.dev#%#let someOtherStep = () => { otherStep(); }
-testcases.agrd.dev,pages.dev#%#someOtherStep();
+testcases.agrd.dev,pages.dev#%#window.orderTest = ""
+testcases.agrd.dev,pages.dev#%#window.orderTest += "1"
+testcases.agrd.dev,pages.dev#%#window.orderTest += "2"
+testcases.agrd.dev,pages.dev#%#window.orderTest += "3"
+testcases.agrd.dev,pages.dev#%#window.orderTest += "4"
