@@ -3,16 +3,16 @@
     "version": "0.2.64",
     "private": true,
     "scripts": {
-        "build": "react-scripts build",
-        "watch": "react-scripts start",
-        "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
-        "build:static": "node -r esbuild-register ./buildStaticData.js",
+        "serve": "react-scripts start",
         "test": "react-scripts test",
-        "increment": "yarn version --patch --no-git-tag-version",
         "eject": "react-scripts eject",
+        "build": "react-scripts build",
+        "build:static": "node -r esbuild-register ./buildStaticData.js",
+        "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'yarn build'",
+        "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
+        "increment": "yarn version --patch --no-git-tag-version",
         "lint": "eslint . --ext .js,.ts --cache",
-        "stylelint": "stylelint ./src/styles/*.scss",
-        "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'yarn build'"
+        "stylelint": "stylelint ./src/styles/*.scss"
     },
     "husky": {
         "hooks": {
@@ -38,6 +38,9 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "resolutions": {
+        "fork-ts-checker-webpack-plugin": "^6.5.3"
     },
     "dependencies": {
         "@babel/runtime": "^7.20.13",

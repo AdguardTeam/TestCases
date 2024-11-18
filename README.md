@@ -46,7 +46,7 @@ While making any [tests data](#tests-data) changes, run `yarn build:static` to r
    mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
    ```
 6. Build static content: `yarn build`
-7. Run the local server: `yarn watch`
+7. Run the local server: `yarn serve`
 
 The app will be available on `https://local.testcases.agrd.dev:4000/`
 
@@ -71,7 +71,7 @@ If you are using Windows, you can run the app locally with the following steps:
    mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
    ```
 6. Build static content: `yarn build`
-7. Run the local server: `yarn watch`
+7. Run the local server: `yarn serve`
 
 > **Note 1:** if you want to uninstall the root certificate, you can use `mkcert -uninstall` command.
 

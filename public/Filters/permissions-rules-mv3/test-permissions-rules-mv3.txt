@@ -5,11 +5,14 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-[$path=|/Filters/permissions-rules-mv3/test-permissions-rules-mv3]###subscribe-to-test-permissions-rules-mv3-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-permissions-rules-mv3-filter
 !
 
 ! Case 1
-||*/Filters/permissions-rules-mv3$permissions=autoplay=(self "https://example.com"),domain=testcases.agrd.dev
+! Excluded `,domain=testcases.agrd.dev` part, because there is a bug in
+! Chrome, when browser cannot correctly detect initiator domain for requests
+! from omnibox and our integration tests it this case will fail (AG-37801).
+||*/Filters/permissions-rules-mv3$permissions=autoplay=(self "https://example.com")
 
 ! Case 2
 ||*/Filters/permissions-rules-mv3/subpage$permissions=geolocation=(self "https://example.com"),subdocument,domain=testcases.agrd.dev

@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-[$path=|/Filters/csp-rules/test-csp-rules]###subscribe-to-test-csp-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-csp-rules-filter
 !
 ! Case 1
 ||*/Filters/csp-rules/test-csp-rules$csp=script-src 'self'

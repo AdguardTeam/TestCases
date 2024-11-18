@@ -5,7 +5,7 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-[$path=|/Filters/permissions-rules/test-permissions-rules]###subscribe-to-test-permissions-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-permissions-rules-filter
 !
 
 ! Case 1
