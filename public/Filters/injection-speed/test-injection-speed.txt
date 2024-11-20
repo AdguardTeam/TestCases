@@ -1,5 +1,5 @@
 !
-! Title: Rules for content security policy test
+! Title: Rules for Injection speed test
 !
 ! Filter to be used for testing purposes
 ! https://testcases.agrd.dev
