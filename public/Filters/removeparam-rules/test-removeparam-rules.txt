@@ -77,3 +77,6 @@ $xmlhttprequest,removeparam=p2case9
 ! Case 13
 ||testcases.agrd.dev$xmlhttprequest,removeparam=p1case13
 ||pages.dev$xmlhttprequest,removeparam=p1case13
+! Case 14
+||testcases.agrd.dev$xmlhttprequest,removeparam=%24p1case14
+||pages.dev$xmlhttprequest,removeparam=%24p1case14

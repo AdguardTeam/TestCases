@@ -182,4 +182,16 @@ window.addEventListener('DOMContentLoaded', () => {
             'Rule with $removeparam removes parameter for POST request',
         );
     });
+
+    agTest(14, '$removeparam rule with URL encoding', async (assert) => {
+        const testUrl = `${baseUrl}/?p1case14=true&%24p1case14=true`;
+        log('\nCase 14:');
+        log(`Requesting ${testUrl}`);
+        const result = await request(testUrl);
+        log(`result.url is ${result.url}`);
+        assert.ok(
+            result.url.includes('p1case14=true') && !result.url.includes('%24p1case14=true'),
+            '$removeparam rule removes parameters from encoded url',
+        );
+    });
 });
