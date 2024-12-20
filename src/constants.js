@@ -7,6 +7,7 @@ import { getObjectValues } from './helpers/object-utils';
 export const USERSCRIPTS_TEST_IDS = [
     20,
     21,
+    50,
 ];
 
 export const PRODUCT_TYPES = {

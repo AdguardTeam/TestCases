@@ -644,7 +644,7 @@ const testsData = [
     },
     {
         id: 47,
-        title: 'Content security policy (CSP) tests',
+        title: 'JS and Scriptlet rules: Content security policy (CSP) tests',
         link: 'csp',
         rulesUrl: 'Filters/content-security-policy/test-content-security-policy.txt',
         compatibility: {
@@ -686,6 +686,16 @@ const testsData = [
             ],
         },
         readmeUrl: 'Filters/permissions-rules-mv3/README.md',
+    },
+    {
+        id: 50,
+        title: 'Userscripts: Content security policy (CSP) tests',
+        link: 'userscripts-csp',
+        rulesUrl: 'Userscripts/cspTester/csp-tester.user.js',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+        manual: true,
     },
 ];
 
