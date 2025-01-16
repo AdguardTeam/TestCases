@@ -20,8 +20,11 @@ window.addEventListener('load', function () {
         assert.ok(condition1 && condition2, '$generichide exception rule disables all generic cosmetic rules');
     });
 
-    agTest(2, '$generichide rule and js rule', function (assert) {
+    agTest(2, '$generichide rule and JS rule', function (assert) {
         const banner1 = window.document.querySelector('#case-1-generichide > .test-banner1');
-        assert.ok(banner1.style.width === '200px', "$generichide exception rule doesn't disable js rules");
+        assert.ok(
+            banner1.style.width === '200px',
+            'JS rule is not applied, $generichide exception rule SHOULD NOT disable specific JS rule',
+        );
     });
 });
