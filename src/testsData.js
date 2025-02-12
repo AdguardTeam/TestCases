@@ -68,10 +68,9 @@ const testsData = [
         compatibility: {
             partial: [
                 // 6 will work after AG-24593 done.
-                // 7 and 8 will work after AG-17605 done.
                 {
                     product: PRODUCT_TYPES.MV3,
-                    cases: [6, 7, 8],
+                    cases: [6],
                 },
             ],
         },
