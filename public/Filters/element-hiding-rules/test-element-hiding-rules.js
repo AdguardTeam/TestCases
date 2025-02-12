@@ -54,16 +54,19 @@ window.addEventListener('load', function () {
 
     agTest(7, '$third-party modifier', function (assert) {
         const testImg = document.querySelector('#case-7-third-party > img');
-        if (testImg) {
-            // browser extensions make image zero-size
-            assert.ok(
-                window.getComputedStyle(testImg).height === '0px',
-                'rule with $third-party modifier blocks the test-image',
-            );
-        } else {
+        if (!testImg) {
             // corelibs cuts image from DOM
             assert.ok(true, 'rule with $third-party modifier blocks the test-image');
+            return;
         }
+
+        // For MV2 we explicitly hide blocked element in DOM via injecting inline style.
+        // For MV3 this is done by browser itself.
+        // Description related only to elements which are blocked by network rules.
+        assert.ok(
+            testImg.getBoundingClientRect().height === 0,
+            'rule with $third-party modifier blocks the test-image',
+        );
     });
 
     agTest(8, '$subdocument modifier', function (assert) {
@@ -81,15 +84,21 @@ window.addEventListener('load', function () {
                     && iframe1.contentWindow.document.querySelector('body').innerHTML;
                 assert.ok(iframe1InnerHtml === '', 'Rule with subdocument modifier blocks iframe');
             } catch (e) {
-                // Chromium browsers make iframe invisible (visibility: hidden)
-                const iframe1Visibility = window.getComputedStyle(iframe1).visibility;
-                assert.ok(iframe1Visibility === 'hidden', 'Rule with subdocument modifier blocks iframe');
+                // For MV2 we explicitly hide blocked element in DOM via injecting inline style.
+                // For MV3 this is done by browser itself.
+                // Description related only to elements which are blocked by network rules.
+                assert.ok(
+                    iframe1.getBoundingClientRect().height === 0,
+                    'Rule with subdocument modifier blocks iframe',
+                );
             }
         }
 
-        const iframe2Visibility = window.getComputedStyle(document.getElementById('iframe2-case-8')).visibility;
+        // For MV2 we explicitly hide blocked element in DOM via injecting inline style.
+        // For MV3 this is done by browser itself.
+        // Description related only to elements which are blocked by network rules.
         assert.ok(
-            adgCheck && iframe2Visibility === 'visible',
+            adgCheck && document.getElementById('iframe2-case-8').getBoundingClientRect().height !== 0,
             'Exception rule with subdocument modifier unblocks iframe',
         );
     });
