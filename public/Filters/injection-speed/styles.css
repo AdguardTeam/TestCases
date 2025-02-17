@@ -21,3 +21,16 @@
 .mt-5 {
     margin-top: 40px;
 }
+
+p {
+    margin: 0;
+}
+
+.img-border {
+    border: 1px solid #ccc;
+}
+
+.note {
+    margin-top: 16px;
+    margin-left: 40px;
+}

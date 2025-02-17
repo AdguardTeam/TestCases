@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Note: sha is added only for two inline scripts -->
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="script-src 'sha256-4lqVHj4azlKKnv/taP8Iv/iUAJvKv8XN+g04rNX53Tk=' 'sha256-BVYhKvhjgh2v1VTD97mSr3VHpd+3zCPzAM1oYIfd/9E='"
+    >
+    <script>
+        console.log(`${Date.now()} inline script in the head`);
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(`${Date.now()} DOMContentLoaded`);
+        })
+        document.addEventListener('transitionend', () => {
+            console.log(`${Date.now()} transitionend`);
+        })
+        document.addEventListener('readyState', () => {
+            console.log(`${Date.now()} readyState ${document.readyState}`);
+        })
+        window.onload = () => {
+            console.log(`${Date.now()} window on load`);
+        }
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injection Speed Test — Simple page with CSP 'script-src'</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h1>Injection Speed Test — Simple page with CSP 'script-src'</h1>
+
+    <section class="description">
+        <h2 class="h4 mb-3">How to Test</h2>
+        <article>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Open devtools</li>
+                <li class="list-group-item">Reload page</li>
+                <li class="list-group-item">
+                    <p>
+                        Make sure that script and scriptlet rules were injected at least before the inline script at the end.
+                    </p>
+                    <img
+                        src="simple-with-csp--ok.png"
+                        width="600px"
+                        class="mt-2 img-border"
+                    />
+                </li>
+            </ol>
+            <div class="note">
+                <p>
+                    ⚠️ <strong>Note:</strong> In Firefox, CSP may prevent execution of injected scripts,
+                    but they will be executed eventually — as soon as possible.
+                    <br>
+                    Related:
+                    <a href="https://github.com/AdguardTeam/AdguardBrowserExtension/issues/1733">
+                        AdguardBrowserExtension#1733
+                    </a>
+                </p>
+                <img
+                    src="simple-with-csp--firefox-error.png"
+                    width="600px"
+                    class="mt-2 img-border"
+                />
+            </div>
+        </article>
+    </section>
+
+    <p class="mt-4"><a href="../">Go Back</a></p>
+</div>
+
+<script>
+    console.log(`${Date.now()} inline script in the end`);
+</script>
+
+</body>
+
+</html>
