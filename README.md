@@ -79,23 +79,6 @@ If you are using Windows, you can run the app locally with the following steps:
 > which means two different hosts files, two certificate store, etc.
 > Its better to use it on Windows directly.
 
-### Test on surge.sh
-
-Available domains can be checked by `surge list`.
-
-If there is not any domain, set up surge first:
-<https://surge.sh/help/getting-started-with-surge>
-
-Then:
-
-```text
-yarn build
-cd build
-surge --domain=<available-domain>.surge.sh
-```
-
-Enjoy your testing at `<available-domain>.surge.sh`.
-
 ## <a name="tests-data"></a> Manage tests list
 
 The main data file is `./src/testsData.js`
