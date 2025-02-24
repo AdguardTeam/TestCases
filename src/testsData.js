@@ -251,7 +251,7 @@ const testsData = [
     },
     {
         id: 17,
-        title: 'Script rules',
+        title: 'Script rules (JS/JavaScript)',
         link: 'Filters/script-rules/test-script-rules.html',
         rulesUrl: 'Filters/script-rules/test-script-rules.txt',
         compatibility: {
