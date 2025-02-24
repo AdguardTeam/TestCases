@@ -19,4 +19,11 @@ window.addEventListener('load', () => {
     agTest(3, 'script rules order', (assert) => {
         assert.ok(window.orderTest === '1234', 'Rules have been applied in proper order');
     });
+
+    agTest(4, 'script rule applying in sub frame', (assert) => {
+        assert.ok(window.__testCase4, 'Script rule for MAIN frame works');
+
+        const subFrame = document.querySelector('#subFrame4');
+        assert.ok(subFrame.contentWindow.__testCase4, 'Script rule for SUB frame works');
+    });
 });

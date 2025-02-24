@@ -37,3 +37,5 @@ testcases.agrd.*,surge.*,pages.*###case-5-wildcard-for-tld > .test-banner
 @@||*/iframe-test-2.html^$subdocument,domain=testcases.agrd.dev|pages.dev
 ! Test case 9: pseudo-class ':has()'
 testcases.agrd.dev,pages.dev###case9.banner:has(a.banner-link)
+! Test case 10: element hiding rule for element in sub frame
+testcases.agrd.dev,pages.dev##.subCase10

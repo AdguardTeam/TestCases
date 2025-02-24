@@ -21,3 +21,6 @@ testcases.agrd.dev,pages.dev#%#window.orderTest += "1"
 testcases.agrd.dev,pages.dev#%#window.orderTest += "2"
 testcases.agrd.dev,pages.dev#%#window.orderTest += "3"
 testcases.agrd.dev,pages.dev#%#window.orderTest += "4"
+!
+! Case 4
+testcases.agrd.dev,pages.dev#%#window.__testCase4 = true;
