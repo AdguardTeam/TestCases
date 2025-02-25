@@ -108,6 +108,27 @@ window.addEventListener('load', function () {
         assert.ok(adgCheck && window.getComputedStyle(case9).display === 'none');
     });
 
+    agTest(10, 'element hiding rule for elements in main and sub frames', (assert) => {
+        // this test case is especially needed for Firefox to check styles injecting speed. AG-40169
+        assert.ok(document.querySelector('#case10'), '#case10 element is present');
+
+        const mainFrameElement = document.querySelector('#case10 > #subCase10-main-match');
+        assert.ok(
+            adgCheck && getComputedStyle(mainFrameElement).display === 'none',
+            'div[class="subCase10"] in MAIN frame should be hidden',
+        );
+
+        const frame = document.querySelector('#case10 > #subFrame10');
+        const subDoc = frame.contentDocument || frame.contentWindow.document;
+
+        const subFrameElement = subDoc.querySelector('#subCase10-sub-match');
+
+        assert.ok(
+            adgCheck && getComputedStyle(subFrameElement).display === 'none',
+            'div[class="subCase10"] in SUB frame should be hidden',
+        );
+    });
+
     // Add new test cases here
     // TODO: Generic element-hiding rule
     // TODO: Domain exclusion: ~adguardteam.github.io##css
