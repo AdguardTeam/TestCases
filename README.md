@@ -50,7 +50,8 @@ While making any [tests data](#tests-data) changes, run `yarn build:static` to r
 
 The app will be available on `https://local.testcases.agrd.dev:4000/`
 
-> **Please note, that AdGuard for Mac does not filter localhost connections!**.
+> Please note that AdGuard for Mac does not filter localhost connections by default.
+> It can be enabled manually in `Advanced settings` -> `network.filtering.localhost`.
 
 ### Test on the local machine (Windows)
 
@@ -78,28 +79,6 @@ If you are using Windows, you can run the app locally with the following steps:
 > **Note 2:** it is not recommended to run the app on WSL2, because its an OS withing an OS,
 > which means two different hosts files, two certificate store, etc.
 > Its better to use it on Windows directly.
-
-### Test on surge.sh
-
-Available domains can be checked by `surge list`.
-
-If there is not any domain, set up surge first:
-<https://surge.sh/help/getting-started-with-surge>
-
-Then:
-
-```text
-yarn build
-cd build
-surge --domain=<available-domain>.surge.sh
-```
-
-<!-- TODO: make sure that surge.sh is present in the filtering rules. AG-40268 -->
-
-Enjoy your testing at `<available-domain>.surge.sh`.
-
-> Testing on surge.sh may be useful, since AdGuard for Mac may not filter localhost connections.
-> That's why [testing locally](#test-local-macos) may not be enough.
 
 ## <a name="tests-data"></a> Manage tests list
 
