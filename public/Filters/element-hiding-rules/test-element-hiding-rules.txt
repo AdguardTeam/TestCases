@@ -5,37 +5,37 @@
 ! https://testcases.agrd.dev
 !
 ! Hide warning
-testcases.agrd.dev,pages.dev,surge.sh###subscribe-to-test-element-hiding-rules-filter
+testcases.agrd.dev,pages.dev###subscribe-to-test-element-hiding-rules-filter
 ! Test case 1: domain-specific elemhide rule
-testcases.agrd.dev,pages.dev,surge.sh###case-1-elemhide > .test-banner
+testcases.agrd.dev,pages.dev###case-1-elemhide > .test-banner
 ! Test case 2: generic elemhide rule
 ###case-2-generic-elemhide > .test-banner
 ! Test case 3: elemhide rule exception
 ###case-3-elemhide-exception > .test-banner
-testcases.agrd.dev,pages.dev,surge.sh#@##case-3-elemhide-exception > .test-banner
+testcases.agrd.dev,pages.dev#@##case-3-elemhide-exception > .test-banner
 ! Test case 3: wildcard exception
-testcases.agrd.dev,pages.dev,surge.sh###case-3-elemhide-exception > h1
+testcases.agrd.dev,pages.dev###case-3-elemhide-exception > h1
 *#@##case-3-elemhide-exception > h1
 ! Test case 3: generic exception
-testcases.agrd.dev,pages.dev,surge.sh###case-3-elemhide-exception > h2
+testcases.agrd.dev,pages.dev###case-3-elemhide-exception > h2
 #@##case-3-elemhide-exception > h2
 ! Test case 3: generic exception for generic elemhide
 ###case-3-elemhide-exception > h3
 #@##case-3-elemhide-exception > h3
 ! Test case 4: domain exclusion
-~testcases.agrd.dev,~pages.dev,~surge.sh###case-4-domain-exclusion > .test-banner
+~testcases.agrd.dev,~pages.dev###case-4-domain-exclusion > .test-banner
 ! Test case 5: wildcard for tld
 testcases.agrd.*,pages.*###case-5-wildcard-for-tld > .test-banner
 ! Test case 6: wildcard for tld support with $domain modifier
-||*/tld-test-files/$image,domain=testcases.agrd.*|surge.*|pages.*
-||*/tld*$script,domain=testcases.agrd.*|surge.*|pages.*
+||*/tld-test-files/$image,domain=testcases.agrd.*|pages.*
+||*/tld*$script,domain=testcases.agrd.*|pages.*
 ! Test case 7: $third-party modifier
 ||antibanner.net^$third-party
 ! Test case 8: $subdocument modifier
-||*/iframe-test-1.html^$subdocument,domain=testcases.agrd.dev|pages.dev|surge.sh
-||*/iframe-test-2.html^$domain=testcases.agrd.dev|pages.dev|surge.sh
-@@||*/iframe-test-2.html^$subdocument,domain=testcases.agrd.dev|pages.dev|surge.sh
+||*/iframe-test-1.html^$subdocument,domain=testcases.agrd.dev|pages.dev
+||*/iframe-test-2.html^$domain=testcases.agrd.dev|pages.dev
+@@||*/iframe-test-2.html^$subdocument,domain=testcases.agrd.dev|pages.dev
 ! Test case 9: pseudo-class ':has()'
-testcases.agrd.dev,pages.dev,surge.sh###case9.banner:has(a.banner-link)
+testcases.agrd.dev,pages.dev###case9.banner:has(a.banner-link)
 ! Test case 10: element hiding rule for element in sub frame
-testcases.agrd.dev,pages.dev,surge.sh##.subCase10
+testcases.agrd.dev,pages.dev##.subCase10
