@@ -1,0 +1,20 @@
+!
+! Title: Rules for $header rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-header-rules-filter
+!
+! Case 1
+||*/httpbin/response-headers^$header=case1,script
+!
+! Case 2
+||httpbin.agrd.workers.dev^$header=case2,third-party
+!
+! Case 3
+||httpbin.agrd.workers.dev^$header=case3,domain=testcases.agrd.dev|pages.dev
+!
+! Case 4
+||*/httpbin/response-headers/TestHeader^$header=case4,match-case
