@@ -705,7 +705,7 @@ const testsData = [
             none: [
                 ...SAFARI_CONVERTER_LIB_PRODUCTS,
                 ...LEGACY_PRODUCTS,
-                PRODUCT_TYPES.MV3,
+                PRODUCT_TYPES.MV3, // TODO: AG-41087
             ],
         },
         readmeUrl: 'Filters/header-rules/README.md',
