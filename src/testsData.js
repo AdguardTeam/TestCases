@@ -696,6 +696,20 @@ const testsData = [
         },
         manual: true,
     },
+    {
+        id: 51,
+        title: '$header rules',
+        link: 'Filters/header-rules/test-header-rules.html',
+        rulesUrl: 'Filters/header-rules/test-header-rules.txt',
+        compatibility: {
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+                PRODUCT_TYPES.MV3, // TODO: AG-41087
+            ],
+        },
+        readmeUrl: 'Filters/header-rules/README.md',
+    },
 ];
 
 export default testsData;
