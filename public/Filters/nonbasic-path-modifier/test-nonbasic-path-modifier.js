@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(1, 'plain match', (assert) => {
         assert.ok(document.querySelector('#case1'));
-        const frame = document.querySelector('#case1 > #subpage1');
+        const frame = document.querySelector('#case1 > [id="case1-subpage1"]');
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case1');
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(2, 'plain no match', (assert) => {
         assert.ok(document.querySelector('#case2'));
-        const frame = document.querySelector('#case2 > #subpage1');
+        const frame = document.querySelector('#case2 > [id="case2-subpage1"]');
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case2');
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(3, 'regex match', (assert) => {
         assert.ok(document.querySelector('#case3'));
-        const frame = document.querySelector('#case3 > #subpage1');
+        const frame = document.querySelector('#case3 > [id="case3-subpage1"]');
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case3');
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     agTest(4, 'regex no match', (assert) => {
         assert.ok(document.querySelector('#case4'));
-        const frame = document.querySelector('#case4 > #subpage1');
+        const frame = document.querySelector('#case4 > [id="case4-subpage1"]');
         const subDoc = frame.contentDocument || frame.contentWindow.document;
 
         const element = subDoc.querySelector('#case4');
