@@ -27,4 +27,8 @@ window.addEventListener('load', () => {
     agTest(5, 'exceptions', (assert) => {
         assert.ok(adgCheck && document.querySelector('#case5'));
     });
+
+    agTest(6, 'attribute without value', (assert) => {
+        assert.notOk(document.querySelector('#case6'));
+    });
 });
