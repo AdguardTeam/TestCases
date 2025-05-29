@@ -1,6 +1,6 @@
 {
     "name": "filters-tests",
-    "version": "0.2.76",
+    "version": "0.2.77",
     "private": true,
     "scripts": {
         "serve": "react-scripts start",
