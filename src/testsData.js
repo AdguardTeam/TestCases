@@ -233,7 +233,7 @@ const testsData = [
     },
     {
         id: 15,
-        title: 'Content rules',
+        title: 'Content (HTML filtering) rules',
         link: 'Filters/content-rules/test-content-rules.html',
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
         compatibility: {

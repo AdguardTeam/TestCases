@@ -14,9 +14,9 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-replace-rules-filter
 ||pages.dev/*/case1-text-response.txt$replace=/adguard/Test passed/i
 !
 !
-! Case 2: response is more then 3MB
-||testcases.agrd.dev/*/case2-response-over-3mb.txt$replace=/Adguard/Replaced/i
-||pages.dev/*/case2-response-over-3mb.txt$replace=/Adguard/Replaced/i
+! Case 2: response is more then 10MB
+||testcases.agrd.dev/*/case2-response-over-10mb.txt$replace=/Adguard/Replaced/i
+||pages.dev/*/case2-response-over-10mb.txt$replace=/Adguard/Replaced/i
 !
 !
 ! Case 3: using with other rules (without $replace modifier) for a same request

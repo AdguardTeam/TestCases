@@ -20,11 +20,11 @@ window.addEventListener('load', () => {
         assert1.equal(case1, 'Test passed', '$replace rule works');
     });
 
-    agTest(2, 'response is more then 3MB', async (assert) => {
-        const case2 = await download('test-files/case2-response-over-3mb.txt');
+    agTest(2, 'response is more then 10MB', async (assert) => {
+        const case2 = await download('test-files/case2-response-over-10mb.txt');
         assert.ok(
             adgCheck && case2.substring(0, 7) === 'Adguard',
-            '$replace rule should not be applied to respond more than 3Mb',
+            '$replace rule should not be applied to respond more than 10MB',
         );
     });
 
