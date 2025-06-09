@@ -198,7 +198,7 @@ const testsData = [
         rulesUrl: 'Filters/csp-rules/test-csp-rules.txt',
         compatibility: {
             partial: [
-                // Allowrules not supported.
+                // Exception rules not supported.
                 {
                     product: PRODUCT_TYPES.MV3,
                     cases: [3],
@@ -239,6 +239,7 @@ const testsData = [
         compatibility: {
             none: NO_REPLACE_CONTENT_PRODUCTS,
         },
+        readmeUrl: 'Filters/content-rules/README.md',
     },
     {
         id: 16,
