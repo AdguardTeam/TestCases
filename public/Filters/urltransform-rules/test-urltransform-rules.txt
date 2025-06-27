@@ -12,5 +12,12 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-urltransform-rules-filter
 !
 ! Case 2
 ||httpbin.agrd.dev^$urltransform=/royalmail/post/
+!
 ! Case 3 and 4
 ||example.org^$urltransform=/^https:\/\/example.org/https:\/\/httpbin.agrd.dev/
+!
+! Case 5
+||httpbin.agrd.dev^$script,urltransform=/^\/status\/502$/\/status\/200/
+!
+! Case 6
+||httpbin.agrd.dev^$image,urltransform=/^\/status\/503$/\/status\/200/
