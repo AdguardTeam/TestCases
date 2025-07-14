@@ -4,6 +4,10 @@ import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
+function isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
 /**
  * Before doing the test, import test-extended-css-rules.txt to AdGuard
  */
@@ -98,7 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const frame = document.querySelector('#case22 > #frame1');
 
         // Wait until the frame was fully loaded.
-        await new Promise(resolve => {
+        await new Promise((resolve) => {
             if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
                 if (isSafari()) {
                     // Slow it down for Safari (Web Extension is slower there)

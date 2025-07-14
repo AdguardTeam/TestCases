@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
         const frame = document.querySelector('#case1 > #frame1');
 
         // Wait until the frame was fully loaded.
-        await new Promise(resolve => {
+        await new Promise((resolve) => {
             if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
                 if (isSafari()) {
                     // Slow it down for Safari (Web Extension is slower there)
@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
         const frame = document.querySelector('#case2 > #frame2');
 
         // Wait until the frame was fully loaded.
-        await new Promise(resolve => {
+        await new Promise((resolve) => {
             if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
                 if (isSafari()) {
                     // Slow it down for Safari (Web Extension is slower there)
@@ -62,7 +62,7 @@ window.addEventListener('load', () => {
         const frame = document.querySelector('#case3 > #frame3');
 
         // Wait until the frame was fully loaded.
-        await new Promise(resolve => {
+        await new Promise((resolve) => {
             if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
                 if (isSafari()) {
                     // Slow it down for Safari (Web Extension is slower there)
