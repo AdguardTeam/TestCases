@@ -6,5 +6,12 @@
 !
 ! Hide warning
 testcases.agrd.dev,pages.dev###subscribe-to-test-extended-css-iframejs-injection
-! Case 1
+
+! Case 1 (created by JS + URL)
 testcases.agrd.dev,pages.dev#?##inframe1:has(.content)
+
+! Case 2 (about:blank)
+testcases.agrd.dev,pages.dev#?##inframe2:has(.content)
+
+! Case 3 (about:srcdoc)
+testcases.agrd.dev,pages.dev#?##inframe3:has(.content)

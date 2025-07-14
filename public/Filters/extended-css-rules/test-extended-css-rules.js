@@ -94,8 +94,23 @@ window.addEventListener('DOMContentLoaded', () => {
         assert.equal(window.getComputedStyle(case21).display, 'none');
     });
 
-    agTest(22, 'rules injection into iframe with localsource', (assert) => {
+    agTest(22, 'rules injection into iframe with localsource', async (assert) => {
         const frame = document.querySelector('#case22 > #frame1');
+
+        // Wait until the frame was fully loaded.
+        await new Promise(resolve => {
+            if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
+                if (isSafari()) {
+                    // Slow it down for Safari (Web Extension is slower there)
+                    setTimeout(resolve, 50);
+                } else {
+                    resolve();
+                }
+            } else {
+                frame.addEventListener('load', resolve, { once: true });
+            }
+        });
+
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
         assert.ok(
             innerDoc.querySelector('#inframe1').style.display === 'none',

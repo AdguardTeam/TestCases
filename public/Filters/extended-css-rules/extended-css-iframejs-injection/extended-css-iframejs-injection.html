@@ -18,13 +18,33 @@
     <script src="../../qunit/qunit.js"></script>
 
     <!-- Hiding container from user's sight -->
-    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <style type="text/css">
+        .container {
+            position: absolute;
+            top: -2500px;
+        }
+    </style>
     <div class="container">
         <div id="case1">
-            <iframe id="frame1"></iframe>
             <script>
-                const createIframe = () => {
-                    const iframe = document.querySelector('#frame1');
+                const createIframeURL = () => {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = "test-files/frame1.html";
+                    iframe.style.width = "500px";
+                    iframe.style.height = "400px";
+                    iframe.setAttribute('id', 'frame1');
+                    document.querySelector('#case1').appendChild(iframe);
+                };
+
+                document.addEventListener("DOMContentLoaded", createIframeURL);
+            </script>
+        </div>
+
+        <div id="case2">
+            <iframe id="frame2"></iframe>
+            <script>
+                const createIframeAboutBlank = () => {
+                    const iframe = document.querySelector('#frame2');
                     iframe.style.width = "500px";
                     iframe.style.height = "400px";
                     const iframeHtml = "<!doctype html>\n" +
@@ -34,12 +54,12 @@
                         "    <meta name=\"viewport\"\n" +
                         "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
                         "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
-                        "    <title>irame</title>\n" +
+                        "    <title>iframe</title>\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "\n" +
-                        "<div id='inframe1'>\n" +
-                        "    <h2>Frame 1</h2>\n" +
+                        "<div id='inframe2'>\n" +
+                        "    <h2>Frame 2</h2>\n" +
                         "    <div class=\"content\">this frame was created by JS</div>\n" +
                         "</div>\n" +
                         "\n" +
@@ -48,12 +68,33 @@
                     iframe.contentWindow.document.open();
                     iframe.contentWindow.document.write(iframeHtml);
                     iframe.contentWindow.document.close();
-                };
-                document.addEventListener("DOMContentLoaded", createIframe);
+                }
+
+                document.addEventListener("DOMContentLoaded", createIframeAboutBlank);
             </script>
+        </div>
+
+        <div id="case3">
+            <iframe id="frame3" style="width: 500px; height: 400px;" srcdoc="<!doctype html>
+                <html lang=&quot;en&quot;>
+                <head>
+                    <meta charset=&quot;UTF-8&quot;>
+                    <meta name=&quot;viewport&quot;
+                          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;>
+                    <meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;>
+                    <title>iframe</title>
+                </head>
+                <body>
+                <div id='inframe3'>
+                    <h2>Frame 3</h2>
+                    <div class=&quot;content&quot;>this frame was created by JS</div>
+                </div>
+                </body>
+                </html>"></iframe>
         </div>
     </div>
 
     <script type="module" src="extended-css-iframejs-injection.js"></script>
 </body>
+
 </html>
