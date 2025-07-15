@@ -25,27 +25,40 @@
 
 <body>
 
-<div class="container mt-5">
-    <h1>Injection Speed Test</h1>
+    <div class="container mt-5">
+        <h1>Injection Speed Test</h1>
 
-    <section class="description">
-        <h2 class="h4 mb-3">How to Test</h2>
-        <article>
-            <ol class="list-group list-group-numbered">
-                <li class="list-group-item">Open devtools</li>
-                <li class="list-group-item">Reload page</li>
-                <li class="list-group-item">Make sure that script and scriptlet rules were injected at least before the inline script at the end</li>
-                <img src="screenshot.png" width="600px" class="mt-2" />
-            </ol>
-        </article>
-    </section>
+        <section class="description">
+            <h2 class="h4 mb-3">How to Test</h2>
+            <article>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Open devtools</li>
+                    <li class="list-group-item">Reload page</li>
+                    <li class="list-group-item">
+                        Make sure that script and scriptlet rules were injected
+                        <b>at least</b> before the inline script at the end.
+                    </li>
+                    <img src="screenshot.png" width="600px" class="mt-2" />
+                </ol>
 
-    <p class="mt-4"><a href="../">Go Back</a></p>
-</div>
+                <div class="note">
+                    <p>
+                        ⚠️ <strong>Note:</strong> In the case of a cold start of
+                        Safari Web Extension (i.e. AdGuard for iOS or AdGuard
+                        Mini for macOS) injection time may be longer and thus
+                        the rules will be executed later.
+                    </p>
+                </div>
+            </article>
+        </section>
 
-<script>
-    console.log(`${Date.now()} inline script in the end`);
-</script>
+
+        <p class="mt-4"><a href="../">Go Back</a></p>
+    </div>
+
+    <script>
+        console.log(`${Date.now()} inline script in the end`);
+    </script>
 
 </body>
 
