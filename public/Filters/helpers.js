@@ -97,3 +97,45 @@ export const isBlockedFetch = async (url, options) => {
     }
     return isRejected;
 };
+
+/**
+ * @returns true if the browser is Safari.
+ */
+const isSafari = () => {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+};
+
+/**
+ * This is a proxy resolve function which is only required to slow down
+ * iframe load event in the case of Safari.
+ *
+ * @param {Function} resolve Promise resolve function.
+ */
+const resolveProxy = (resolve) => {
+    if (isSafari()) {
+        // 50ms wait should be enough for Web Extension.
+        setTimeout(resolve, 50);
+    } else {
+        resolve();
+    }
+};
+
+/**
+ * Waits for iframe to load and only after that calls the resolve function.
+ * This function does one additional thing: slow down iframe load event in the
+ * case of Safari as Web Extension is slower there and without waiting extra
+ * time the tests start flapping. This is of course an ugly solution, but we
+ * have a different set of tests to check for injection speed and in other
+ * places we only need to check that rules are interpreted correctly.
+ *
+ * @param {HTMLIFrameElement} frame Iframe HTML element.
+ */
+export const waitIframeLoad = async (frame) => {
+    return new Promise((resolve) => {
+        if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
+            resolveProxy(resolve);
+        } else {
+            frame.addEventListener('load', () => resolveProxy(resolve), { once: true });
+        }
+    });
+};
