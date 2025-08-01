@@ -16,10 +16,8 @@ export const caseTemplate = `
 <body class="container mt-5">
     <h1 class="text-primary">{{id}}</h1>
 
-    {{#policy.note}}
     <section class="mt-4">
-        <h2 class="h4">⚠️ Compatibility note</h2>
-        <p>{{policy.note}}</p>
+        <h2 class="h4">Compatibility</h2>
 
         <ul>
             {{#policy.productsCompatibility}}
@@ -27,7 +25,6 @@ export const caseTemplate = `
             {{/policy.productsCompatibility}}
         </ul>
     </section>
-    {{/policy.note}}
 
     <section class="mt-4">
         <h2 class="h4">Directive Details</h2>
