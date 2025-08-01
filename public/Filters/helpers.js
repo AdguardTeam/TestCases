@@ -113,8 +113,8 @@ const isSafari = () => {
  */
 const resolveProxy = (resolve) => {
     if (isSafari()) {
-        // 50ms wait should be enough for Web Extension.
-        setTimeout(resolve, 50);
+        // 100ms wait should be enough for Web Extension.
+        setTimeout(resolve, 100);
     } else {
         resolve();
     }

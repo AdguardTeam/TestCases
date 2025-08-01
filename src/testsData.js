@@ -644,12 +644,28 @@ const testsData = [
     },
     {
         id: 47,
-        title: 'JS and Scriptlet rules: Content security policy (CSP) tests',
+        title: 'JS and Scriptlet rules: CSP and Trusted Types tests',
         link: 'csp',
         rulesUrl: 'Filters/content-security-policy/test-content-security-policy.txt',
         compatibility: {
-            // TODO improve compatibility later
-            full: true,
+            partial: [
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    desc: '',
+                },
+                {
+                    product: PRODUCT_TYPES.SAF,
+                    desc: '',
+                },
+                {
+                    product: PRODUCT_TYPES.IOS,
+                    desc: '',
+                },
+            ],
+            none: [
+                PRODUCT_TYPES.EDL,
+                PRODUCT_TYPES.CON,
+            ],
         },
         manual: true,
     },
@@ -659,8 +675,10 @@ const testsData = [
         link: 'Filters/injection-speed/index.html',
         rulesUrl: 'Filters/injection-speed/test-injection-speed.txt',
         compatibility: {
-            // TODO improve compatibility later
-            full: true,
+            none: [
+                PRODUCT_TYPES.EDL,
+                PRODUCT_TYPES.CON,
+            ],
         },
         manual: true,
     },

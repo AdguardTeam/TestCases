@@ -1,11 +1,17 @@
 import Mustache from 'mustache';
 import { caseTemplate, rootTemplate } from './templates';
+import { PRODUCT_TYPES } from '../../src/constants';
+
+type ProductCompatibility = {
+    product: string,
+    compatibility: string,
+};
 
 type Policy = {
     key: string,
     value: string,
-    note?: string,
     asMetaTag?: boolean,
+    productsCompatibility: ProductCompatibility[],
 };
 
 type CaseData = {
@@ -40,13 +46,59 @@ type Cases = {
     [key in CaseId]: CaseData
 };
 
+// Expected compatibility for trusted types test cases.
+const trustedTypesCompat: ProductCompatibility[] = [
+    { product: PRODUCT_TYPES.WIN, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.MAC, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.AND, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.CHR, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.EDG, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.FOX, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.OPR, compatibility: '🟢 full' },
+    {
+        product: PRODUCT_TYPES.SAF,
+        compatibility: '🟢 full',
+    },
+    {
+        product: PRODUCT_TYPES.IOS,
+        compatibility: '🟢 full',
+    },
+    {
+        product: PRODUCT_TYPES.MV3,
+        compatibility: '🟡 supports only scriptlets and registered scripts',
+    },
+];
+
+// Expected compatibility for CSP test cases.
+const cspCompat: ProductCompatibility[] = [
+    { product: PRODUCT_TYPES.WIN, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.MAC, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.AND, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.CHR, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.EDG, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.FOX, compatibility: '🟢 full' },
+    { product: PRODUCT_TYPES.OPR, compatibility: '🟢 full' },
+    {
+        product: PRODUCT_TYPES.SAF,
+        compatibility: '🔴 none',
+    },
+    {
+        product: PRODUCT_TYPES.IOS,
+        compatibility: '🟡 supports only scriptlets and registered scripts',
+    },
+    {
+        product: PRODUCT_TYPES.MV3,
+        compatibility: '🟡 supports only scriptlets and registered scripts',
+    },
+];
+
 const cases: Cases = {
     [CaseId.HeaderTrustedTypesDefault]: {
         id: CaseId.HeaderTrustedTypesDefault,
         policy: {
             key: HeaderKey.ContentSecurityPolicy,
             value: 'trusted-types one two default',
-            note: 'Supported only for Scriptlets, not JS rules',
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.HeaderTrustedTypesAdguard]: {
@@ -54,6 +106,7 @@ const cases: Cases = {
         policy: {
             key: HeaderKey.ContentSecurityPolicy,
             value: 'trusted-types one two AGPolicy',
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.HeaderTrustedTypesScript]: {
@@ -61,6 +114,7 @@ const cases: Cases = {
         policy: {
             key: HeaderKey.ContentSecurityPolicy,
             value: "require-trusted-types-for 'script'",
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.HeaderTrustedTypesAdguardDuplicates]: {
@@ -68,6 +122,7 @@ const cases: Cases = {
         policy: {
             key: HeaderKey.ContentSecurityPolicy,
             value: "trusted-types one two AGPolicy 'allow-duplicates'",
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.HeaderCspDefaultSrcNone]: {
@@ -82,7 +137,7 @@ const cases: Cases = {
             base-uri 'none';
             frame-ancestors 'none';
         `,
-            note: 'Supported only for Scriptlets, not JS rules',
+            productsCompatibility: cspCompat,
         },
     },
     [CaseId.MetaTrustedTypesDefault]: {
@@ -91,6 +146,7 @@ const cases: Cases = {
             key: HeaderKey.ContentSecurityPolicy,
             value: 'trusted-types one two default',
             asMetaTag: true,
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.MetaTrustedTypesAdguard]: {
@@ -99,6 +155,7 @@ const cases: Cases = {
             key: HeaderKey.ContentSecurityPolicy,
             value: 'trusted-types one two AGPolicy',
             asMetaTag: true,
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.MetaTrustedTypesScript]: {
@@ -107,6 +164,7 @@ const cases: Cases = {
             key: HeaderKey.ContentSecurityPolicy,
             value: "require-trusted-types-for 'script'",
             asMetaTag: true,
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.MetaTrustedTypesAdguardDuplicates]: {
@@ -115,6 +173,7 @@ const cases: Cases = {
             key: HeaderKey.ContentSecurityPolicy,
             value: "trusted-types one two AGPolicy 'allow-duplicates'",
             asMetaTag: true,
+            productsCompatibility: trustedTypesCompat,
         },
     },
     [CaseId.MetaCspDefaultSrcNone]: {
@@ -129,6 +188,7 @@ const cases: Cases = {
             base-uri 'none';
             `,
             asMetaTag: true,
+            productsCompatibility: cspCompat,
         },
     },
 };

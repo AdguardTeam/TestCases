@@ -14,15 +14,15 @@ export const PRODUCT_TYPES = {
     WIN: 'Windows',
     MAC: 'MacOS',
     AND: 'Android',
-    CHR: 'Chrome',
-    EDG: 'Edge',
+    CHR: 'Chrome MV2',
+    EDG: 'Edge MV2',
     FOX: 'Firefox',
-    OPR: 'Opera',
-    EDL: 'Edge Legacy',
+    OPR: 'Opera MV2',
+    EDL: 'Edge Legacy', // Edge Legacy MV2, can be removed already
     SAF: 'Safari',
     IOS: 'iOS',
     CON: 'Content Blocker',
-    MV3: 'Browser Extension MV3',
+    MV3: 'Browser Extension MV3', // Chrome/Edge/Opera MV3
 };
 
 export const FIREFOX_BUILDS = {

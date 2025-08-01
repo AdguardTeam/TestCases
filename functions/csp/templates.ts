@@ -18,7 +18,14 @@ export const caseTemplate = `
 
     {{#policy.note}}
     <section class="mt-4">
-        <h2 class="h4">⚠️ Note: {{policy.note}}</h2>
+        <h2 class="h4">⚠️ Compatibility note</h2>
+        <p>{{policy.note}}</p>
+
+        <ul>
+            {{#policy.productsCompatibility}}
+                <li>{{product}}: {{compatibility}}</li>
+            {{/policy.productsCompatibility}}
+        </ul>
     </section>
     {{/policy.note}}
 
@@ -71,13 +78,13 @@ export const rootTemplate = `
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trusted Types Test</title>
+    <title>JS and Scriptlet rules: CSP and Trusted Types tests</title>
 </head>
 <body class="container mt-5">
-    <h1 class="text-primary">Trusted Types Tests</h1>
+    <h1 class="text-primary">JS and Scriptlet rules: CSP and Trusted Types tests</h1>
 
     <section class="mt-4">
-       <a href="/Filters/content-security-policy/test-content-security-policy.txt" class="text-primary font-weight-bold">
+       <a href="/Filters/content-security-policy/test-content-security-policy.txt">
            Subscribe to Test Filter
        </a>
     </section>
@@ -85,24 +92,26 @@ export const rootTemplate = `
     <section class="mt-4">
         <h2 class="h4">⚠️ Note</h2>
         <span>
-            Most of the tests are needed for both JS rule and Scriptlets
-            for AdGuard Browser extension for Chrome MV3, except:
+            Depending on the product some tests may pass or fail.
+            See the explanation in the "Note" section.
         </span>
-        <ul>
-            <li>header-trusted-types-default</li>
-            <li>header-csp-default-src-none</li>
-        </ul>
-        <span>which works only for Scriptlets.</span>
     </section>
 
     <section class="mt-4">
         <h2 class="h4">How to Test</h2>
         <ol>
-            <li>Add rules</li>
+            <li>
+                <a href="/Filters/content-security-policy/test-content-security-policy.txt">
+                    Subscribe to Test Filter
+                </a>
+            </li>
             <li>Open one of the pages</li>
             <li>Open DevTools on this page</li>
             <li>Reload the page</li>
-            <li>Ensure all scripts are injected and there are no errors in the console</li>
+            <li>
+                Check which scripts were successfully injected. Rely on the
+                messages that the rules are supposed to print to the console.
+            </li>
         </ol>
     </section>
 
