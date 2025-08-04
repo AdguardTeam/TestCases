@@ -1,6 +1,6 @@
 # $urltransform rules test
 
-Note: Cases 3 and 4 are valid starting with CoreLibs 1.16.19.
+Note: Cases 3 and 4 are valid starting with CoreLibs 1.16.19, Cases 5 and 6 with CoreLibs 1.19.
 
 ## Case 1
 * Try fetching a resource from an invalid URL.
@@ -22,3 +22,13 @@ Note: Cases 3 and 4 are valid starting with CoreLibs 1.16.19.
 * Try POSTing to an invalid URL.
 * A `$urltransform` rule that changes the origin should not be applied to a POST request.
 * Expect fetch failure.
+
+## Case 5
+* Try fetching a script resource.
+* A `$urltransform` rule should work for $script request type.
+* Expect fetch success.
+
+## Case 6
+* Try fetching an image resource.
+* A `$urltransform` rule should work for $image request type.
+* Expect fetch success.
