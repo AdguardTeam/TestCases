@@ -729,6 +729,15 @@ const testsData = [
         },
         readmeUrl: 'Filters/header-rules/README.md',
     },
+    {
+        id: 52,
+        title: 'Userscripts: Single Page Application (SPA) tests',
+        link: 'Userscripts/spa-tests.html',
+        rulesUrl: 'Userscripts/spaTester/spa-tester.user.js',
+        compatibility: {
+            none: NONE_CORELIBS_PRODUCTS,
+        },
+    },
 ];
 
 export default testsData;

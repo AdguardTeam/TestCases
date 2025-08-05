@@ -8,6 +8,7 @@ export const USERSCRIPTS_TEST_IDS = [
     20,
     21,
     50,
+    52,
 ];
 
 export const PRODUCT_TYPES = {
