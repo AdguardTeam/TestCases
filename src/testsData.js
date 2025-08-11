@@ -511,6 +511,33 @@ const testsData = [
     },
     {
         id: 36,
+        title: 'Advanced $domain modifier',
+        link: 'Filters/advanced-domain-modifier/test-advanced-domain-modifier.html',
+        rulesUrl: 'Filters/advanced-domain-modifier/test-advanced-domain-modifier.txt',
+        compatibility: {
+            none: LEGACY_PRODUCTS,
+            partial: [
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [2, 7],
+                    desc: 'Not yet implemented',
+                },
+                {
+                    product: PRODUCT_TYPES.IOS,
+                    cases: [6, 7],
+                    desc: 'Not yet implemented',
+                },
+                {
+                    product: PRODUCT_TYPES.SAF,
+                    cases: [6, 7],
+                    desc: 'Not yet implemented',
+                },
+            ],
+        },
+        readmeUrl: 'Filters/advanced-domain-modifier/README.md',
+    },
+    {
+        id: 37,
         title: '$jsonprune modifier tests',
         link: 'Filters/jsonprune-rules/test-jsonprune-rules.html',
         rulesUrl: 'Filters/jsonprune-rules/test-jsonprune-rules.txt',
@@ -520,7 +547,7 @@ const testsData = [
         readmeUrl: 'Filters/jsonprune-rules/README.md',
     },
     {
-        id: 37,
+        id: 38,
         title: '$hls modifier tests',
         link: 'Filters/hls-rules/test-hls-rules.html',
         rulesUrl: 'Filters/hls-rules/test-hls-rules.txt',
@@ -530,7 +557,7 @@ const testsData = [
         readmeUrl: 'Filters/hls-rules/README.md',
     },
     {
-        id: 38,
+        id: 39,
         title: '$method modifier tests',
         link: 'Filters/method-rules/test-method-rules.html',
         rulesUrl: 'Filters/method-rules/test-method-rules.txt',
@@ -540,7 +567,7 @@ const testsData = [
         readmeUrl: 'Filters/method-rules/README.md',
     },
     {
-        id: 39,
+        id: 40,
         title: '$to modifier tests',
         link: 'Filters/to-rules/test-to-rules.html',
         rulesUrl: 'Filters/to-rules/test-to-rules.txt',
@@ -550,7 +577,7 @@ const testsData = [
         readmeUrl: 'Filters/to-rules/README.md',
     },
     {
-        id: 40,
+        id: 41,
         title: '$cookie modifier tests',
         link: 'Filters/cookie-rules/test-cookie-rules.html',
         rulesUrl: 'Filters/cookie-rules/test-cookie-rules.txt',
@@ -566,7 +593,7 @@ const testsData = [
         readmeUrl: 'Filters/cookie-rules/README.md',
     },
     {
-        id: 41,
+        id: 42,
         title: '$match-case modifier tests',
         link: 'Filters/match-case-rules/test-match-case-rules.html',
         rulesUrl: 'Filters/match-case-rules/test-match-case-rules.txt',
@@ -576,7 +603,7 @@ const testsData = [
         readmeUrl: 'Filters/match-case-rules/README.md',
     },
     {
-        id: 42,
+        id: 43,
         title: 'Scriptlet allowlist specific rules',
         link: 'Filters/scriptlet-rules/allowlist-specific/test-scriptlet-allowlist-specific-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/allowlist-specific/test-scriptlet-allowlist-specific-rules.txt',
@@ -590,7 +617,7 @@ const testsData = [
         readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
     {
-        id: 43,
+        id: 44,
         title: 'Scriptlet allowlist general rules',
         link: 'Filters/scriptlet-rules/allowlist-general/test-scriptlet-allowlist-general-rules.html',
         rulesUrl: 'Filters/scriptlet-rules/allowlist-general/test-scriptlet-allowlist-general-rules.txt',
@@ -604,7 +631,7 @@ const testsData = [
         readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
     {
-        id: 44,
+        id: 45,
         title: '$urltransform rules test',
         link: 'Filters/urltransform-rules/test-urltransform-rules.html',
         rulesUrl: 'Filters/urltransform-rules/test-urltransform-rules.txt',
@@ -614,7 +641,7 @@ const testsData = [
         readmeUrl: 'Filters/urltransform-rules/README.md',
     },
     {
-        id: 45,
+        id: 46,
         title: '$permissions rules test',
         link: 'Filters/permissions-rules/test-permissions-rules.html',
         rulesUrl: 'Filters/permissions-rules/test-permissions-rules.txt',
@@ -632,7 +659,7 @@ const testsData = [
         readmeUrl: 'Filters/permissions-rules/README.md',
     },
     {
-        id: 46,
+        id: 47,
         title: 'Strict party (strict-third-party and strict-first-party) modifiers tests',
         link: 'Filters/strict-party-rules/test-strict-party-rules.html',
         rulesUrl: 'Filters/strict-party-rules/test-strict-party-rules.txt',
@@ -643,7 +670,7 @@ const testsData = [
 
     },
     {
-        id: 47,
+        id: 48,
         title: 'JS and Scriptlet rules: CSP and Trusted Types tests',
         link: 'csp',
         rulesUrl: 'Filters/content-security-policy/test-content-security-policy.txt',
@@ -670,7 +697,7 @@ const testsData = [
         manual: true,
     },
     {
-        id: 48,
+        id: 49,
         title: 'Injection speed tests',
         link: 'Filters/injection-speed/index.html',
         rulesUrl: 'Filters/injection-speed/test-injection-speed.txt',
@@ -687,7 +714,7 @@ const testsData = [
      * adjusted for MV3, we may remove it after AG-22490 done.
      */
     {
-        id: 49,
+        id: 50,
         title: '$permissions rules test for MV3',
         link: 'Filters/permissions-rules-mv3/test-permissions-rules-mv3.html',
         rulesUrl: 'Filters/permissions-rules-mv3/test-permissions-rules-mv3.txt',
@@ -706,7 +733,7 @@ const testsData = [
         readmeUrl: 'Filters/permissions-rules-mv3/README.md',
     },
     {
-        id: 50,
+        id: 51,
         title: 'Userscripts: Content security policy (CSP) tests',
         link: 'userscripts-csp',
         rulesUrl: 'Userscripts/cspTester/csp-tester.user.js',
@@ -716,7 +743,7 @@ const testsData = [
         manual: true,
     },
     {
-        id: 51,
+        id: 52,
         title: '$header rules',
         link: 'Filters/header-rules/test-header-rules.html',
         rulesUrl: 'Filters/header-rules/test-header-rules.txt',
@@ -730,7 +757,7 @@ const testsData = [
         readmeUrl: 'Filters/header-rules/README.md',
     },
     {
-        id: 52,
+        id: 53,
         title: 'Userscripts: Single Page Application (SPA) tests',
         link: 'Userscripts/spa-tests.html',
         rulesUrl: 'Userscripts/spaTester/spa-tester.user.js',

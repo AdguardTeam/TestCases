@@ -5,7 +5,6 @@ const agTest = getAgTestRunner(window.location);
 /**
  * Before doing the test, import test-match-case-rules.txt to AdGuard
  */
-
 const baseUrl = `${window.location.origin}/httpbin/anything`;
 
 window.addEventListener('load', () => {

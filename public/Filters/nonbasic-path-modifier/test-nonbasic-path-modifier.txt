@@ -7,7 +7,34 @@
 ! Hide warning
 testcases.agrd.dev,pages.dev###subscribe-to-test-nonbasic-path-modifier
 !
+! Elemhide rules
+! Cases 1-4
+!
 [$path=/subpage1]testcases.agrd.dev,pages.dev##div#case1
 [$path=/subpage2]testcases.agrd.dev,pages.dev##div#case2
 [$path=/sub.*/]testcases.agrd.dev,pages.dev##div#case3
 [$path=/subpage(?!1)/]testcases.agrd.dev,pages.dev##div#case4
+!
+! Extended CSS rules
+! Cases 5-8
+!
+[$path=/subpage1]testcases.agrd.dev,pages.dev#?#div#case5
+[$path=/subpage2]testcases.agrd.dev,pages.dev#?#div#case6
+[$path=/sub.*/]testcases.agrd.dev,pages.dev#?#div#case7
+[$path=/subpage(?!1)/]testcases.agrd.dev,pages.dev#?#div#case8
+!
+! Scriptlets
+! Cases 9-12
+!
+[$path=/subpage1]testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "window.__case9", "true")
+[$path=/subpage2]testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "window.__case10", "true")
+[$path=/sub.*/]testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "window.__case11", "true")
+[$path=/subpage(?!1)/]testcases.agrd.dev,pages.dev#%#//scriptlet("set-constant", "window.__case12", "true")
+!
+! Script rules
+! Cases 13-16
+!
+[$path=/subpage1]testcases.agrd.dev,pages.dev#%#window.__case13=true;
+[$path=/subpage2]testcases.agrd.dev,pages.dev#%#window.__case14=true;
+[$path=/sub.*/]testcases.agrd.dev,pages.dev#%#window.__case15=true;
+[$path=/subpage(?!1)/]testcases.agrd.dev,pages.dev#%#window.__case16=true;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Advanced $domain modifier tests</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-advanced-domain-modifier" class="subscribe-link">
+        <a href="test-advanced-domain-modifier.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hiding container from user's sight -->
+    <style type="text/css">
+        .container {
+            position: absolute;
+            top: -5000px;
+        }
+    </style>
+    <div class="container">
+        <div id="case-1-elemhide">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-3-extcss">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+
+        <div id="case-6-regex-elemhide">
+            <div class="test-banner" style="width: 300px; height: 300px;"></div>
+        </div>
+    </div>
+
+    <script type="module" src="test-advanced-domain-modifier.js"></script>
+</body>
+
+</html>

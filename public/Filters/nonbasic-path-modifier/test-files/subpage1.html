@@ -1,12 +1,51 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>irame</title>
+
+    <script>
+        async function evalScript(script) {
+            // Wrap in async IIFE so `await` works inside the script
+            const fn = new Function('"use strict"; return (async () => { ' + script + '\n })();');
+            return await fn();
+        }
+
+        window.addEventListener('message', async (event) => {
+            const { source, data } = event;
+            if (!source || !data || data.type !== 'eval:request') {
+                return;
+            }
+
+            const { requestId, script } = data;
+            if (!requestId || typeof script !== 'string') {
+                return;
+            }
+
+            try {
+                const value = await evalScript(script);
+                // Try to post the raw value; if it can’t be cloned, fall back to string
+                try {
+                    source.postMessage({ type: 'eval:response', requestId, ok: true, value }, '*');
+                } catch {
+                    source.postMessage({ type: 'eval:response', requestId, ok: true, value: String(value) }, '*');
+                }
+            } catch (err) {
+                source.postMessage({
+                    type: 'eval:response',
+                    requestId,
+                    ok: false,
+                    error: { name: err?.name || 'Error', message: err?.message || String(err), stack: err?.stack || null },
+                }, '*');
+            }
+        });
+    </script>
 </head>
+
 <body>
 
     <div id="case1" class="banner">
@@ -25,5 +64,22 @@
         <a class="banner-link"></a>
     </div>
 
+    <div id="case5" class="banner">
+        <a class="banner-link"></a>
+    </div>
+
+    <div id="case6" class="banner">
+        <a class="banner-link"></a>
+    </div>
+
+    <div id="case7" class="banner">
+        <a class="banner-link"></a>
+    </div>
+
+    <div id="case8" class="banner">
+        <a class="banner-link"></a>
+    </div>
+
 </body>
+
 </html>

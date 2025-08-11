@@ -1,0 +1,29 @@
+!
+! Title: Rules for advanced $domain modifier test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-advanced-domain-modifier
+!
+! Test case 1: domain-specific elemhide rule
+testcases.agrd.*,pages.*###case-1-elemhide > .test-banner
+
+! Test case 2: basic rule
+||*/httpbin/anything/test-case-2.json$domain=testcases.agrd.*|pages.*
+
+! Test case 3: domain-specific extended CSS rule
+testcases.agrd.*,pages.*#?##case-3-extcss > .test-banner
+
+! Test case 4: scriptlet rule
+testcases.agrd.*,pages.*#%#//scriptlet("set-constant", "window.__case4", "true")
+
+! Test case 5: script rule
+testcases.agrd.*,pages.*#%#window.__case5=true;
+
+! Test case 6: domain-specific elemhide rule with regex
+[$domain=/testcases/|/pages/]###case-6-regex-elemhide > .test-banner
+
+! Test case 7: basic rule with regex
+||*/httpbin/anything/test-case-7.json$domain=/testcases/|/pages/
