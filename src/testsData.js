@@ -506,6 +506,11 @@ const testsData = [
         rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',
         compatibility: {
             none: LEGACY_PRODUCTS,
+            partial: [{
+                product: PRODUCT_TYPES.MV3,
+                cases: [13, 15], // TODO: AG-45083,
+                desc: 'Not yet implemented',
+            }],
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },
@@ -519,7 +524,7 @@ const testsData = [
             partial: [
                 {
                     product: PRODUCT_TYPES.MV3,
-                    cases: [2, 7],
+                    cases: [2, 5, 7], // TODO: AG-45083,
                     desc: 'Not yet implemented',
                 },
                 {
