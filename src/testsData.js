@@ -510,7 +510,7 @@ const testsData = [
                 product: PRODUCT_TYPES.MV3,
                 cases: [13, 15], // TODO: AG-45083,
                 desc: 'Not yet implemented',
-            }]
+            }],
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },
