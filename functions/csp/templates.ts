@@ -12,6 +12,7 @@ export const caseTemplate = `
     {{#policy.asMetaTag}}
     <meta http-equiv="{{policy.key}}" content="{{policy.value}}">
     {{/policy.asMetaTag}}
+    <link rel="stylesheet" href="/Filters/content-security-policy/styles.css">
 </head>
 <body class="container mt-5">
     <h1 class="text-primary">{{id}}</h1>
@@ -76,6 +77,7 @@ export const rootTemplate = `
 <head>
     <meta charset="UTF-8">
     <title>JS and Scriptlet rules: CSP and Trusted Types tests</title>
+    <link rel="stylesheet" href="/Filters/content-security-policy/styles.css">
 </head>
 <body class="container mt-5">
     <h1 class="text-primary">JS and Scriptlet rules: CSP and Trusted Types tests</h1>
