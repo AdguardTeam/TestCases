@@ -4,6 +4,13 @@
 ! Filter to be used for testing purposes
 ! https://testcases.agrd.dev
 !
-testcases.agrd.dev,pages.dev#%#//scriptlet('log', 'scriptlet rule is executed')
-testcases.agrd.dev,pages.dev#%#console.log(Date.now(), 'script rule is executed');
-
+! Scriptlet rule
+testcases.agrd.dev,pages.dev#%#//scriptlet('log', 'scriptlet rule')
+!
+! JS rule that is not "registered" in the extension
+testcases.agrd.dev,pages.dev#%#console.log('script rule')
+!
+! JS rule that is supposed to be registered in the extension by default.
+! Registered rules are injected using scripting.executeScript() and can avoid
+! CSP restrictions.
+testcases.agrd.dev,pages.dev#%#console.log(Date.now(), "default registered script")

@@ -13,39 +13,61 @@
 
 <body>
 
-<div class="container mt-5">
-    <h1>Injection Speed Test into Page Served by a Service Worker</h1>
+    <div class="container mt-5">
+        <h1>Injection Speed Test into Page Served by a Service Worker</h1>
 
-    <section class="description mt-4">
-        <h2 class="h4 mb-3">How to Test</h2>
-        <article>
-            <ol class="list-group list-group-numbered">
-                <li class="list-group-item">Open DevTools.</li>
-                <li class="list-group-item">Go to the Application tab in DevTools.</li>
-                <li class="list-group-item">Ensure there is no checkbox next to the "Bypass for network" option.</li>
-                <!-- Image with margin classes -->
-                <img src="no-bypass-network.jpg" width="600px" alt="DevTools screenshot showing no checkbox for bypassing network" class="mt-2 mb-2" />
-                <li class="list-group-item">Go back to the Console tab.</li>
-                <li class="list-group-item">Reload the page.</li>
-                <li class="list-group-item">Make sure that script and scriptlet rules were injected before the inline script at the end.</li>
-                <!-- Image with margin classes -->
-                <img src="../simple/screenshot.png" width="600px" class="mt-2 mb-2" alt="Example screenshot of the feature" />
-            </ol>
-        </article>
-    </section>
+        <section class="description">
+            <h2>Compatibility notes</h2>
 
-    <p class="mt-4"><a href="../">Go Back</a></p>
-</div>
+            The test is required since in old Chrome/FF versions web extensions
+            failed to work properly with requests that are sent by service
+            workers.
 
-<script>
-    // Register the service worker if supported
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js');
-    }
-</script>
-<script>
-    console.log(`${Date.now()} inline script in the end`);
-</script>
+            <p>
+                ⚠️ <b>AdGuard for iOS</b> may inject scripts too slowly.
+            </p>
+        </section>
+
+        <section class="description mt-4">
+            <h2 class="h4 mb-3">How to Test</h2>
+            <article>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Open DevTools.</li>
+                    <li class="list-group-item">Go to the Application tab in DevTools.</li>
+                    <li class="list-group-item">Ensure there is no checkbox next to the "Bypass for network" option.
+                    </li>
+                    <details>
+                        <summary>See the screenshot</summary>
+
+                        <img src="no-bypass-network.jpg" width="600px"
+                            alt="DevTools screenshot showing no checkbox for bypassing network" class="mt-2 mb-2" />
+                    </details>
+                    <li class="list-group-item">Go back to the Console tab.</li>
+                    <li class="list-group-item">Reload the page.</li>
+                    <li class="list-group-item">Make sure that script and scriptlet rules were injected before the
+                        inline script at the end.</li>
+                    <details>
+                        <summary>See the screenshot</summary>
+
+                        <img src="../simple/screenshot.png" width="600px" class="mt-2 mb-2"
+                            alt="Example screenshot of the feature" />
+                    </details>
+                </ol>
+            </article>
+        </section>
+
+        <p class="mt-4"><a href="../">Go Back</a></p>
+    </div>
+
+    <script>
+        // Register the service worker if supported
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js');
+        }
+    </script>
+    <script>
+        console.log(`${Date.now()} inline script in the end`);
+    </script>
 
 </body>
 
