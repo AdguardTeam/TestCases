@@ -587,6 +587,7 @@ const testsData = [
                 PRODUCT_TYPES.SAF,
                 PRODUCT_TYPES.IOS,
                 PRODUCT_TYPES.CON,
+                PRODUCT_TYPES.MV3, // TODO: AG-45656
             ],
         },
         readmeUrl: 'Filters/cookie-rules/README.md',
