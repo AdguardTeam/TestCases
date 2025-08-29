@@ -520,7 +520,7 @@ const testsData = [
             partial: [
                 {
                     product: PRODUCT_TYPES.MV3,
-                    cases: [2, 7], // TODO: AG-45083,
+                    cases: [2, 7],
                     desc: 'Not yet implemented',
                 },
                 {
