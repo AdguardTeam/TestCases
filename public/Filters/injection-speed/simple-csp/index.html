@@ -4,7 +4,7 @@
 <head>
     <!-- Note: sha is added only for two inline scripts -->
     <meta http-equiv="Content-Security-Policy"
-        content="script-src 'sha256-4lqVHj4azlKKnv/taP8Iv/iUAJvKv8XN+g04rNX53Tk=' 'sha256-BVYhKvhjgh2v1VTD97mSr3VHpd+3zCPzAM1oYIfd/9E='">
+        content="script-src 'sha256-4lqVHj4azlKKnv/taP8Iv/iUAJvKv8XN+g04rNX53Tk=' 'sha256-nKMOHriIPDLP74ohjH4Y/cod+1qe40/fxJ7FtwkXs64='">
     <script>
         console.log(`${Date.now()} inline script in the head`);
         document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +32,39 @@
         <h1>Injection Speed Test — Simple page with CSP 'script-src'</h1>
 
         <section class="description">
+            <h2>Compatibility notes</h2>
+
+            <p>
+                ⚠️ <b>Browser Extension in Firefox</b> may need to make a
+                second attempt to inject scripts and you'll see an error in the
+                console.
+
+            <details>
+                <summary>See the screenshot</summary>
+
+                <img src="simple-with-csp--firefox-error.png" width="600px" class="mt-2 img-border" />
+            </details>
+            </p>
+
+            <p>
+                ⚠️ <b>Browser Extension MV3</b> will only be able to run
+                scriptlet and "registered script" on this page.
+            </p>
+
+            <p>
+                ⚠️ <b>AdGuard for iOS</b> may inject scripts too slowly.
+
+                Also, only scriptlet and "registered script" rule will work on
+                this page.
+            </p>
+
+            <p>
+                ⚠️ <b>AdGuard Mini for macOS</b> won't be able to circumvent
+                CSP on this page and the rules won't work.
+            </p>
+        </section>
+
+        <section class="description">
             <h2 class="h4 mb-3">How to Test</h2>
             <article>
                 <ol class="list-group list-group-numbered">
@@ -42,34 +75,13 @@
                             Make sure that script and scriptlet rules were injected at least before the inline script at
                             the end.
                         </p>
-                        <img src="simple-with-csp--ok.png" width="600px" class="mt-2 img-border" />
+                        <details>
+                            <summary>See the screenshot</summary>
+
+                            <img src="simple-with-csp--ok.png" width="600px" class="mt-2 img-border" />
+                        </details>
                     </li>
                 </ol>
-                <div class="note">
-                    <p>
-                        ⚠️ <strong>Note:</strong> In Firefox, CSP may prevent
-                        execution of injected scripts, but they will be executed
-                        eventually — as soon as possible.
-                        <br>
-                        Related:
-                        <a href="https://github.com/AdguardTeam/AdguardBrowserExtension/issues/1733">
-                            AdguardBrowserExtension#1733
-                        </a>
-                    </p>
-                    <img src="simple-with-csp--firefox-error.png" width="600px" class="mt-2 img-border" />
-                </div>
-
-                <div class="note">
-                    <p>
-                        ⚠️ <strong>Note:</strong> In the case of Safari Web Extension
-                        CSP may prevent execution of injected scripts.
-                        <br>
-                        Related:
-                        <a href="https://github.com/AdguardTeam/SafariConverterLib/issues/98">
-                            SafariConverterLib#98
-                        </a>
-                    </p>
-                </div>
             </article>
         </section>
 
