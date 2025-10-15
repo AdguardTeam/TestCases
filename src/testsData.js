@@ -313,6 +313,7 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
+        readmeUrl: 'Userscripts/apiTester/README.md',
     },
     {
         id: 21,
@@ -322,6 +323,7 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
+        readmeUrl: 'Userscripts/GMapiV4Tester/README.md',
     },
     {
         id: 22,
