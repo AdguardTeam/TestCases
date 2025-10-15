@@ -12,7 +12,7 @@
 // @match  https://*.pages.dev/Userscripts/*
 // @match  http://*.pages.dev/Userscripts/*
 // @require         jquery-2.1.1.min.js
-// @resource        1x1.png
+// @resource        1x1.png 1x1.png
 // @resource        testResource.js resource.js
 // @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
 // @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
