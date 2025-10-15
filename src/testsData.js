@@ -313,7 +313,6 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
-        readmeUrl: 'Userscripts/README.md',
     },
     {
         id: 21,
@@ -323,7 +322,6 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
-        readmeUrl: 'Userscripts/README.md',
     },
     {
         id: 22,
