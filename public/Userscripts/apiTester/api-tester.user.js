@@ -2,7 +2,7 @@
 // @name Userscripts API Tester
 // @name:ru API Тестер Юзерскриптов
 // @namespace adguard
-// @version      2.0.9
+// @version      3.0.0
 // @description AdGuard's userscripts API tester
 // @description:ru API тестер юзерскриптов для AdGuard
 // @match  https://testcases.agrd.dev/Userscripts/*
@@ -12,7 +12,7 @@
 // @match  https://*.pages.dev/Userscripts/*
 // @match  http://*.pages.dev/Userscripts/*
 // @require         jquery-2.1.1.min.js
-// @resource	    1x1.png 1x1.png
+// @resource        1x1.png
 // @resource        testResource.js resource.js
 // @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
 // @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/apiTester/api-tester.user.js
@@ -26,6 +26,7 @@
 // @grant GM_getResourceURL
 // @grant GM_xmlhttpRequest
 // @grant unsafeWindow
+// @connect self
 // @noframes
 // @run-at document-start
 // ==/UserScript==
