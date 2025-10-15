@@ -26,7 +26,7 @@
 // @grant GM.xmlHttpRequest
 // @grant GM.notification
 // @grant unsafeWindow
-// @connect self
+// @connect *
 // @noframes
 // @run-at document-start
 // ==/UserScript==
