@@ -1,0 +1,3 @@
+# CSP Reports Test Headers
+/Filters/csp-reports/test-csp-reports
+  Content-Security-Policy: img-src 'self' data:; report-uri https://httpbin.agrd.dev/post

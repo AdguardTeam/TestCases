@@ -1,0 +1,12 @@
+!
+! Title: Rules for CSP reports test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-csp-reports-filter
+!
+! Block CSP report requests to httpbin.agrd.dev/post
+||httpbin.agrd.dev/post^
+!
