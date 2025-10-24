@@ -15,4 +15,6 @@ Browser generates CSP violation report to `https://httpbin.agrd.dev/post`, that 
 
 1. Open DevTools Network tab
 2. Click "Click to start test" button  
-3. Check that CSP report request is blocked
+3. Check that CSP report request is blocked in Network tab
+4. Check that filtering log shows blocked CSP report request
+5. Check that popup shows correct count of blocked resources
