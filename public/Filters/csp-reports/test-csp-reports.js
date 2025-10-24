@@ -11,7 +11,6 @@ const testBlockedImage = () => {
 
     const img = document.createElement('img');
     img.src = 'https://httpbin.agrd.dev/image/png'; // External image - violates CSP
-    img.style.border = '3px solid red';
     img.style.display = 'none';
 
     img.onload = () => {
