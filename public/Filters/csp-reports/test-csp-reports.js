@@ -35,7 +35,7 @@ const testBlockedImage = () => {
  * Automated test for allowed image loading
  */
 const testAllowedImageAutomated = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const img = document.createElement('img');
         // 1x1 transparent GIF
         img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
@@ -45,7 +45,7 @@ const testAllowedImageAutomated = () => {
         };
 
         img.onerror = () => {
-            reject(new Error('Allowed image failed to load'));
+            resolve(false);
         };
 
         // Add to DOM temporarily for testing
@@ -74,11 +74,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     agTest(1, 'CSP allowed image loading test', async (assert) => {
-        try {
-            const result = await testAllowedImageAutomated();
-            assert.ok(result, 'Allowed image (data URI) should load successfully');
-        } catch (error) {
-            assert.ok(false, `Allowed image failed to load: ${error.message}`);
-        }
+        const result = await testAllowedImageAutomated();
+
+        assert.ok(result, 'Allowed image (data URI) should load successfully');
     });
 });
