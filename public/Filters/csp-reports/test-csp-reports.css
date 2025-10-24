@@ -1,0 +1,38 @@
+/* CSP Reports Test Styles */
+
+#test-results {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.test-buttons {
+    margin: 20px 0;
+}
+
+.test-button {
+    padding: 10px 20px;
+    margin: 5px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.test-button:hover {
+    opacity: 0.9;
+}
+
+.test-button-blocked {
+    background: #f44336;
+}
+
+#image-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px dashed #ccc;
+    min-height: 150px;
+    text-align: center;
+}

@@ -782,6 +782,7 @@ const testsData = [
             ],
         },
         readmeUrl: 'Filters/csp-reports/README.md',
+        manual: true,
     },
 ];
 
