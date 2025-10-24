@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>CSP reports tests</title>
-    <link rel="stylesheet" href="../qunit/qunit.css">
-    <link rel="stylesheet" href="../qunit/custom.css">
-    <link rel="stylesheet" href="test-csp-reports.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>CSP reports tests</title>
+        <link rel="stylesheet" href="../qunit/qunit.css">
+        <link rel="stylesheet" href="../qunit/custom.css">
+        <link rel="stylesheet" href="test-csp-reports.css">
+    </head>
 
-<body>
-    <div id="subscribe-to-test-csp-reports-filter" class="subscribe-link">
-        <a href="test-csp-reports.txt">Subscribe to test filter</a>
-    </div>
-    <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
-    <script src="../qunit/qunit.js"></script>
+    <body>
+        <div id="subscribe-to-test-csp-reports-filter" class="subscribe-link">
+            <a href="test-csp-reports.txt">Subscribe to test filter</a>
+        </div>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        <script src="../qunit/qunit.js"></script>
 
-    <div id="test-container">
-        <h3>Manual CSP Tests</h3>
-        <p>
-            <strong>Instructions:</strong>
-            <ul>
-                <li>Open dev tools, network tab</li>
-                <li>Click the buttons below to test CSP behavior manually. </li>
-                <li>Check that CSP report is blocked.</li>
-            </ul>
-        </p>
-        
-        <div id="test-results">
-            <div id="blocked-image-result">
-                <strong>Status: </strong> 
-                <span id="blocked-status">ready</span>
+        <div id="test-container">
+            <h3>Manual CSP Tests</h3>
+            <p>
+                <strong>Instructions:</strong>
+                <ul>
+                    <li>Open dev tools, network tab</li>
+                    <li>Click the buttons below to test CSP behavior manually. </li>
+                    <li>Check that CSP report is blocked.</li>
+                </ul>
+            </p>
+            
+            <div id="test-results">
+                <div id="blocked-image-result">
+                    <strong>Status: </strong> 
+                    <span id="blocked-status">ready</span>
+                </div>
+            </div>
+
+            <div class="test-buttons">
+                <button id="test-blocked-image" class="test-button test-button-blocked">
+                    Click to start test
+                </button>
+            </div>
+            
+            <div id="image-container">
+                <p>Click a button above to run a test. Results will appear here.</p>
             </div>
         </div>
 
-        <div class="test-buttons">
-            <button id="test-blocked-image" class="test-button test-button-blocked">
-                Click to start test
-            </button>
-        </div>
-        
-        <div id="image-container">
-            <p>Click a button above to run a test. Results will appear here.</p>
-        </div>
-    </div>
-
-    <script type="module" src="test-csp-reports.js"></script>
-</body>
+        <script type="module" src="test-csp-reports.js"></script>
+    </body>
 
 </html>
