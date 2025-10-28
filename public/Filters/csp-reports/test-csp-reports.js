@@ -51,13 +51,6 @@ const testAllowedImageAutomated = () => {
         // Add to DOM temporarily for testing
         img.style.display = 'none';
         document.body.appendChild(img);
-
-        // Cleanup after test
-        setTimeout(() => {
-            if (img.parentNode) {
-                img.parentNode.removeChild(img);
-            }
-        }, 1000);
     });
 };
 
