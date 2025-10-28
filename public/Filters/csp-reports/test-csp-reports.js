@@ -76,6 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
         blockedBtn.addEventListener('click', () => {
             testBlockedImage();
         });
+    } else {
+        throw new Error('Blocked image button not found');
     }
 
     agTest(1, 'CSP allowed image loading test', async (assert) => {
