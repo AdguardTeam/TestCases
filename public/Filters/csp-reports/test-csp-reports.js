@@ -7,7 +7,9 @@ const agTest = getAgTestRunner(window.location);
  */
 const testBlockedImage = () => {
     const container = document.getElementById('image-container');
-    if (container) container.innerHTML = '<p>Loading external image (should be blocked)...</p>';
+    if (container) {
+        container.innerHTML = '<p>Loading external image (should be blocked)...</p>';
+    }
 
     const img = document.createElement('img');
     img.src = 'https://httpbin.agrd.dev/image/png'; // External image - violates CSP
@@ -15,7 +17,10 @@ const testBlockedImage = () => {
 
     img.onload = () => {
         const statusEl = document.getElementById('blocked-status');
-        if (statusEl) statusEl.textContent = 'LOADED (CSP not working?) ⚠️';
+        if (statusEl) {
+            statusEl.textContent = 'LOADED (CSP not working?) ⚠️';
+        }
+
         if (container) {
             container.innerHTML = '⚠️ External image loaded unexpectedly!';
             container.appendChild(img);
@@ -24,8 +29,13 @@ const testBlockedImage = () => {
 
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
-        if (statusEl) statusEl.textContent = 'BLOCKED BY CSP ✓';
-        if (container) container.innerHTML = '✅ External image correctly blocked by CSP!';
+        if (statusEl) {
+            statusEl.textContent = 'BLOCKED BY CSP ✓';
+        }
+
+        if (container) {
+            container.innerHTML = '✅ External image correctly blocked by CSP!';
+        }
     };
 
     if (container) {
