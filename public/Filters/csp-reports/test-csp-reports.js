@@ -28,7 +28,9 @@ const testBlockedImage = () => {
         if (container) container.innerHTML = '✅ External image correctly blocked by CSP!';
     };
 
-    if (container) container.appendChild(img);
+    if (container) {
+        container.appendChild(img);
+    }
 };
 
 /**
