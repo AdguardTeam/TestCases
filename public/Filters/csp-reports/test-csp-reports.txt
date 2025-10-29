@@ -7,6 +7,6 @@
 ! Hide warning
 testcases.agrd.dev,pages.dev###subscribe-to-test-csp-reports-filter
 !
-! Block CSP report requests to httpbin.agrd.dev/post
-||httpbin.agrd.dev/post^
+! Add sites to allowlist
+@@||httpbin.agrd.dev/post
 !

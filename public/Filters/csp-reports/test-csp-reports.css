@@ -29,10 +29,6 @@
     background: #f44336;
 }
 
-#image-container {
-    margin: 20px 0;
-    padding: 15px;
-    border: 2px dashed #ccc;
-    min-height: 150px;
-    text-align: center;
+.test-button-allowed {
+    background: #4caf50;
 }

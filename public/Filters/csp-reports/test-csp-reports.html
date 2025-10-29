@@ -24,28 +24,31 @@
                 <strong>Instructions:</strong>
                 <ul>
                     <li>Open dev tools, network tab</li>
-                    <li>Click the buttons below to test CSP behavior manually</li>
-                    <li>Check that CSP report is blocked in Network tab</li>
-                    <li>Check that filtering log shows blocked CSP report request</li>
-                    <li>Check that popup shows correct count of blocked resources</li>
+                    <li>Click the buttons below to test different CSP behaviors:</li>
+                    <li><strong>Test 1:</strong> Image CSP report → <code>httpbin.agrd.dev/enemy</code> (should be blocked)</li>
+                    <li><strong>Test 2:</strong> JSON fetch CSP report → <code>httpbin.agrd.dev/post</code> (should be allowed)</li>
+                    <li>Check network tab and filtering log for different outcomes</li>
                 </ul>
             </p>
             
             <div id="test-results">
                 <div id="blocked-image-result">
-                    <strong>Status: </strong> 
+                    <strong>Test 1 - Blocked Reports: </strong> 
                     <span id="blocked-status">ready</span>
+                </div>
+                <div id="allowed-script-result">
+                    <strong>Test 2 - Allowed Reports: </strong> 
+                    <span id="allowed-status">ready</span>
                 </div>
             </div>
 
             <div class="test-buttons">
                 <button id="test-blocked-image" class="test-button test-button-blocked">
-                    Click to start test
+                    Test 1: Image CSP (should be blocked)
                 </button>
-            </div>
-            
-            <div id="image-container">
-                <p>Click a button above to run a test. Results will appear here.</p>
+                <button id="test-allowed-script" class="test-button test-button-allowed">
+                    Test 2: JSON CSP (should be allowed)
+                </button>
             </div>
         </div>
 
