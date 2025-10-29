@@ -12,7 +12,7 @@ const testBlockedImage = () => {
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
         if (statusEl) {
-            statusEl.textContent = 'BLOCKED BY CSP ✓';
+            statusEl.textContent = 'BLOCKED BY CSP. Check dev tools to see CSP report status';
         }
     };
 };
