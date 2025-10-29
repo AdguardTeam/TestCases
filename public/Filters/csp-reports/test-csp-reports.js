@@ -15,18 +15,6 @@ const testBlockedImage = () => {
     img.src = 'https://httpbin.agrd.dev/image/png'; // External image - violates CSP
     img.style.display = 'none';
 
-    img.onload = () => {
-        const statusEl = document.getElementById('blocked-status');
-        if (statusEl) {
-            statusEl.textContent = 'LOADED (CSP not working?) ⚠️';
-        }
-
-        if (container) {
-            container.innerHTML = '⚠️ External image loaded unexpectedly!';
-            container.appendChild(img);
-        }
-    };
-
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
         if (statusEl) {
