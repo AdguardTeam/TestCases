@@ -11,9 +11,7 @@ const testBlockedImage = () => {
 
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
-        if (statusEl) {
-            statusEl.textContent = 'BLOCKED BY CSP. Check dev tools to see CSP report status';
-        }
+        statusEl.textContent = 'BLOCKED BY CSP. Check dev tools to see CSP report status';
     };
 };
 
@@ -22,17 +20,18 @@ const testBlockedImage = () => {
  */
 async function testAllowedScript() {
     const statusEl = document.getElementById('allowed-status');
-    if (statusEl) {
-        statusEl.textContent = 'Testing...';
-    }
+
+    statusEl.textContent = 'Testing...';
+
 
     // Create JSON fetch CSP violation
     const response = await fetch('https://httpbin.agrd.dev/json');
 
     if (response.ok) {
-        if (statusEl) {
-            statusEl.textContent = 'JSON LOADED (look at dev panel to see CSP report)';
-        }
+        statusEl.textContent = 'JSON LOADED (look at dev panel to see CSP report)';
+    }
+    else {
+        statusEl.textContent = 'JSON LOAD FAILED (test not working)';
     }
 }
 
