@@ -16,6 +16,10 @@ Browser generates CSP violation report to `https://httpbin.agrd.dev/enemy`, that
 External JSON fetch from `https://httpbin.agrd.dev/json` violates CSP policy `connect-src 'self'` (Report-Only mode).
 Browser generates CSP violation report to `https://httpbin.agrd.dev/post`, that should be allowed by whitelist filter.
 
+## Setup
+
+Before testing, copy the filter rules to your AdGuard user rules from tsp-csp-reports.txt
+
 ## Manual testing
 
 1. Open DevTools Network tab
