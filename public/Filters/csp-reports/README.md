@@ -18,7 +18,7 @@ Browser generates CSP violation report to `https://httpbin.agrd.dev/post`, that 
 
 ## Setup
 
-Before testing, copy the filter rules to your AdGuard user rules from tsp-csp-reports.txt
+Before testing, copy the filter rules to your AdGuard user rules from test-csp-reports.txt
 
 ## Manual testing
 
