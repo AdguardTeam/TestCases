@@ -23,14 +23,12 @@ async function testAllowedScript() {
 
     statusEl.textContent = 'Testing...';
 
-
     // Create JSON fetch CSP violation
     const response = await fetch('https://httpbin.agrd.dev/json');
 
     if (response.ok) {
         statusEl.textContent = 'JSON LOADED (look at dev panel to see CSP report)';
-    }
-    else {
+    } else {
         statusEl.textContent = 'JSON LOAD FAILED (test not working)';
     }
 }
