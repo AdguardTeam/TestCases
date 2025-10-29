@@ -66,21 +66,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const blockedBtn = document.getElementById('test-blocked-image');
     const allowedBtn = document.getElementById('test-allowed-script');
 
-    if (blockedBtn) {
-        blockedBtn.addEventListener('click', () => {
-            testBlockedImage();
-        });
-    } else {
-        throw new Error('Blocked image button not found');
-    }
+    blockedBtn.addEventListener('click', () => {
+        testBlockedImage();
+    });
 
-    if (allowedBtn) {
-        allowedBtn.addEventListener('click', () => {
-            testAllowedScript();
-        });
-    } else {
-        throw new Error('Allowed script button not found');
-    }
+    allowedBtn.addEventListener('click', () => {
+        testAllowedScript();
+    });
 
     agTest(1, 'CSP allowed image loading test', async (assert) => {
         const result = await testAllowedImageAutomated();
