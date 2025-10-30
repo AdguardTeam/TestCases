@@ -767,16 +767,10 @@ const testsData = [
     },
     {
         id: 54,
-        title: 'CSP report-uri blocking test',
+        title: 'CSP reports tests',
         link: 'Filters/csp-reports/test-csp-reports.html',
         rulesUrl: 'Filters/csp-reports/test-csp-reports.txt',
         compatibility: {
-            partial: [
-                {
-                    product: PRODUCT_TYPES.MV3,
-                    desc: 'Limited CSP capabilities in MV3',
-                },
-            ],
             none: [
                 ...NO_CSP_PRODUCTS,
             ],
