@@ -52,7 +52,7 @@ async function testAllowedScript() {
     if (response.ok) {
         statusEl.textContent = 'JSON LOADED (look at dev panel to see CSP report)';
     } else {
-        statusEl.textContent = 'JSON LOAD FAILED (test not working)';
+        statusEl.textContent = 'JSON LOAD FAILED (try to reload page and click test button again)';
     }
 }
 
