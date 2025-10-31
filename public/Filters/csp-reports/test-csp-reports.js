@@ -1,4 +1,4 @@
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -60,6 +60,8 @@ async function testAllowedScript() {
  * Setup manual tests when page loads
  */
 window.addEventListener('DOMContentLoaded', () => {
+    const adgCheck = isSubscribed('subscribe-to-test-csp-reports-filter');
+
     const blockedBtn = document.getElementById('test-blocked-image');
     const allowedBtn = document.getElementById('test-allowed-script');
 
@@ -74,6 +76,6 @@ window.addEventListener('DOMContentLoaded', () => {
     agTest(1, 'CSP allowed image loading test', async (assert) => {
         const result = await testAllowedImageAutomated();
 
-        assert.ok(result, 'Allowed image (data URI) should load successfully');
+        assert.ok(adgCheck && result, 'Allowed image (data URI) should load successfully');
     });
 });
