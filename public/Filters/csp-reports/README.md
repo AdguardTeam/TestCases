@@ -27,7 +27,7 @@ Browser generates CSP violation report to `https://httpbin.agrd.dev/status/200`,
    - **Test 1**: Image CSP report → `/status/201` (should be blocked)
    - **Test 2**: JSON CSP report → `/status/200` (should be allowed)
 3. Check Network tab for different outcomes:
-   - CSP reports to `/status/201` should be blocked (red in Network tab)
-   - CSP reports to `/status/200` should be allowed (green in Network tab)
+   - CSP reports to `/status/201` should be blocked
+   - CSP reports to `/status/200` should be allowed
 4. Check filtering log shows correct information about CSP reports
 5. Check popup shows correct count of blocked resources
