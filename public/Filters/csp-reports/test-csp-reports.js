@@ -1,7 +1,8 @@
 import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
-const EXTERNAL_IMAGE_URL = 'https://httpbin.agrd.dev/image/png';
+const EXTERNAL_IMAGE_PNG = 'https://httpbin.agrd.dev/image/png';
+const EXTERNAL_IMAGE_JPEG = 'https://httpbin.agrd.dev/image/jpeg';
 const EXTERNAL_JSON_URL = 'https://httpbin.agrd.dev/json';
 
 /**
@@ -13,7 +14,7 @@ const testCSPBlocksExternalImage = () => {
         let cspReportSent = false;
 
         const handleViolation = (e) => {
-            if (e.blockedURI === EXTERNAL_IMAGE_URL) {
+            if (e.blockedURI === EXTERNAL_IMAGE_JPEG) {
                 cspReportSent = true;
 
                 if (imageBlocked && cspReportSent) {
@@ -36,7 +37,7 @@ const testCSPBlocksExternalImage = () => {
                 resolve(true);
             }
         };
-        img.src = EXTERNAL_IMAGE_URL;
+        img.src = EXTERNAL_IMAGE_JPEG;
 
         setTimeout(() => {
             resolve(imageBlocked && cspReportSent);
@@ -49,7 +50,7 @@ const testCSPBlocksExternalImage = () => {
  */
 const testBlockedImage = () => {
     const img = document.createElement('img');
-    img.src = EXTERNAL_IMAGE_URL;
+    img.src = EXTERNAL_IMAGE_PNG;
 
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
