@@ -1,33 +1,36 @@
 # CSP report-uri blocking test
 
+Tests AdGuard's ability to block Content Security Policy (CSP) violation reports sent by the browser.
+
 ## Setup
 
-Before testing, copy the filter rules to your AdGuard user rules from test-csp-reports.txt
+Before testing, copy the filter rules to your AdGuard user rules from `test-csp-reports.txt`
 
 ## Test cases
 
-### Case 1: Data URI image loading (automated)
+### Case 1 (Automated)
+Verifies that CSP policy is working correctly:
+- External image `https://httpbin.agrd.dev/image/png` is blocked by CSP policy `img-src 'self' data:`
+- Browser generates CSP violation report
 
-Data URI image should load successfully without CSP violation.
+### Case 2 (Manual)
+Tests blocking of CSP reports:
+- Load external image → triggers CSP violation
+- CSP report sent to `https://httpbin.agrd.dev/status/201`
+- **Expected:** Report should be blocked
 
-### Case 2: External image blocking (manual)
+### Case 3 (Manual)
+Tests whitelist and first-party CSP reports:
+- Fetch external JSON → triggers CSP violation
+- CSP reports sent to:
+  - `https://httpbin.agrd.dev/status/200` - allowed by whitelist `@@||httpbin.agrd.dev/status/200^`
+  - `/Filters/csp-reports/test-csp-reports` - first-party endpoint (not blocked)
+- **Expected:** Both reports allowed
 
-External image from `https://httpbin.agrd.dev/image/png` should be blocked by CSP policy `img-src 'self' data:`.
-Browser generates CSP violation report to `https://httpbin.agrd.dev/status/201`, that should be blocked by filter.
+## Testing
 
-### Case 3: JSON fetch CSP violation (manual)
-
-External JSON fetch from `https://httpbin.agrd.dev/json` violates CSP policy `connect-src 'self'` (Report-Only mode).
-Browser generates CSP violation report to `https://httpbin.agrd.dev/status/200`, that should be allowed by whitelist filter.
-
-## Manual testing
-
-1. Open DevTools Network tab
-2. Click test buttons to trigger CSP violations:
-   - **Test 1**: Image CSP report → `/status/201` (should be blocked)
-   - **Test 2**: JSON CSP report → `/status/200` (should be allowed)
-3. Check Network tab for different outcomes:
-   - CSP reports to `/status/201` should be blocked
-   - CSP reports to `/status/200` should be allowed
-4. Check filtering log shows correct information about CSP reports
-5. Check popup shows correct count of blocked resources
+1. Subscribe to test filter rules
+2. Open DevTools Network tab
+3. Run Test 1 (automated) - should pass
+4. Click Test 2 and Test 3 buttons
+5. Check Network tab and Filtering log for blocked/allowed CSP report requests

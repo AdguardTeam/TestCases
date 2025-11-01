@@ -1,27 +1,46 @@
 import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
+const EXTERNAL_IMAGE_URL = 'https://httpbin.agrd.dev/image/png';
+const EXTERNAL_JSON_URL = 'https://httpbin.agrd.dev/json';
 
 /**
- * Test 1: Automated test for allowed image loading
+ * Test 1: Automated test that CSP blocks external images and sends reports
  */
-const testAllowedImageAutomated = () => {
+const testCSPBlocksExternalImage = () => {
     return new Promise((resolve) => {
+        let imageBlocked = false;
+        let cspReportSent = false;
+
+        const handleViolation = (e) => {
+            if (e.blockedURI === EXTERNAL_IMAGE_URL) {
+                cspReportSent = true;
+
+                if (imageBlocked && cspReportSent) {
+                    resolve(true);
+                }
+            }
+        };
+        document.addEventListener('securitypolicyviolation', handleViolation);
+
         const img = document.createElement('img');
-        // 1x1 transparent GIF
-        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
         img.onload = () => {
-            resolve(true);
-        };
-
-        img.onerror = () => {
             resolve(false);
         };
 
-        // Add to DOM temporarily for testing
-        img.style.display = 'none';
-        document.body.appendChild(img);
+        img.onerror = () => {
+            imageBlocked = true;
+
+            if (imageBlocked && cspReportSent) {
+                resolve(true);
+            }
+        };
+        img.src = EXTERNAL_IMAGE_URL;
+
+        setTimeout(() => {
+            resolve(imageBlocked && cspReportSent);
+        }, 3000);
     });
 };
 
@@ -30,7 +49,7 @@ const testAllowedImageAutomated = () => {
  */
 const testBlockedImage = () => {
     const img = document.createElement('img');
-    img.src = 'https://httpbin.agrd.dev/image/png'; // External image - violates CSP
+    img.src = EXTERNAL_IMAGE_URL;
 
     img.onerror = () => {
         const statusEl = document.getElementById('blocked-status');
@@ -46,8 +65,7 @@ async function testAllowedScript() {
 
     statusEl.textContent = 'Testing...';
 
-    // Create JSON fetch CSP violation
-    const response = await fetch('https://httpbin.agrd.dev/json');
+    const response = await fetch(EXTERNAL_JSON_URL);
 
     if (response.ok) {
         statusEl.textContent = 'JSON LOADED (look at dev panel to see CSP report)';
@@ -73,9 +91,9 @@ window.addEventListener('DOMContentLoaded', () => {
         testAllowedScript();
     });
 
-    agTest(1, 'CSP allowed image loading test', async (assert) => {
-        const result = await testAllowedImageAutomated();
+    agTest(1, 'CSP blocks external image test', async (assert) => {
+        const result = await testCSPBlocksExternalImage();
 
-        assert.ok(adgCheck && result, 'Allowed image (data URI) should load successfully');
+        assert.ok(adgCheck && result, 'External image should be blocked by CSP');
     });
 });
