@@ -2,18 +2,18 @@
 // @name Greasemonkey API v4 Tester
 // @name:ru Greasemonkey API v4 Тестер
 // @namespace adguard
-// @version      1.0.0
+// @version      1.1.0
 // @description AdGuard's Greasemonkey API v4 tester
 // @description:ru тестер Greasemonkey API v4 для AdGuard
-// @match			      https://testcases.agrd.dev/Userscripts/*
-// @match			      http://testcases.agrd.dev/Userscripts/*
-// @match			      https://local.testcases.agrd.dev/Userscripts/*
-// @match			      http://local.testcases.agrd.dev/Userscripts/*
-// @match			      https://*.pages.dev/Userscripts/*
-// @match			      http://*.pages.dev/Userscripts/*
-// @require         jquery-2.1.1.min.js
-// @resource		1x1.png 1x1.png
-// @resource        testResource.js resource.js
+// @match   https://testcases.agrd.dev/Userscripts/*
+// @match   http://testcases.agrd.dev/Userscripts/*
+// @match   https://local.testcases.agrd.dev/Userscripts/*
+// @match   http://local.testcases.agrd.dev/Userscripts/*
+// @match   https://*.pages.dev/Userscripts/*
+// @match   http://*.pages.dev/Userscripts/*
+// @require     jquery-2.1.1.min.js
+// @resource    1x1.png 1x1.png
+// @resource    testResource.js resource.js
 // @downloadURL     https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
 // @updateURL       https://raw.githubusercontent.com/AdguardTeam/TestCases/master/public/Userscripts/GMapiV4Tester/GMapi_v4-tester.user.js
 // @grant GM_addStyle
@@ -26,6 +26,7 @@
 // @grant GM.xmlHttpRequest
 // @grant GM.notification
 // @grant unsafeWindow
+// @connect *
 // @noframes
 // @run-at document-start
 // ==/UserScript==

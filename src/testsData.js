@@ -306,6 +306,7 @@ const testsData = [
         readmeUrl: 'Filters/scriptlet-rules/README.md',
     },
     {
+        // IMPORTANT: Update USERSCRIPTS_TEST_IDS if this id is changed
         id: 20,
         title: 'Userscripts',
         link: 'Userscripts/test-userscripts.html',
@@ -313,8 +314,10 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
+        readmeUrl: 'Userscripts/README.md',
     },
     {
+        // IMPORTANT: Update USERSCRIPTS_TEST_IDS if this id is changed
         id: 21,
         title: 'Userscripts: GM API v4 tests',
         link: 'Userscripts/gmapi-v4-tests.html',
@@ -322,6 +325,7 @@ const testsData = [
         compatibility: {
             none: NONE_CORELIBS_PRODUCTS,
         },
+        readmeUrl: 'Userscripts/README.md',
     },
     {
         id: 22,
@@ -733,6 +737,7 @@ const testsData = [
         readmeUrl: 'Filters/permissions-rules-mv3/README.md',
     },
     {
+        // IMPORTANT: Update USERSCRIPTS_TEST_IDS if this id is changed
         id: 51,
         title: 'Userscripts: Content security policy (CSP) tests',
         link: 'userscripts-csp',
@@ -757,6 +762,7 @@ const testsData = [
         readmeUrl: 'Filters/header-rules/README.md',
     },
     {
+        // IMPORTANT: Update USERSCRIPTS_TEST_IDS if this id is changed
         id: 53,
         title: 'Userscripts: Single Page Application (SPA) tests',
         link: 'Userscripts/spa-tests.html',
