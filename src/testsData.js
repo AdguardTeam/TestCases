@@ -771,6 +771,19 @@ const testsData = [
             none: NONE_CORELIBS_PRODUCTS,
         },
     },
+    {
+        id: 54,
+        title: 'CSP reports tests',
+        link: 'Filters/csp-reports/test-csp-reports.html',
+        rulesUrl: 'Filters/csp-reports/test-csp-reports.txt',
+        compatibility: {
+            none: [
+                ...NO_CSP_PRODUCTS,
+            ],
+        },
+        readmeUrl: 'Filters/csp-reports/README.md',
+        manual: true,
+    },
 ];
 
 export default testsData;

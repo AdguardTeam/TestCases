@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>CSP reports tests</title>
+        <link rel="stylesheet" href="../qunit/qunit.css">
+        <link rel="stylesheet" href="../qunit/custom.css">
+        <link rel="stylesheet" href="test-csp-reports.css">
+    </head>
+
+    <body>
+        <div id="subscribe-to-test-csp-reports-filter" class="subscribe-link">
+            <a href="test-csp-reports.txt">Subscribe to test filter</a>
+        </div>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        <script src="../qunit/qunit.js"></script>
+
+        <div id="test-container">
+            <h3>Manual CSP Reports Tests</h3>
+            <p>
+                <strong>Instructions:</strong>
+                <ul>
+                    <li>Open DevTools Network tab and Filtering Log tab to see CSP report requests</li>
+                    <li>Click test buttons to trigger CSP violations:</li>
+                    <li><strong>Test 2:</strong> CSP report to <code>/status/201</code> should be blocked by AdGuard</li>
+                    <li><strong>Test 3:</strong> CSP reports to 
+                        <code>/status/200</code> (allowed by whitelist) 
+                        and /test-csp-reports (first-party) endpoints should be allowed</li>
+                    <li>Check Network tab and Filtering log for different outcomes:</li>
+                </ul>
+            </p>
+            
+            <div id="test-results">
+                <div id="blocked-image-result">
+                    <strong>Test 2 - Blocked CSP Reports: </strong> 
+                    <span id="blocked-status">ready</span>
+                </div>
+                <div id="allowed-script-result">
+                    <strong>Test 3 - Allowed CSP Reports: </strong> 
+                    <span id="allowed-status">ready</span>
+                </div>
+            </div>
+
+            <div class="test-buttons">
+                <button id="test-blocked-image" class="test-button test-button-blocked">
+                    Test 2: Trigger blocked CSP report
+                </button>
+                <button id="test-allowed-script" class="test-button test-button-allowed">
+                    Test 3: Trigger allowed CSP report
+                </button>
+            </div>
+        </div>
+
+        <script type="module" src="test-csp-reports.js"></script>
+    </body>
+
+</html>
