@@ -99,9 +99,11 @@ export const isBlockedFetch = async (url, options) => {
 };
 
 /**
+ * Checks if the browser is Safari.
+ *
  * @returns true if the browser is Safari.
  */
-const isSafari = () => {
+export const isSafari = () => {
     return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 };
 
@@ -137,5 +139,50 @@ export const waitIframeLoad = async (frame) => {
         } else {
             frame.addEventListener('load', () => resolveProxy(resolve), { once: true });
         }
+    });
+};
+
+/**
+ * Waits for an element's style property to match the expected value.
+ * This is useful for waiting for extended CSS rules to be applied,
+ * which can be slower on iOS/Safari.
+ *
+ * @param {Document} doc Document containing the element.
+ * @param {string} selector CSS selector for the element.
+ * @param {string} styleProperty Style property to check, e.g., 'display'.
+ * @param {string} expectedValue Expected value of the style property, e.g., 'none'.
+ * @param {number} [timeout=3000] Maximum time to wait in milliseconds.
+ * @param {number} [pollInterval=50] How often to check in milliseconds.
+ *
+ * @returns {Promise<boolean>} True if the style was applied within `timeout`,
+ * false otherwise.
+ */
+export const waitForStyleApplied = async (
+    doc,
+    selector,
+    styleProperty,
+    expectedValue,
+    timeout = 3000,
+    pollInterval = 50,
+) => {
+    const startTime = Date.now();
+
+    return new Promise((resolve) => {
+        const checkStyle = () => {
+            const element = doc.querySelector(selector);
+            if (element && element.style[styleProperty] === expectedValue) {
+                resolve(true);
+                return;
+            }
+
+            if (Date.now() - startTime >= timeout) {
+                resolve(false);
+                return;
+            }
+
+            setTimeout(checkStyle, pollInterval);
+        };
+
+        checkStyle();
     });
 };

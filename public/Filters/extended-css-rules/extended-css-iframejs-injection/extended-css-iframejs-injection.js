@@ -1,4 +1,9 @@
-import { getAgTestRunner, waitIframeLoad } from '../../helpers.js';
+import {
+    getAgTestRunner,
+    waitIframeLoad,
+    waitForStyleApplied,
+    isSafari,
+} from '../../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -13,8 +18,16 @@ window.addEventListener('load', () => {
         await waitIframeLoad(frame);
 
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
+
+        let isOk = innerDoc.querySelector('#inframe1').style.display === 'none';
+
+        if (isSafari()) {
+            // Wait for extended CSS rules to be applied, important for iOS/Safari.
+            isOk = await waitForStyleApplied(innerDoc, '#inframe1', 'display', 'none');
+        }
+
         assert.ok(
-            innerDoc.querySelector('#inframe1').style.display === 'none',
+            isOk,
             'Extended CSS rules should work inside of iframes created by JS',
         );
     });
