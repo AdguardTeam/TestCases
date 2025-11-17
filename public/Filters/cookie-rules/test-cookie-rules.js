@@ -1,4 +1,4 @@
-import { getAgTestRunner } from '../helpers.js';
+import { getAgTestRunner, isSubscribed } from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -17,12 +17,14 @@ const deleteCookie = async (name) => {
 };
 
 const hasCookie = async (name) => {
-    const result = await fetch(`${baseUrl}/httpbin/cookies`);
+    const result = await fetch(`${baseUrl}/httpbin/cookies?${name}`);
     const cookies = await result.json();
     return !!cookies[name];
 };
 
 window.addEventListener('load', () => {
+    const adgCheck = isSubscribed('subscribe-to-test-cookie-rules-filter');
+
     agTest(1, '$cookie rule blocks request cookie', async (assert) => {
         await setCookie('case1');
         assert.notOk(await hasCookie('case1'), '$cookie rule blocks request cookie');
@@ -35,15 +37,29 @@ window.addEventListener('load', () => {
         await deleteCookie('case2');
     });
 
-    agTest(3, '$cookie allowlist rule bypass request cookie', async (assert) => {
+    agTest(3, '$cookie rule selective blocking request cookie', async (assert) => {
         await setCookie('case3');
-        assert.ok(await hasCookie('case3'), '$cookie allowlist rule bypass request cookie');
+        assert.notOk(await hasCookie('case3'), '$cookie rule selective blocking request cookie');
         await deleteCookie('case3');
     });
 
-    agTest(4, '$cookie allowlist rule bypass response cookie', async (assert) => {
+    agTest(4, '$cookie rule selective blocking response cookie', async (assert) => {
         await setCookie('case4');
-        assert.ok(await hasCookie('case4'), '$cookie allowlist rule bypass response cookie');
+        assert.notOk(await hasCookie('case4'), '$cookie rule selective blocking response cookie');
         await deleteCookie('case4');
+    });
+
+    agTest(5, '$cookie allowlist rule bypass request cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
+        await setCookie('case5');
+        assert.ok(await hasCookie('case5'), '$cookie allowlist rule bypass request cookie');
+        await deleteCookie('case5');
+    });
+
+    agTest(6, '$cookie allowlist rule bypass response cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
+        await setCookie('case6');
+        assert.ok(await hasCookie('case6'), '$cookie allowlist rule bypass response cookie');
+        await deleteCookie('case6');
     });
 });

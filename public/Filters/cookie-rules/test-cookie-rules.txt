@@ -8,12 +8,16 @@
 testcases.agrd.dev,pages.dev###subscribe-to-test-cookie-rules-filter
 !
 ! Test case 1: $cookie rule blocks request cookie
-||*/httpbin/cookies^$cookie=case1
+||*/httpbin/cookies?case1^$cookie
 ! Test case 2: $cookie rule blocks response cookie
-||*/httpbin/cookies/set?case2$cookie=case2
-! Test case 3: $cookie allowlist rule bypass request cookie
+||*/httpbin/cookies/set?case2$cookie
+! Test case 3: $cookie rule blocks request cookie
 ||*/httpbin/cookies^$cookie=case3
-@@||*/httpbin/cookies^$cookie=case3
-! Test case 4: $cookie allowlist rule bypass response cookie
+! Test case 4: $cookie rule blocks response cookie
 ||*/httpbin/cookies/set?case4$cookie=case4
-@@||*/httpbin/cookies/set?case4$cookie=case4
+! Test case 5: $cookie allowlist rule bypass request cookie
+||*/httpbin/cookies^$cookie=case5
+@@||*/httpbin/cookies^$cookie=case5
+! Test case 6: $cookie allowlist rule bypass response cookie
+||*/httpbin/cookies/set?case4$cookie=case6
+@@||*/httpbin/cookies/set?case4$cookie=case6

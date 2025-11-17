@@ -587,11 +587,21 @@ const testsData = [
         link: 'Filters/cookie-rules/test-cookie-rules.html',
         rulesUrl: 'Filters/cookie-rules/test-cookie-rules.txt',
         compatibility: {
+            partial: [
+                {
+                    /**
+                     * Can be fully supported after this issue will be resolved
+                     * https://github.com/w3c/webextensions/issues/439
+                     */
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [3, 4, 5, 6],
+                    desc: 'Not supported by MV3',
+                },
+            ],
             none: [
                 PRODUCT_TYPES.SAF,
                 PRODUCT_TYPES.IOS,
                 PRODUCT_TYPES.CON,
-                PRODUCT_TYPES.MV3, // TODO: AG-45656
             ],
         },
         readmeUrl: 'Filters/cookie-rules/README.md',
