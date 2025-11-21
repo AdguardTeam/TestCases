@@ -79,14 +79,7 @@ Check:
           - |-
             branch="${bamboo.planRepository.branchName}"
 
-            # Throw error if current branch is not "master",
-            # because we do not deploy changes from other branches
-            if [ $branch != "master" ]
-            then
-              echo "Deploy is not supported on branch ${branch}"
-              echo "Skipping deploy"
-              exit 1;
-            fi
+            echo "test log"
 
 Deploy:
   key: DEPLOY
@@ -114,12 +107,3 @@ notifications:
       - webhook:
           name: Build webhook
           url: http://prod.jirahub.service.eu.consul/v1/webhook/bamboo
-
-branch-overrides:
-  -
-    ^(master.+|(?!master).*)$:
-      # for branched other than 'master' we run only 'Build' stage
-      # since 'Deploy' should be run only for 'master'
-      stages:
-        - Build:
-            - Build
