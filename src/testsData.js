@@ -523,11 +523,6 @@ const testsData = [
             none: LEGACY_PRODUCTS,
             partial: [
                 {
-                    product: PRODUCT_TYPES.MV3,
-                    cases: [2, 7],
-                    desc: 'Not yet implemented',
-                },
-                {
                     product: PRODUCT_TYPES.IOS,
                     cases: [6, 7],
                     desc: 'Not yet implemented',
