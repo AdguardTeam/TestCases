@@ -1,9 +1,5 @@
 # $header rules test
 
-## Compatibility
-
-MV3 support starts from v5.3
-
 ## Test cases
 
 ### Case 1: Compatibility with content type modifiers ($script, $style, $subdocument, etc)
