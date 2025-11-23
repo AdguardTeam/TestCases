@@ -26,24 +26,28 @@ window.addEventListener('load', () => {
     const adgCheck = isSubscribed('subscribe-to-test-cookie-rules-filter');
 
     agTest(1, '$cookie rule blocks request cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
         await setCookie('case1');
         assert.notOk(await hasCookie('case1'), '$cookie rule blocks request cookie');
         await deleteCookie('case1');
     });
 
     agTest(2, '$cookie rule blocks response cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
         await setCookie('case2');
         assert.notOk(await hasCookie('case2'), '$cookie rule blocks response cookie');
         await deleteCookie('case2');
     });
 
     agTest(3, '$cookie rule selective blocking request cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
         await setCookie('case3');
         assert.notOk(await hasCookie('case3'), '$cookie rule selective blocking request cookie');
         await deleteCookie('case3');
     });
 
     agTest(4, '$cookie rule selective blocking response cookie', async (assert) => {
+        assert.ok(adgCheck, 'Filter is subscribed');
         await setCookie('case4');
         assert.notOk(await hasCookie('case4'), '$cookie rule selective blocking response cookie');
         await deleteCookie('case4');
