@@ -238,6 +238,10 @@ const testsData = [
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
         compatibility: {
             none: NO_REPLACE_CONTENT_PRODUCTS,
+            partial: CORELIBS_PRODUCTS.map((product) => ({
+                product,
+                cases: [8, 9, 10],
+            })),
         },
         readmeUrl: 'Filters/content-rules/README.md',
     },

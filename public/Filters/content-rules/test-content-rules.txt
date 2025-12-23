@@ -14,3 +14,7 @@ testcases.agrd.dev,pages.dev$$div[id="case4"][wildcard="*teasernet*tararar*"]
 testcases.agrd.dev,pages.dev$$div[id="case5"]
 testcases.agrd.dev,pages.dev$@$div[id="case5"]
 testcases.agrd.dev,pages.dev$$div[custom_attr]
+testcases.agrd.dev,pages.dev$$div[id="case7"] > span:contains(/content/i)
+testcases.agrd.dev,pages.dev$$div[id="case8"] > h1, div[id="case8"] > h2, div[id="case8"] > h3
+testcases.agrd.dev,pages.dev$$div[id="case9"] > span[title*="substr" i] ~ div
+testcases.agrd.dev,pages.dev$$div[id="case10"] > div[tag-content="parent to delete"] > span:contains(child to delete)
