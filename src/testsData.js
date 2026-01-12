@@ -577,7 +577,10 @@ const testsData = [
                     cases: [3, 4],
                 },
             ],
-            none: LEGACY_PRODUCTS,
+            none: [
+                LEGACY_PRODUCTS,
+                PRODUCT_TYPES.IOS,
+            ],
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },
