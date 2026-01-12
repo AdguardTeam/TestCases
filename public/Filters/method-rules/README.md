@@ -1,5 +1,6 @@
 # $method rules tests
-Compatible with AdGuard products, **that run CoreLibs v1.12 or later**, and AdGuard Browser extensions, **that run tsurlfilter 2.1.1 or later**
+Compatible with AdGuard products, **that run CoreLibs v1.12 or later**, and AdGuard Browser extensions, **that run tsurlfilter 2.1.1 or later**.
+**SafariConverterLib v4.1.0** adds partial support for `$method` modifier except for cases 3 and 4.
 
 ### Case 1
 Rule with `$method` modifier blocks requests with `get` method.

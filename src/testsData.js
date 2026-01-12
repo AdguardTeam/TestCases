@@ -4,7 +4,6 @@ import {
     NONE_CORELIBS_PRODUCTS,
     NO_REPLACE_CONTENT_PRODUCTS,
     NO_CSP_PRODUCTS,
-    NO_METHOD_PRODUCTS,
     NO_TO_PRODUCTS,
     FIREFOX_BUILDS,
     SAFARI_CONVERTER_LIB_PRODUCTS,
@@ -571,7 +570,14 @@ const testsData = [
         link: 'Filters/method-rules/test-method-rules.html',
         rulesUrl: 'Filters/method-rules/test-method-rules.txt',
         compatibility: {
-            none: NO_METHOD_PRODUCTS,
+            partial: [
+                // Negating methods not supported.
+                {
+                    product: PRODUCT_TYPES.SAF,
+                    cases: [3, 4],
+                },
+            ],
+            none: LEGACY_PRODUCTS,
         },
         readmeUrl: 'Filters/method-rules/README.md',
     },
