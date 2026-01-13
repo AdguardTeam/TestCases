@@ -576,10 +576,13 @@ const testsData = [
                     product: PRODUCT_TYPES.SAF,
                     cases: [3, 4],
                 },
+                {
+                    product: PRODUCT_TYPES.IOS,
+                    cases: [3, 4],
+                },
             ],
             none: [
                 LEGACY_PRODUCTS,
-                PRODUCT_TYPES.IOS,
             ],
         },
         readmeUrl: 'Filters/method-rules/README.md',
