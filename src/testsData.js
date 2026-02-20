@@ -91,6 +91,11 @@ const testsData = [
                     product: PRODUCT_TYPES.SAF,
                     cases: [2],
                 },
+                // 3 will work after release adgext v5.3.1.
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [3],
+                },
             ],
         },
         readmeUrl: 'Filters/generichide-rules/README.md',
@@ -515,14 +520,6 @@ const testsData = [
         rulesUrl: 'Filters/nonbasic-path-modifier/test-nonbasic-path-modifier.txt',
         compatibility: {
             none: LEGACY_PRODUCTS,
-            partial: [
-                // TODO: Enable all tests for MV3, after we released v5.3.1
-                {
-                    product: PRODUCT_TYPES.MV3,
-                    cases: [3],
-                    desc: 'Not yet implemented',
-                },
-            ],
         },
         readmeUrl: 'Filters/nonbasic-path-modifier/README.md',
     },
