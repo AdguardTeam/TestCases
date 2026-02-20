@@ -14,3 +14,7 @@ testcases.agrd.dev,pages.dev###case-1-generichide > .test-banner
 !
 ! Test case 2: generichide rule and js rules
 testcases.agrd.dev,pages.dev#%#!function(){let e=()=>{document.querySelector("#case-1-generichide > .test-banner1").style.width="200px"};"complete"===document.readyState?e():window.document.addEventListener("readystatechange",e)}();
+!
+! Test case 3: 
+[$path=/subpage1]testcases.agrd.dev,pages.dev###case-3-generichide > .test-banner
+@@||testcases.agrd.dev^$generichide
