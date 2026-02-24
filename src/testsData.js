@@ -91,6 +91,11 @@ const testsData = [
                     product: PRODUCT_TYPES.SAF,
                     cases: [2],
                 },
+                // 3 will work after release adgext v5.3.1.
+                {
+                    product: PRODUCT_TYPES.MV3,
+                    cases: [3],
+                },
             ],
         },
         readmeUrl: 'Filters/generichide-rules/README.md',
