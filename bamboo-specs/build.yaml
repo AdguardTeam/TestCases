@@ -107,14 +107,6 @@ Deploy:
 other:
   concurrent-build-plugin: system-default
 
-notifications:
-  - events:
-      - plan-status-changed
-    recipients:
-      - webhook:
-          name: Build webhook
-          url: http://prod.jirahub.service.eu.consul/v1/webhook/bamboo
-
 branch-overrides:
   -
     ^(master.+|(?!master).*)$:
