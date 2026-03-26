@@ -6,12 +6,6 @@ const agTest = getAgTestRunner(window.location);
  * Before doing the test, import test-network-rules.txt to AdGuard
  */
 
-const download = async (url) => {
-    const response = await fetch(url);
-    const responseText = await response.text();
-    return responseText;
-};
-
 const request = async (url) => fetch(url, { mode: 'no-cors' });
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -26,9 +20,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(2, '$network exception and priority test', async (assert) => {
-        const result = await download('https://1.0.0.1/cdn-cgi/trace');
+        const response = await fetch('https://8.8.8.8/resolve?name=example.com&type=A');
+        const result = await response.json();
         assert.ok(
-            adgCheck && result.indexOf('h=1.0.0.1') !== -1,
+            adgCheck && result.Status === 0,
             '$network exception rule should disable $network rule and reject all other rules.',
         );
     });
