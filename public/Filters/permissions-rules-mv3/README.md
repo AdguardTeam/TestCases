@@ -14,11 +14,11 @@ You can read about limitations in the readme file for `$permissions rules test`.
 Checks if `$permissions` rules are applied correctly in the main frame.
 It sets the `autoplay` feature policy to `self` and `https://example.com`.
 
-#### Expecting result: applies `autoplay` feature policy to `self` and `https://example.com`
+### Expecting result: applies `autoplay` feature policy to `self` and `https://example.com`
 
 ## Case 2
 
 Checks if `$permissions` rules are applied correctly in the subframe.
 Technically, did the same as in the first case, but in the subframe.
 
-#### Expecting result: applies `geolocation` feature policy to `self` and `https://example.com`
+### Expecting result: applies `geolocation` feature policy to `self` and `https://example.com`

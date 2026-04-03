@@ -24,11 +24,11 @@ It sets the `autoplay` feature policy to `self` and `https://example.com` and ch
 It also tries to set `autoplay` feature policy to `self` and `https://example.net`, but right after that,
 adds an allowlist for `https://example.net` and checks if the allowlist is still `self` and `https://example.com`;
 
-#### Expecting result: allowlist for `autoplay` is `self` and `https://example.com`
+### Expecting result: allowlist for `autoplay` is `self` and `https://example.com`
 
 ## Case 2
 
 Checks if `$permissions` rules are applied correctly in the subframe.
 Technically, did the same as in the first case, but in the subframe.
 
-#### Expecting result: allowlist for `geolocation` is `self` and `https://example.com`
+### Expecting result: allowlist for `geolocation` is `self` and `https://example.com`

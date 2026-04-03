@@ -8,10 +8,10 @@ incompatible.
 
 In other products there's a way to partially resolve incompatibilities:
 
-* MV3 Web Extension (Chrome-based) is capable of using
+- MV3 Web Extension (Chrome-based) is capable of using
   `browser.scripting.executeScript` to inject scripts and thus overcome the
   issues. However, it won't work for JS rules that are not "registered", i.e.
   not bundled within the extension.
-* iOS Web Extension (Web Extension) also uses `browser.scripting.executeScript`.
-* macOS App Extension has no way to circumvent CSP issues. However, it seems to
+- iOS Web Extension (Web Extension) also uses `browser.scripting.executeScript`.
+- macOS App Extension has no way to circumvent CSP issues. However, it seems to
   not suffer from Trusted Types limitations at the moment.

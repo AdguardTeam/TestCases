@@ -3,6 +3,7 @@
 ## Case 1
 
 There are two rules:
+
 - blocking rule for `adg3.png` with `$important` modifier;
 - `$urlblock` exception rule.
 

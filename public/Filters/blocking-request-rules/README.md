@@ -6,7 +6,8 @@ Rule with `$ping` modifier should block `navigator.sendBeacon()` request.
 
 ### ⚠️ Warning
 
-Test is not fully automatic. To be 100% sure you have to check in DevTools console the request to `https://adguard.com` is blocked by the client.
+Test is not fully automatic. To be 100% sure you have to check in DevTools console
+the request to `https://adguard.com` is blocked by the client.
 
 ## Case 2: Test $xmlhttprequest modifier
 

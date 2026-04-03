@@ -9,22 +9,28 @@ Before testing, copy the filter rules to your AdGuard user rules from `test-csp-
 ## Test cases
 
 ### Case 1 (Automated)
+
 Verifies that CSP policy is working correctly:
+
 - External image `https://httpbin.agrd.dev/image/png` is blocked by CSP policy `img-src 'self' data:`
 - Browser generates CSP violation report
 
 ### Case 2 (Manual)
+
 Tests blocking of CSP reports:
+
 - Load external image → triggers CSP violation
 - CSP report sent to `https://httpbin.agrd.dev/status/201`
 - **Expected:** Report should be blocked
 
 ### Case 3 (Manual)
+
 Tests whitelist and first-party CSP reports:
+
 - Fetch external JSON → triggers CSP violation
 - CSP reports sent to:
-  - `https://httpbin.agrd.dev/status/200` - allowed by whitelist `@@||httpbin.agrd.dev/status/200^`
-  - `/Filters/csp-reports/test-csp-reports` - first-party endpoint (not blocked)
+    - `https://httpbin.agrd.dev/status/200` - allowed by whitelist `@@||httpbin.agrd.dev/status/200^`
+    - `/Filters/csp-reports/test-csp-reports` - first-party endpoint (not blocked)
 - **Expected:** Both reports allowed
 
 ## Testing

@@ -1,120 +1,103 @@
 # AdGuard Test Cases
 
-## How to build
+A web application that hosts manual and automated test cases for
+[AdGuard] ad-blocking products. Each test case verifies a specific
+filter rule type — element hiding, CSP, redirects, scriptlets, and others —
+across multiple AdGuard products.
 
-1. `yarn install`
-2. `yarn build`
+The app is deployed at **<https://testcases.agrd.dev>**.
 
-## Development
+[AdGuard]: https://adguard.com/
 
-We use [Cloudflare pages][cfpages] for hosting the app.
+## What it does
 
-Local development powered by [Create React App][createreactapp] with local proxy middleware, that proxies requests to [httpbin][httpbin] API.
+AdGuard Test Cases provides a searchable catalogue of filter-rule tests.
+QA engineers and developers use it to verify that AdGuard products correctly
+apply individual rule types. The app covers:
 
-Static data is stored in the `build` directory, CF pages functions are in the `functions` directory.
+- **Filter rules** — element hiding, CSS rules, extended CSS, scriptlets,
+  redirects, blocking requests, CSP rules, cookie rules, header rules,
+  replace rules, removeparam, removeheader, and more (38 rule categories).
+- **Popup blocker** — tests for the AdGuard popup blocker component.
+- **Userscripts** — GM API v4 tests, SPA navigation tests, and grant-none
+  scenarios.
 
-To launch functions in the dev mode run:
+## Key concepts
 
-```sh
-wrangler pages dev build
-```
+- **Test case** — a standalone HTML page paired with a filter-rule file.
+  Each test case targets one specific rule type and contains numbered
+  sub-cases that exercise different aspects of that rule.
+- **Compatibility** — every test case declares which AdGuard products
+  support it (Windows, macOS, Android, browser extensions MV2/MV3, Safari,
+  iOS, Content Blocker). Some test cases list partial exceptions where
+  individual sub-cases are unsupported on certain products.
+- **Filter subscription** — clicking "Subscribe" on a test case installs
+  its rules into the user's AdGuard product, allowing immediate
+  verification.
 
-If you want to update public directory in the watch mode run:
+## Access
 
-```sh
-yarn build:watch
-```
+Open **<https://testcases.agrd.dev>** in any modern browser. No
+authentication is required.
 
-[cfpages]: https://developers.cloudflare.com/pages
-[createreactapp]: https://create-react-app.dev
-[httpbin]: https://httpbin.agrd.dev
+### Supported browsers
 
-### Public static data
+The app targets browsers listed in the `browserslist` configuration:
 
-While making any [tests data](#manage-tests-list) changes, run
-`yarn build:static` to rebuild public static data needed for autotesting.
+- Last 1 Chrome version
+- Last 1 Firefox version
+- Last 1 Safari version
 
-### Test on the local machine (MacOS)
+## Quick start
 
-1. Install dependencies: `yarn install`
-1. Add to the `/etc/hosts` next line:
+1. Open <https://testcases.agrd.dev>.
+2. Optionally filter by **product** using the dropdown
+   (e.g., "Windows", "Chrome MV2", "Safari").
+3. Optionally search by **test name** using the search field.
+4. Click **Start test** to open the test page in a new tab.
+5. Subscribe to the test's filter rules in your AdGuard product and verify
+   the expected behavior on the test page.
 
-    ```hosts
-    127.0.0.1 local.testcases.agrd.dev
-    ```
+## Features overview
 
-1. Create `cert` directory if there is no one in the repository root:
+### Test list
 
-   ```sh
-   mkdir cert
-   ```
+The main page displays all available test cases with:
 
-1. [Install `mkcert`][mkcert]
-1. Create locally-trusted development certificate:
+- **Title** — the name and rule category of the test.
+- **Compatibility badges** — which AdGuard products support the test.
+- **Start test** — opens the test page.
+- **Readme** — displays the test's documentation (when available).
+- **Copy link** — copies the direct link to the test's filter rules.
+- **Copy rules** — copies the raw filter rules to the clipboard.
+- **Subscribe** — generates a subscription URL that can be added to an
+  AdGuard product or userscript manager.
 
-   ```sh
-   # Install root certificate
-   mkcert -install
-   # Create certificate for the domain
-   mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
-   ```
+### Product filter
 
-1. Build static content: `yarn build`
-1. Run the local server: `yarn serve`
+Select a specific AdGuard product from the dropdown to show only the test
+cases compatible with that product. When a product is selected, any
+partially incompatible sub-cases are passed as query-string exceptions so
+the test page can skip them automatically.
 
-The app will be available on `https://local.testcases.agrd.dev:4000/`
+### Search
 
-> Please note that AdGuard for Mac does not filter localhost connections by
-> default.
-> It can be enabled manually in `Advanced settings` -> `network.filtering.localhost`.
+Type in the search field to filter test cases by name.
 
-[mkcert]: https://github.com/FiloSottile/mkcert#readme
+### Static data API
 
-### Test on the local machine (Windows)
-
-If you are using Windows, you can run the app locally with the following steps:
-
-1. Install dependencies: `yarn install`
-1. Add to the `C:\Windows\System32\drivers\etc\hosts` next line:
-
-    ```hosts
-    127.0.0.1 local.testcases.agrd.dev
-    ```
-
-1. Create `cert` directory if there is no one in the repository root:
-
-  ```sh
-  mkdir cert
-  ```
-
-1. [Install `mkcert`][mkcertwin] (or you can built it from `mkcert` sources by
-issuing `go build` command which produces `mkcert.exe` file, but it requires `go` installed)
-1. Create locally-trusted development certificate:
-
-   ```sh
-   # Install root certificate
-   mkcert -install
-   # Create certificate for the domain
-   mkcert -key-file cert/key.pem -cert-file cert/cert.pem local.testcases.agrd.dev
-   ```
-
-1. Build static content: `yarn build`
-1. Run the local server: `yarn serve`
-
-> **Note 1:** if you want to uninstall the root certificate, you can use
-> `mkcert -uninstall` command.
->
-> **Note 2:** it is not recommended to run the app on WSL2, because its an OS withing an OS,
-> which means two different hosts files, two certificate store, etc.
-> Its better to use it on Windows directly.
-
-[mkcertwin]: https://github.com/FiloSottile/mkcert?tab=readme-ov-file#windows
-
-## Manage tests list
-
-The main data file is `./src/testsData.js`
+The app exposes a JSON file at `/data.json` that contains all test
+metadata (IDs, titles, links, rule URLs, and compatibility data). This
+file is consumed by automated test runners.
 
 ## Known issues
 
-- **Copy rules** functionality doesn't work in FF and Safari:
-  `document.execCommand(‘cut’/‘copy’) was denied because it was not called from inside a short running user-generated event handler.`
+- **Copy rules** does not work in Firefox and Safari —
+  `document.execCommand('copy')` is denied because it is not called from
+  inside a short-running user-generated event handler.
+
+## Documentation
+
+- [Development guide](DEVELOPMENT.md) — environment setup, commands,
+  contribution workflow
+- [LLM agent rules](AGENTS.md) — project architecture and code guidelines

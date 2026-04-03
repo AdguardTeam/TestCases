@@ -11,7 +11,9 @@
         "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'yarn build'",
         "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
         "increment": "yarn version --patch --no-git-tag-version",
-        "lint": "eslint . --ext .js,.ts --cache",
+        "lint": "yarn lint:code && yarn lint:md",
+        "lint:code": "eslint . --ext .js,.ts --cache",
+        "lint:md": "markdownlint . --ignore build",
         "stylelint": "stylelint ./src/styles/*.scss"
     },
     "husky": {
@@ -75,6 +77,8 @@
         "eslint-plugin-react": "^7.28.0",
         "eslint-plugin-react-hooks": "^4.3.0",
         "husky": "^3.0.3",
+        "markdownlint": "^0.40.0",
+        "markdownlint-cli": "^0.48.0",
         "mustache": "^4.2.0",
         "stylelint": "^10.1.0",
         "stylelint-config-recommended-scss": "^3.3.0",
