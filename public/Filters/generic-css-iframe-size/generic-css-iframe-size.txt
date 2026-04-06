@@ -1,0 +1,12 @@
+!
+! Title: Rules for generic CSS iframe size tests
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-generic-css-iframe-size-filter
+!
+! Generic element-hiding rule (no domain prefix).
+! Subject to the iframe size gate in content-script.
+##.generic-ad-banner
