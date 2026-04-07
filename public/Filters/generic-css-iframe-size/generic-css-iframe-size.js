@@ -84,10 +84,13 @@ window.addEventListener('load', async function () {
         4,
         'viewport estimate - generic CSS applied to iframe (300×250) ≥ 15% of viewport (max 800×600)',
         async function (assert) {
-            const frame = document.querySelector('#case-4-viewport-smaller');
-            await waitIframeLoad(frame);
+            if (!windowCheck) {
+                assert.ok(true, `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`);
+                return;
+            }
 
-            assert.ok(windowCheck, 'viewport is small enough for the test');
+            const frame = document.querySelector('#case-4-viewport-above');
+            await waitIframeLoad(frame);
 
             const subDoc = frame.contentDocument || frame.contentWindow.document;
             const banner = subDoc.querySelector(TEST_ELEMENT_SELECTOR);
@@ -104,17 +107,20 @@ window.addEventListener('load', async function () {
         5,
         'viewport estimate - generic CSS NOT applied to iframe (200×100) < 15% of viewport (max 800×600)',
         async function (assert) {
-            const frame = document.querySelector('#case-5-viewport-greater');
-            await waitIframeLoad(frame);
+            if (!windowCheck) {
+                assert.ok(true, `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`);
+                return;
+            }
 
-            assert.ok(windowCheck, 'viewport is small enough for the test');
+            const frame = document.querySelector('#case-5-viewport-below');
+            await waitIframeLoad(frame);
 
             const subDoc = frame.contentDocument || frame.contentWindow.document;
             const banner = subDoc.querySelector(TEST_ELEMENT_SELECTOR);
 
             assert.ok(!!banner, 'test element exists in iframe < 15% of viewport');
             assert.ok(
-                adgCheck && windowCheck && getComputedStyle(banner).display !== 'none',
+                adgCheck && getComputedStyle(banner).display !== 'none',
                 '.generic-ad-banner in iframe (200×100) occupying < 15% of viewport should NOT be hidden',
             );
         },

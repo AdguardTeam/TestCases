@@ -17,7 +17,7 @@
     <div id="qunit-fixture"></div>
     <script src="../qunit/qunit.js"></script>
 
-    <!-- Hiding container from user's sight -->
+    <!-- Hide the container off-screen -->
     <style type="text/css">.container { position: absolute; top: -2500px; }</style>
     <div class="container">
         <!-- Case 1: medium iframe 370x208 (area = 76,960 px²) — above NEW area threshold (76,800),
@@ -34,11 +34,11 @@
 
         <!-- Case 4: iframe 300x250 (area = 75,000 px²) — below area threshold (76,800)
              but ≥ 15% of viewport (72,000 at 800×600). Viewport path applies CSS. -->
-        <iframe id="case-4-viewport-smaller" src="test-files/iframe-content.html" width="300" height="250"></iframe>
+        <iframe id="case-4-viewport-above" src="test-files/iframe-content.html" width="300" height="250"></iframe>
 
         <!-- Case 5: iframe 200x100 (area = 20,000 px²) — below area threshold
              and < 15% of viewport. Neither threshold met, CSS NOT applied. -->
-        <iframe id="case-5-viewport-greater" src="test-files/iframe-content.html" width="200" height="100"></iframe>
+        <iframe id="case-5-viewport-below" src="test-files/iframe-content.html" width="200" height="100"></iframe>
     </div>
 
     <script type="module" src="generic-css-iframe-size.js"></script>
