@@ -42,7 +42,8 @@
         ]
     },
     "resolutions": {
-        "fork-ts-checker-webpack-plugin": "6.5.3"
+        "fork-ts-checker-webpack-plugin": "6.5.3",
+        "eslint-plugin-react": "7.28.0"
     },
     "dependencies": {
         "@babel/runtime": "7.20.13",
