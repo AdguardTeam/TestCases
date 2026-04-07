@@ -36,6 +36,11 @@ cd filters-tests
 yarn install
 ```
 
+> All dependency versions in [package.json](package.json) are pinned to exact
+> versions (no `^` or `~` ranges). This prevents unintentional upgrades and
+> reduces the risk of installing a compromised transitive release.
+> When updating or installing a new version of a dependency, use the pinned version.
+
 ### 3. Configure the local domain
 
 The dev server binds to `local.testcases.agrd.dev` with HTTPS. Add the
