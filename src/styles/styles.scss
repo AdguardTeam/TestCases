@@ -274,6 +274,13 @@ footer > .mission {
   padding: 0 0 0 3vw;
 }
 
+.readmeText table,
+.readmeText th,
+.readmeText td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
 .search-form {
   margin: 0 0 2vw;
   padding: 1.2vw 0 1.2vw 6.5vw;
