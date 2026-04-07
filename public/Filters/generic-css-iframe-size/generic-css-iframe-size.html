@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Generic CSS iframe size test</title>
+    <link rel="stylesheet" href="../qunit/qunit.css">
+    <link rel="stylesheet" href="../qunit/custom.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-generic-css-iframe-size-filter" class="subscribe-link">
+        <a href="generic-css-iframe-size.txt">Subscribe to test filter</a>
+    </div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../qunit/qunit.js"></script>
+
+    <!-- Hide the container off-screen -->
+    <style type="text/css">.container { position: absolute; top: -2500px; }</style>
+    <div class="container">
+        <!-- Case 1: medium iframe 370x208 (area = 76,960 px²) — above NEW area threshold (76,800),
+             below OLD area threshold (100,000). Generic CSS should be applied after fix. -->
+        <iframe id="case-1-medium" src="test-files/iframe-content.html" width="370" height="208"></iframe>
+
+        <!-- Case 2: large iframe 500x201 (area = 100,500 px²) — above area thresholds (old and new).
+             Generic CSS should always be applied. -->
+        <iframe id="case-2-large" src="test-files/iframe-content.html" width="500" height="201"></iframe>
+
+        <!-- Case 3: tiny iframe 1x1 (area = 1 px²) — below area thresholds (old and new).
+             Generic CSS should NOT be applied. -->
+        <iframe id="case-3-tiny" src="test-files/iframe-content.html" width="1" height="1"></iframe>
+
+        <!-- Case 4: iframe 300x250 (area = 75,000 px²) — below area threshold (76,800)
+             but ≥ 15% of viewport (72,000 at 800×600). Viewport path applies CSS. -->
+        <iframe id="case-4-viewport-above" src="test-files/iframe-content.html" width="300" height="250"></iframe>
+
+        <!-- Case 5: iframe 200x100 (area = 20,000 px²) — below area threshold
+             and < 15% of viewport. Neither threshold met, CSS NOT applied. -->
+        <iframe id="case-5-viewport-below" src="test-files/iframe-content.html" width="200" height="100"></iframe>
+    </div>
+
+    <script type="module" src="generic-css-iframe-size.js"></script>
+
+    <div id="window-size">
+        <p id="window-size-text"></p>
+        <p>(Resize the window to test cases 4 and 5, which depend on viewport size)</p>
+    </div>
+    <script>
+        function updateWindowSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            document.getElementById('window-size-text').textContent = `Window size: ${width}×${height}`;
+        }
+        window.addEventListener('resize', updateWindowSize);
+        updateWindowSize();
+    </script>
+
+</body>
+
+</html>

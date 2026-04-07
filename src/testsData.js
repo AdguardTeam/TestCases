@@ -803,6 +803,19 @@ const testsData = [
         readmeUrl: 'Filters/csp-reports/README.md',
         manual: true,
     },
+    {
+        id: 55,
+        title: 'Generic CSS injection into iframes of different sizes',
+        link: 'Filters/generic-css-iframe-size/generic-css-iframe-size.html',
+        rulesUrl: 'Filters/generic-css-iframe-size/generic-css-iframe-size.txt',
+        compatibility: {
+            none: [
+                ...NONE_CORELIBS_PRODUCTS,
+            ],
+        },
+        readmeUrl: 'Filters/generic-css-iframe-size/README.md',
+        manual: true,
+    },
 ];
 
 export default testsData;

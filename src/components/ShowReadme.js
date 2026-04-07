@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { getFile } from '../helpers';
 
@@ -28,6 +29,7 @@ export default class ShowReadme extends React.Component {
             <div>
                 <ReactMarkdown
                     className="readmeText"
+                    remarkPlugins={[remarkGfm]}
                 >
                     {readmeFile}
                 </ReactMarkdown>
