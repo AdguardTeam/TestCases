@@ -274,10 +274,13 @@ footer > .mission {
   padding: 0 0 0 3vw;
 }
 
+.readmeText table {
+  border-collapse: collapse;
+}
+
 .readmeText table,
 .readmeText th,
 .readmeText td {
-  border-collapse: collapse;
   border: 1px solid black;
 }
 
