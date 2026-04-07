@@ -813,6 +813,8 @@ const testsData = [
                 ...NONE_CORELIBS_PRODUCTS,
             ],
         },
+        readmeUrl: 'Filters/generic-css-iframe-size/README.md',
+        manual: true,
     },
 ];
 
