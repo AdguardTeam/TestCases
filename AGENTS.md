@@ -136,6 +136,17 @@ After completing any code change, verify the following:
 - Test files are co-located with source files (e.g., `App.test.js` next to
   `App.js`).
 
+### Test Case Compatibility
+
+- Each filter test case in `src/testsData.js` declares a `compatibility` field
+  that specifies which AdGuard products it targets (e.g., CoreLibs-only tests
+  exclude browser extensions, Safari, and iOS).
+- When reviewing test case code, **always check the `compatibility` field** in
+  `testsData.js` to understand the target products. Do not suggest helpers,
+  workarounds, or patterns that only apply to products excluded by this field.
+  For example: do not recommend Safari/iOS-specific timing helpers for a test
+  that targets only CoreLibs products (Windows, macOS, Android).
+
 ### Other
 
 - Product compatibility in `testsData.js` uses typed constants from
