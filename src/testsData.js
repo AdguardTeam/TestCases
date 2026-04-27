@@ -346,7 +346,6 @@ const testsData = [
             none: [
                 PRODUCT_TYPES.IOS,
                 PRODUCT_TYPES.CON,
-                PRODUCT_TYPES.MV3,
             ],
         },
         manual: true,
