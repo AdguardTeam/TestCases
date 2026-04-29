@@ -85,7 +85,10 @@ window.addEventListener('load', async function () {
         'viewport estimate - generic CSS applied to iframe (300×250) ≥ 15% of viewport (max 800×600)',
         async function (assert) {
             if (!windowCheck) {
-                assert.ok(true, `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`);
+                assert.ok(
+                    true,
+                    `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`,
+                );
                 return;
             }
 
@@ -108,7 +111,10 @@ window.addEventListener('load', async function () {
         'viewport estimate - generic CSS NOT applied to iframe (200×100) < 15% of viewport (max 800×600)',
         async function (assert) {
             if (!windowCheck) {
-                assert.ok(true, `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`);
+                assert.ok(
+                    true,
+                    `SKIPPED — viewport ${vw}×${vh} exceeds max ${MAX_VIEWPORT.WIDTH}×${MAX_VIEWPORT.HEIGHT}`,
+                );
                 return;
             }
 

@@ -8,17 +8,17 @@
         "eject": "react-scripts eject",
         "build": "react-scripts build",
         "build:static": "node -r esbuild-register ./buildStaticData.js",
-        "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'yarn build'",
+        "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'pnpm build'",
         "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
-        "increment": "yarn version --patch --no-git-tag-version",
-        "lint": "yarn lint:code && yarn lint:md",
+        "increment": "pnpm version patch --no-git-tag-version",
+        "lint": "pnpm lint:code && pnpm lint:md",
         "lint:code": "eslint . --ext .js,.ts --cache",
         "lint:md": "markdownlint . --ignore build",
         "stylelint": "stylelint ./src/styles/*.scss"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn stylelint && yarn lint && cross-env CI=true react-scripts test"
+            "pre-commit": "pnpm stylelint && pnpm lint && cross-env CI=true react-scripts test"
         }
     },
     "stylelint": {
@@ -26,7 +26,8 @@
     },
     "jest": {
         "moduleNameMapper": {
-            "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
+            "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js",
+            "remark-gfm": "<rootDir>/src/__mocks__/remark-gfm.js"
         }
     },
     "browserslist": {
@@ -41,9 +42,18 @@
             "last 1 safari version"
         ]
     },
-    "resolutions": {
-        "fork-ts-checker-webpack-plugin": "6.5.3",
-        "eslint-plugin-react": "7.28.0"
+    "pnpm": {
+        "overrides": {
+            "fork-ts-checker-webpack-plugin": "6.5.3",
+            "eslint-plugin-react": "7.28.0"
+        },
+        "onlyBuiltDependencies": [
+            "core-js",
+            "core-js-pure",
+            "esbuild",
+            "husky",
+            "workerd"
+        ]
     },
     "dependencies": {
         "@babel/runtime": "7.20.13",

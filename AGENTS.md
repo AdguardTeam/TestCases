@@ -60,21 +60,21 @@ iOS). The app is deployed to Cloudflare Pages at `testcases.agrd.dev`.
 
 ## Build And Test Commands
 
-All commands use **Yarn 1.x**.
+All commands use **pnpm**.
 
-| Command             | Description                                       |
-| ------------------- | ------------------------------------------------- |
-| `yarn install`      | Install dependencies                              |
-| `yarn build`        | Production build (outputs to `build/`)            |
-| `yarn serve`        | Start local dev server (CRA, HTTPS on port 4000)  |
-| `yarn build:static` | Regenerate `public/data.json` from `testsData.js` |
-| `yarn build:watch`  | Rebuild on file changes (watch mode)              |
-| `yarn test`         | Run Jest unit tests (via react-scripts)           |
-| `yarn lint`         | Run all linters (`lint:code` + `lint:md`)         |
-| `yarn lint:code`    | Run ESLint on `.js` and `.ts` files               |
-| `yarn lint:md`      | Run markdownlint on `.md` files                   |
-| `yarn stylelint`    | Run Stylelint on SCSS files in `src/styles/`      |
-| `yarn deploy`       | Deploy to Cloudflare Pages via Wrangler           |
+| Command              | Description                                       |
+| -------------------- | ------------------------------------------------- |
+| `pnpm install`       | Install dependencies                              |
+| `pnpm build`         | Production build (outputs to `build/`)            |
+| `pnpm serve`         | Start local dev server (CRA, HTTPS on port 4000)  |
+| `pnpm build:static`  | Regenerate `public/data.json` from `testsData.js` |
+| `pnpm build:watch`   | Rebuild on file changes (watch mode)              |
+| `pnpm test`          | Run Jest unit tests (via react-scripts)           |
+| `pnpm lint`          | Run all linters (`lint:code` + `lint:md`)         |
+| `pnpm lint:code`     | Run ESLint on `.js` and `.ts` files               |
+| `pnpm lint:md`       | Run markdownlint on `.md` files                   |
+| `pnpm stylelint`     | Run Stylelint on SCSS files in `src/styles/`      |
+| `pnpm deploy`        | Deploy to Cloudflare Pages via Wrangler           |
 
 For local development with Cloudflare Functions:
 
@@ -86,21 +86,21 @@ wrangler pages dev build
 
 After completing any code change, verify the following:
 
-1. Run `yarn lint` and fix all linter errors before committing.
-2. Run `yarn stylelint` and fix all Stylelint errors if SCSS files were changed.
-3. Run `yarn lint:md` and fix all markdownlint errors if any Markdown files were changed.
-4. Run `yarn test` (or `cross-env CI=true react-scripts test`) and ensure all
+1. Run `pnpm lint` and fix all linter errors before committing.
+2. Run `pnpm stylelint` and fix all Stylelint errors if SCSS files were changed.
+3. Run `pnpm lint:md` and fix all markdownlint errors if any Markdown files were changed.
+4. Run `pnpm test` (or `cross-env CI=true react-scripts test`) and ensure all
    tests pass.
 5. If `testsData.js` or helper functions it depends on were modified, run
-   `yarn build:static` to regenerate `public/data.json`.
-6. Run `yarn build` and verify it completes without errors.
+   `pnpm build:static` to regenerate `public/data.json`.
+6. Run `pnpm build` and verify it completes without errors.
 7. Verify that new or changed code follows the Code Guidelines section below.
 8. When adding a new filter test case:
     - Create a new directory under `public/Filters/` with the test HTML and rule
       files.
     - Add a corresponding entry in `src/testsData.js` with proper `id`, `title`,
       `link`, `rulesUrl`, and `compatibility` data.
-    - Run `yarn build:static` after updating `testsData.js`.
+    - Run `pnpm build:static` after updating `testsData.js`.
 
 ## Code Guidelines
 

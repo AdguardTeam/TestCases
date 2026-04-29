@@ -6,7 +6,7 @@ plan:
   name: filters test - build
 
 variables:
-  dockerNode: adguard/node-ssh:21.7--1
+  dockerNode: adguard/node-ssh:22.17--0
 
 stages:
   - Build:
@@ -43,10 +43,10 @@ Build:
             ls -la
 
             # don't use --ignore-optional flag, because wrangler requires optional deps
-            yarn install --silent --ignore-engines --ignore-platform --ignore-scripts
+            pnpm install --frozen-lockfile
 
-            yarn build:static
-            yarn build
+            pnpm build:static
+            pnpm build
   final-tasks: &cleanup-task
     - script:
         interpreter: SHELL
@@ -101,7 +101,7 @@ Deploy:
         interpreter: SHELL
         scripts:
           - |-
-            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} CLOUDFLARE_ACCOUNT_ID=${bamboo.cloudflareWorkerDeployerAccountID} yarn deploy
+            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} CLOUDFLARE_ACCOUNT_ID=${bamboo.cloudflareWorkerDeployerAccountID} pnpm deploy
   final-tasks: *cleanup-task
 
 other:

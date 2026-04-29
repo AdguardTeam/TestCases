@@ -9,16 +9,16 @@ Install the following tools before starting:
 
 | Tool            | Version | Installation                                         |
 | --------------- | ------- | ---------------------------------------------------- |
-| [Node.js][node] | ≥ 22    | `brew install node` or [download][node]              |
-| [Yarn][yarn]    | 1.x     | `npm install -g yarn`                                |
+| [Node.js][node] | >= 22   | `brew install node` or [download][node]              |
+| [pnpm]          | >= 9    | `npm install -g pnpm` or see [pnpm docs][pnpm]       |
 | [mkcert]        | latest  | `brew install mkcert` or see [mkcert README][mkcert] |
-| [Wrangler] (\*) | ≥ 3.72  | Installed as a dev dependency via `yarn install`     |
+| [Wrangler] (\*) | >= 3.72 | Installed as a dev dependency via `pnpm install`     |
 
 > (\*) Wrangler is only needed when working with Cloudflare Pages Functions
 > locally. It is included in `devDependencies` so no global install is required.
 
 [node]: https://nodejs.org/
-[yarn]: https://classic.yarnpkg.com/
+[pnpm]: https://pnpm.io/
 [Wrangler]: https://developers.cloudflare.com/workers/wrangler/install-and-update/
 
 ## Getting Started
@@ -33,7 +33,7 @@ cd filters-tests
 ### 2. Install dependencies
 
 ```sh
-yarn install
+pnpm install
 ```
 
 > All dependency versions in [package.json](package.json) are pinned to exact
@@ -87,10 +87,10 @@ SSL_CRT_FILE=cert/cert.pem
 
 ```sh
 # Build the static content
-yarn build
+pnpm build
 
 # Start the dev server
-yarn serve
+pnpm serve
 ```
 
 The app will be available at `https://local.testcases.agrd.dev:4000/`.
@@ -99,20 +99,20 @@ The app will be available at `https://local.testcases.agrd.dev:4000/`.
 
 ### Available commands
 
-All commands use Yarn 1.x. The full list is defined in
+All commands use pnpm. The full list is defined in
 [package.json](package.json).
 
-| Command             | Description                                        |
-| ------------------- | -------------------------------------------------- |
-| `yarn serve`        | Start the local dev server (CRA, HTTPS, port 4000) |
-| `yarn build`        | Production build (outputs to `build/`)             |
-| `yarn build:static` | Regenerate `public/data.json` from `testsData.js`  |
-| `yarn build:watch`  | Rebuild on file changes (watch mode)               |
-| `yarn test`         | Run Jest unit tests                                |
-| `yarn lint`         | Run all linters (`lint:code` + `lint:md`)          |
-| `yarn lint:code`    | Run ESLint on `.js` and `.ts` files                |
-| `yarn lint:md`      | Run markdownlint on Markdown files                 |
-| `yarn stylelint`    | Run Stylelint on SCSS files in `src/styles/`       |
+| Command              | Description                                        |
+| -------------------- | -------------------------------------------------- |
+| `pnpm serve`         | Start the local dev server (CRA, HTTPS, port 4000) |
+| `pnpm build`         | Production build (outputs to `build/`)             |
+| `pnpm build:static`  | Regenerate `public/data.json` from `testsData.js`  |
+| `pnpm build:watch`   | Rebuild on file changes (watch mode)               |
+| `pnpm test`          | Run Jest unit tests                                |
+| `pnpm lint`          | Run all linters (`lint:code` + `lint:md`)          |
+| `pnpm lint:code`     | Run ESLint on `.js` and `.ts` files                |
+| `pnpm lint:md`       | Run markdownlint on Markdown files                 |
+| `pnpm stylelint`     | Run Stylelint on SCSS files in `src/styles/`       |
 
 ### Running Cloudflare Pages Functions locally
 
@@ -120,11 +120,11 @@ Cloudflare Pages Functions (in `functions/`) handle CSP headers and the httpbin
 proxy. To test them locally, build first and then start the Wrangler dev server:
 
 ```sh
-yarn build
-npx wrangler pages dev build
+pnpm build
+pnpm exec wrangler pages dev build
 ```
 
-During normal `yarn serve` development, the httpbin proxy is handled by the CRA
+During normal `pnpm serve` development, the httpbin proxy is handled by the CRA
 proxy middleware in [src/setupProxy.js](src/setupProxy.js) instead.
 
 ### Linting
@@ -141,8 +141,8 @@ The project uses three linters:
 Run all linters at once:
 
 ```sh
-yarn lint
-yarn stylelint
+pnpm lint
+pnpm stylelint
 ```
 
 ### Testing
@@ -152,7 +152,7 @@ Tests use Jest via Create React App. Test files are co-located with source files
 
 ```sh
 # Interactive watch mode
-yarn test
+pnpm test
 
 # Single run (used in CI and pre-commit hook)
 cross-env CI=true react-scripts test
@@ -163,7 +163,7 @@ cross-env CI=true react-scripts test
 A Husky pre-commit hook runs automatically on every commit:
 
 ```text
-yarn stylelint && yarn lint && cross-env CI=true react-scripts test
+pnpm stylelint && pnpm lint && cross-env CI=true react-scripts test
 ```
 
 All checks must pass before the commit is accepted.
@@ -181,13 +181,13 @@ All checks must pass before the commit is accepted.
 3. Regenerate the public static data:
 
     ```sh
-    yarn build:static
+    pnpm build:static
     ```
 
 4. Verify the build succeeds:
 
     ```sh
-    yarn build
+    pnpm build
     ```
 
 ### Updating test metadata
@@ -196,7 +196,7 @@ When modifying [src/testsData.js](src/testsData.js) or the helper functions it
 depends on, always regenerate `public/data.json`:
 
 ```sh
-yarn build:static
+pnpm build:static
 ```
 
 ### Working with Cloudflare Functions
@@ -207,8 +207,8 @@ API. HTML generation uses Mustache templates (in `templates.ts` files).
 To iterate on functions locally:
 
 ```sh
-yarn build
-npx wrangler pages dev build
+pnpm build
+pnpm exec wrangler pages dev build
 ```
 
 ## Troubleshooting
