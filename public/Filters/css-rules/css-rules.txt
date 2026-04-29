@@ -36,3 +36,6 @@ testcases.agrd.dev,pages.dev#$##case6.banner:has(a.banner-link) { visibility: hi
 ! Test case 7:
 testcases.agrd.dev,pages.dev#$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
 testcases.agrd.dev,pages.dev#@$##case7.banner:has(a.banner-link) { visibility: hidden!important; }
+!
+! Test case 8: pseudo-element marker must not leak visible text (AG-265)
+testcases.agrd.dev,pages.dev#$##case-8-pseudo::before { content: 'INJECTED' !important; }

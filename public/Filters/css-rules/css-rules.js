@@ -93,4 +93,30 @@ window.addEventListener('load', function () {
         const case7 = document.querySelector('#case7');
         assert.ok(adgCheck && window.getComputedStyle(case7).visibility === 'visible');
     });
+
+    agTest(8, 'pseudo-element inject marker must not leak visible text (AG-265)', (assert) => {
+        const el = document.querySelector('#case-8-pseudo');
+        assert.ok(el instanceof Element, 'test element exists');
+
+        const beforeStyle = getComputedStyle(el, '::before');
+        const beforeContent = beforeStyle.content;
+
+        // The injected ::before must show user content, not the hit marker
+        assert.ok(
+            beforeContent.includes('INJECTED'),
+            `::before content includes user text, got: ${beforeContent}`,
+        );
+        assert.notOk(
+            beforeContent.includes('adguard'),
+            `::before content must not contain hit marker, got: ${beforeContent}`,
+        );
+
+        // Hit marker must not inherit to child elements
+        const child = document.querySelector('#case-8-child');
+        const childContent = getComputedStyle(child).content;
+        assert.notOk(
+            childContent.includes('adguard'),
+            `child content must not contain hit marker, got: ${childContent}`,
+        );
+    });
 });
