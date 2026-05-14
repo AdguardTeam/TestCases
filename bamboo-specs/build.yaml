@@ -101,7 +101,7 @@ Deploy:
         interpreter: SHELL
         scripts:
           - |-
-            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} CLOUDFLARE_ACCOUNT_ID=${bamboo.cloudflareWorkerDeployerAccountID} pnpm deploy
+            CLOUDFLARE_API_TOKEN=${bamboo.cloudflareWorkersDeployerTokenPassword} CLOUDFLARE_ACCOUNT_ID=${bamboo.cloudflareWorkerDeployerAccountID} pnpm run deploy
   final-tasks: *cleanup-task
 
 other:
