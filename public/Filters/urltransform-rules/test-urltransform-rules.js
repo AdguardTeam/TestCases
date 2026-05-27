@@ -47,26 +47,48 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     agTest(5, '$urltransform rule should work with $script modifier', async (assert) => {
-        const response = await fetch('https://httpbin.agrd.dev/status/502', {
-            headers: { Accept: 'application/javascript' },
+        // Use <link rel="preload" as="script"> to make a real script-type request
+        // without executing the response (avoids SyntaxError in console).
+        // The urltransform rule should rewrite /status/502 to /status/200.
+        const scriptLoaded = await new Promise((resolve) => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'script';
+            link.href = 'https://httpbin.agrd.dev/status/502';
+            link.onload = () => {
+                link.remove();
+                resolve(true);
+            };
+            link.onerror = () => {
+                link.remove();
+                resolve(false);
+            };
+            document.head.appendChild(link);
         });
-        assert.ok(adgCheck && response.ok, 'script $urltransform should apply for JS resources');
+        assert.ok(adgCheck && scriptLoaded, 'script $urltransform should apply for JS resources');
 
+        // A non-script request (fetch) to the same URL should NOT be transformed.
         const htmlResponse = await fetch('https://httpbin.agrd.dev/status/502', {
             headers: { Accept: 'text/html' },
         });
-        assert.ok(adgCheck && !htmlResponse.ok, 'script $urltransform should not apply for HTML');
+        assert.ok(adgCheck && !htmlResponse.ok, 'script $urltransform should not apply for non-script requests');
     });
 
     agTest(6, '$urltransform rule should work with $image modifier', async (assert) => {
-        const response = await fetch('https://httpbin.agrd.dev/status/503', {
-            headers: { Accept: 'image/png' },
+        // Use an actual <img> element to make a real image request.
+        // The urltransform rule should rewrite /status/503 to /image/png.
+        const imageLoaded = await new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = 'https://httpbin.agrd.dev/status/503';
         });
-        assert.ok(adgCheck && response.ok, 'image $urltransform should apply for image resources');
+        assert.ok(adgCheck && imageLoaded, 'image $urltransform should apply for image resources');
 
+        // A non-image request (fetch) to the same URL should NOT be transformed.
         const htmlResponse = await fetch('https://httpbin.agrd.dev/status/503', {
             headers: { Accept: 'text/html' },
         });
-        assert.ok(adgCheck && !htmlResponse.ok, 'image $urltransform should not apply for HTML');
+        assert.ok(adgCheck && !htmlResponse.ok, 'image $urltransform should not apply for non-image requests');
     });
 });
