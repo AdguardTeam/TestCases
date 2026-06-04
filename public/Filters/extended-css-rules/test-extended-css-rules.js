@@ -1,6 +1,11 @@
 /* eslint-disable no-undef */
 
-import { getAgTestRunner, waitIframeLoad, isSubscribed } from '../helpers.js';
+import {
+    getAgTestRunner,
+    waitIframeLoad,
+    waitForStyleApplied,
+    isSubscribed,
+} from '../helpers.js';
 
 const agTest = getAgTestRunner(window.location);
 
@@ -101,8 +106,10 @@ window.addEventListener('DOMContentLoaded', () => {
         await waitIframeLoad(frame);
 
         const innerDoc = frame.contentDocument || frame.contentWindow.document;
+        const isOk = await waitForStyleApplied(innerDoc, '#inframe1', 'display', 'none');
+
         assert.ok(
-            innerDoc.querySelector('#inframe1').style.display === 'none',
+            isOk,
             'Extended CSS rules should work inside of iframes with local source',
         );
         // clean up test frame
