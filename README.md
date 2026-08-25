@@ -7,8 +7,7 @@ across multiple AdGuard products.
 
 The app is deployed at **<https://testcases.agrd.dev>**.
 
-> **Note:** This project is developed in
-> [AdGuardSoftwareLimited/ext-filters-tests](https://github.com/AdGuardSoftwareLimited/ext-filters-tests).
+> **Note:** This project is developed in a private repository.
 > The [AdguardTeam/TestCases](https://github.com/AdguardTeam/TestCases)
 > repository is a public mirror.
 
