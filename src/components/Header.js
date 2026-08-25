@@ -3,7 +3,9 @@ import Mission from './Mission';
 import project from '../../package.json';
 
 function Header() {
-    const versionHover = `v${project.version}`;
+    // package.json has no committed version field (versions come from
+    // CHANGELOG.md); CI stamps one before building, local dev falls back.
+    const versionHover = `v${project.version || 'dev'}`;
 
     return (
         <header>

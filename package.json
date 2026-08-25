@@ -1,6 +1,5 @@
 {
     "name": "filters-tests",
-    "version": "0.2.115",
     "private": true,
     "scripts": {
         "serve": "react-scripts start",
@@ -10,7 +9,6 @@
         "build:static": "node -r esbuild-register ./buildStaticData.js",
         "build:watch": "chokidar 'src/**/*' 'public/**/*' -c 'pnpm build'",
         "deploy": "wrangler pages deploy build --project-name=adguard-testcases",
-        "increment": "pnpm version patch --no-git-tag-version",
         "lint": "pnpm lint:code && pnpm lint:md",
         "lint:code": "eslint . --ext .js,.ts --cache",
         "lint:md": "markdownlint . --ignore build",

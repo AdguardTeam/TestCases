@@ -1,0 +1,188 @@
+name: Publish release
+
+description: >-
+  Tags the release commit, builds, deploys to Cloudflare Pages,
+  creates a GitHub Release, and notifies Slack.
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Ref to publish manually
+        required: false
+        type: string
+
+# Serialize release runs: a manual dispatch must not race the automatic
+# post-merge run during tagging and deploying.
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  # Only release-bump merges (or manual dispatch) should tag/deploy. Without
+  # this, every closed PR against master would start this workflow.
+  tag:
+    name: Tag from changelog
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true &&
+       startsWith(github.event.pull_request.head.ref, 'release-bump/'))
+    uses: AdGuardSoftwareLimited/actions/.github/workflows/tag-from-changelog.yml@master
+    with:
+      ref: ${{ inputs.ref || github.event.pull_request.merge_commit_sha || github.ref_name }}
+      team: extensions
+    permissions:
+      # contents: write — create and push the release tag
+      contents: write
+
+  build:
+    name: Build site artifact
+    needs: tag
+    runs-on: team-extensions
+    timeout-minutes: 30
+    permissions:
+      # contents: read — checkout only; this job never writes to the repo
+      contents: read
+    outputs:
+      wrangler_version: ${{ steps.wrangler.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref || github.event.pull_request.merge_commit_sha || github.ref_name }}
+
+      # Single source of truth for the wrangler pin: the package.json
+      # devDependency. Passed to the shared deploy workflow below so master and
+      # release builds always deploy with the same wrangler.
+      - name: Resolve wrangler version
+        id: wrangler
+        run: echo "version=$(node -p "require('./package.json').devDependencies.wrangler")" >> "$GITHUB_OUTPUT"
+
+      # Stamp the release version into package.json so the built site's header
+      # shows the real version instead of the local-dev fallback. Passed via
+      # env so the shell never evaluates the expression.
+      - name: Stamp release version
+        run: npm pkg set "version=${VERSION}"
+        env:
+          VERSION: ${{ needs.tag.outputs.version }}
+
+      - name: Build via Docker
+        run: |
+          DOCKER_BUILDKIT=1 docker build --progress plain \
+            --target build-output \
+            --output ./build \
+            .
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: build
+          # Only consumed by the deploy job seconds later.
+          retention-days: 1
+
+  fetch-cloudflare-secrets:
+    name: Fetch Cloudflare secrets from Vault
+    needs: build
+    runs-on: team-extensions
+    timeout-minutes: 5
+    permissions:
+      # contents: read — no repo writes
+      # id-token: write — Vault JWT/OIDC auth for Cloudflare credentials
+      contents: read
+      id-token: write
+    outputs:
+      cloudflare_api_token: ${{ steps.vault.outputs.cloudflare_api_token }}
+      cloudflare_account_id: ${{ steps.vault.outputs.cloudflare_account_id }}
+    steps:
+      - name: Fetch Cloudflare credentials from Vault
+        id: vault
+        uses: hashicorp/vault-action@v4
+        with:
+          url: ${{ vars.VAULT_URL }}
+          method: jwt
+          path: jwt
+          role: ext-filters-tests
+          secrets: |
+            secret/data/ci-secrets/ext-filters-tests cloudflare_api_token | cloudflare_api_token ;
+            secret/data/ci-secrets/ext-filters-tests cloudflare_account_id | cloudflare_account_id ;
+
+  deploy:
+    name: Deploy to Cloudflare Pages
+    needs: [tag, build, fetch-cloudflare-secrets]
+    # Keep project_name in sync with the fallback `deploy` script in package.json.
+    uses: AdGuardSoftwareLimited/ext-shared-actions/.github/workflows/deploy-to-cloudflare-pages.yml@master
+    with:
+      project_name: adguard-testcases
+      artifact_name: site
+      # Deploy to the Pages production branch. Without this the shared workflow
+      # falls back to github.ref_name (e.g. "42/merge" for a merged PR) and
+      # wrangler would publish a preview deployment instead of production.
+      branch: master
+      wrangler_version: ${{ needs.build.outputs.wrangler_version }}
+      team: extensions
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_api_token }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_account_id }}
+
+  # Mirror the tag to the public repo and create the GitHub Release there
+  # (AdguardTeam/TestCases is the public mirror). Assetless — the site is
+  # deployed to Cloudflare Pages, not attached to the release.
+  mirror-and-release:
+    name: Mirror and create GitHub release
+    needs: [tag, deploy]
+    uses: AdGuardSoftwareLimited/actions/.github/workflows/mirror-and-release.yml@master
+    with:
+      team: extensions
+      target_repo: AdguardTeam/TestCases
+      tag: ${{ needs.tag.outputs.tag }}
+      changelog: ${{ needs.tag.outputs.changelog }}
+    secrets: inherit
+    permissions:
+      # actions: write — disable workflows in the public mirror
+      # contents: write — push the tag and create the GitHub Release
+      # id-token: write — Octopass token for the cross-repo push/release
+      actions: write
+      contents: write
+      id-token: write
+
+  notify:
+    name: Notify success
+    needs: [tag, mirror-and-release]
+    runs-on: team-extensions
+    timeout-minutes: 5
+    # Slack action only curls an internal endpoint; no token scope needed.
+    permissions: {}
+    steps:
+      - name: Send Slack notification
+        uses: AdGuardSoftwareLimited/actions/actions/slack@master
+        with:
+          # vars.SLACK_CHANNEL centralizes the channel; falls back to the literal.
+          channel: ${{ vars.SLACK_CHANNEL || '#adguard-extension-vcs' }}
+          message: >-
+            :white_check_mark: *filters-tests* *v${{ needs.tag.outputs.version }}*
+            deployed to Cloudflare Pages —
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|view run>
+          color: good
+
+  notify-failure:
+    name: Notify failure
+    needs: [tag, build, fetch-cloudflare-secrets, deploy, mirror-and-release]
+    # Fires only when a release job actually failed (skipped tag → all skipped,
+    # so unrelated PR closes stay silent).
+    if: failure()
+    runs-on: team-extensions
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Send Slack failure notification
+        uses: AdGuardSoftwareLimited/actions/actions/slack@master
+        with:
+          channel: ${{ vars.SLACK_CHANNEL || '#adguard-extension-vcs' }}
+          message: >-
+            :x: *filters-tests* release failed —
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|view run>
+          color: danger

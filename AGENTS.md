@@ -20,7 +20,7 @@ iOS). The app is deployed to Cloudflare Pages at `testcases.agrd.dev`.
 | Target Platform      | Cloudflare Pages (static site + CF Pages Functions)                   |
 | Project Type         | Single web application                                                |
 | Linting              | ESLint 8 (airbnb + airbnb-typescript), Stylelint (SCSS), markdownlint |
-| CI                   | Bamboo (`bamboo-specs/`)                                              |
+| CI                   | GitHub Actions (`.github/workflows/`)                                 |
 | Performance Goals    | N/A — lightweight test harness                                        |
 | Constraints          | Pre-commit hook enforces lint + stylelint + tests via Husky           |
 
@@ -33,8 +33,10 @@ iOS). The app is deployed to Cloudflare Pages at `testcases.agrd.dev`.
 ├── tsconfig.eslint.json          # TS config extended for linting
 ├── babel.config.js               # Babel presets (react-app)
 ├── buildStaticData.js            # Generates public/data.json from testsData.js
-├── bamboo-specs/                 # Bamboo CI pipeline definitions
-├── cert/                         # Local dev SSL certificates (mkcert)
+├── CHANGELOG.md                  # Release notes; source of truth for version tags
+├── DEPLOYMENT.md                 # Deployment and release pipeline documentation
+├── Dockerfile                    # CI build image (lint/test/build stages)
+├── .github/workflows/            # GitHub Actions (CI, public mirror, releases)
 ├── functions/                    # Cloudflare Pages Functions (edge workers)
 │   ├── csp/                      #   CSP header injection for test pages
 │   ├── httpbin/                  #   Proxy to httpbin.agrd.dev
@@ -74,7 +76,7 @@ All commands use **pnpm**.
 | `pnpm lint:code`     | Run ESLint on `.js` and `.ts` files               |
 | `pnpm lint:md`       | Run markdownlint on `.md` files                   |
 | `pnpm stylelint`     | Run Stylelint on SCSS files in `src/styles/`      |
-| `pnpm deploy`        | Deploy to Cloudflare Pages via Wrangler           |
+| `pnpm deploy`        | Manual fallback deploy to Cloudflare Pages        |
 
 For local development with Cloudflare Functions:
 

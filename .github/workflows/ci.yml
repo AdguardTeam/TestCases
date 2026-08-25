@@ -1,0 +1,44 @@
+name: CI
+
+description: >-
+  Lints, tests, and builds the site via Docker. Runs on every pull request and
+  on pushes to master. Deployment is handled separately by publish-release.yml
+  — CI never deploys.
+
+on:
+  pull_request:
+  # Only master on push; other branches are validated through their PR, so an
+  # unfiltered push would just double-build every branch that has an open PR.
+  push:
+    branches: [master]
+
+# Cancel superseded CI runs for the same ref. Only validation runs here (no
+# deploy), so cancelling an in-progress run mid-way is safe.
+concurrency:
+  group: ci-ext-filters-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+# Read-only by default: CI only validates; it never deploys or writes to the repo.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Lint, test, build
+    runs-on: team-extensions
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # Stamps a next-patch -dev version from CHANGELOG.md so the Docker build
+      # is distinguishable from a real release. Shared org action — same logic
+      # used by every Extensions library.
+      - name: Set dev version
+        uses: AdGuardSoftwareLimited/ext-shared-actions/.github/actions/set-dev-version@master
+
+      - name: Lint, test, and build via Docker
+        run: |
+          DOCKER_BUILDKIT=1 docker build --progress plain \
+            --target test-output \
+            .
