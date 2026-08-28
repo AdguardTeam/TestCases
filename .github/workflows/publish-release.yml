@@ -113,6 +113,11 @@ jobs:
   deploy:
     name: Deploy to Cloudflare Pages
     needs: [tag, build, fetch-cloudflare-secrets]
+    permissions:
+      # actions: read — download the site artifact in the reusable workflow
+      # contents: read — checkout the shared deploy Dockerfile
+      actions: read
+      contents: read
     # Keep project_name in sync with the fallback `deploy` script in package.json.
     uses: AdGuardSoftwareLimited/ext-shared-actions/.github/workflows/deploy-to-cloudflare-pages.yml@master
     with:
@@ -124,6 +129,7 @@ jobs:
       branch: master
       wrangler_version: ${{ needs.build.outputs.wrangler_version }}
       team: extensions
+      environment: production
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_api_token }}
       CLOUDFLARE_ACCOUNT_ID: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_account_id }}
