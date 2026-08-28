@@ -5,10 +5,8 @@
 // @version      1.0.0
 // @description AdGuard's Greasemonkey API v4 tester
 // @description:ru тестер Greasemonkey API v4 для AdGuard
-// @match			      https://testcases.agrd.dev/Userscripts/*
-// @match			      http://testcases.agrd.dev/Userscripts/*
-// @match			      https://local.testcases.agrd.dev/Userscripts/*
-// @match			      http://local.testcases.agrd.dev/Userscripts/*
+// @match			      https://testcases.adguard.com/Userscripts/*
+// @match			      http://testcases.adguard.com/Userscripts/*
 // @match			      https://*.surge.sh/Userscripts/*
 // @match			      http://*.surge.sh/Userscripts/*
 // @require         jquery-2.1.1.min.js
@@ -36,9 +34,9 @@
     const GmTests = {
 
         'GM.info': (assert) => {
-            const { info } = GM;
-            assert.ok(info.script.name === 'Greasemonkey API v4 Tester');
-            assert.ok(info.script.namespace === 'adguard');
+            var info = GM.info;
+            assert.ok(info.script.name === "Greasemonkey API v4 Tester");
+            assert.ok(info.script.namespace === "adguard");
             assert.ok(info.version);
         },
 
@@ -84,14 +82,14 @@
         },
         'GM.xmlHttpRequest': (assert) => {
             GM.xmlHttpRequest({
-                method: 'GET',
+                method: "GET",
                 synchronous: true,
-                url: '/Userscripts/GMapiV4Tester/resource.js',
+                url: "/Userscripts/GMapiV4Tester/resource.js",
                 onload: (response) => {
-                    assert.ok(response.responseText === '\'привет, я resource\';\n');
+                    assert.ok(response.responseText === '"привет, я resource"');
                 },
                 onerror: () => {
-                    assert.ok(0, 'Request error!');
+                    assert.ok(0, 'Reguest error!');
                 },
             });
         },
@@ -109,4 +107,4 @@
     };
 
     unsafeWindow.GmTests = GmTests;
-}());
+})();

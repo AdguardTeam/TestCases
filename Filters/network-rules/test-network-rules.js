@@ -1,37 +1,33 @@
-import { getAgTestRunner, isSubscribed } from '../helpers.js';
-
-const agTest = getAgTestRunner(window.location);
+/* global QUnit */
 
 /**
  * Before doing the test, import test-network-rules.txt to AdGuard
  */
 
 const download = async (url) => {
-    // eslint-disable-next-line compat/compat
-    const response = await fetch(url);
-    const responseText = await response.text();
+    let response = await fetch(url);
+    let responseText = await response.text();
     return responseText;
 };
 
-// eslint-disable-next-line compat/compat
-const request = async url => fetch(url, { mode: 'no-cors' });
+const request = async (url) => fetch(url, { mode: "no-cors" });
 
-window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = isSubscribed('subscribe-to-test-network-rules-filter');
+window.addEventListener('DOMContentLoaded', function () {
 
-    agTest(1, '$network rule', async (assert) => {
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-network-rules-filter')).display === 'none';
+
+    QUnit.test("Case 1: $network rule test", async assert => {
         try {
-            await request('https://94.140.14.14/');
-        } catch (e) {
-            assert.ok(true, '$network rule should block request');
+            await request('https://unit-test3.adguard.com');
+        }
+        catch(e) {
+            assert.ok(true, "$network rule should block request");
         }
     });
 
-    agTest(2, '$network exception and priority test', async (assert) => {
-        const result = await download('https://94.140.14.15/info.txt');
-        assert.ok(
-            adgCheck && result.startsWith('dns2-'),
-            '$network exception rule should disable $network rule and reject all other rules.',
-        );
+    QUnit.test("Case 2: $network exception and priority test", async assert => {
+        const result = await download('https://unit-test5.adguard.com/test.txt');
+        assert.ok(adgCheck && result === 'OK', "$network exception rule should disable $network rule and reject all other rules.");
     });
+
 });

@@ -2,22 +2,11 @@
 ! Title: Rules for script rules test
 !
 ! Filter to be used for testing purposes
-! https://testcases.agrd.dev
+! https://testcases.adguard.com
 !
 ! Hide warning
-testcases.agrd.dev,surge.sh###subscribe-to-test-script-rules-filter
+testcases.adguard.com,surge.sh###subscribe-to-test-script-rules-filter
 !
-! Case 1
-testcases.agrd.dev,surge.sh#%#window.__testCase1 = true;
-!
-! Case 2
-testcases.agrd.dev,surge.sh#%#window.adg_test=true;
-testcases.agrd.dev,surge.sh#%#window.adg_test=false;
-testcases.agrd.dev,surge.sh#@%#window.adg_test=false;
-!
-! Case 3
-testcases.agrd.dev,surge.sh#%#function finalStep() { window.orderTestPassed = true; }
-testcases.agrd.dev,surge.sh#%#function previousStep() { finalStep(); }
-testcases.agrd.dev,surge.sh#%#var otherStep = () => { previousStep(); }
-testcases.agrd.dev,surge.sh#%#let someOtherStep = () => { otherStep(); }
-testcases.agrd.dev,surge.sh#%#someOtherStep();
+testcases.adguard.com,surge.sh#%#window.__testCase1 = true;
+testcases.adguard.com,surge.sh#%#window.__testCase2 = true;
+testcases.adguard.com,surge.sh#@%#window.__testCase2 = true;

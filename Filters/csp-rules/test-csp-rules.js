@@ -1,37 +1,23 @@
-import { getAgTestRunner, isSubscribed } from '../helpers.js';
-
-const agTest = getAgTestRunner(window.location);
-
 /**
  * Before doing the test, import test-csp-rules.txt to AdGuard
  */
-window.addEventListener('DOMContentLoaded', () => {
-    const adgCheck = isSubscribed('subscribe-to-test-csp-rules-filter');
+window.addEventListener('DOMContentLoaded', function () {
 
-    agTest(1, 'using with basic rules', (assert) => {
-        const testElement1 = document.getElementById('csp-test');
-        assert.ok(!testElement1, '$csp rule prevents executing inline script');
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-csp-rules-filter'), null).display == 'none';
 
-        const testElement2 = document.getElementById('some-element');
-        const testElement2Hidden = getComputedStyle(testElement2).display === 'none';
-        assert.ok(testElement2Hidden, '$csp rule should work together with basic rules.');
+    QUnit.test("Case 1: Using with basic rules", function (assert) {
+        assert.notOk(document.getElementById("csp-test") && document.getElementById("some-element"), "$csp rule should work together with basic rules.");
     });
 
-    agTest(2, 'multiple $csp rules', async (assert) => {
-        // eslint-disable-next-line compat/compat
-        const case3 = await fetch('https://adguard.app', { mode: 'no-cors' });
-        assert.ok(case3, '$csp rule works allows to fetch matching url');
-
-        await assert.rejects(
-            // eslint-disable-next-line compat/compat
-            fetch('http://adguard.app', { mode: 'no-cors' }),
-            'multiple $csp rules should work together',
-        );
+    QUnit.test("Case 2: multiple $csp rules", function (assert) {
+        const pic1 = document.getElementById("pic1").naturalWidth !== 0;
+        const pic2 = document.getElementById("pic2").naturalWidth !== 0;
+        const pic3 = document.getElementById("pic3").naturalWidth !== 0;
+        const pic4 = document.getElementById("pic4").naturalWidth !== 0;
+        assert.ok(!pic1 && !pic2 && pic3 && !pic4, "multiple $csp rules should work together.");
     });
 
-    agTest(3, '$scp exception and multiple $csp rules', (assert) => {
-        const testElement = document.querySelector('#case3');
-        const testElementHidden = getComputedStyle(testElement).display === 'none';
-        assert.ok(adgCheck && testElementHidden, '$scp exception should disable the $csp rule with matching pattern.');
+    QUnit.test("Case 3: $scp exception and multiple $csp rules", function (assert) {
+        assert.ok(adgCheck && getComputedStyle(document.querySelector("#case3"), null).display == "none", "$scp exception should disable the $csp rule with matching pattern.");
     });
 });

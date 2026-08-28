@@ -1,30 +1,27 @@
-import { getAgTestRunner, isSubscribed } from '../helpers.js';
-
-const agTest = getAgTestRunner(window.location);
-
 /**
  * Before doing the test, import test-content-rules.txt to AdGuard
  */
-window.addEventListener('load', () => {
-    const adgCheck = isSubscribed('subscribe-to-test-content-rules-filter');
+window.addEventListener('load', function() {
 
-    agTest(1, 'just id', (assert) => {
+    const adgCheck = getComputedStyle(window.document.getElementById('subscribe-to-test-content-rules-filter'), null).display == 'none';
+
+    QUnit.test("1. Test content id", function(assert) {
         assert.notOk(document.querySelector('#case1'));
     });
 
-    agTest(2, 'id and tag-content', (assert) => {
+    QUnit.test("2. Test content content", function(assert) {
         assert.notOk(document.querySelector('#case2'));
     });
 
-    agTest(3, 'class', (assert) => {
+    QUnit.test("3. Test content class", function(assert) {
         assert.notOk(document.querySelector('#case3'));
     });
 
-    agTest(4, 'wildcard', (assert) => {
+    QUnit.test("4. Test content wildcard", function(assert) {
         assert.notOk(document.querySelector('#case4'));
     });
 
-    agTest(5, 'exceptions', (assert) => {
+    QUnit.test("5. Test content exceptions", function(assert) {
         assert.ok(adgCheck && document.querySelector('#case5'));
     });
 });
