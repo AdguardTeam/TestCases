@@ -10,10 +10,23 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.2.116] - 2026-08-28
+
 ### Changed
 
 - Migrated CI/CD from Bamboo to GitHub Actions.
-
 <!-- The repo has no tags yet (the mirror brought none); the first release from
 the new pipeline will create v0.2.116. Until a tag exists, link to the commit
 log rather than a compare/tag URL that would 404. -->
