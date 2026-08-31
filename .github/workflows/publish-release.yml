@@ -116,8 +116,11 @@ jobs:
     permissions:
       # actions: read — download the site artifact in the reusable workflow
       # contents: read — checkout the shared deploy Dockerfile
+      # id-token: write — Octopass token so the reusable workflow can check out
+      # the ext-shared-actions repo (GITHUB_TOKEN is scoped to this repo only)
       actions: read
       contents: read
+      id-token: write
     # Keep project_name in sync with the fallback `deploy` script in package.json.
     uses: AdGuardSoftwareLimited/ext-shared-actions/.github/workflows/deploy-to-cloudflare-pages.yml@master
     with:
