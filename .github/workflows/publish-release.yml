@@ -129,6 +129,9 @@ jobs:
       branch: master
       wrangler_version: ${{ needs.build.outputs.wrangler_version }}
       team: extensions
+      # Protected environment: required extensions-team reviewer approval, no
+      # branch restriction (see the shared deploy docs). The reviewer approves
+      # the deployment in the Actions UI.
       environment: production
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_api_token }}

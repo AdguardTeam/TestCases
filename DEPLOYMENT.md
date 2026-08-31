@@ -51,6 +51,10 @@ version tag is created from `CHANGELOG.md` only during `publish-release.yml`.
      (`mirror-and-release`);
    - posts a Slack notification to `#adguard-extension-vcs` (success or
      failure).
+
+   The deploy job targets the `production` environment (protection setup is
+   described in the shared [deploy docs][cf-deploy]). Approve the deployment
+   in the Actions UI when prompted.
 3. `publish-release.yml` can also be triggered manually via `workflow_dispatch`
    by providing an optional `ref` — see [Rollback](#rollback).
 
@@ -79,12 +83,12 @@ To re-publish a previous version, run **`publish-release.yml`** manually
 
 ## CI/CD
 
-| Workflow              | Trigger                              | What it does                          |
-| --------------------- | ------------------------------------ | ------------------------------------- |
-| `ci.yml`              | pull_request / push to master        | Lints, tests, and builds (no deploy)  |
-| `mirror.yml`          | push to master                       | Mirrors code to the public repo       |
-| `prepare-release.yml` | manual dispatch                      | Opens a release-bump PR               |
-| `publish-release.yml` | release-bump merge / manual dispatch | Tags, deploys, mirrors, releases      |
+| Workflow              | Trigger                              | What it does                                  |
+| --------------------- | ------------------------------------ | --------------------------------------------- |
+| `ci.yml`              | pull_request / push to master        | Lints, tests, and builds (no deploy)          |
+| `mirror.yml`          | push to master                       | Mirrors code to the public repo               |
+| `prepare-release.yml` | manual dispatch                      | Opens a release-bump PR                       |
+| `publish-release.yml` | release-bump merge / manual dispatch | Tags, builds, deploys, mirrors, releases      |
 
 ### CI build (ci.yml)
 

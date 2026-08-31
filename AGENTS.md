@@ -103,6 +103,10 @@ After completing any code change, verify the following:
     - Add a corresponding entry in `src/testsData.js` with proper `id`, `title`,
       `link`, `rulesUrl`, and `compatibility` data.
     - Run `pnpm build:static` after updating `testsData.js`.
+9. Do not update `CHANGELOG.md` when the change is only about CI, build
+   tooling, or tests. The changelog is reserved for user-facing changes (new
+   or fixed test cases, app behavior); infrastructure and test-only changes
+   are documented in `DEPLOYMENT.md`/`DEVELOPMENT.md` instead.
 
 ## Code Guidelines
 
