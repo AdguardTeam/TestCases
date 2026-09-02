@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Security
 
+## [0.2.122] - 2026-09-02
+
 ## [0.2.121] - 2026-09-02
 
 ## [0.2.120] - 2026-08-31
