@@ -55,7 +55,7 @@ jobs:
           ref: ${{ inputs.ref || github.event.pull_request.merge_commit_sha || github.ref_name }}
 
       # Single source of truth for the wrangler pin: the package.json
-      # devDependency. Passed to the shared deploy workflow below so master and
+      # devDependency. Passed to the deploy job below so master and
       # release builds always deploy with the same wrangler.
       - name: Resolve wrangler version
         id: wrangler
@@ -84,20 +84,55 @@ jobs:
           # Only consumed by the deploy job seconds later.
           retention-days: 1
 
-  fetch-cloudflare-secrets:
-    name: Fetch Cloudflare secrets from Vault
-    needs: build
+  deploy:
+    name: Deploy to Cloudflare Pages
+    needs: [tag, build]
     runs-on: team-extensions
-    timeout-minutes: 5
+    # Protected environment: required extensions-team reviewer approval. The
+    # reviewer approves the deployment in the Actions UI.
+    environment: production
+    timeout-minutes: 10
+    # Serialize deploys; never cancel in-flight (would leave a half-published
+    # site). The publish-release concurrency group already serializes full
+    # runs, so this group only guards manual re-runs.
+    concurrency:
+      group: cloudflare-pages-adguard-testcases
+      cancel-in-progress: false
     permissions:
-      # contents: read — no repo writes
+      # actions: read — required by actions/download-artifact@v8 to fetch the
+      #   artifact via the Actions REST API
       # id-token: write — Vault JWT/OIDC auth for Cloudflare credentials
-      contents: read
+      actions: read
       id-token: write
-    outputs:
-      cloudflare_api_token: ${{ steps.vault.outputs.cloudflare_api_token }}
-      cloudflare_account_id: ${{ steps.vault.outputs.cloudflare_account_id }}
+    env:
+      PROJECT_NAME: adguard-testcases
+      # Deploy to the Pages production branch; without this wrangler would
+      # publish a preview deployment instead of production.
+      BRANCH: master
+      WRANGLER_VERSION: ${{ needs.build.outputs.wrangler_version }}
     steps:
+      - name: Validate deploy env
+        # Reject values that would allow shell metacharacter injection into the
+        # docker build arguments.
+        shell: bash
+        run: |
+          pattern='^[A-Za-z0-9._/-]+$'
+          for value in "$PROJECT_NAME" "$BRANCH"; do
+            if ! [[ "$value" =~ $pattern ]]; then
+              echo "::error::Deploy value contains unsafe characters: ${value}"
+              exit 1
+            fi
+          done
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: site
+
+      # Fetched inside this job so the credentials never leave it — no job
+      # outputs, which would persist in the Actions backend. Same pattern as
+      # the ext-httpbin deploy workflow.
       - name: Fetch Cloudflare credentials from Vault
         id: vault
         uses: hashicorp/vault-action@v4
@@ -110,35 +145,39 @@ jobs:
             secret/data/ci-secrets/ext-filters-tests cloudflare_api_token | cloudflare_api_token ;
             secret/data/ci-secrets/ext-filters-tests cloudflare_account_id | cloudflare_account_id ;
 
-  deploy:
-    name: Deploy to Cloudflare Pages
-    needs: [tag, build, fetch-cloudflare-secrets]
-    permissions:
-      # actions: read — download the site artifact in the reusable workflow
-      # contents: read — checkout the shared deploy Dockerfile
-      # id-token: write — Octopass token so the reusable workflow can check out
-      # the ext-shared-actions repo (GITHUB_TOKEN is scoped to this repo only)
-      actions: read
-      contents: read
-      id-token: write
-    # Keep project_name in sync with the fallback `deploy` script in package.json.
-    uses: AdGuardSoftwareLimited/ext-shared-actions/.github/workflows/deploy-to-cloudflare-pages.yml@master
-    with:
-      project_name: adguard-testcases
-      artifact_name: site
-      # Deploy to the Pages production branch. Without this the shared workflow
-      # falls back to github.ref_name (e.g. "42/merge" for a merged PR) and
-      # wrangler would publish a preview deployment instead of production.
-      branch: master
-      wrangler_version: ${{ needs.build.outputs.wrangler_version }}
-      team: extensions
-      # Protected environment: required extensions-team reviewer approval, no
-      # branch restriction (see the shared deploy docs). The reviewer approves
-      # the deployment in the Actions UI.
-      environment: production
-    secrets:
-      CLOUDFLARE_API_TOKEN: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_api_token }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ needs.fetch-cloudflare-secrets.outputs.cloudflare_account_id }}
+      # With empty credentials wrangler fails late inside the Docker build with
+      # a misleading "set CLOUDFLARE_API_TOKEN" error; fail fast with an
+      # actionable message instead.
+      - name: Verify fetched credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ steps.vault.outputs.cloudflare_api_token }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.vault.outputs.cloudflare_account_id }}
+        shell: bash
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Vault returned empty Cloudflare credentials. Check the VAULT_URL variable and the secrets stored in Vault."
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        # Runs wrangler inside Docker so no 3rd-party action is needed. The
+        # `deploy` stage of the root Dockerfile performs the deploy with the
+        # pinned wrangler version; credentials are passed via BuildKit secrets
+        # and never appear in image layers or logs.
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ steps.vault.outputs.cloudflare_api_token }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.vault.outputs.cloudflare_account_id }}
+          DOCKER_BUILDKIT: '1'
+        run: |
+          docker build \
+            --target deploy \
+            --build-arg "WRANGLER_VERSION=${WRANGLER_VERSION}" \
+            --build-arg "DEPLOY_DIR=." \
+            --build-arg "PROJECT_NAME=${PROJECT_NAME}" \
+            --build-arg "BRANCH=${BRANCH}" \
+            --secret id=CLOUDFLARE_API_TOKEN \
+            --secret id=CLOUDFLARE_ACCOUNT_ID \
+            .
 
   # Mirror the tag to the public repo and create the GitHub Release there
   # (AdguardTeam/TestCases is the public mirror). Assetless — the site is
@@ -182,7 +221,7 @@ jobs:
 
   notify-failure:
     name: Notify failure
-    needs: [tag, build, fetch-cloudflare-secrets, deploy, mirror-and-release]
+    needs: [tag, build, deploy, mirror-and-release]
     # Fires only when a release job actually failed (skipped tag → all skipped,
     # so unrelated PR closes stay silent).
     if: failure()

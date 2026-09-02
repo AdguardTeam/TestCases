@@ -17,12 +17,12 @@
 | ---------------------------- | ------------------------------------------ |
 | **Live URL**                 | <https://testcases.agrd.dev>               |
 | **Cloudflare Pages project** | `adguard-testcases`                        |
-| **Deploy**                   | shared `deploy-to-cloudflare-pages.yml`    |
+| **Deploy**                   | inline deploy job in `publish-release.yml` |
 | **Public mirror**            | `AdguardTeam/TestCases`                    |
 | **Runner label**             | `team-extensions`                          |
 | **Slack channel**            | `#adguard-extension-vcs`                   |
 
-Deploys run through the shared reusable workflow, which runs
+Deploys run in the `publish-release.yml` deploy job, which runs
 `wrangler pages deploy` inside its own Docker image. The `pnpm run deploy`
 script in `package.json` is only a manual fallback for local/emergency use and
 requires the Cloudflare env vars to be wired by hand.
@@ -43,18 +43,17 @@ version tag is created from `CHANGELOG.md` only during `publish-release.yml`.
    This triggers **`publish-release.yml`**, which:
    - reads the released version from `CHANGELOG.md` and creates the git tag
      (`tag-from-changelog`);
-   - builds the site artifact in Docker and deploys it to Cloudflare Pages
-     through the shared [`deploy-to-cloudflare-pages.yml`][cf-deploy] workflow
-     (production `branch: master`);
+   - builds the site artifact in Docker and deploys it to Cloudflare Pages in
+     the release pipeline's own deploy job (production `branch: master`);
    - mirrors the tag to the public repo `AdguardTeam/TestCases` and creates the
      GitHub Release there, with the changelog section as the release body
      (`mirror-and-release`);
    - posts a Slack notification to `#adguard-extension-vcs` (success or
      failure).
 
-   The deploy job targets the `production` environment (protection setup is
-   described in the shared [deploy docs][cf-deploy]). Approve the deployment
-   in the Actions UI when prompted.
+   The deploy job targets the `production` environment (a required-reviewer
+   protection rule defined in terraform-github). Approve the deployment in the
+   Actions UI when prompted.
 3. `publish-release.yml` can also be triggered manually via `workflow_dispatch`
    by providing an optional `ref` — see [Rollback](#rollback).
 
@@ -104,8 +103,6 @@ never deploys:
 Deployment is intentionally **not** part of CI — the live site is updated only
 through the release pipeline (see [Release Pipeline](#release-pipeline)).
 
-[cf-deploy]: https://github.com/AdGuardSoftwareLimited/ext-shared-actions/blob/master/docs/deploy-to-cloudflare-pages.md
-
 ## Environment Variables and Secrets
 
 | Name                    | Scope                                  | Description           |
@@ -113,12 +110,16 @@ through the release pipeline (see [Release Pipeline](#release-pipeline)).
 | `cloudflare_api_token`  | Vault (`ci-secrets/ext-filters-tests`) | Wrangler deploy token |
 | `cloudflare_account_id` | Vault (`ci-secrets/ext-filters-tests`) | Cloudflare account ID |
 
-Cloudflare credentials live in Vault, not as GitHub repository secrets. A
-`fetch-cloudflare-secrets` job authenticates to Vault via GitHub OIDC (JWT,
-role `ext-filters-tests`) and passes the values as the `CLOUDFLARE_API_TOKEN`
-and `CLOUDFLARE_ACCOUNT_ID` secrets to the shared
-[`deploy-to-cloudflare-pages.yml`][cf-deploy] workflow, which runs
+Cloudflare credentials live in Vault, not as GitHub repository secrets. The
+deploy job fetches them **inside the job itself** (Vault JWT, role
+`ext-filters-tests`, path `secret/data/ci-secrets/ext-filters-tests`) and runs
 `wrangler pages deploy` inside Docker.
+
+Fetching them in the deploy job itself is required: GitHub Actions discards job
+outputs whose values match a registered secret mask
+([actions/runner#1498](https://github.com/actions/runner/issues/1498)), so
+values fetched in a separate job and passed to the deploy step would arrive as
+empty strings.
 
 The Vault endpoint itself is configured through a repository/organization
 variable:
@@ -138,6 +139,5 @@ next deploy run picks them up automatically.
 | Cloudflare Pages (`adguard-testcases`) | Hosts the static site at testcases.agrd.dev    |
 | Vault (`ci-secrets/ext-filters-tests`) | Stores the Cloudflare deploy credentials       |
 | `AdguardTeam/TestCases`                | Public mirror of this repo                     |
-| `ext-shared-actions`                   | Reusable Cloudflare Pages deploy workflow      |
 | `AdGuardSoftwareLimited/actions`       | Shared workflows (mirror, tagging, releases)   |
 | `team-extensions` runner               | Self-hosted GitHub Actions runner              |

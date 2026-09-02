@@ -58,3 +58,22 @@ RUN --mount=type=cache,target=/pnpm-store,id=ext-filters-tests-pnpm \
 # ============================================================================
 FROM scratch AS build-output
 COPY --from=test-output /app/build /
+
+# ============================================================================
+# Stage: deploy
+# Cloudflare Pages deploy image used by publish-release.yml. Kept separate from
+# the lint/test/build stages so the release deploys with the pinned wrangler
+# version without rebuilding the app.
+# ============================================================================
+FROM node:24-slim AS deploy
+ARG WRANGLER_VERSION DEPLOY_DIR PROJECT_NAME BRANCH
+RUN npm install -g "wrangler@${WRANGLER_VERSION}" --silent
+WORKDIR /site
+COPY ./site ./
+RUN --mount=type=secret,id=CLOUDFLARE_API_TOKEN \
+    --mount=type=secret,id=CLOUDFLARE_ACCOUNT_ID \
+    CLOUDFLARE_API_TOKEN="$(cat /run/secrets/CLOUDFLARE_API_TOKEN)" \
+    CLOUDFLARE_ACCOUNT_ID="$(cat /run/secrets/CLOUDFLARE_ACCOUNT_ID)" \
+    wrangler pages deploy "${DEPLOY_DIR}" \
+      --project-name="${PROJECT_NAME}" \
+      --branch="${BRANCH}"
