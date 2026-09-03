@@ -72,13 +72,17 @@ the release pipeline above.
 ### Rollback
 
 To re-publish a previous version, run **`publish-release.yml`** manually
-(`workflow_dispatch`) with `ref` set to the target tag or commit. Two caveats:
+(`workflow_dispatch`) with `ref` set to the target tag or commit. Caveats:
 
 - `tag-from-changelog` **force-creates** the tag, so re-publishing an old
   version moves that tag to the dispatched ref.
 - Re-running a version that already has a GitHub Release may fail at the
   release-creation step **after** the deploy has already happened; the
   Cloudflare deploy itself will have succeeded.
+- The deploy job builds the root `Dockerfile`'s `deploy` stage of the
+  dispatched ref, and that stage only exists since the inline-deploy change
+  (AG-58459). Re-deploying an older ref fails at the docker build; use the
+  `pnpm run deploy` fallback script for those versions.
 
 ## CI/CD
 

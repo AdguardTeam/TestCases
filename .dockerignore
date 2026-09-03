@@ -16,8 +16,9 @@ dist/
 # Dependencies
 node_modules/
 
-# Dockerfile is passed explicitly via --file; excluding it here just keeps
-# it out of the build context (avoids cache busting on Dockerfile edits).
+# Dockerfile is read by the docker client from the workspace root — no
+# workflow passes --file. Excluding it from the build context only trims the
+# context transfer.
 Dockerfile*
 *.log
 

@@ -32,6 +32,11 @@ jobs:
        startsWith(github.event.pull_request.head.ref, 'release-bump/'))
     uses: AdGuardSoftwareLimited/actions/.github/workflows/tag-from-changelog.yml@master
     with:
+      # Single source of truth for the release ref: the tag job tags this
+      # commit, and the build and deploy jobs check out the tag created here
+      # (needs.tag.outputs.tag), so all three jobs always resolve the same
+      # commit. If this fallback order changes, a release could tag one commit
+      # while building and deploying another.
       ref: ${{ inputs.ref || github.event.pull_request.merge_commit_sha || github.ref_name }}
       team: extensions
     permissions:
@@ -49,10 +54,27 @@ jobs:
     outputs:
       wrangler_version: ${{ steps.wrangler.outputs.version }}
     steps:
+      - name: Validate dispatch ref
+        # inputs.ref is a free-form workflow_dispatch input; it ends up in the
+        # checkout and docker build args, so reject values that can't be a git
+        # ref before they reach the tag/checkout.
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          pattern='^[A-Za-z0-9._/-]+$'
+          if ! [[ "$REF" =~ $pattern ]]; then
+            echo "::error::Dispatch ref contains unsafe characters: ${REF}"
+            exit 1
+          fi
+        env:
+          REF: ${{ inputs.ref || '' }}
+
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          ref: ${{ inputs.ref || github.event.pull_request.merge_commit_sha || github.ref_name }}
+          # The tag job created the release tag from the ref it was given;
+          # checking out the tag pins this job to that exact commit.
+          ref: ${{ needs.tag.outputs.tag }}
 
       # Single source of truth for the wrangler pin: the package.json
       # devDependency. Passed to the deploy job below so master and
@@ -101,8 +123,11 @@ jobs:
     permissions:
       # actions: read — required by actions/download-artifact@v8 to fetch the
       #   artifact via the Actions REST API
+      # contents: read — checkout the repo so the root Dockerfile is present
+      #   in the workspace when the deploy build runs
       # id-token: write — Vault JWT/OIDC auth for Cloudflare credentials
       actions: read
+      contents: read
       id-token: write
     env:
       PROJECT_NAME: adguard-testcases
@@ -111,6 +136,18 @@ jobs:
       BRANCH: master
       WRANGLER_VERSION: ${{ needs.build.outputs.wrangler_version }}
     steps:
+      # The `deploy` stage of the root Dockerfile performs the deploy. The
+      # docker client reads the Dockerfile from the workspace root — it is not
+      # part of the build context, and .dockerignore even excludes it — so
+      # this checkout is what makes `docker build` below find it. The site
+      # content itself comes from the downloaded artifact, not this checkout.
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # Same tag the build job used: the deploy must run the Dockerfile of
+          # the exact commit that was tagged and built.
+          ref: ${{ needs.tag.outputs.tag }}
+
       - name: Validate deploy env
         # Reject values that would allow shell metacharacter injection into the
         # docker build arguments.
