@@ -20,4 +20,4 @@ testcases.agrd.dev,pages.dev###subscribe-to-test-urltransform-rules-filter
 ||httpbin.agrd.dev^$script,urltransform=/^\/status\/502$/\/status\/200/
 !
 ! Case 6
-||httpbin.agrd.dev^$image,urltransform=/^\/status\/503$/\/status\/200/
+||httpbin.agrd.dev^$image,urltransform=/^\/status\/503$/\/image\/png/

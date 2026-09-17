@@ -152,6 +152,9 @@ After completing any code change, verify the following:
   workarounds, or patterns that only apply to products excluded by this field.
   For example: do not recommend Safari/iOS-specific timing helpers for a test
   that targets only CoreLibs products (Windows, macOS, Android).
+- When a test's `compatibility` field changes, update the `README.md` of that
+  test in the same PR so the documented support (products, minimum versions)
+  stays in sync with `testsData.js`.
 
 ### Other
 

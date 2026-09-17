@@ -658,7 +658,10 @@ const testsData = [
         link: 'Filters/urltransform-rules/test-urltransform-rules.html',
         rulesUrl: 'Filters/urltransform-rules/test-urltransform-rules.txt',
         compatibility: {
-            none: NONE_CORELIBS_PRODUCTS,
+            none: [
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+            ],
         },
         readmeUrl: 'Filters/urltransform-rules/README.md',
     },
