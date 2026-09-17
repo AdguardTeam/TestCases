@@ -91,6 +91,29 @@
                 <span id="case10-6">child to not delete</span>
             </div>
         </div>
+
+        <!--
+            Cases 11-13: script elements are targets of HTML filtering rules
+            with quoted / regexp :contains() arguments; the QUnit tests check
+            whether each element is still present after the page load.
+        -->
+
+        <!-- Case 11: removed by $$script:contains("(function(g,b,a,c,e,d)") if wrapping quotes are stripped -->
+        <script id="case11">(function(g,b,a,c,e,d){ return true; })();</script>
+        <!-- Case 11 control: does not contain the needle, must survive -->
+        <script id="case11-control">window.case11Control = true;</script>
+
+        <!-- Case 12: removed by $$script:contains("/html-filtering-quoted-regex-\d+/") if the unquoted argument is a regexp -->
+        <script id="case12-regexp">window.case12a = 'html-filtering-quoted-regex-123';</script>
+        <!-- Case 12: survives if the unquoted argument is a regexp (its raw text matches only the literal reading) -->
+        <script id="case12-literal">window.case12b = '/html-filtering-quoted-regex-\d+/';</script>
+        <!-- Case 12 control: does not contain the needle, must survive -->
+        <script id="case12-control">window.case12Control = true;</script>
+
+        <!-- Case 13: removed by the unquoted regexp $$script:contains(/html-filtering-plain-regex-\d+/) -->
+        <script id="case13">window.case13 = 'html-filtering-plain-regex-456';</script>
+        <!-- Case 13 control: does not contain the needle, must survive -->
+        <script id="case13-control">window.case13Control = true;</script>
     </div>
 
     <script type="module" src="test-content-rules.js"></script>

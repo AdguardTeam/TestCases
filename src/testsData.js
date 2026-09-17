@@ -243,10 +243,19 @@ const testsData = [
         rulesUrl: 'Filters/content-rules/test-content-rules.txt',
         compatibility: {
             none: NO_REPLACE_CONTENT_PRODUCTS,
-            partial: CORELIBS_PRODUCTS.map((product) => ({
-                product,
-                cases: [8, 9, 10],
-            })),
+            partial: [
+                // FIXME: check comment later.
+                // 11, 12 will work after the AG-43979 chain
+                // (agtree + tsurlfilter) is released.
+                {
+                    product: PRODUCT_TYPES.FOX,
+                    cases: [11, 12],
+                },
+                ...CORELIBS_PRODUCTS.map((product) => ({
+                    product,
+                    cases: [8, 9, 10],
+                })),
+            ],
         },
         readmeUrl: 'Filters/content-rules/README.md',
     },
@@ -814,25 +823,6 @@ const testsData = [
         },
         readmeUrl: 'Filters/generic-css-iframe-size/README.md',
         manual: true,
-    },
-    {
-        id: 56,
-        title: 'HTML filtering rules: quoted :contains() arguments',
-        link: 'Filters/html-filtering-rules/test-html-filtering-rules.html',
-        rulesUrl: 'Filters/html-filtering-rules/test-html-filtering-rules.txt',
-        compatibility: {
-            // HTML filtering rules are supported only in CoreLibs apps
-            // and browser extension for Firefox
-            none: [
-                PRODUCT_TYPES.MV3,
-                PRODUCT_TYPES.CHR,
-                PRODUCT_TYPES.EDG,
-                PRODUCT_TYPES.OPR,
-                ...SAFARI_CONVERTER_LIB_PRODUCTS,
-                ...LEGACY_PRODUCTS,
-            ],
-        },
-        readmeUrl: 'Filters/html-filtering-rules/README.md',
     },
 ];
 

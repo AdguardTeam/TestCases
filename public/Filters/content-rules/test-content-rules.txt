@@ -18,3 +18,14 @@ testcases.agrd.dev,pages.dev$$div[id="case7"] > span:contains(/content/i)
 testcases.agrd.dev,pages.dev$$div[id="case8"] > h1, div[id="case8"] > h2, div[id="case8"] > h3
 testcases.agrd.dev,pages.dev$$div[id="case9"] > span[title*="substr" i] ~ div
 testcases.agrd.dev,pages.dev$$div[id="case10"] > div[tag-content="parent to delete"] > span:contains(child to delete)
+!
+! Case 11: quoted plain-text :contains() argument —
+! wrapping quotes are a transport encoding and must be stripped before matching
+testcases.agrd.dev,pages.dev$$script:contains("(function(g,b,a,c,e,d)")
+!
+! Case 12: quoted regexp-lookalike :contains() argument —
+! after unquoting, the argument keeps regexp semantics
+testcases.agrd.dev,pages.dev$$script:contains("/html-filtering-quoted-regex-\d+/")
+!
+! Case 13: unquoted regexp :contains() argument (baseline)
+testcases.agrd.dev,pages.dev$$script:contains(/html-filtering-plain-regex-\d+/)
