@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
+- Test case 56: HTML filtering rules — quoted `:contains()` arguments
+  semantics (wrapping quote stripping and quoted regexp-lookalikes) (AG-43979).
+
 ### Changed
 
 ### Deprecated

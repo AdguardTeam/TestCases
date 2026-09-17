@@ -1,0 +1,23 @@
+!
+! Title: Rules for HTML filtering rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-html-filtering-rules-filter
+!
+!
+! Case 1: quoted plain-text :contains() argument —
+! wrapping quotes are a transport encoding and must be stripped before matching
+testcases.agrd.dev,pages.dev$$script:contains("(function(g,b,a,c,e,d)")
+!
+!
+! Case 2: quoted regexp-lookalike :contains() argument —
+! after unquoting, the argument keeps regexp semantics
+testcases.agrd.dev,pages.dev$$script:contains("/html-filtering-quoted-regex-\d+/")
+!
+!
+! Case 3: unquoted regexp :contains() argument (baseline)
+testcases.agrd.dev,pages.dev$$script:contains(/html-filtering-plain-regex-\d+/)
