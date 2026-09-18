@@ -244,12 +244,15 @@ const testsData = [
         compatibility: {
             none: NO_REPLACE_CONTENT_PRODUCTS,
             partial: [
-                // FIXME: check comment later.
-                // 11, 12 will work after the AG-43979 chain
-                // (agtree + tsurlfilter) is released.
+                // Case 11 uses a raw unbalanced :contains() argument with
+                // CoreLibs semantics. Not supported yet by the browser
+                // extension.
+                // TODO: AdGuard Browser Extension for Firefox v5.6 adds
+                // support — remove case 11 from this list once v5.6
+                // is released.
                 {
                     product: PRODUCT_TYPES.FOX,
-                    cases: [11, 12],
+                    cases: [11],
                 },
                 ...CORELIBS_PRODUCTS.map((product) => ({
                     product,

@@ -12,9 +12,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
-- Cases 11–13 in the Content (HTML filtering) rules test: quoted
-  `:contains()` arguments semantics — wrapping quote stripping and quoted
-  regexp-lookalikes (AG-43979).
+- Case 11 in the Content (HTML filtering) rules test: unbalanced
+  plain-text `:contains()` argument is matched as-is, with CoreLibs parity.
 
 ### Changed
 

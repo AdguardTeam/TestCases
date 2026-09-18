@@ -61,21 +61,9 @@ window.addEventListener('load', () => {
         assert.ok(adgCheck && document.querySelector('#case10-6'));
     });
 
-    agTest(11, 'quoted plain-text :contains() argument', (assert) => {
-        // wrapping quotes must be stripped before matching
+    agTest(11, 'unbalanced plain-text :contains() argument', (assert) => {
+        // the raw text between the parentheses of the pseudo-class is
+        // matched as-is, no quoting is inserted or stripped
         assert.ok(adgCheck && !document.querySelector('#case11'));
-        assert.ok(adgCheck && document.querySelector('#case11-control'));
-    });
-
-    agTest(12, 'quoted regexp-lookalike :contains() argument', (assert) => {
-        // after unquoting, the argument keeps regexp semantics
-        assert.ok(adgCheck && !document.querySelector('#case12-regexp'));
-        assert.ok(adgCheck && document.querySelector('#case12-literal'));
-        assert.ok(adgCheck && document.querySelector('#case12-control'));
-    });
-
-    agTest(13, 'unquoted regexp :contains() argument (baseline)', (assert) => {
-        assert.ok(adgCheck && !document.querySelector('#case13'));
-        assert.ok(adgCheck && document.querySelector('#case13-control'));
     });
 });
