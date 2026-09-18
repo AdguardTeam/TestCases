@@ -2,7 +2,7 @@
 
 Note: Cases 3 and 4 are valid starting with CoreLibs 1.16.19, Cases 5 and 6 with CoreLibs 1.19.
 
-The test suite is also supported by AdGuard Browser Extensions (MV2 and MV3).
+The test suite is also supported by AdGuard Browser Extensions (MV2 and MV3) starting with v5.5.
 
 ## Case 1
 
