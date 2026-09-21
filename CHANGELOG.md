@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 ### Added
 
 - Case 11 in the Content (HTML filtering) rules test: unbalanced
-  plain-text `:contains()` argument is matched as-is, with CoreLibs parity.
+  plain-text `:contains()` argument is matched as-is.
 
 ### Changed
 
