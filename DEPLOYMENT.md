@@ -23,9 +23,12 @@
 | **Slack channel**            | `#adguard-extension-vcs`                   |
 
 Deploys run in the `publish-release.yml` deploy job, which runs
-`wrangler pages deploy` inside its own Docker image. The `pnpm run deploy`
-script in `package.json` is only a manual fallback for local/emergency use and
-requires the Cloudflare env vars to be wired by hand.
+`wrangler pages deploy` inside its own Docker image. The image's `deploy` stage
+builds on the project dependencies: wrangler from `node_modules` uploads the
+`site` artifact plus the Pages Functions from `functions/` at the repository
+root. The `pnpm run deploy` script in `package.json` is only a manual fallback
+for local/emergency use and requires the Cloudflare env vars to be wired by
+hand.
 
 ## Release Pipeline
 
@@ -45,6 +48,13 @@ version tag is created from `CHANGELOG.md` only during `publish-release.yml`.
      (`tag-from-changelog`);
    - builds the site artifact in Docker and deploys it to Cloudflare Pages in
      the release pipeline's own deploy job (production `branch: master`);
+   - checks that the Functions respond on the new deployment's own URL
+     (`https://<id>.adguard-testcases.pages.dev`, printed by wrangler):
+     `/httpbin/status/418` must return 418 and
+     `/csp/header-csp-default-src-none` must return a
+     `Content-Security-Policy` header. The job also fails when wrangler
+     printed no deployment URL. On failure production may already be updated,
+     the mirror release is not created, and Slack gets the failure notice;
    - mirrors the tag to the public repo `AdguardTeam/TestCases` and creates the
      GitHub Release there, with the changelog section as the release body
      (`mirror-and-release`);
@@ -79,10 +89,13 @@ To re-publish a previous version, run **`publish-release.yml`** manually
 - Re-running a version that already has a GitHub Release may fail at the
   release-creation step **after** the deploy has already happened; the
   Cloudflare deploy itself will have succeeded.
-- The deploy job builds the root `Dockerfile`'s `deploy` stage of the
-  dispatched ref, and that stage only exists since the inline-deploy change
-  (AG-58459). Re-deploying an older ref fails at the docker build; use the
-  `pnpm run deploy` fallback script for those versions.
+- The deploy job builds the `deploy` stage of the dispatched ref's own
+  `Dockerfile`. Every ref before the AG-59936 fix fails at that docker build:
+  its `Dockerfile` has no `deploy` stage (before AG-58459) or one built for
+  the old build arguments (AG-58459 up to the AG-59936 fix). Re-publish such
+  a ref from a checkout of its tag: `pnpm install`,
+  `pnpm build:static && pnpm build`, then `pnpm run deploy --branch=master`
+  (without `--branch=master` it deploys to preview).
 
 ## CI/CD
 
@@ -138,10 +151,11 @@ next deploy run picks them up automatically.
 
 ## Infrastructure Dependencies
 
-| Dependency                             | Purpose                                        |
-| -------------------------------------- | ---------------------------------------------- |
-| Cloudflare Pages (`adguard-testcases`) | Hosts the static site at testcases.agrd.dev    |
-| Vault (`ci-secrets/ext-filters-tests`) | Stores the Cloudflare deploy credentials       |
-| `AdguardTeam/TestCases`                | Public mirror of this repo                     |
-| `AdGuardSoftwareLimited/actions`       | Shared workflows (mirror, tagging, releases)   |
-| `team-extensions` runner               | Self-hosted GitHub Actions runner              |
+| Dependency                                                | Purpose                                                     |
+| --------------------------------------------------------- | ----------------------------------------------------------- |
+| Cloudflare Pages (`adguard-testcases`)                    | Hosts the static site at testcases.agrd.dev                 |
+| Vault (`ci-secrets/ext-filters-tests`)                    | Stores the Cloudflare deploy credentials                    |
+| `AdguardTeam/TestCases`                                   | Public mirror of this repo                                  |
+| `AdGuardSoftwareLimited/actions`                          | Shared workflows (mirror, tagging, releases)                |
+| `team-extensions` runner                                  | Self-hosted GitHub Actions runner                           |
+| `httpbin.agrd.dev` (`AdGuardSoftwareLimited/ext-httpbin`) | Backend of the `/httpbin` proxy and the deploy verification |
