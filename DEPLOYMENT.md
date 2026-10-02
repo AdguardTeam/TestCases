@@ -48,12 +48,13 @@ version tag is created from `CHANGELOG.md` only during `publish-release.yml`.
      (`tag-from-changelog`);
    - builds the site artifact in Docker and deploys it to Cloudflare Pages in
      the release pipeline's own deploy job (production `branch: master`);
-   - checks that the Functions respond on testcases.agrd.dev:
+   - checks that the Functions respond on the new deployment's own URL
+     (`https://<id>.adguard-testcases.pages.dev`, printed by wrangler):
      `/httpbin/status/418` must return 418 and
      `/csp/header-csp-default-src-none` must return a
-     `Content-Security-Policy` header, retrying for about a minute. On
-     failure production is already updated, the mirror release is not
-     created, and Slack gets the failure notice;
+     `Content-Security-Policy` header. The job also fails when wrangler
+     printed no deployment URL. On failure production may already be updated,
+     the mirror release is not created, and Slack gets the failure notice;
    - mirrors the tag to the public repo `AdguardTeam/TestCases` and creates the
      GitHub Release there, with the changelog section as the release body
      (`mirror-and-release`);

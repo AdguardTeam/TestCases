@@ -188,6 +188,7 @@ jobs:
           fi
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         # Runs wrangler inside Docker so no 3rd-party action is needed. The
         # `deploy` stage of the root Dockerfile runs the lockfile-pinned
         # wrangler from node_modules at the repository root, so it picks up
@@ -197,30 +198,43 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ steps.vault.outputs.cloudflare_api_token }}
           CLOUDFLARE_ACCOUNT_ID: ${{ steps.vault.outputs.cloudflare_account_id }}
           DOCKER_BUILDKIT: '1'
+        # bash with pipefail, so a failed build is not masked by `tee`.
+        shell: bash
         run: |
-          docker build \
+          log="${RUNNER_TEMP}/deploy.log"
+          docker build --progress plain \
             --target deploy \
             --build-arg "DEPLOY_DIR=site" \
             --build-arg "PROJECT_NAME=${PROJECT_NAME}" \
             --build-arg "BRANCH=${BRANCH}" \
             --secret id=CLOUDFLARE_API_TOKEN \
             --secret id=CLOUDFLARE_ACCOUNT_ID \
-            .
+            . 2>&1 | tee "$log"
+          # wrangler prints the unique URL of the deployment it created. No URL
+          # means wrangler did not run, e.g. the deploy layer came from the
+          # BuildKit cache, so nothing was uploaded.
+          url=$(grep -oE "https://[0-9a-f]+\.${PROJECT_NAME}\.pages\.dev" "$log" | tail -n 1 || true)
+          if [ -z "$url" ]; then
+            echo "::error::wrangler printed no deployment URL, so nothing was deployed."
+            exit 1
+          fi
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
 
       # wrangler deploys successfully even when it finds no Functions, and the
       # SPA fallback then answers every path with 200 HTML. Only Functions can
       # answer 418 on /httpbin or set a CSP header on /csp, so check both on the
-      # production domain. A failure cannot roll back: production keeps the new
-      # deployment, but the mirror release is skipped and Slack is notified.
+      # new deployment's own URL: on the production domain a healthy previous
+      # deployment could answer instead. A failure cannot roll back: production
+      # keeps the new deployment, but the mirror release is skipped and Slack is
+      # notified.
       - name: Verify deployed functions
         env:
-          SITE_URL: https://testcases.agrd.dev
+          SITE_URL: ${{ steps.deploy.outputs.url }}
         shell: bash
         run: |
           httpbin_url="${SITE_URL}/httpbin/status/418"
           csp_url="${SITE_URL}/csp/header-csp-default-src-none"
-          # The custom domain may serve the previous deployment for about a
-          # minute after upload.
+          # Retries cover transient network and edge errors.
           max_attempts=6
           for attempt in $(seq "$max_attempts"); do
             httpbin_status=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "$httpbin_url" || true)
