@@ -51,8 +51,6 @@ jobs:
     permissions:
       # contents: read — checkout only; this job never writes to the repo
       contents: read
-    outputs:
-      wrangler_version: ${{ steps.wrangler.outputs.version }}
     steps:
       - name: Validate dispatch ref
         # inputs.ref is a free-form workflow_dispatch input; it ends up in the
@@ -75,13 +73,6 @@ jobs:
           # The tag job created the release tag from the ref it was given;
           # checking out the tag pins this job to that exact commit.
           ref: ${{ needs.tag.outputs.tag }}
-
-      # Single source of truth for the wrangler pin: the package.json
-      # devDependency. Passed to the deploy job below so master and
-      # release builds always deploy with the same wrangler.
-      - name: Resolve wrangler version
-        id: wrangler
-        run: echo "version=$(node -p "require('./package.json').devDependencies.wrangler")" >> "$GITHUB_OUTPUT"
 
       # Stamp the release version into package.json so the built site's header
       # shows the real version instead of the local-dev fallback. Passed via
@@ -123,8 +114,8 @@ jobs:
     permissions:
       # actions: read — required by actions/download-artifact@v8 to fetch the
       #   artifact via the Actions REST API
-      # contents: read — checkout the repo so the root Dockerfile is present
-      #   in the workspace when the deploy build runs
+      # contents: read — checkout the repo for the root Dockerfile and the
+      #   functions/, src/ and dependency manifests the deploy build needs
       # id-token: write — Vault JWT/OIDC auth for Cloudflare credentials
       actions: read
       contents: read
@@ -134,18 +125,18 @@ jobs:
       # Deploy to the Pages production branch; without this wrangler would
       # publish a preview deployment instead of production.
       BRANCH: master
-      WRANGLER_VERSION: ${{ needs.build.outputs.wrangler_version }}
     steps:
       # The `deploy` stage of the root Dockerfile performs the deploy. The
       # docker client reads the Dockerfile from the workspace root — it is not
-      # part of the build context, and .dockerignore even excludes it — so
-      # this checkout is what makes `docker build` below find it. The site
-      # content itself comes from the downloaded artifact, not this checkout.
+      # part of the build context, and .dockerignore even excludes it. The
+      # checkout supplies it, plus functions/, src/ and the dependency
+      # manifests the deploy stage installs from. Static files come from the
+      # downloaded artifact, not this checkout.
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          # Same tag the build job used: the deploy must run the Dockerfile of
-          # the exact commit that was tagged and built.
+          # Same tag the build job used: the deploy must use the Dockerfile
+          # and Functions of the exact commit that was tagged and built.
           ref: ${{ needs.tag.outputs.tag }}
 
       - name: Validate deploy env
@@ -197,24 +188,85 @@ jobs:
           fi
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         # Runs wrangler inside Docker so no 3rd-party action is needed. The
-        # `deploy` stage of the root Dockerfile performs the deploy with the
-        # pinned wrangler version; credentials are passed via BuildKit secrets
-        # and never appear in image layers or logs.
+        # `deploy` stage of the root Dockerfile runs the lockfile-pinned
+        # wrangler from node_modules at the repository root, so it picks up
+        # functions/; credentials are passed via BuildKit secrets and never
+        # appear in image layers or logs.
         env:
           CLOUDFLARE_API_TOKEN: ${{ steps.vault.outputs.cloudflare_api_token }}
           CLOUDFLARE_ACCOUNT_ID: ${{ steps.vault.outputs.cloudflare_account_id }}
           DOCKER_BUILDKIT: '1'
+        # bash with pipefail, so a failed build is not masked by `tee`.
+        shell: bash
         run: |
-          docker build \
+          log="${RUNNER_TEMP}/deploy.log"
+          docker build --progress plain \
             --target deploy \
-            --build-arg "WRANGLER_VERSION=${WRANGLER_VERSION}" \
-            --build-arg "DEPLOY_DIR=." \
+            --build-arg "DEPLOY_DIR=site" \
             --build-arg "PROJECT_NAME=${PROJECT_NAME}" \
             --build-arg "BRANCH=${BRANCH}" \
             --secret id=CLOUDFLARE_API_TOKEN \
             --secret id=CLOUDFLARE_ACCOUNT_ID \
-            .
+            . 2>&1 | tee "$log"
+          # wrangler prints the unique URL of the deployment it created. No URL
+          # means wrangler did not run, e.g. the deploy layer came from the
+          # BuildKit cache, so nothing was uploaded.
+          url=$(grep -oE "https://[0-9a-f]+\.${PROJECT_NAME}\.pages\.dev" "$log" | tail -n 1 || true)
+          if [ -z "$url" ]; then
+            echo "::error::wrangler printed no deployment URL, so nothing was deployed."
+            exit 1
+          fi
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
+
+      # wrangler deploys successfully even when it finds no Functions, and the
+      # SPA fallback then answers every path with 200 HTML. Only Functions can
+      # answer 418 on /httpbin or set a CSP header on /csp, so check both on the
+      # new deployment's own URL: on the production domain a healthy previous
+      # deployment could answer instead. A failure cannot roll back: production
+      # keeps the new deployment, but the mirror release is skipped and Slack is
+      # notified.
+      - name: Verify deployed functions
+        env:
+          SITE_URL: ${{ steps.deploy.outputs.url }}
+        shell: bash
+        run: |
+          httpbin_url="${SITE_URL}/httpbin/status/418"
+          csp_url="${SITE_URL}/csp/header-csp-default-src-none"
+          # Retries cover transient network and edge errors.
+          max_attempts=6
+          for attempt in $(seq "$max_attempts"); do
+            httpbin_status=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "$httpbin_url" || true)
+            # Headers followed by the status code; the body is discarded.
+            csp_response=$(curl -s -o /dev/null -D - -w '%{http_code}' --max-time 10 "$csp_url" || true)
+            csp_status=${csp_response##*$'\n'}
+            httpbin_ok=false
+            csp_ok=false
+            if [ "$httpbin_status" = 418 ]; then
+              httpbin_ok=true
+            fi
+            # Full header name: Content-Security-Policy-Report-Only does not
+            # count. HTTP/2 serves header names in lowercase.
+            if grep -qi '^content-security-policy:' <<< "$csp_response"; then
+              csp_ok=true
+            fi
+            if [ "$httpbin_ok" = true ] && [ "$csp_ok" = true ]; then
+              echo "Functions respond (attempt ${attempt}/${max_attempts})"
+              exit 0
+            fi
+            echo "Attempt ${attempt}/${max_attempts}: httpbin status ${httpbin_status}, CSP header present: ${csp_ok}"
+            if [ "$attempt" -lt "$max_attempts" ]; then
+              sleep 10
+            fi
+          done
+          if [ "$httpbin_ok" != true ]; then
+            echo "::error::GET ${httpbin_url}: expected status 418, got ${httpbin_status}. Check https://httpbin.agrd.dev."
+          fi
+          if [ "$csp_ok" != true ]; then
+            echo "::error::GET ${csp_url}: expected a Content-Security-Policy header, got status ${csp_status} without one."
+          fi
+          exit 1
 
   # Mirror the tag to the public repo and create the GitHub Release there
   # (AdguardTeam/TestCases is the public mirror). Assetless — the site is
