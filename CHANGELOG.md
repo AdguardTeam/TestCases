@@ -12,9 +12,6 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
-- Case 11 in the Content (HTML filtering) rules test: unbalanced
-  plain-text `:contains()` argument is matched as-is.
-
 ### Changed
 
 ### Deprecated
@@ -24,6 +21,13 @@ The format is based on [Keep a Changelog], and this project adheres to
 ### Fixed
 
 ### Security
+
+## [0.2.125] - 2026-10-15
+
+### Added
+
+- Case 11 in the Content (HTML filtering) rules test: unbalanced
+  plain-text `:contains()` argument is matched as-is.
 
 ## [0.2.124] - 2026-10-02
 
