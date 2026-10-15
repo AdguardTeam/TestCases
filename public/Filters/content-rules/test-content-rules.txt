@@ -18,3 +18,7 @@ testcases.agrd.dev,pages.dev$$div[id="case7"] > span:contains(/content/i)
 testcases.agrd.dev,pages.dev$$div[id="case8"] > h1, div[id="case8"] > h2, div[id="case8"] > h3
 testcases.agrd.dev,pages.dev$$div[id="case9"] > span[title*="substr" i] ~ div
 testcases.agrd.dev,pages.dev$$div[id="case10"] > div[tag-content="parent to delete"] > span:contains(child to delete)
+!
+! Case 11: unbalanced plain-text :contains() argument —
+! the raw text between the parentheses is matched as-is (CoreLibs parity)
+testcases.agrd.dev,pages.dev$$script:contains((function(g,b,a,c,e,d)

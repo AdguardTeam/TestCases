@@ -91,6 +91,15 @@
                 <span id="case10-6">child to not delete</span>
             </div>
         </div>
+
+        <!--
+            Case 11: the script element is the target of an HTML filtering rule
+            with an unbalanced :contains() argument, which is handled with
+            CoreLibs semantics: the raw text between the parentheses of the
+            pseudo-class is matched as-is; the QUnit test checks whether the
+            element is still present after the page load.
+        -->
+        <script id="case11">(function(g,b,a,c,e,d){ return true; })();</script>
     </div>
 
     <script type="module" src="test-content-rules.js"></script>

@@ -60,4 +60,10 @@ window.addEventListener('load', () => {
         assert.ok(adgCheck && !document.querySelector('#case10-5'));
         assert.ok(adgCheck && document.querySelector('#case10-6'));
     });
+
+    agTest(11, 'unbalanced plain-text :contains() argument', (assert) => {
+        // the raw text between the parentheses of the pseudo-class is
+        // matched as-is, no quoting is inserted or stripped
+        assert.ok(adgCheck && !document.querySelector('#case11'));
+    });
 });
