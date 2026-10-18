@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>$stealth rules tests</title>
+    <link rel="stylesheet" href="../qunit/custom.css">
+    <link rel="stylesheet" href="test-stealth-rules.css">
+</head>
+
+<body>
+    <div id="subscribe-to-test-stealth-rules-filter" class="subscribe-link">
+        <a href="test-stealth-rules.txt">Subscribe to test filter</a>
+    </div>
+
+    <h1>Canvas fingerprinting protection</h1>
+    <p>
+        Turn on <strong>Tracking protection</strong> and <strong>Block fingerprinting</strong>
+        in the extension settings, set up a case from the README and reload the page.
+    </p>
+
+    <table id="readouts">
+        <thead>
+            <tr>
+                <th>Readout</th>
+                <th>Page</th>
+                <th>Iframe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><code>getImageData()</code></th>
+                <td id="page-image-data">pending</td>
+                <td id="frame-image-data">pending</td>
+            </tr>
+            <tr>
+                <th><code>toDataURL()</code></th>
+                <td id="page-data-url">pending</td>
+                <td id="frame-data-url">pending</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p id="summary">Canvas readout: <strong id="summary-status">pending</strong></p>
+
+    <iframe id="frame" src="test-files/frame.html" title="Canvas readout in an iframe"></iframe>
+
+    <script type="module" src="test-stealth-rules.js"></script>
+</body>
+
+</html>

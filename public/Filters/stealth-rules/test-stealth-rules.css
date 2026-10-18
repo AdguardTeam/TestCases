@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+}
+
+#readouts {
+    border-collapse: collapse;
+}
+
+#readouts th,
+#readouts td {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.native {
+    color: #2e7d32;
+}
+
+.noised {
+    color: #1565c0;
+}
+
+.unexpected,
+.inconsistent {
+    color: #c62828;
+}
+
+#frame {
+    position: absolute;
+    left: -9999px;
+}
