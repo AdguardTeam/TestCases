@@ -22,7 +22,8 @@ body {
 }
 
 .unexpected,
-.inconsistent {
+.inconsistent,
+.error {
     color: #c62828;
 }
 

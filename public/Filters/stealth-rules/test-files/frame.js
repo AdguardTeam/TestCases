@@ -1,7 +1,6 @@
-import { readCanvas } from '../canvas-readout.js';
+import { tryReadCanvas } from '../canvas-readout.js';
 
-// The parent page reads the result on its own `load` event,
-// which fires after the `load` event of this frame.
+// The parent page waits for this result.
 window.addEventListener('load', () => {
-    window.canvasReadout = readCanvas(document);
+    window.canvasReadout = tryReadCanvas(document);
 });

@@ -127,7 +127,7 @@ const encodePixels = (doc, pixels) => {
  *     dataUrl: { status: string },
  * }} Readout results.
  */
-export const readCanvas = (doc) => {
+const readCanvas = (doc) => {
     const native = getNativePixels();
 
     const drawing = createCanvas(doc);
@@ -148,4 +148,21 @@ export const readCanvas = (doc) => {
     }
 
     return { imageData, dataUrl: { status: dataUrlStatus } };
+};
+
+/**
+ * Draws the test picture and reads it back, see {@link readCanvas}.
+ * An exception is returned as the error of the readout, so the page
+ * can show it instead of waiting for a result.
+ *
+ * @param {Document} doc Document to draw in.
+ *
+ * @returns {ReturnType<typeof readCanvas> | { error: string }} Readout results or the error.
+ */
+export const tryReadCanvas = (doc) => {
+    try {
+        return readCanvas(doc);
+    } catch (error) {
+        return { error: String(error) };
+    }
 };

@@ -17,9 +17,11 @@ one of the statuses:
   `toDataURL()` is `noised` only when it encodes the same pixels as the
   `getImageData()` readout.
 - `unexpected` — the readout differs in another way.
+- `error` — there is no readout: it threw, or the iframe gave none within
+  10 seconds. The cell shows the reason.
 
-**Canvas readout** shows the status shared by all four readouts, or
-`inconsistent` when they differ.
+**Canvas readout** shows the status shared by all four readouts, `error` when
+a readout is missing, or `inconsistent` when the readouts differ.
 
 ## Setup
 
