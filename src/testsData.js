@@ -830,6 +830,22 @@ const testsData = [
         readmeUrl: 'Filters/generic-css-iframe-size/README.md',
         manual: true,
     },
+    {
+        id: 56,
+        title: '$stealth rules: canvas fingerprinting protection',
+        link: 'Filters/stealth-rules/test-stealth-rules.html',
+        rulesUrl: 'Filters/stealth-rules/test-stealth-rules.txt',
+        compatibility: {
+            // Canvas protection is implemented only in the browser extension.
+            none: [
+                ...CORELIBS_PRODUCTS,
+                ...SAFARI_CONVERTER_LIB_PRODUCTS,
+                ...LEGACY_PRODUCTS,
+            ],
+        },
+        readmeUrl: 'Filters/stealth-rules/README.md',
+        manual: true,
+    },
 ];
 
 export default testsData;

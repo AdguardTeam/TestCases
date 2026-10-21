@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
+- `$stealth` rules test: checks canvas fingerprinting protection of the
+  browser extension, its `$stealth=fingerprinting`, `$stealth`, `$document`
+  and allowlist exceptions, and an exception cancelled by `$badfilter`.
+
 ### Changed
 
 ### Deprecated

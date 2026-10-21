@@ -1,0 +1,10 @@
+!
+! Title: Rules for $stealth rules test
+!
+! Filter to be used for testing purposes
+! https://testcases.agrd.dev
+!
+! Rules of each case are listed in README.md: add them to user rules.
+!
+! Hide warning
+testcases.agrd.dev,pages.dev###subscribe-to-test-stealth-rules-filter
