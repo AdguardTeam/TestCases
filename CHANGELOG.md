@@ -12,10 +12,6 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
-- `$stealth` rules test: checks canvas fingerprinting protection of the
-  browser extension, its `$stealth=fingerprinting`, `$stealth`, `$document`
-  and allowlist exceptions, and an exception cancelled by `$badfilter`.
-
 ### Changed
 
 ### Deprecated
@@ -25,6 +21,14 @@ The format is based on [Keep a Changelog], and this project adheres to
 ### Fixed
 
 ### Security
+
+## [0.2.126] - 2026-10-22
+
+### Added
+
+- `$stealth` rules test: checks canvas fingerprinting protection of the
+  browser extension, its `$stealth=fingerprinting`, `$stealth`, `$document`
+  and allowlist exceptions, and an exception cancelled by `$badfilter`.
 
 ## [0.2.125] - 2026-10-15
 
