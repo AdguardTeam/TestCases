@@ -43,6 +43,7 @@ iOS). The app is deployed to Cloudflare Pages at `testcases.agrd.dev`.
 │   └── userscripts-csp/          #   CSP for userscript test pages
 ├── public/                       # Static assets served by CF Pages
 │   ├── index.html                #   App shell
+│   ├── E2E/                      #   Pages opened by browser extension end-to-end tests
 │   ├── Filters/                  #   Filter test cases (~38 rule-type dirs)
 │   │   ├── element-hiding-rules/ #     e.g. element hiding test
 │   │   ├── scriptlet-rules/      #     e.g. scriptlet injection test

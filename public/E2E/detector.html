@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AdGuard DNT &amp; GPC Signal Check</title>
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --border: #e3e8ef;
+    --text: #1c2430;
+    --muted: #5b6673;
+    --accent: #2563eb;
+    --ok-bg: #e6f6ec; --ok-fg: #0f7a3d;
+    --off-bg: #eef1f5; --off-fg: #5b6673;
+    --warn-bg: #fdf3e3; --warn-fg: #a15c07;
+    --err-bg: #fdeaea; --err-fg: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px 48px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.5;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+  header p { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 0 16px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  }
+  .card h2 { margin: 0 0 4px; font-size: 1.05rem; }
+  .card .sub { margin: 0 0 14px; color: var(--muted); font-size: 0.85rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+  .signal {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: #fbfcfe;
+  }
+  .signal .name { font-weight: 600; font-size: 0.92rem; }
+  .signal .desc { color: var(--muted); font-size: 0.8rem; margin: 2px 0 10px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .badge.ok  { background: var(--ok-bg);  color: var(--ok-fg); }
+  .badge.off { background: var(--off-bg); color: var(--off-fg); }
+  .badge.warn{ background: var(--warn-bg); color: var(--warn-fg); }
+  .badge.err { background: var(--err-bg); color: var(--err-fg); }
+  .raw {
+    margin-top: 10px;
+    background: #f6f8fb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .raw .lbl { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  button {
+    font: inherit; font-size: 0.9rem; font-weight: 600;
+    color: #fff; background: var(--accent);
+    border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer;
+  }
+  button:hover { filter: brightness(1.06); }
+  button:disabled { opacity: 0.55; cursor: default; }
+  button.ghost {
+    color: var(--text); background: transparent;
+    border: 1px solid var(--border); font-weight: 500;
+  }
+  .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .status { font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
+  .status.err { color: var(--err-fg); }
+  .status.ok { color: var(--ok-fg); }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eef1f5; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  td code, .mono { font-family: ui-monospace, "Cascadia Code", Consolas, Menlo, monospace; font-size: 0.85em; }
+  pre {
+    background: #10151d; color: #d8e0ea;
+    border-radius: 10px; padding: 14px 16px;
+    font-size: 0.8rem; overflow-x: auto;
+    margin: 10px 0 0;
+  }
+  pre .c { color: #6f7c8c; }
+  .note { color: var(--muted); font-size: 0.8rem; margin-top: 10px; }
+  .hl { background: #fdf3e3; border: 1px solid #f0d9b0; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; margin-top: 12px; }
+  footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 8px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>AdGuard DNT &amp; GPC Signal Check</h1>
+    <p>Detects the Do-Not-Track (<code>DNT</code>) and Global Privacy Control (<code>Sec-GPC</code>) signals that the <b>AdGuard extension</b> sends on network requests — not the browser's own settings.</p>
+  </header>
+
+  <section class="card">
+    <h2>Signal check — what AdGuard actually sends</h2>
+    <p class="sub">The page makes a request to an echo service and inspects the headers that reach it. AdGuard's Tracking protection (Stealth Mode) injects these headers, so this is where its signals appear.</p>
+    <div class="row">
+      <button id="check-btn">Run signal check</button>
+      <span id="check-status" class="status">Checking…</span>
+    </div>
+
+    <div id="results" class="hidden" style="margin-top:14px">
+      <div class="grid">
+        <div class="signal">
+          <div class="name">Do-Not-Track <span class="mono">DNT</span></div>
+          <div class="desc">AdGuard setting: <b>"Send Do-Not-Track header"</b> (Tracking protection)</div>
+          <span id="dnt-badge" class="badge">…</span>
+          <div class="raw"><span class="lbl">Header value</span><br><span id="dnt-raw">—</span></div>
+        </div>
+        <div class="signal">
+          <div class="name">Global Privacy Control <span class="mono">Sec-GPC</span></div>
+          <div class="desc">AdGuard setting: <b>"Global Privacy Control"</b> / "Ask websites not to track me"</div>
+          <span id="gpc-badge" class="badge">…</span>
+          <div class="raw"><span class="lbl">Header value</span><br><span id="gpc-raw">—</span></div>
+        </div>
+      </div>
+
+      <details>
+        <summary>All headers received by the echo service</summary>
+        <table>
+          <thead><tr><th>Header</th><th>Value</th></tr></thead>
+          <tbody id="all-headers"></tbody>
+        </table>
+      </details>
+
+      <div id="inference" class="hl hidden"></div>
+    </div>
+
+    <p class="note">Expected with AdGuard Tracking protection enabled: <code>DNT: 1</code> and <code>Sec-GPC: 1</code>. If a signal is missing, check the corresponding toggle in AdGuard → Settings → Tracking protection, and check that this site isn't in AdGuard's exclusions.</p>
+  </section>
+
+  <section class="card">
+    <h2>Browser-native signals (reference only)</h2>
+    <p class="sub">These reflect the browser's own settings. <b>AdGuard cannot change them</b> — if the header above is sent while these are off, the signal was injected by the extension.</p>
+    <div class="grid">
+      <div class="signal">
+        <div class="name">Do Not Track <span class="mono">navigator.doNotTrack</span></div>
+        <span id="native-dnt-badge" class="badge">…</span>
+        <div class="raw"><span class="lbl">Raw value</span><br><span id="native-dnt-raw">—</span></div>
+      </div>
+      <div class="signal">
+        <div class="name">GPC <span class="mono">navigator.globalPrivacyControl</span></div>
+        <span id="native-gpc-badge" class="badge">…</span>
+        <div class="raw"><span class="lbl">Raw value</span><br><span id="native-gpc-raw">—</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>AdGuard settings → headers</h2>
+    <table>
+      <thead><tr><th>AdGuard setting</th><th>Header sent</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Tracking protection → "Send Do-Not-Track header"</td><td><code>DNT</code></td><td><code>1</code></td></tr>
+        <tr><td>Tracking protection → "Global Privacy Control"</td><td><code>Sec-GPC</code></td><td><code>1</code></td></tr>
+      </tbody>
+    </table>
+    <p class="sub" style="margin-top:14px">On the server, read the headers the same way:</p>
+<pre><span class="c">// Node.js (Express)</span>
+const dnt = req.headers['dnt'];       <span class="c">// "1" | "0" | undefined</span>
+const gpc = req.headers['sec-gpc'];   <span class="c">// "1" | undefined</span></pre>
+<pre><span class="c">// PHP</span>
+$dnt = $_SERVER['HTTP_DNT']     ?? null; <span class="c">// "1" | "0" | null</span>
+$gpc = $_SERVER['HTTP_SEC_GPC'] ?? null; <span class="c">// "1" | null</span></pre>
+    <p class="note">Both signals are voluntary — they ask, but nothing forces a site to honor them. GPC is legally binding in several US states; DNT is deprecated and largely ignored.</p>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <button id="copy-btn" class="ghost">Copy report as JSON</button>
+      <span id="copy-status" class="status"></span>
+    </div>
+  </section>
+
+  <footer>Runs entirely in your browser. Nothing is stored; only the echo check above makes a network request.</footer>
+</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  function setBadge(el, { badge, text }) {
+    el.className = "badge " + badge;
+    el.textContent = text;
+  }
+
+  function fmt(v) {
+    if (v === undefined) return "undefined";
+    if (v === null) return "null";
+    if (v === true) return "true";
+    if (v === false) return "false";
+    return JSON.stringify(v);
+  }
+
+  // --- Browser-native APIs (reference) ---
+  const nativeDnt = navigator.doNotTrack;
+  const nativeGpc = (typeof navigator.globalPrivacyControl === "boolean")
+    ? navigator.globalPrivacyControl : undefined;
+
+  $("native-dnt-raw").textContent = fmt(nativeDnt);
+  $("native-gpc-raw").textContent = fmt(nativeGpc);
+
+  function describeNativeDnt(v) {
+    if (v === "1") return { badge: "ok", text: "Opted out (browser)" };
+    if (v === "0") return { badge: "off", text: "Consents to tracking (browser)" };
+    return { badge: "off", text: "No browser preference" };
+  }
+  function describeNativeGpc(v) {
+    if (v === true) return { badge: "ok", text: "On (browser)" };
+    if (v === false) return { badge: "off", text: "Supported but off (browser)" };
+    return { badge: "warn", text: "Not supported by browser" };
+  }
+  setBadge($("native-dnt-badge"), describeNativeDnt(nativeDnt));
+  setBadge($("native-gpc-badge"), describeNativeGpc(nativeGpc));
+
+  const report = {
+    detectedAt: new Date().toISOString(),
+    browser: navigator.userAgent,
+    nativeSignals: {
+      dnt: nativeDnt === undefined ? null : nativeDnt,
+      gpc: nativeGpc === undefined ? null : nativeGpc
+    },
+    extensionSignals: null,
+    endpoint: null
+  };
+
+  // --- Echo fetch with fallback ---
+  async function fetchEcho() {
+    const endpoints = ["https://httpbin.org/headers", "https://httpbingo.org/headers"];
+    let lastErr = null;
+    for (const url of endpoints) {
+      try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 10000);
+        const res = await fetch(url, { cache: "no-store", signal: controller.signal });
+        clearTimeout(timer);
+        const data = await res.json();
+        return { url, headers: data.headers || {} };
+      } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error("no endpoint reachable");
+  }
+
+  async function runCheck() {
+    const btn = $("check-btn");
+    const status = $("check-status");
+    btn.disabled = true;
+    status.textContent = "Checking…";
+    status.className = "status";
+
+    try {
+      const { url, headers } = await fetchEcho();
+      report.endpoint = url;
+
+      const find = (k) => {
+        const key = Object.keys(headers).find((x) => x.toLowerCase() === k.toLowerCase());
+        return key ? headers[key] : null;
+      };
+      const dntH = find("DNT");
+      const gpcH = find("Sec-GPC");
+      report.extensionSignals = { dnt: dntH, secGpc: gpcH };
+
+      // DNT badge
+      if (dntH === "1") {
+        setBadge($("dnt-badge"), { badge: "ok", text: "Sent — DNT: 1 ✓" });
+      } else if (dntH !== null) {
+        setBadge($("dnt-badge"), { badge: "warn", text: "Sent — DNT: " + dntH });
+      } else {
+        setBadge($("dnt-badge"), { badge: "off", text: "Not sent" });
+      }
+      $("dnt-raw").textContent = dntH === null ? "absent" : dntH;
+
+      // GPC badge
+      if (gpcH === "1") {
+        setBadge($("gpc-badge"), { badge: "ok", text: "Sent — Sec-GPC: 1 ✓" });
+      } else if (gpcH !== null) {
+        setBadge($("gpc-badge"), { badge: "warn", text: "Sent — Sec-GPC: " + gpcH });
+      } else {
+        setBadge($("gpc-badge"), { badge: "off", text: "Not sent" });
+      }
+      $("gpc-raw").textContent = gpcH === null ? "absent" : gpcH;
+
+      // All headers table
+      const tbody = $("all-headers");
+      tbody.innerHTML = "";
+      Object.keys(headers).sort().forEach((k) => {
+        const tr = document.createElement("tr");
+        const th = document.createElement("td"); th.innerHTML = "<code>" + k + "</code>";
+        const tv = document.createElement("td"); tv.textContent = headers[k];
+        tr.appendChild(th); tr.appendChild(tv);
+        tbody.appendChild(tr);
+      });
+
+      // Inference: header sent but browser native off → extension injected it
+      const inf = $("inference");
+      const injectedDnt = dntH === "1" && nativeDnt !== "1";
+      const injectedGpc = gpcH === "1" && nativeGpc !== true;
+      if (injectedDnt || injectedGpc) {
+        const parts = [];
+        if (injectedDnt) parts.push("<code>DNT: 1</code> is sent although the browser's own DNT is off — injected by an extension (e.g., AdGuard)");
+        if (injectedGpc) parts.push("<code>Sec-GPC: 1</code> is sent although <code>navigator.globalPrivacyControl</code> is not true — injected by an extension (e.g., AdGuard)");
+        inf.innerHTML = "<b>Inference:</b> " + parts.join("<br>") + ".";
+        inf.classList.remove("hidden");
+      } else {
+        inf.classList.add("hidden");
+      }
+
+      $("results").classList.remove("hidden");
+
+      const sent = [dntH, gpcH].filter((v) => v !== null).length;
+      if (sent === 2) {
+        status.textContent = "Both signals detected. ✓";
+        status.className = "status ok";
+      } else if (sent === 1) {
+        status.textContent = "One signal detected — check the missing toggle in AdGuard Tracking protection.";
+        status.className = "status";
+      } else {
+        status.textContent = "No signals detected — AdGuard Tracking protection appears off, or this site is excluded.";
+        status.className = "status";
+      }
+    } catch (e) {
+      status.textContent = "Echo check failed (" + (e.name === "AbortError" ? "timeout" : "network error") + ") — the page itself still works.";
+      status.className = "status err";
+      report.extensionSignals = { error: String(e) };
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  $("check-btn").addEventListener("click", runCheck);
+  runCheck(); // auto-run on load
+
+  // --- Copy report ---
+  $("copy-btn").addEventListener("click", async () => {
+    const status = $("copy-status");
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(report, null, 2));
+      status.textContent = "Copied ✓";
+      status.className = "status ok";
+    } catch (e) {
+      status.textContent = "Clipboard blocked — select and copy from the console.";
+      status.className = "status err";
+    }
+    setTimeout(() => { status.textContent = ""; status.className = "status"; }, 2500);
+  });
+})();
+</script>
+</body>
+</html>

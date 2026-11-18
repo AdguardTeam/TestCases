@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
+- Pages for end-to-end tests of the browser extension under `E2E/`: cosmetic
+  rule targets, an AdSense-style ad block, and a check of the `DNT` and
+  `Sec-GPC` request headers.
+
 ### Changed
 
 ### Deprecated
