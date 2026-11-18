@@ -121,13 +121,13 @@
       <div class="grid">
         <div class="signal">
           <div class="name">Do-Not-Track <span class="mono">DNT</span></div>
-          <div class="desc">AdGuard setting: <b>"Send Do-Not-Track header"</b> (Tracking protection)</div>
+          <div class="desc">AdGuard setting: <b>"Ask websites not to track me"</b> (Tracking protection)</div>
           <span id="dnt-badge" class="badge">…</span>
           <div class="raw"><span class="lbl">Header value</span><br><span id="dnt-raw">—</span></div>
         </div>
         <div class="signal">
           <div class="name">Global Privacy Control <span class="mono">Sec-GPC</span></div>
-          <div class="desc">AdGuard setting: <b>"Global Privacy Control"</b> / "Ask websites not to track me"</div>
+          <div class="desc">AdGuard setting: <b>"Ask websites not to track me"</b> (Tracking protection)</div>
           <span id="gpc-badge" class="badge">…</span>
           <div class="raw"><span class="lbl">Header value</span><br><span id="gpc-raw">—</span></div>
         </div>
@@ -144,12 +144,12 @@
       <div id="inference" class="hl hidden"></div>
     </div>
 
-    <p class="note">Expected with AdGuard Tracking protection enabled: <code>DNT: 1</code> and <code>Sec-GPC: 1</code>. If a signal is missing, check the corresponding toggle in AdGuard → Settings → Tracking protection, and check that this site isn't in AdGuard's exclusions.</p>
+    <p class="note">Expected with AdGuard Tracking protection enabled: <code>DNT: 1</code> and <code>Sec-GPC: 1</code>. One setting sends both: if a signal is missing, check that "Ask websites not to track me" is on in AdGuard → Settings → Tracking protection, and that this site isn't in AdGuard's exclusions.</p>
   </section>
 
   <section class="card">
-    <h2>Browser-native signals (reference only)</h2>
-    <p class="sub">These reflect the browser's own settings. <b>AdGuard cannot change them</b> — if the header above is sent while these are off, the signal was injected by the extension.</p>
+    <h2>Signals visible to page scripts (reference only)</h2>
+    <p class="sub"><code>navigator.doNotTrack</code> reflects the browser's own setting: if the <code>DNT</code> header above is sent while it is off, the header was injected by the extension. <code>navigator.globalPrivacyControl</code> reflects the browser's setting only where the browser has this property. Where it does not (Chromium), AdGuard defines it as <code>true</code> together with the header, so it cannot tell the browser from the extension.</p>
     <div class="grid">
       <div class="signal">
         <div class="name">Do Not Track <span class="mono">navigator.doNotTrack</span></div>
@@ -169,8 +169,8 @@
     <table>
       <thead><tr><th>AdGuard setting</th><th>Header sent</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td>Tracking protection → "Send Do-Not-Track header"</td><td><code>DNT</code></td><td><code>1</code></td></tr>
-        <tr><td>Tracking protection → "Global Privacy Control"</td><td><code>Sec-GPC</code></td><td><code>1</code></td></tr>
+        <tr><td>Tracking protection → "Ask websites not to track me"</td><td><code>DNT</code></td><td><code>1</code></td></tr>
+        <tr><td>Tracking protection → "Ask websites not to track me"</td><td><code>Sec-GPC</code></td><td><code>1</code></td></tr>
       </tbody>
     </table>
     <p class="sub" style="margin-top:14px">On the server, read the headers the same way:</p>
@@ -224,7 +224,7 @@ $gpc = $_SERVER['HTTP_SEC_GPC'] ?? null; <span class="c">// "1" | null</span></p
     return { badge: "off", text: "No browser preference" };
   }
   function describeNativeGpc(v) {
-    if (v === true) return { badge: "ok", text: "On (browser)" };
+    if (v === true) return { badge: "ok", text: "On (browser or AdGuard)" };
     if (v === false) return { badge: "off", text: "Supported but off (browser)" };
     return { badge: "warn", text: "Not supported by browser" };
   }
@@ -243,18 +243,29 @@ $gpc = $_SERVER['HTTP_SEC_GPC'] ?? null; <span class="c">// "1" | null</span></p
   };
 
   // --- Echo fetch with fallback ---
+  // The echo service of this site goes first: it needs no third party. The
+  // public services are fallbacks, each with a short timeout, so that a hung
+  // endpoint does not delay the answer of the next one.
+  const ECHO_ENDPOINTS = ["/httpbin/headers", "https://httpbin.org/headers", "https://httpbingo.org/headers"];
+  const ECHO_TIMEOUT_MS = 4000;
+
   async function fetchEcho() {
-    const endpoints = ["https://httpbin.org/headers", "https://httpbingo.org/headers"];
     let lastErr = null;
-    for (const url of endpoints) {
+    for (const url of ECHO_ENDPOINTS) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), ECHO_TIMEOUT_MS);
       try {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), 10000);
         const res = await fetch(url, { cache: "no-store", signal: controller.signal });
-        clearTimeout(timer);
+        if (!res.ok) throw new Error("HTTP " + res.status);
         const data = await res.json();
-        return { url, headers: data.headers || {} };
-      } catch (e) { lastErr = e; }
+        // httpbin.org and httpbingo.org wrap the headers in `headers`, the
+        // echo service of this site returns them at the top level.
+        return { url, headers: data.headers || data };
+      } catch (e) {
+        lastErr = e;
+      } finally {
+        clearTimeout(timer);
+      }
     }
     throw lastErr || new Error("no endpoint reachable");
   }
@@ -272,7 +283,10 @@ $gpc = $_SERVER['HTTP_SEC_GPC'] ?? null; <span class="c">// "1" | null</span></p
 
       const find = (k) => {
         const key = Object.keys(headers).find((x) => x.toLowerCase() === k.toLowerCase());
-        return key ? headers[key] : null;
+        if (!key) return null;
+        // httpbingo.org returns every header value as an array.
+        const value = headers[key];
+        return Array.isArray(value) ? value.join(", ") : value;
       };
       const dntH = find("DNT");
       const gpcH = find("Sec-GPC");
@@ -330,7 +344,7 @@ $gpc = $_SERVER['HTTP_SEC_GPC'] ?? null; <span class="c">// "1" | null</span></p
         status.textContent = "Both signals detected. ✓";
         status.className = "status ok";
       } else if (sent === 1) {
-        status.textContent = "One signal detected — check the missing toggle in AdGuard Tracking protection.";
+        status.textContent = "Only one signal detected — AdGuard's \"Ask websites not to track me\" sends both.";
         status.className = "status";
       } else {
         status.textContent = "No signals detected — AdGuard Tracking protection appears off, or this site is excluded.";
