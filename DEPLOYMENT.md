@@ -42,6 +42,8 @@ version tag is created from `CHANGELOG.md` only during `publish-release.yml`.
    provides the target tag (e.g. `v0.2.116`).
    The workflow opens a `release-bump/v0.2.116` PR that finalizes the
    `[Unreleased]` section in `CHANGELOG.md`.
+   The Actions run list shows the requested tag, for example
+   `Prepare release v0.2.116`.
 2. After review, merge the release PR into `master`.
    This triggers **`publish-release.yml`**, which:
    - reads the released version from `CHANGELOG.md` and creates the git tag
