@@ -12,10 +12,6 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 
-- Pages for end-to-end tests of the browser extension under `E2E/`: cosmetic
-  rule targets, an AdSense-style ad block, a check of the `DNT` and
-  `Sec-GPC` request headers, and a filter list with a `$document` exception.
-
 ### Changed
 
 ### Deprecated
@@ -25,6 +21,14 @@ The format is based on [Keep a Changelog], and this project adheres to
 ### Fixed
 
 ### Security
+
+## [0.2.127] - 2026-11-23
+
+### Added
+
+- Pages for end-to-end tests of the browser extension under `E2E/`: cosmetic
+  rule targets, an AdSense-style ad block, a check of the `DNT` and
+  `Sec-GPC` request headers, and a filter list with a `$document` exception.
 
 ## [0.2.126] - 2026-10-22
 
