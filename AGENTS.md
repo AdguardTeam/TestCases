@@ -108,6 +108,11 @@ After completing any code change, verify the following:
    tooling, or tests. The changelog is reserved for user-facing changes (new
    or fixed test cases, app behavior); infrastructure and test-only changes
    are documented in `DEPLOYMENT.md`/`DEVELOPMENT.md` instead.
+10. Write each `CHANGELOG.md` entry for a user: one or two sentences about what
+    changes for them, about as long as the neighboring entries, one bullet per
+    user-visible effect. Do not narrate the old behavior or what did not change,
+    and leave out internal mechanics and follow-up tickets. When an example
+    needs a domain, use `example.com` or `example.org`.
 
 ## Code Guidelines
 
